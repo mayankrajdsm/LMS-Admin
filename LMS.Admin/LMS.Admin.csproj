@@ -6,4 +6,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\assets\.DS_Store" />
+    <None Include="wwwroot\assets\css\.DS_Store" />
+    <None Include="wwwroot\assets\fonts\.DS_Store" />
+    <None Include="wwwroot\assets\fonts\Opensans\.DS_Store" />
+    <None Include="wwwroot\assets\images\.DS_Store" />
+    <None Include="wwwroot\assets\images\dashboard\.DS_Store" />
+    <None Include="wwwroot\assets\images\dashboard\ecommerce\.DS_Store" />
+    <None Include="wwwroot\assets\images\dashboard\hospital\.DS_Store" />
+    <None Include="wwwroot\assets\images\screenshots\.DS_Store" />
+    <None Include="wwwroot\assets\scss\.DS_Store" />
+    <None Include="wwwroot\assets\scss\demo_2\.DS_Store" />
+    <None Include="wwwroot\assets\scss\shared\components\plugin-overrides\.DS_Store" />
+  </ItemGroup>
+
 </Project>
