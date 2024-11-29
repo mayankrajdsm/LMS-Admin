@@ -21,4 +21,12 @@
     <None Include="wwwroot\assets\scss\shared\components\plugin-overrides\.DS_Store" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LMS.Mapper\LMS.Mapper.csproj" />
+  </ItemGroup>
+
 </Project>
