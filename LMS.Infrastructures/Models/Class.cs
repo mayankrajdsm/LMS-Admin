@@ -18,6 +18,4 @@ public partial class Class
     public DateTime? ModifiedOn { get; set; }
 
     public Guid? ModifiedBy { get; set; }
-
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
 }

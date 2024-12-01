@@ -39,33 +39,76 @@ public partial class LMSDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-B0VAC7N;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.BooksId).HasName("PK__Books__959FD31C88421398");
+            entity.HasKey(e => e.BooksId).HasName("PK__Books__959FD31C336CFEA7");
 
             entity.Property(e => e.BooksId)
                 .ValueGeneratedNever()
                 .HasColumnName("Books_ID");
-            entity.Property(e => e.AuthorName)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("Author_Name");
-            entity.Property(e => e.BooksName)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("Books_Name");
-            entity.Property(e => e.ClassesId).HasColumnName("Classes_ID");
-            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-
-            entity.HasOne(d => d.Classes).WithMany(p => p.Books)
-                .HasForeignKey(d => d.ClassesId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Books__Classes_I__46E78A0C");
+            entity.Property(e => e.AccessorDate).HasColumnType("datetime");
+            entity.Property(e => e.Author)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Barcode)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.BillDate).HasColumnType("datetime");
+            entity.Property(e => e.CustomTags)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Discount).HasColumnType("decimal(18, 0)");
+            entity.Property(e => e.Edition)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Isbnnumber).HasColumnName("ISBNNumber");
+            entity.Property(e => e.Language)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Location)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MonthandYear)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Pages)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Publisher)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.PublisherLocation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Reference)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Remarks)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Series)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Source)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Title)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.VendorName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.VendorPlace)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Volume)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.WithdrawalOn).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Building>(entity =>
