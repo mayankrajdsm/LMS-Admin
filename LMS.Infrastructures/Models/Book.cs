@@ -49,7 +49,7 @@ public partial class Book
 
     public int CollectionNo { get; set; }
 
-    public int Isbnnumber { get; set; }
+    public long Isbnnumber { get; set; }
 
     public string Location { get; set; } = null!;
 

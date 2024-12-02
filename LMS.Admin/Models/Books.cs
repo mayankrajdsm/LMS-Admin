@@ -1,6 +1,6 @@
 ﻿namespace LMS.Admin.Models
 {
-    public class Book
+    public class Books
     {
         public Guid BooksId { get; set; }
 
@@ -46,7 +46,7 @@
 
         public int CollectionNo { get; set; }
 
-        public int Isbnnumber { get; set; }
+        public long Isbnnumber { get; set; }
 
         public string Location { get; set; } = null!;
 
