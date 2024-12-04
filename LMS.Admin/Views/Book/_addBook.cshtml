@@ -1,6 +1,6 @@
 ﻿@* Added by Zafar Iqubal *@
 @page
-@model List<LMS.Admin.Models.Books>
+@model List<LMS.Infrastructures.Models.Book>
 @{
 }
 
@@ -10,7 +10,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form method="post" asp-action="InsertBook" asp-controller="Book">
+        <form method="post" asp-action="InsertBook" asp-controller="Book" >
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="Title">Bar Code</label>
-                            <input type="text" class="form-control" id="Title" placeholder="Bar Code" />
+                            <input type="text" class="form-control" id="Title" placeholder="Bar Code" name="Barcode" />
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Accession Number</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Accession Number" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Accession Number" name="AccessionNumber" />
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Accessor Date</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Accessor Date" />
+                            <input type="date" class="form-control" id="exampleInputUsername1" name="AccessorDate" placeholder="Accessor Date" />
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Title</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Title" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Title" placeholder="Title" />
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Author</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Author" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Author" placeholder="Author" />
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Year</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Year" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="Year" placeholder="Year" />
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Edition</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Edition" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Edition" placeholder="Edition" />
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Publisher</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Publisher" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Publisher" placeholder="Publisher" />
                         </div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Publisher Location</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Publisher Location" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="PublisherLocation" placeholder="Publisher Location" />
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Volume</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Volume" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Volume" placeholder="Volume" />
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Vendor Name</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Vendor Name" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="VendorName" placeholder="Vendor Name" />
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Vendor Place</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Vendor Place" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="VendorPlace" placeholder="Vendor Place" />
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Original Amount(MPRP)</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Original Amount" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="OriginalAmount" placeholder="Original Amount" />
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Cost</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Cost" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="Cost" placeholder="Cost" />
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Discount</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Discount" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="Discount" placeholder="Discount" />
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Bill No</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Bill No" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="BillNo" placeholder="Bill No" />
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">No of Copies</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="No of Copies" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="NoofCopies" placeholder="No of Copies" />
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Bill Date</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Bill Date" />
+                            <input type="date" class="form-control" id="exampleInputUsername1" name="BillDate" placeholder="Bill Date" />
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Class No</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Class No" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="ClassNo" placeholder="Class No" />
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Book Number</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Book Number" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="BookNumber" placeholder="Book Number" />
                         </div>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Collection No</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Collection No" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="CollectionNo" placeholder="Collection No" />
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">ISBN Number</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="ISBN Number" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="Isbnnumber" placeholder="ISBN Number" />
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Location</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Location" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Location" placeholder="Location" />
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Rack No</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Rack No" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="RackNo" placeholder="Rack No" />
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Shelf No</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Shelf No" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="ShelfNo" placeholder="Shelf No" />
                         </div>
                     </div>
                 </div>
@@ -224,7 +224,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Language</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Language" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Language" placeholder="Language" />
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Series</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Series" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Series" placeholder="Series" />
                         </div>
                     </div>
                 </div>
@@ -240,7 +240,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Issue No</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Issue No" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="IssueNo" placeholder="Issue No" />
                         </div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Withdrawal On</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Withdrawal On" />
+                            <input type="date" class="form-control" id="exampleInputUsername1" name="WithdrawalOn" placeholder="Withdrawal On" />
                         </div>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Custom Tags</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Custom Tags" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="CustomTags" placeholder="Custom Tags" />
                         </div>
                     </div>
                 </div>
@@ -279,7 +279,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Remarks</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Remarks" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Remarks" placeholder="Remarks" />
                         </div>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Subject Code</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Subject Code" />
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="SubjectCode" placeholder="Subject Code" />
                         </div>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Pages</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Pages" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Pages" placeholder="Pages" />
                         </div>
                     </div>
                 </div>
@@ -303,7 +303,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Month and Year</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Month and Year" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="MonthandYear" placeholder="Month and Year" />
                         </div>
                     </div>
                 </div>
@@ -311,7 +311,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Source</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Source" />
+                            <input type="text" class="form-control" id="exampleInputUsername1" name="Source" placeholder="Source" />
                         </div>
                     </div>
                 </div>
@@ -319,7 +319,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Reference</label>
-                            <input type="checkbox" class="form-control" id="exampleInputUsername1" placeholder="Reference" />
+                            <input type="checkbox" class="form-control" id="exampleInputUsername1" name="Reference" placeholder="Reference" />
                         </div>
                     </div>
                 </div>

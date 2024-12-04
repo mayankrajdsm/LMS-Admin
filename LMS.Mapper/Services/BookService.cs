@@ -18,7 +18,12 @@ namespace LMS.Mapper.Services
         }
         public IEnumerable<Book> GetAllBooks()
         {
-            return _bookRepository.GetAllBooks();
+            return _bookRepository.GetAllBooks().Result;
+
+        }
+        public int InsertBook(Book book) 
+        {
+            return _bookRepository.InsertBook(book).Result;
         }
     }
 }

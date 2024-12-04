@@ -1,5 +1,7 @@
 ﻿using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +18,15 @@ namespace LMS.Infrastructures.Repository
             _context = context;
 
         }
-        public IEnumerable<Book> GetAllBooks() 
+        public async Task<IEnumerable<Book>> GetAllBooks() 
         {
-            return _context.Books.ToList();
+            return await _context.Books.ToListAsync();
+        }
+        public async Task<int> InsertBook(Book book)
+        {
+             _context.Books.Add(book);
+            return await _context.SaveChangesAsync();
+
         }
     }
 }

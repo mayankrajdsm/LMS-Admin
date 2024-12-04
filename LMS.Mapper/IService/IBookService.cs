@@ -10,5 +10,6 @@ namespace LMS.Mapper.IService
     public interface IBookService
     {
         IEnumerable<Book> GetAllBooks();
+        int InsertBook(Book book);
     }
 }

@@ -9,6 +9,7 @@ namespace LMS.Infrastructures.Interface
 {
     public interface IBookRepository
     {
-        IEnumerable<Book> GetAllBooks();
+        Task<IEnumerable<Book>> GetAllBooks();
+        Task<int> InsertBook(Book book);
     }
 }
