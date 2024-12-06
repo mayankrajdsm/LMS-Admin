@@ -30,5 +30,6 @@ public partial class UserProfile
     public string? Status { get; set; }
 
     public Guid? Role { get; set; }
+
     public virtual LoginType? RoleNavigation { get; set; }
 }
