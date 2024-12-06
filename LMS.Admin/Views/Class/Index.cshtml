@@ -1,0 +1,66 @@
+﻿
+@model List<LMS.Infrastructures.Models.Class>
+@{
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditBookPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Class
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>Class Name</th>
+                                <th>Sequence</th>
+                                <th>Code</th>
+                                <th>BatchName</th>
+                                <th>StartDate</th>
+                                <th>EndDate</th>
+                                <th>IsActive</th>
+                                <th>CreatedOn</th>
+                                <th>CreatedBy</th>
+                                <th>ModifiedOn</th>
+                                <th>ModifiedBy</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ClassesName</td>
+                                        <td>@item.Sequence</td>
+                                        <td>@item.Code</td>
+                                        <td>@item.BatchName</td>
+                                        <td>@item.StartDate</td>
+                                        <td>@item.EndDate</td>
+                                        <td>@item.IsActive</td>
+                                        <td>@item.CreatedOn</td>
+                                        <td>@item.CreatedBy</td>
+                                        <td>@item.ModifiedBy</td>
+                                        <td>@item.ModifiedOn</td>
+                                       
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* <div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("_addBook")
+    </div>
+</div> *@
