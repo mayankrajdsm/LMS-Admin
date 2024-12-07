@@ -12,8 +12,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class BookRepository: IBookRepository
     {
-        private readonly LMSDbContext _context;
-        public BookRepository(LMSDbContext context)
+        private readonly TestContext _context;
+        public BookRepository(TestContext context)
         {
             _context = context;
 

@@ -7,9 +7,9 @@ using LMS.Infrastructures.Models;
 
 namespace LMS.Infrastructures.Interface
 {
-    public interface IUserProfileRepository
+    public interface IBuildingRepository
     {
-        Task<IEnumerable<UserProfile>> GetAllUsers();
-        Task<int> InsertUser(UserProfile profile);
+        Task<IEnumerable<Building>> GetBuildings();
+        Task<int> InsertBuilding(Building building);
     }
 }

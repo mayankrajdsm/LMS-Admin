@@ -22,4 +22,6 @@ public partial class LoginType
     public Guid? ModifiedBy { get; set; }
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
+
+    public virtual ICollection<UserProfile> UserProfiles { get; set; } = new List<UserProfile>();
 }

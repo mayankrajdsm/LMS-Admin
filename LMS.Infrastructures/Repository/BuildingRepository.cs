@@ -9,21 +9,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Infrastructures.Repository
 {
-    public class UserProfileRepository : IUserProfileRepository
+    public class BuildingRepository : IBuildingRepository
     {
         private readonly TestContext _context;
-
-        public UserProfileRepository(TestContext context)
+        public BuildingRepository(TestContext context)
         {
             _context = context;
         }
-        public async Task<IEnumerable<UserProfile>> GetAllUsers()
+        public async Task<IEnumerable<Building>> GetBuildings()
         {
-            return await _context.UserProfiles.ToListAsync();
+            return await _context.Buildings.ToListAsync();
         }
-        public async Task<int> InsertUser(UserProfile profile)
+        public async Task<int> InsertBuilding(Building building)
         {
-            _context.UserProfiles.Add(profile);
+            _context.Buildings.Add(building);
             return await _context.SaveChangesAsync();
         }
     }

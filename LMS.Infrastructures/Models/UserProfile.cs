@@ -5,7 +5,7 @@ namespace LMS.Infrastructures.Models;
 
 public partial class UserProfile
 {
-    public Guid? Id { get; set; }
+    public Guid Id { get; set; }
 
     public string? UserId { get; set; }
 

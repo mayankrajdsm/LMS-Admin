@@ -12,15 +12,12 @@ namespace LMS.Admin.Controllers
             _bookService = bookService;
         }
         public IActionResult Index()
-        
         {
             IEnumerable<Book> books = new List<Book>();
              books = _bookService.GetAllBooks();
-           
-
-            
-            return View(books);
+             return View(books);
         }
+
         [HttpPost]
         public IActionResult InsertBook(Book book)
         {
@@ -35,8 +32,6 @@ namespace LMS.Admin.Controllers
                 throw new Exception(ex.Message);
             }
             return View();
-           
-
         }
     }
 }
