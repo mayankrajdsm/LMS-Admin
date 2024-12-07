@@ -1,0 +1,28 @@
+﻿@page
+@model LMS.Admin.Views.Home.ContactUsModel
+@{
+    ViewBag.Ref = "Infrastructure";
+    ViewBag.Title = "Contact Us";
+}
+<div class="row">
+    <div class="grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Heading</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Text</label>
+                        <input type="textarea" class="form-control" id="exampleInputEmail1" placeholder="Email" />
+                    </div>
+                    <div style="float:right;">
+                        <button type="submit" class="btn btn-primary mr-2"> Submit</button>
+                        <button class="btn btn-light mr-2">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

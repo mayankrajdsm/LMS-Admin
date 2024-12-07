@@ -8,5 +8,9 @@ namespace LMS.Admin.Controllers
         {
             return View();
         }
+        public IActionResult Barcode()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,35 @@
+﻿@page
+@model LMS.Admin.Views.Generate.BarcodeModel
+@{
+    ViewBag.Ref = "Library";
+    ViewBag.Title = "Generate Barcode";
+}
+<div class="row">
+    <div class="grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <form class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">From</label>
+                                <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Username" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">To</label>
+                                <input type="number" class="form-control" id="exampleInputEmail1" placeholder="Email" />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:right;">
+                        <button type="submit" class="btn btn-primary mr-2"> Generate </button>
+                        <button class="btn btn-light mr-2">Reset</button>
+                        <button class="btn btn-warning">Print</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
