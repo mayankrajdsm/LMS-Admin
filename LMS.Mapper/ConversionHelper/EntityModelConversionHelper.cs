@@ -29,5 +29,17 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.ModifiedBy = string.IsNullOrEmpty(domain.DomainId) ? null : new Guid(domain.CreatedBy);
             return convertedModel;
         }
+        public static StaffType ToEntityModel(this BusinessObject.StaffType staffType, StaffType existingStaffType = null)
+        {
+            StaffType convertedModel = existingStaffType != null ? existingStaffType : new StaffType();
+            convertedModel.StaffTypeId = string.IsNullOrEmpty(staffType.StaffTypeId) ? Guid.NewGuid() : new Guid(staffType.StaffTypeId);
+            convertedModel.StaffTypeName = staffType.StaffTypeName;
+            convertedModel.IsActive = staffType.IsActive;
+            convertedModel.CreatedOn = staffType.CreatedOn;
+            convertedModel.CreatedBy = new Guid(staffType.CreatedBy);
+            convertedModel.ModifiedOn = staffType.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(staffType.ModifiedBy) ? null : new Guid(staffType.CreatedBy);
+            return convertedModel;
+        }
     }
 }

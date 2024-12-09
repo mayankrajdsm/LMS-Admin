@@ -1,3 +1,5 @@
+using LMS.Administration.Filters;
+using LMS.Administration.Middleware;
 using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
 using LMS.Infrastructures.Repository;
@@ -17,8 +19,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Account/Login"; // Redirect here if not authenticated
         options.AccessDeniedPath = "/Account/AccessDenied";
     });
+//builder.Services.AddRazorPages(options =>
+//{
+//    options.Conventions.ConfigureFilter(new CustomAuthFilter());
+//});
 builder.Services.AddDbContext<TestContext>(options =>
         options.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"));
+
+//builder.Services.AddScoped<CustomAuthFilter>();
+builder.Services.AddScoped<IActiveUserService, ActiveUserService>();
 
 // Register Repository 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
@@ -40,9 +49,10 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
-
+app.UseMiddleware<ActiveUserMiddleware>();
 //app.MapStaticAssets();
 //app.MapControllerRoute(
 //    name: "default",

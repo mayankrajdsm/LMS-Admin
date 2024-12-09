@@ -37,7 +37,7 @@ namespace LMS.Administration.Pages.Account
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, Input.Email),
-                        //new Claim("FullName", "Administrator"),
+                        new Claim("Id", "12345"),
                         //new Claim(ClaimTypes.Role, "Admin")
                     };
 

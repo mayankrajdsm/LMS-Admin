@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Mapper", "LMS.Mapper\LM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Admin", "LMS.Admin\LMS.Admin.csproj", "{588853C3-883D-4BF3-A6DE-D906183AEE6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Administration", "LMS.Administration\LMS.Administration.csproj", "{9DEC7C72-119A-425A-A61A-2E4ABF76E774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Administration", "LMS.Administration\LMS.Administration.csproj", "{9DEC7C72-119A-425A-A61A-2E4ABF76E774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
