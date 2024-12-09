@@ -1,5 +1,5 @@
 ﻿@page
-@model LMS.Administration.Pages.Staff.StaffTypeModel
+@model LMS.Administration.Pages.Staff.RoleModel
 @{
 }
 <div class="row">
@@ -7,16 +7,17 @@
         <div class="card">
             <div class="card-body">
                 <div class="template-demo">
-                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
-                            data-bs-toggle="modal" data-bs-target="#dvAddEditInventoryPopUp">
-                        <i class="mdi mdi-plus"></i>Add New Inventory
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditLoginTypePopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditLoginTypePopUp">
+                        <i class="mdi mdi-plus"></i>Add New Category
                     </button>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Staff Type</th>
+                                <th>Role</th>
+                                <th>Role Key</th>
                                 <th>Status</th>
                                 <th>Created On</th>
                                 <th>Created By</th>
@@ -26,10 +27,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model._lstStaffType)
+                            @foreach (var item in Model._loginTypes)
                             {
                                 <tr>
-                                    <td>@item.StaffTypeName</td>
+                                    <td>@item.LoginTypeName</td>
+                                    <td>@item.LoginTypeKey</td>
                                     <td>@item.IsActive?'Active':'In Active'</td>
                                     <td>@item.CreatedOn</td>
                                     <td>@item.CreatedBy</td>
@@ -44,7 +46,7 @@
                                         </button>:      <button type="button" class="btn btn-social-icon-text btn-google">
                                             <i class="mdi mdi-plus"></i>Active
                                         </button>
-                                  
+
                                     </td>
                                 </tr>
                             }
@@ -55,8 +57,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="dvAddEditInventoryPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        @await Html.PartialAsync("_addEditStaffType")
+        @await Html.PartialAsync("_addEditLoginType")
     </div>
 </div>

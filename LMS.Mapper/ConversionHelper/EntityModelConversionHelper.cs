@@ -41,5 +41,18 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.ModifiedBy = string.IsNullOrEmpty(staffType.ModifiedBy) ? null : new Guid(staffType.CreatedBy);
             return convertedModel;
         }
+        public static LoginType ToEntityModel(this BusinessObject.LoginType loginType, LoginType existingLoginType = null)
+        {
+            LoginType convertedModel = existingLoginType != null ? existingLoginType : new LoginType();
+            convertedModel.LoginTypeId = string.IsNullOrEmpty(loginType.LoginTypeId) ? Guid.NewGuid() : new Guid(loginType.LoginTypeId);
+            convertedModel.LoginTypeName = loginType.LoginTypeName;
+            convertedModel.LoginTypeKey = loginType.LoginTypeKey;
+            convertedModel.IsActive = loginType.IsActive;
+            convertedModel.CreatedOn = loginType.CreatedOn;
+            convertedModel.CreatedBy = new Guid(loginType.CreatedBy);
+            convertedModel.ModifiedOn = loginType.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(loginType.ModifiedBy) ? null : new Guid(loginType.CreatedBy);
+            return convertedModel;
+        }
     }
 }

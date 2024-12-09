@@ -1,20 +1,29 @@
 ﻿@page
-@model LMS.Administration.Pages.Staff._addEditStaffTypeModel
+@model LMS.Administration.Pages.Staff._addEditLoginTypeModel
 @{
 }
+
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add New Role</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
         <form method="post">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group">
                         <div class="form-check">
-                            <label asp-for="Input.StaffTypeName"></label>
-                            <input asp-for="Input.StaffTypeName" class="form-control" />
+                            <label asp-for="Input.RoleName"></label>
+                            <input asp-for="Input.RoleName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label asp-for="Input.RoleKey"></label>
+                            <input asp-for="Input.RoleKey" class="form-control" />
                         </div>
                     </div>
                 </div>
