@@ -1,0 +1,70 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
+using System.Security.Claims;
+
+namespace LMS.Administration.Pages.Account
+{
+    public class LoginModel : PageModel
+    {
+        private readonly ILogger<IndexModel> _logger;
+
+        public LoginModel(ILogger<IndexModel> logger)
+        {
+            _logger = logger;
+        }
+
+        [BindProperty]
+        public LoginInputModel Input { get; set; }
+
+        public string ReturnUrl { get; set; }
+        public void OnGet(string returnUrl = null)
+        {
+            ReturnUrl = returnUrl;
+
+            var username = User.Identity.Name; // Access user's name
+        }
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        {
+            returnUrl ??= Url.Content("~/privacy");
+
+            if (ModelState.IsValid)
+            {
+                if (Input.Email == "admin@test.com" && Input.Password == "12345")
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, Input.Email),
+                        //new Claim("FullName", "Administrator"),
+                        //new Claim(ClaimTypes.Role, "Admin")
+                    };
+
+                    // Create claims identity
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    // Sign in the user
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity));
+
+                    return LocalRedirect(returnUrl);
+                }
+                else
+                {
+                    // return Unauthorized();
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                }
+            }
+
+            return Page();
+        }
+        public class LoginInputModel
+        {
+            [DisplayName("Email Id")]
+            public string Email { get; set; }
+            public string Password { get; set; }
+            public bool RememberMe { get; set; }
+        }
+    }
+}
