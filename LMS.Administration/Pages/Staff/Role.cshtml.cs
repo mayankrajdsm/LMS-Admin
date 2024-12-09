@@ -8,9 +8,9 @@ namespace LMS.Administration.Pages.Staff
 {
     public class RoleModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<RoleModel> _logger;
         private readonly ILoginTypeService _loginTypeService;
-        public RoleModel(ILogger<IndexModel> logger, ILoginTypeService loginTypeService)
+        public RoleModel(ILogger<RoleModel> logger, ILoginTypeService loginTypeService)
         {
             _logger = logger;
             _loginTypeService = loginTypeService;

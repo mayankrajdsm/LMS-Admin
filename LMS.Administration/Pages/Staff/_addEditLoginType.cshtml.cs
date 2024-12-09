@@ -8,11 +8,11 @@ namespace LMS.Administration.Pages.Staff
 {
     public class _addEditLoginTypeModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<_addEditLoginTypeModel> _logger;
         private readonly ILoginTypeService _loginTypeService;
         private readonly IActiveUserService _activeUserService;
 
-        public _addEditLoginTypeModel(ILogger<IndexModel> logger,
+        public _addEditLoginTypeModel(ILogger<_addEditLoginTypeModel> logger,
             ILoginTypeService loginTypeService,
             IActiveUserService activeUserService)
         {

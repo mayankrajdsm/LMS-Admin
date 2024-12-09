@@ -9,9 +9,9 @@ namespace LMS.Administration.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(ILogger<IndexModel> logger)
+        public LoginModel(ILogger<LoginModel> logger)
         {
             _logger = logger;
         }
@@ -23,12 +23,10 @@ namespace LMS.Administration.Pages.Account
         public void OnGet(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
-
-            var username = User.Identity.Name; // Access user's name
         }
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/privacy");
+            returnUrl ??= Url.Content("~/");
 
             if (ModelState.IsValid)
             {
@@ -38,7 +36,7 @@ namespace LMS.Administration.Pages.Account
                     {
                         new Claim(ClaimTypes.Name, Input.Email),
                         new Claim("Id", "12345"),
-                        //new Claim(ClaimTypes.Role, "Admin")
+                        new Claim(ClaimTypes.Role, "Admin")
                     };
 
                     // Create claims identity

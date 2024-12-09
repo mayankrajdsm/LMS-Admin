@@ -11,10 +11,10 @@ namespace LMS.Administration.Pages.Staff
 {
     public class _addEditStaffTypeModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<_addEditStaffTypeModel> _logger;
         private readonly IStaffTypeService _staffTypeService;
         private readonly IActiveUserService _activeUserService;
-        public _addEditStaffTypeModel(ILogger<IndexModel> logger,
+        public _addEditStaffTypeModel(ILogger<_addEditStaffTypeModel> logger,
             IStaffTypeService staffTypeService,
             IActiveUserService activeUserService)
         {

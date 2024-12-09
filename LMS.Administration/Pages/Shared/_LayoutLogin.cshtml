@@ -29,7 +29,21 @@
 <body>
     <div class="container-scroller">
         <!-- partial:partials/_horizontal-navbar.html -->
-        @await Html.PartialAsync("~/Pages/Shared/_header.cshtml")
+        <div class="horizontal-menu">
+            <nav class="navbar top-navbar col-lg-12 col-12 p-0">
+                <div class="container">
+                    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                        <a class="navbar-brand brand-logo" href="/">
+                            <img src="https://academyofmodernlearning.com/images/AML_Logo.gif" style="width:70px !important;" alt="logo" />
+                            <span class="font-12 d-block font-weight-light">Academy of Modern Learning</span>
+                        </a>
+                        <a class="navbar-brand brand-logo-mini" href="/">
+                            <img src="https://academyofmodernlearning.com/images/AML_Logo.gif" style="width:45px !important;" alt="logo" />
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <!-- partial -->
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
@@ -37,7 +51,6 @@
                 <div class="content-wrapper pb-0">
                     <main role="main" class="pb-3">
                         <div class="content-wrapper">
-                            @await Html.PartialAsync("~/Pages/Shared/_breadcrumb.cshtml")
                             @RenderBody()
                         </div>
                     </main>

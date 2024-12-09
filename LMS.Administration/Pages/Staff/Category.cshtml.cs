@@ -9,10 +9,10 @@ namespace LMS.Administration.Pages.Staff
 {
     public class StaffTypeModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<StaffTypeModel> _logger;
         private readonly IStaffTypeService _staffTypeService;
 
-        public StaffTypeModel(ILogger<IndexModel> logger,
+        public StaffTypeModel(ILogger<StaffTypeModel> logger,
             IStaffTypeService staffTypeService)
         {
             _logger = logger;

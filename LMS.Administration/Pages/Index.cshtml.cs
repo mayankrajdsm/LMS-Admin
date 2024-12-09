@@ -1,20 +1,16 @@
+using LMS.Administration.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LMS.Administration.Pages
+namespace LMS.Admin.Views.Home
 {
+    [Authorize]
+    //[ServiceFilter(typeof(CustomAuthFilter))]
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
         public void OnGet()
         {
-
         }
     }
 }

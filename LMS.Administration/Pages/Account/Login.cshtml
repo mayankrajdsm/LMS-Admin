@@ -1,24 +1,45 @@
 ﻿@page
 @model LMS.Administration.Pages.Account.LoginModel
 @{
+    Layout = "~/Pages/Shared/_LayoutLogin.cshtml";
 }
-<form method="post">
-    <div>
-        <label asp-for="Input.Email"></label>
-        <input asp-for="Input.Email" />
+<div class="row">
+    <div class="col-md-3 grid-margin stretch-card">
     </div>
-    <div>
-        <label>Password</label>
-        <input asp-for="Input.Password" type="password" />
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Login</h4>
+                <p class="card-description">Login to Academy of Modern Learning</p>
+                <form method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><label asp-for="Input.Email"></label></span>
+                            </div>
+                            <input asp-for="@Model.Input.Email" class="form-control" />
+                            <br />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><label asp-for="Input.Password"></label></span>
+                            </div>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-check mx-sm-2">
+                        <input asp-for="Input.RememberMe" class="form-check-input" />
+                        <label asp-for="Input.RememberMe" class="form-check-label"></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label>Remember Me</label>
-        <input asp-for="Input.RememberMe" type="checkbox" />
+    <div class="col-md-3 grid-margin stretch-card">
     </div>
-    <button type="submit">Login</button>
-</form>
-
-@if (!string.IsNullOrEmpty(Model.ReturnUrl))
-{
-    <input type="hidden" asp-for="ReturnUrl" />
-}
+</div>
