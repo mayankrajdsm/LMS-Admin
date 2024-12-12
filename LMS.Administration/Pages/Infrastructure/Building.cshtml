@@ -1,6 +1,6 @@
-﻿@model List<LMS.Infrastructures.Models.Building>
+﻿@page
+@model LMS.Administration.Pages.Infrastructure.BuildingModel
 @{
-    ViewData["Title"] = "Index";
 }
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
@@ -32,10 +32,10 @@
                         <tbody>
                             @if (Model != null)
                             {
-                                @foreach (var item in Model)
+                                @foreach (var item in Model.buildings)
                                 {
                                     <tr>
-                                        <td>@item.Domain</td>
+                                        <td>@item.DomainName</td>
                                         <td>@item.BuildingName</td>
                                         <td>@item.Address1</td>
                                         <td>@item.Address2</td>
@@ -46,7 +46,7 @@
                                         <td>@item.ContactNo</td>
                                         <td>@item.ContactEmail</td>
                                         <td>@item.IsActive</td>
-                                    </tr>    
+                                    </tr>
                                 }
                             }
                         </tbody>
