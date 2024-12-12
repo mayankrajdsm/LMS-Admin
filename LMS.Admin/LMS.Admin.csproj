@@ -29,4 +29,8 @@
     <ProjectReference Include="..\LMS.Mapper\LMS.Mapper.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Student\" />
+  </ItemGroup>
+
 </Project>

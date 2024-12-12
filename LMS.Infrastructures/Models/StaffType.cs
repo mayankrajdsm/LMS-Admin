@@ -20,6 +20,4 @@ public partial class StaffType
     public Guid? ModifiedBy { get; set; }
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
-
-    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

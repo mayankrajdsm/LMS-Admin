@@ -1,0 +1,113 @@
+﻿@page
+@model List<LMS.Infrastructures.Models.Class>
+@{
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form method="post" asp-action="InsertClass" asp-controller="Class">
+            <div class="row">
+            
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="Title">ClassesName</label>
+                            <input type="text" class="form-control" placeholder="ClassesName" name="ClassesName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">IsActive</label>
+                            <input type="number" class="form-control" placeholder="IsActive" name="IsActive" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">CreatedOn</label>
+                            <input type="date" class="form-control" name="CreatedOn" placeholder="CreatedOn" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">CreatedBy</label>
+                            <input type="text" class="form-control"  name="CreatedBy" placeholder="CreatedBy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">ModifiedOn</label>
+                            <input type="date" class="form-control"  name="ModifiedOn" placeholder="ModifiedOn" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">ModifiedBy</label>
+                            <input type="text" class="form-control"  name="ModifiedBy" placeholder="ModifiedBy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">Code</label>
+                            <input type="number" class="form-control" id="exampleInputUsername1" name="Code" placeholder="Code" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">Sequence</label>
+                            <input type="text" class="form-control" id="Sequence" name="Sequence" placeholder="Sequence" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">BatchName</label>
+                            <input type="text" class="form-control" id="BatchName" name="BatchName" placeholder="BatchName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">StartDate</label>
+                            <input type="date" class="form-control" id="StartDate" name="StartDate" placeholder="StartDate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="exampleInputUsername1">EndDate</label>
+                            <input type="date" class="form-control" id="EndDate" name="EndDate" placeholder="EndDate" />
+                        </div>
+                    </div>
+                </div>
+             
+               
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
