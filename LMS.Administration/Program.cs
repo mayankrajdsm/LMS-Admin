@@ -43,7 +43,7 @@ builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 builder.Services.AddScoped<IBuildingService, BuildingService>();
 //builder.Services.AddScoped<IStaffTypeService, StaffTypeService>();
-///builder.Services.AddScoped<ILoginTypeService, LoginTypeService>();
+//builder.Services.AddScoped<ILoginTypeService, LoginTypeService>();
 
 var app = builder.Build();
 

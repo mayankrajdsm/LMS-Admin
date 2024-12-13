@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LMS.Admin.Views.Book
+namespace LMS.Administration.Pages.Book.PartialView
 {
     public class _addBookModel : PageModel
     {

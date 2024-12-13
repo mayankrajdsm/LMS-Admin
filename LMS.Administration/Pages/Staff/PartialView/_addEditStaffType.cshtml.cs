@@ -7,7 +7,7 @@ using System.Security.Claims;
 using LMS.Mapper.IService;
 using LMS.Administration.Middleware;
 
-namespace LMS.Administration.Pages.Staff
+namespace LMS.Administration.Pages.Staff.PartialView
 {
     public class _addEditStaffTypeModel : PageModel
     {

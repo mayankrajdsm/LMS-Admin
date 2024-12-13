@@ -2,14 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 //using LMS.Admin.Models;
 
-namespace LMS.Admin.Views.Book
+namespace LMS.Administration.Pages.Library
 {
-    public class IndexModel : PageModel
+    public class BookModel : PageModel
     {
-        public IndexModel()
-        {
-            
-        }
         //public IList<Books> allbooks { get; set; }
         public void OnGet()
         {

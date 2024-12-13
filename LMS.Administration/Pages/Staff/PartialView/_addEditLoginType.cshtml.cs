@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
 
-namespace LMS.Administration.Pages.Staff
+namespace LMS.Administration.Pages.Staff.PartialView
 {
     public class _addEditLoginTypeModel : PageModel
     {

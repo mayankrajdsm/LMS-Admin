@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LMS.Admin.Views.Class
+namespace LMS.Administration.Pages.Student
 {
-    public class IndexModel : PageModel
+    public class ClassModel : PageModel
     {
         public void OnGet()
         {
