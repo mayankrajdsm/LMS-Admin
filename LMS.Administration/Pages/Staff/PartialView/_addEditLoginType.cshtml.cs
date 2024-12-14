@@ -23,7 +23,6 @@ namespace LMS.Administration.Pages.Staff.PartialView
 
         [BindProperty]
         public LoginInputModel Input { get; set; }
-
         public void OnGet()
         {
         }
