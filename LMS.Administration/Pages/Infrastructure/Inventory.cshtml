@@ -84,7 +84,7 @@
 </div>
 <div class="modal fade" id="dvAddEditInventoryPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        @await Html.PartialAsync("_addEditInventory")
+        @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_addEditInventory.cshtml", Model.inventoryCls)
     </div>
 </div>
 

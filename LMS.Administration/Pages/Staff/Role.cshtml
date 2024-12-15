@@ -46,7 +46,12 @@
                                         </button>:      <button type="button" class="btn btn-social-icon-text btn-google">
                                             <i class="mdi mdi-plus"></i>Active
                                         </button>
-
+                                        @*                                         <form method="get" asp-page-handler="Edit" asp-route-id="@item.Id" class="d-inline">
+                                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                        </form>
+                                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" class="d-inline">
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form> *@
                                     </td>
                                 </tr>
                             }
@@ -59,6 +64,31 @@
 </div>
 <div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        @await Html.PartialAsync("_addEditLoginType")
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Role</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("_addEditLoginType", new Role())
+            </div>
+        </div>
     </div>
 </div>
+<!-- Edit Item Section -->
+@if (Model.EditItem != null)
+{
+    <div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("_addEditLoginType", Model.EditItem)
+                </div>
+            </div>
+        </div>
+    </div>
+}

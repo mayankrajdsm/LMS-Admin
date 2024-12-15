@@ -2,3 +2,61 @@
 @model LMS.Administration.Pages.Staff.EmployeeModel
 @{
 }
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditInventoryPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Employee
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Staff Type</th>
+                                <th>Status</th>
+                                <th>Created On</th>
+                                <th>Created By</th>
+                                <th>Updated On</th>
+                                <th>Updated By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+@*                             @foreach (var item in Model._lstStaffType)
+                            {
+                                <tr>
+                                    <td>@item.StaffTypeName</td>
+                                    <td>@item.IsActive?'Active':'In Active'</td>
+                                    <td>@item.CreatedOn</td>
+                                    <td>@item.CreatedBy</td>
+                                    <td>@item.ModifiedOn</td>
+                                    <td>@item.ModifiedBy</td>
+                                    <td>
+                                        <button type="button" class="btn btn-social-icon-text btn-google">
+                                            <i class="mdi mdi-plus"></i>Edit
+                                        </button>
+                                        @item.IsActive?      <button type="button" class="btn btn-social-icon-text btn-google">
+                                            <i class="mdi mdi-plus"></i>In Active
+                                        </button>:      <button type="button" class="btn btn-social-icon-text btn-google">
+                                            <i class="mdi mdi-plus"></i>Active
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            } *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditInventoryPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditEmployee", Model)
+    </div>
+</div>

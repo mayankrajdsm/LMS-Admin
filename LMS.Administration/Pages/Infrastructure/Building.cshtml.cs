@@ -7,9 +7,13 @@ namespace LMS.Administration.Pages.Infrastructure
     public class BuildingModel : PageModel
     {
 
-        public List<LMS.Mapper.BusinessObject.Building> buildings { get; set; }
+        public List<BuildingCls> buildings { get; set; }
         public void OnGet()
         {
         }
+    }
+    public class BuildingCls
+    {
+        public string Id { get; set; }
     }
 }

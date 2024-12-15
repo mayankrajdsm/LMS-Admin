@@ -1,6 +1,8 @@
 ﻿@page
 @model LMS.Administration.Pages.Infrastructure.BuildingModel
 @{
+    ViewBag.Ref = "Infrastructure";
+    ViewBag.Title = "Manage Building";
 }
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
@@ -32,22 +34,25 @@
                         <tbody>
                             @if (Model != null)
                             {
-                                @foreach (var item in Model.buildings)
+                                @* if (Model.buildings.Any())
                                 {
-                                    <tr>
-                                        <td>@item.DomainName</td>
-                                        <td>@item.BuildingName</td>
-                                        <td>@item.Address1</td>
-                                        <td>@item.Address2</td>
-                                        <td>@item.CountryId</td>
-                                        <td>@item.StateId</td>
-                                        <td>@item.CityId</td>
-                                        <td>@item.ContactPerson</td>
-                                        <td>@item.ContactNo</td>
-                                        <td>@item.ContactEmail</td>
-                                        <td>@item.IsActive</td>
-                                    </tr>
-                                }
+                                    @foreach (var item in Model.buildings)
+                                    {
+                                        <tr>
+                                            <td>@item.DomainName</td>
+                                            <td>@item.BuildingName</td>
+                                            <td>@item.Address1</td>
+                                            <td>@item.Address2</td>
+                                            <td>@item.CountryId</td>
+                                            <td>@item.StateId</td>
+                                            <td>@item.CityId</td>
+                                            <td>@item.ContactPerson</td>
+                                            <td>@item.ContactNo</td>
+                                            <td>@item.ContactEmail</td>
+                                            <td>@item.IsActive</td>
+                                        </tr>
+                                    }
+                                } *@
                             }
                         </tbody>
                     </table>
@@ -57,8 +62,8 @@
     </div>
 </div>
 <div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        @await Html.PartialAsync("_AddBuilding")
+    <div class="modal-dialog modal-xl">
+        @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", Model.buildings)
     </div>
 </div>
 

@@ -1,36 +1,33 @@
-﻿@page
-@model LMS.Administration.Pages.Staff.PartialView._addEditLoginTypeModel
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model LMS.Administration.Pages.Staff.Role
 @{
 }
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Role</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        <form method="post">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label asp-for="Input.RoleName"></label>
-                            <input asp-for="Input.RoleName" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label asp-for="Input.RoleKey"></label>
-                            <input asp-for="Input.RoleKey" class="form-control" />
-                        </div>
-                    </div>
+<form method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="form-check">
+                    <label asp-for="LoginTypeName" class="form-label"></label>
+                    <input asp-for="LoginTypeName" class="form-control" />
+                    <span asp-validation-for="LoginTypeName" class="text-danger"></span>
+
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="form-check">
+                    <label asp-for="LoginTypeKey" class="form-label"></label>
+                    <input asp-for="LoginTypeKey" class="form-control" />
+                    <span asp-validation-for="LoginTypeKey" class="text-danger"></span>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+</form>

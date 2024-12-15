@@ -1,16 +1,16 @@
-﻿@* Added by Zafar Iqubal *@
-@page
-@model List<LMS.Infrastructures.Models.Book>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model LMS.Infrastructures.Models.Book
 @{
 }
-
 <div class="modal-content">
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form method="post" asp-action="InsertBook" asp-controller="Book" >
+        <form method="post" asp-action="InsertBook" asp-controller="Book">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                 </div>
-                  <div class="col-md-6">
+                <div class="col-md-6">
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">ISBN Number</label>
@@ -256,14 +256,13 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label for="exampleInputUsername1">Tags</label>
-                           
+
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <div class="form-check">
-                           
                         </div>
                     </div>
                 </div>
@@ -324,7 +323,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
