@@ -10,8 +10,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class LoginTypeRepository : ILoginTypeRepository
     {
-        private readonly LMSDbContext _lMSDbContext;
-        public LoginTypeRepository(LMSDbContext lMSDbContext)
+        private readonly TestContext _lMSDbContext;
+        public LoginTypeRepository(TestContext lMSDbContext)
         {
             _lMSDbContext = lMSDbContext;
         }

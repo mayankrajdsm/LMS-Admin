@@ -15,6 +15,10 @@ public partial class TestContext : DbContext
     {
     }
 
+    public virtual DbSet<AboutU> AboutUs { get; set; }
+
+    public virtual DbSet<Banner> Banners { get; set; }
+
     public virtual DbSet<Book> Books { get; set; }
 
     public virtual DbSet<Building> Buildings { get; set; }
@@ -23,7 +27,13 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Class> Classes { get; set; }
 
+    public virtual DbSet<ContactU> ContactUs { get; set; }
+
     public virtual DbSet<Country> Countries { get; set; }
+
+    public virtual DbSet<Department> Departments { get; set; }
+
+    public virtual DbSet<Designation> Designations { get; set; }
 
     public virtual DbSet<Domain> Domains { get; set; }
 
@@ -37,7 +47,15 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Student> Students { get; set; }
 
-    public virtual DbSet<UserProfile> UserProfiles { get; set; }
+    public virtual DbSet<StudentContact> StudentContacts { get; set; }
+
+    public virtual DbSet<StudentEducation> StudentEducations { get; set; }
+
+    public virtual DbSet<StudentGuardian> StudentGuardians { get; set; }
+
+    public virtual DbSet<StudentParent> StudentParents { get; set; }
+
+    public virtual DbSet<StudentTransport> StudentTransports { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -45,9 +63,44 @@ public partial class TestContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AboutU>(entity =>
+        {
+            entity.HasKey(e => e.AboutUsId).HasName("PK__AboutUs__3EC10C104288052C");
+
+            entity.ToTable("AboutUS");
+
+            entity.Property(e => e.AboutUsId)
+                .ValueGeneratedNever()
+                .HasColumnName("AboutUs_ID");
+            entity.Property(e => e.AboutUsText).HasColumnName("AboutUs_Text");
+            entity.Property(e => e.AboutUsTitle)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("AboutUs_Title");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Banner>(entity =>
+        {
+            entity.HasKey(e => e.BannerId).HasName("PK__Banner__8177AC24AD234F0D");
+
+            entity.ToTable("Banner");
+
+            entity.Property(e => e.BannerId)
+                .ValueGeneratedNever()
+                .HasColumnName("Banner_ID");
+            entity.Property(e => e.BannerName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("Banner_Name");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.BooksId).HasName("PK__Books__959FD33CFA65AD03");
+            entity.HasKey(e => e.BooksId).HasName("PK__Books__959FD33C13820D02");
 
             entity.Property(e => e.BooksId)
                 .ValueGeneratedNever()
@@ -78,7 +131,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Building>(entity =>
         {
-            entity.HasKey(e => e.BuildingId).HasName("PK__Building__D6D8522A153D459F");
+            entity.HasKey(e => e.BuildingId).HasName("PK__Building__D6D8522A9D343BDF");
 
             entity.ToTable("Building");
 
@@ -114,12 +167,12 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Domain).WithMany(p => p.Buildings)
                 .HasForeignKey(d => d.DomainId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Building__Domain__4316F928");
+                .HasConstraintName("FK__Building__Domain__2B3F6F97");
         });
 
         modelBuilder.Entity<City>(entity =>
         {
-            entity.HasKey(e => e.CityId).HasName("PK__City__DE9DE0208257748D");
+            entity.HasKey(e => e.CityId).HasName("PK__City__DE9DE020FCC12353");
 
             entity.ToTable("City");
 
@@ -137,12 +190,14 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.State).WithMany(p => p.Cities)
                 .HasForeignKey(d => d.StateId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__City__State_ID__440B1D61");
+                .HasConstraintName("FK__City__State_ID__35BCFE0A");
         });
 
         modelBuilder.Entity<Class>(entity =>
         {
-            entity.HasKey(e => e.ClassesId).HasName("PK__Classes__A373D2454026602B");
+            entity.HasKey(e => e.ClassesId).HasName("PK__Classes__A373D24522CD11D2");
+
+            entity.ToTable("Class");
 
             entity.Property(e => e.ClassesId)
                 .ValueGeneratedNever()
@@ -163,9 +218,23 @@ public partial class TestContext : DbContext
             entity.Property(e => e.StartDate).HasColumnType("datetime");
         });
 
+        modelBuilder.Entity<ContactU>(entity =>
+        {
+            entity.HasKey(e => e.ContactUsId).HasName("PK__ContactU__56224EAA998E9DDE");
+
+            entity.ToTable("ContactUS");
+
+            entity.Property(e => e.ContactUsId)
+                .ValueGeneratedNever()
+                .HasColumnName("ContactUs_ID");
+            entity.Property(e => e.ContactUsText).HasColumnName("ContactUs_Text");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Country>(entity =>
         {
-            entity.HasKey(e => e.CountryId).HasName("PK__Country__8036CB4E970D1D84");
+            entity.HasKey(e => e.CountryId).HasName("PK__Country__8036CB4E5FF4AC26");
 
             entity.ToTable("Country");
 
@@ -180,9 +249,43 @@ public partial class TestContext : DbContext
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
         });
 
+        modelBuilder.Entity<Department>(entity =>
+        {
+            entity.HasKey(e => e.DepartmentId).HasName("PK__Departme__151675D19AE008A5");
+
+            entity.ToTable("Department");
+
+            entity.Property(e => e.DepartmentId)
+                .ValueGeneratedNever()
+                .HasColumnName("Department_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DepartmentName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("Department_Name");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Designation>(entity =>
+        {
+            entity.HasKey(e => e.DesignationId).HasName("PK__Designat__E11882CF95FD2A33");
+
+            entity.ToTable("Designation");
+
+            entity.Property(e => e.DesignationId)
+                .ValueGeneratedNever()
+                .HasColumnName("Designation_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DesignationName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("Designation_Name");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<Domain>(entity =>
         {
-            entity.HasKey(e => e.DomainId).HasName("PK__Domain__538014FEAD027B11");
+            entity.HasKey(e => e.DomainId).HasName("PK__Domain__538014FEF32A349C");
 
             entity.ToTable("Domain");
 
@@ -217,7 +320,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<LoginType>(entity =>
         {
-            entity.HasKey(e => e.LoginTypeId).HasName("PK__LoginTyp__8A52B0A2F8BAF7A8");
+            entity.HasKey(e => e.LoginTypeId).HasName("PK__LoginTyp__8A52B0A2B62C57BA");
 
             entity.ToTable("LoginType");
 
@@ -238,7 +341,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Staff>(entity =>
         {
-            entity.HasKey(e => e.StaffId).HasName("PK__Staff__32D1F3C34B866119");
+            entity.HasKey(e => e.StaffId).HasName("PK__Staff__32D1F3C3BFA9F8CF");
 
             entity.Property(e => e.StaffId)
                 .ValueGeneratedNever()
@@ -270,17 +373,17 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.LoginType).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.LoginTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__LoginType__44FF419A");
+                .HasConstraintName("FK__Staff__LoginType__403A8C7D");
 
             entity.HasOne(d => d.StaffType).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.StaffTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__StaffType__45F365D3");
+                .HasConstraintName("FK__Staff__StaffType__3F466844");
         });
 
         modelBuilder.Entity<StaffType>(entity =>
         {
-            entity.HasKey(e => e.StaffTypeId).HasName("PK__StaffTyp__13742AC873F6626B");
+            entity.HasKey(e => e.StaffTypeId).HasName("PK__StaffTyp__13742AC873FD091C");
 
             entity.ToTable("StaffType");
 
@@ -297,7 +400,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<State>(entity =>
         {
-            entity.HasKey(e => e.StateId).HasName("PK__State__AF9338D753F7D71E");
+            entity.HasKey(e => e.StateId).HasName("PK__State__AF9338D7243F019D");
 
             entity.ToTable("State");
 
@@ -315,93 +418,350 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Country).WithMany(p => p.States)
                 .HasForeignKey(d => d.CountryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__State__Country_I__46E78A0C");
+                .HasConstraintName("FK__State__Country_I__31EC6D26");
         });
 
         modelBuilder.Entity<Student>(entity =>
         {
-            entity.HasKey(e => e.StudentId).HasName("PK__Student__A2F4E9AC8A612D8D");
+            entity.HasKey(e => e.StudentId).HasName("PK__Students__32C52B9919B673CA");
 
-            entity.ToTable("Student");
-
-            entity.Property(e => e.StudentId)
-                .ValueGeneratedNever()
-                .HasColumnName("Student_ID");
-            entity.Property(e => e.Address1)
-                .HasMaxLength(250)
-                .IsUnicode(false);
-            entity.Property(e => e.Address2)
-                .HasMaxLength(250)
-                .IsUnicode(false);
-            entity.Property(e => e.CityId).HasColumnName("City_ID");
-            entity.Property(e => e.ContactEmail)
+            entity.Property(e => e.StudentId).ValueGeneratedNever();
+            entity.Property(e => e.AdmissionDate).HasColumnType("datetime");
+            entity.Property(e => e.Batch)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.ContactNo)
+            entity.Property(e => e.BioIdentificationNo)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.CountryId).HasColumnName("Country_ID");
-            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-            entity.Property(e => e.Name)
-                .HasMaxLength(100)
+            entity.Property(e => e.BloodGroup)
+                .HasMaxLength(10)
                 .IsUnicode(false);
-            entity.Property(e => e.StaffTypeId).HasColumnName("StaffType_ID");
-            entity.Property(e => e.StateId).HasColumnName("State_ID");
-
-            entity.HasOne(d => d.StaffType).WithMany(p => p.Students)
-                .HasForeignKey(d => d.StaffTypeId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Student__StaffTy__47DBAE45");
+            entity.Property(e => e.CalledName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Caste)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Category)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Dob)
+                .HasColumnType("datetime")
+                .HasColumnName("DOB");
+            entity.Property(e => e.Dorm)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Gender)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.House)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Ifsccode).HasColumnName("IFSCCode");
+            entity.Property(e => e.IsChildCwsn).HasColumnName("IsChildCWSN");
+            entity.Property(e => e.JoiningDate).HasColumnType("datetime");
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.LastObtainedMarks).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.LastSchoolStudied)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.LearningDisability)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MedicalHistory)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MiddleName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherTounge)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Nationality)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.PanNo)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Percent10).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.PhysicalDisability)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.PlaceOfBirth)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.RegistrationNumber)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.RegistrationNumberof11th)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.RegistrationNumberof9th)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Religion)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Sibling)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SocialCategory)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Specialization)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.StudentSubType)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.StudentsPhoto).HasColumnType("image");
+            entity.Property(e => e.SubCaste)
+                .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
-        modelBuilder.Entity<UserProfile>(entity =>
+        modelBuilder.Entity<StudentContact>(entity =>
         {
-            entity.ToTable("UserProfile");
+            entity
+                .HasNoKey()
+                .ToTable("StudentContact");
 
-            entity.HasIndex(e => e.Email, "UQ__UserProf__A9D105341AEA6E03").IsUnique();
+            entity.Property(e => e.Address1)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Address2)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Address3)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.AlternateEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Country)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.District)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.State)
+                .HasMaxLength(50)
+                .IsUnicode(false);
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.HasOne(d => d.Student).WithMany()
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_StudentContact_StudentId");
+        });
+
+        modelBuilder.Entity<StudentEducation>(entity =>
+        {
+            entity.HasKey(e => e.EducationId).HasName("PK__StudentE__4BBE3805B6682A13");
+
+            entity.ToTable("StudentEducation");
+
+            entity.Property(e => e.EducationId).ValueGeneratedNever();
+            entity.Property(e => e.Class)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("class");
+            entity.Property(e => e.Percentage).HasColumnType("decimal(2, 2)");
+            entity.Property(e => e.SchoolAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SchoolAffiliatedTo)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SchoolName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentEducations)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_StudentEducation_StudentId");
+        });
+
+        modelBuilder.Entity<StudentGuardian>(entity =>
+        {
+            entity.HasKey(e => e.GuardianId).HasName("PK__StudentG__0A5E1A9B892943B1");
+
+            entity.ToTable("StudentGuardian");
+
+            entity.Property(e => e.GuardianId).ValueGeneratedNever();
             entity.Property(e => e.Address)
                 .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.Dob).HasColumnName("DOB");
-            entity.Property(e => e.Email)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.FirstName)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("First_name");
-            entity.Property(e => e.Gender)
-                .HasMaxLength(10)
-                .IsUnicode(false);
-            entity.Property(e => e.LastLogin)
-                .HasColumnType("datetime")
-                .HasColumnName("Last_Login");
-            entity.Property(e => e.LastName)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("Last_name");
-            entity.Property(e => e.Password)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .HasColumnName("Phone_Number");
-            entity.Property(e => e.Status)
+            entity.Property(e => e.Adhar)
                 .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasDefaultValue("Active");
-            entity.Property(e => e.UserId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("User_id");
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Country)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Designation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Education)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Mobile)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Occupation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.OfficeAddress)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.OfficeContact)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.OrganizationName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Relation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.State)
+                .HasMaxLength(50)
+                .IsUnicode(false);
 
-            entity.HasOne(d => d.RoleNavigation).WithMany(p => p.UserProfiles)
-                .HasForeignKey(d => d.Role)
-                .HasConstraintName("FK_UserProfile_LoginType");
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_StudentGuardian_StudentId");
+        });
+
+        modelBuilder.Entity<StudentParent>(entity =>
+        {
+            entity.HasKey(e => e.ParentsId).HasName("PK__StudentP__66DBADEE58BFF80D");
+
+            entity.Property(e => e.ParentsId).ValueGeneratedNever();
+            entity.Property(e => e.FatherAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherAlternateEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherBusinessName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherCity)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherCompanyName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherCountry)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherNationality)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherOccupation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherOfficeAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherPan)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherQualification)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherAlternateEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherBusinessName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherCity)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherCompanyName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherCountry)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherNationality)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherOccupation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherOfficeAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherPan)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherQualification)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherState)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Relation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentParents)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_StudentParents_StudentId");
+        });
+
+        modelBuilder.Entity<StudentTransport>(entity =>
+        {
+            entity.HasKey(e => e.TransportId).HasName("PK__StudentT__19E9A11D88CF0BE5");
+
+            entity.ToTable("StudentTransport");
+
+            entity.Property(e => e.TransportId).ValueGeneratedNever();
+            entity.Property(e => e.ModeOfTransport)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.PickupPoint)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentTransports)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_StudentTransport_StudentId");
         });
 
         OnModelCreatingPartial(modelBuilder);

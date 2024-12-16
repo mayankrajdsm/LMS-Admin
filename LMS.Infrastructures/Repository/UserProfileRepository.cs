@@ -19,11 +19,10 @@ namespace LMS.Infrastructures.Repository
         }
         public async Task<IEnumerable<UserProfile>> GetAllUsers()
         {
-            return await _context.UserProfiles.ToListAsync();
+            return null;
         }
         public async Task<int> InsertUser(UserProfile profile)
         {
-            _context.UserProfiles.Add(profile);
             return await _context.SaveChangesAsync();
         }
     }

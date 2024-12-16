@@ -10,8 +10,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class StaffTypeRepository : IStaffTypeRepository
     {
-        private readonly LMSDbContext _lMSDbContext;
-        public StaffTypeRepository(LMSDbContext lMSDbContext)
+        private readonly TestContext _lMSDbContext;
+        public StaffTypeRepository(TestContext lMSDbContext)
         {
             _lMSDbContext = lMSDbContext;
         }
