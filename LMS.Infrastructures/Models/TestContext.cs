@@ -324,7 +324,7 @@ public partial class TestContext : DbContext
             entity.Property(e => e.StateId).HasColumnName("State_ID");
         });
 
-        modelBuilder.Entity<Education>(entity =>
+        modelBuilder.Entity<StudentEducation>(entity =>
         {
             entity.HasKey(e => e.EducationId).HasName("PK__Educatio__4BBE38051DAA9064");
 
@@ -345,13 +345,12 @@ public partial class TestContext : DbContext
             entity.Property(e => e.SchoolName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Student).WithMany(p => p.Educations)
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentEducations)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK__Education__Stude__151B244E");
         });
 
-        modelBuilder.Entity<Guardian>(entity =>
+        modelBuilder.Entity<StudentGuardian>(entity =>
         {
             entity.HasKey(e => e.GuardianId).HasName("PK__Guardian__0A5E1A9B0159CDB4");
 
@@ -404,7 +403,7 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Student).WithMany(p => p.Guardians)
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK__Guardian__Studen__14270015");
         });
@@ -430,7 +429,7 @@ public partial class TestContext : DbContext
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<Parent>(entity =>
+        modelBuilder.Entity<StudentParent>(entity =>
         {
             entity.HasKey(e => e.ParentsId).HasName("PK__Parents__66DBADEE2D63C2B7");
 
@@ -520,7 +519,7 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Student).WithMany(p => p.Parents)
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentParents)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK__Parents__Student__160F4887");
         });
@@ -803,12 +802,7 @@ public partial class TestContext : DbContext
             entity.Property(e => e.Education)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.CityId).HasColumnName("City_ID");
-            entity.Property(e => e.ContactEmail)
-                .HasMaxLength(50)
-            entity.Property(e => e.Mobile)
-            entity.Property(e => e.ContactNo)
-                .HasMaxLength(50)
+            entity.Property(e => e.Mobile);
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -816,8 +810,7 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.OfficeAddress)
-                .HasMaxLength(100)
-                .HasMaxLength(100)
+                .HasMaxLength(100);
             entity.Property(e => e.OfficeContact)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -936,7 +929,6 @@ public partial class TestContext : DbContext
             entity.HasKey(e => e.TransportId).HasName("PK__StudentT__19E9A11D88CF0BE5");
 
             entity.ToTable("StudentTransport");
-
             entity.Property(e => e.TransportId).ValueGeneratedNever();
             entity.Property(e => e.ModeOfTransport)
                 .HasMaxLength(50)
@@ -944,11 +936,9 @@ public partial class TestContext : DbContext
             entity.Property(e => e.PickupPoint)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.StateId).HasColumnName("State_ID");
             entity.HasOne(d => d.Student).WithMany(p => p.StudentTransports)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK_StudentTransport_StudentId");
-                .HasConstraintName("FK__Student__StaffTy__693CA210");
         });
 
         OnModelCreatingPartial(modelBuilder);
