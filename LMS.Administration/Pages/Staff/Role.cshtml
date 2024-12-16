@@ -1,0 +1,94 @@
+﻿@page
+@model LMS.Administration.Pages.Staff.RoleModel
+@{
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditLoginTypePopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditLoginTypePopUp">
+                        <i class="mdi mdi-plus"></i>Add New Category
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th>Role Key</th>
+                                <th>Status</th>
+                                <th>Created On</th>
+                                <th>Created By</th>
+                                <th>Updated On</th>
+                                <th>Updated By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model._loginTypes)
+                            {
+                                <tr>
+                                    <td>@item.LoginTypeName</td>
+                                    <td>@item.LoginTypeKey</td>
+                                    <td>@item.IsActive?'Active':'In Active'</td>
+                                    <td>@item.CreatedOn</td>
+                                    <td>@item.CreatedBy</td>
+                                    <td>@item.ModifiedOn</td>
+                                    <td>@item.ModifiedBy</td>
+                                    <td>
+                                        <button type="button" class="btn btn-social-icon-text btn-google">
+                                            <i class="mdi mdi-plus"></i>Edit
+                                        </button>
+                                        @item.IsActive?      <button type="button" class="btn btn-social-icon-text btn-google">
+                                            <i class="mdi mdi-plus"></i>In Active
+                                        </button>:      <button type="button" class="btn btn-social-icon-text btn-google">
+                                            <i class="mdi mdi-plus"></i>Active
+                                        </button>
+                                        @*                                         <form method="get" asp-page-handler="Edit" asp-route-id="@item.Id" class="d-inline">
+                                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                        </form>
+                                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" class="d-inline">
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form> *@
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Role</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("_addEditLoginType", new Role())
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Item Section -->
+@if (Model.EditItem != null)
+{
+    <div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("_addEditLoginType", Model.EditItem)
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,69 @@
+﻿@page
+@model LMS.Administration.Pages.Infrastructure.BuildingModel
+@{
+    ViewBag.Ref = "Infrastructure";
+    ViewBag.Title = "Manage Building";
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditBookPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Building
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Domain Name</th>
+                                <th>Building Name</th>
+                                <th>Address 1</th>
+                                <th>Address2</th>
+                                <th>Country</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>ContactPerson</th>
+                                <th>Contact Number</th>
+                                <th>Contact Email</th>
+                                <th>IsActive</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @* if (Model.buildings.Any())
+                                {
+                                    @foreach (var item in Model.buildings)
+                                    {
+                                        <tr>
+                                            <td>@item.DomainName</td>
+                                            <td>@item.BuildingName</td>
+                                            <td>@item.Address1</td>
+                                            <td>@item.Address2</td>
+                                            <td>@item.CountryId</td>
+                                            <td>@item.StateId</td>
+                                            <td>@item.CityId</td>
+                                            <td>@item.ContactPerson</td>
+                                            <td>@item.ContactNo</td>
+                                            <td>@item.ContactEmail</td>
+                                            <td>@item.IsActive</td>
+                                        </tr>
+                                    }
+                                } *@
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", Model.buildings)
+    </div>
+</div>
+

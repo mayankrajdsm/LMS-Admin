@@ -10,6 +10,6 @@ namespace LMS.Infrastructures.Interface
     public interface IUserProfileRepository
     {
         Task<IEnumerable<UserProfile>> GetAllUsers();
-        Task<int> AddUser(UserProfile profile);
+        Task<int> InsertUser(UserProfile profile);
     }
 }

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class DomainRepository : IDomainRepository
     {
-        private readonly LMSDbContext _lMSDbContext;
-        public DomainRepository(LMSDbContext lMSDbContext)
+        private readonly TestContext _lMSDbContext;
+        public DomainRepository(TestContext lMSDbContext)
         {
             _lMSDbContext = lMSDbContext;
         }

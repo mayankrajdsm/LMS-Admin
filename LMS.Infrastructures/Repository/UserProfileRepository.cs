@@ -5,25 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Infrastructures.Repository
 {
     public class UserProfileRepository : IUserProfileRepository
     {
-        private readonly LMSDbContext _context;
+        private readonly TestContext _context;
 
-        public UserProfileRepository(LMSDbContext context)
+        public UserProfileRepository(TestContext context)
         {
             _context = context;
         }
-        public async Task<int> AddUser(UserProfile profile)
+        public async Task<IEnumerable<UserProfile>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return null;
         }
-
-        public Task<IEnumerable<UserProfile>> GetAllUsers()
+        public async Task<int> InsertUser(UserProfile profile)
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync();
         }
     }
 }

@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.API", "LMS.API\LMS.API.csproj", "{5390F554-8721-4CE4-920F-47CB969364C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.API", "LMS.API\LMS.API.csproj", "{5390F554-8721-4CE4-920F-47CB969364C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Infrastructures", "LMS.Infrastructures\LMS.Infrastructures.csproj", "{94D58C85-07CC-47F5-84CE-BBF6127BDE88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Infrastructures", "LMS.Infrastructures\LMS.Infrastructures.csproj", "{94D58C85-07CC-47F5-84CE-BBF6127BDE88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Mapper", "LMS.Mapper\LMS.Mapper.csproj", "{0346ACF8-E952-42DF-94E0-7CAE4A25CACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Mapper", "LMS.Mapper\LMS.Mapper.csproj", "{0346ACF8-E952-42DF-94E0-7CAE4A25CACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LMS.Admin", "LMS.Admin\LMS.Admin.csproj", "{588853C3-883D-4BF3-A6DE-D906183AEE6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Admin", "LMS.Admin\LMS.Admin.csproj", "{588853C3-883D-4BF3-A6DE-D906183AEE6B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LMS.Administration", "LMS.Administration\LMS.Administration.csproj", "{9DEC7C72-119A-425A-A61A-2E4ABF76E774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{588853C3-883D-4BF3-A6DE-D906183AEE6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{588853C3-883D-4BF3-A6DE-D906183AEE6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{588853C3-883D-4BF3-A6DE-D906183AEE6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DEC7C72-119A-425A-A61A-2E4ABF76E774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEC7C72-119A-425A-A61A-2E4ABF76E774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DEC7C72-119A-425A-A61A-2E4ABF76E774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DEC7C72-119A-425A-A61A-2E4ABF76E774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

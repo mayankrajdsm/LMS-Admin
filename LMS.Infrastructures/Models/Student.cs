@@ -123,11 +123,11 @@ public partial class Student
 
     public byte[]? StudentsPhoto { get; set; }
 
-    public virtual ICollection<Education> Educations { get; set; } = new List<Education>();
+    public virtual ICollection<StudentEducation> StudentEducations { get; set; } = new List<StudentEducation>();
 
-    public virtual ICollection<Guardian> Guardians { get; set; } = new List<Guardian>();
+    public virtual ICollection<StudentGuardian> StudentGuardians { get; set; } = new List<StudentGuardian>();
 
-    public virtual ICollection<Parent> Parents { get; set; } = new List<Parent>();
+    public virtual ICollection<StudentParent> StudentParents { get; set; } = new List<StudentParent>();
 
-    public virtual ICollection<Transport> Transports { get; set; } = new List<Transport>();
+    public virtual ICollection<StudentTransport> StudentTransports { get; set; } = new List<StudentTransport>();
 }

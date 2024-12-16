@@ -1,0 +1,47 @@
+﻿@model List<LMS.Infrastructures.Models.Country>
+@{
+    ViewData["Title"] = "Index";
+   
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditBookPopUp">
+                        <i class="mdi mdi-plus"></i>Add Country
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>CoutryName</th>
+                                <th>IsActive</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.CountryName</td>
+                                        <td>@item.IsActive</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* <div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("_AddUser")
+    </div>
+</div> *@
+
