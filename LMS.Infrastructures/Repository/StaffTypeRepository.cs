@@ -19,9 +19,17 @@ namespace LMS.Infrastructures.Repository
         {
             return _lMSDbContext.StaffTypes.ToList();
         }
+        public async Task<StaffType> GetStaffTypeById(Guid staffType)
+        {
+            return await _lMSDbContext.StaffTypes.FindAsync(staffType);
+        }
         public async Task<int> InsertStaffType(StaffType staffType)
         {
             _lMSDbContext.StaffTypes.Add(staffType);
+            return await _lMSDbContext.SaveChangesAsync();
+        }
+        public async Task<int> UpdateStaffType(StaffType staffType)
+        {
             return await _lMSDbContext.SaveChangesAsync();
         }
     }

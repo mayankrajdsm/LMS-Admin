@@ -9,7 +9,7 @@
                 <div class="template-demo">
                     <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditLoginTypePopUp"
                             data-bs-toggle="modal" data-bs-target="#dvAddEditLoginTypePopUp">
-                        <i class="mdi mdi-plus"></i>Add New Category
+                        <i class="mdi mdi-plus"></i>Add New Role
                     </button>
                 </div>
                 <div class="table-responsive">
@@ -38,18 +38,18 @@
                                     <td>@item.ModifiedOn</td>
                                     <td>@item.ModifiedBy</td>
                                     <td>
-                                        <button type="button" class="btn btn-social-icon-text btn-google">
+                                        @*   <button type="button" class="btn btn-social-icon-text btn-google">
                                             <i class="mdi mdi-plus"></i>Edit
                                         </button>
                                         @item.IsActive?      <button type="button" class="btn btn-social-icon-text btn-google">
                                             <i class="mdi mdi-plus"></i>In Active
                                         </button>:      <button type="button" class="btn btn-social-icon-text btn-google">
                                             <i class="mdi mdi-plus"></i>Active
-                                        </button>
-                                        @*                                         <form method="get" asp-page-handler="Edit" asp-route-id="@item.Id" class="d-inline">
+                                        </button> *@
+                                        <form method="get" asp-page-handler="Edit" asp-route-id="@item.LoginTypeId" class="d-inline">
                                             <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                                         </form>
-                                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" class="d-inline">
+                                        @*  <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" class="d-inline">
                                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                         </form> *@
                                     </td>
@@ -70,13 +70,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @await Html.PartialAsync("_addEditLoginType", new Role())
+                @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditLoginType.cshtml", new Role())
             </div>
         </div>
     </div>
 </div>
 <!-- Edit Item Section -->
-@if (Model.EditItem != null)
+@if (Model.editRole != null)
 {
     <div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -86,7 +86,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    @await Html.PartialAsync("_addEditLoginType", Model.EditItem)
+                    @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditLoginType.cshtml", Model.editRole)
                 </div>
             </div>
         </div>

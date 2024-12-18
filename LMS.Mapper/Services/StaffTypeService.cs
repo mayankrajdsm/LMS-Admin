@@ -28,14 +28,18 @@ namespace LMS.Mapper.Services
             }
             return staffTypes;
         }
-        public async Task<int> InsertStaffType(string name, string createdBy)
+        public async Task<StaffType> GetStaffTypeById(string staffTypeId)
         {
-            StaffType staffType = new StaffType();
-            staffType.StaffTypeName = name;
-            staffType.IsActive = true;
-            staffType.CreatedOn = DateTime.Now;
-            staffType.CreatedBy = createdBy;
+            var staffType = await _staffTypeRepository.GetStaffTypeById(Guid.Parse(staffTypeId));
+            return staffType.ToBusinessObject();
+        }
+        public async Task<int> InsertStaffType(StaffType staffType)
+        {
             return await _staffTypeRepository.InsertStaffType(staffType.ToEntityModel());
+        }
+        public async Task<int> UpdateStaffType(StaffType staffType)
+        {
+            return await _staffTypeRepository.UpdateStaffType(staffType.ToEntityModel());
         }
     }
 }

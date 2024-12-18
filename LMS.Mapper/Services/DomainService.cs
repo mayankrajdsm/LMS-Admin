@@ -1,5 +1,6 @@
 ﻿using LMS.Infrastructures.Interface;
-using LMS.Infrastructures.Models;
+using LMS.Infrastructures.Repository;
+using LMS.Mapper.BusinessObject;
 using LMS.Mapper.ConversionHelper;
 using LMS.Mapper.IService;
 using System;
@@ -17,20 +18,9 @@ namespace LMS.Mapper.Services
         {
             _domainRepository = domainRepository;
         }
-        public async Task<IEnumerable<Domain>> GetDomains()
+        public async Task<Domain> GetDomain()
         {
-            return await _domainRepository.GetDomains();
-        }
-        public async Task<Domain> GetDomainsById(string domainId)
-        {
-            if (!string.IsNullOrEmpty(domainId))
-            {
-                return await _domainRepository.GetDomainsById(new Guid(domainId));
-            }
-            else
-            {
-                return null;
-            }
+            return _domainRepository.GetDomains().Result.FirstOrDefault().ToBusinessObject();
         }
         public async Task<int> InsertDomain(BusinessObject.Domain domain)
         {

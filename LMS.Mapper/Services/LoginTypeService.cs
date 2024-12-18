@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LMS.Mapper.Services
 {
-    public class LoginTypeService: ILoginTypeService
+    public class LoginTypeService : ILoginTypeService
     {
         private readonly ILoginTypeRepository _loginTypeRepository;
         public LoginTypeService(ILoginTypeRepository loginTypeRepository)
@@ -28,15 +28,19 @@ namespace LMS.Mapper.Services
             }
             return loginTypes;
         }
-        public async Task<int> InsertLoginType(string name, string key, string createdBy)
+        public async Task<LoginType> GetLoginTypeById(string roleId)
         {
-            LoginType loginType = new LoginType();
-            loginType.LoginTypeName = name;
-            loginType.LoginTypeKey = key;
-            loginType.IsActive = true;
-            loginType.CreatedOn = DateTime.Now;
-            loginType.CreatedBy = createdBy;
+            var loginType = await _loginTypeRepository.GetLoginTypeById(new Guid(roleId));
+            return loginType.ToBusinessObject();
+        }
+        public async Task<int> InsertLoginType(LoginType loginType)
+        {
             return await _loginTypeRepository.InsertLoginType(loginType.ToEntityModel());
+        }
+        public async Task<int> UpdateLoginType(LoginType loginType)
+        {
+            var _loginType = loginType.ToEntityModel();
+            return await _loginTypeRepository.UpdateLoginType();
         }
     }
 }

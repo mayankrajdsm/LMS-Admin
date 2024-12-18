@@ -20,9 +20,23 @@ namespace LMS.Infrastructures.Repository
         {
             return await _context.Buildings.ToListAsync();
         }
+        public async Task<Building> GetBuildingById(Guid buildingId)
+        {
+            return await _context.Buildings.FindAsync(buildingId);
+        }
         public async Task<int> InsertBuilding(Building building)
         {
             _context.Buildings.Add(building);
+            return await _context.SaveChangesAsync();
+        }
+        public async Task<int> UpdateBuilding(Building building)
+        {
+            return await _context.SaveChangesAsync();
+        }
+        public async Task<int> DeleteBuilding(Guid buildingId)
+        {
+            var existingBuilding = await _context.Buildings.FindAsync(buildingId);
+            _context.Buildings.Remove(existingBuilding);
             return await _context.SaveChangesAsync();
         }
     }
