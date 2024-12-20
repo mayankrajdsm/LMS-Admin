@@ -12,13 +12,7 @@ namespace LMS.Mapper.Services
     public class CountryService : ICountryService
     {
         private readonly ICountryRepository _countryRepository;
-        public CountryService(ICountryRepository countryRepository)
-        {
-            _countryRepository = countryRepository;
-        }
-        public async Task<IEnumerable<Country>> GetCountries()
-        {
-            return await _countryRepository.GetCountries();
-        }
+        public CountryService(ICountryRepository countryRepository) => _countryRepository = countryRepository;
+        public async Task<IEnumerable<Country>> GetCountries() => await _countryRepository.GetCountries();
     }
 }

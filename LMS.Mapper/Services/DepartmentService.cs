@@ -13,10 +13,7 @@ namespace LMS.Mapper.Services
     public class DepartmentService: IDepartmentService
     {
         private readonly IDepartmentRepository _departmentRepository;
-        public DepartmentService(IDepartmentRepository departmentRepository)
-        {
-            _departmentRepository = departmentRepository;
-        }
+        public DepartmentService(IDepartmentRepository departmentRepository) => _departmentRepository = departmentRepository;
         public async Task<List<Department>> GetDepartments()
         {
             List<Department> departments = new List<Department>();
@@ -32,13 +29,7 @@ namespace LMS.Mapper.Services
             var department = await _departmentRepository.GetDepartmentById(Guid.Parse(departmentId));
             return department.ToBusinessObject();
         }
-        public async Task<int> InsertDepartment(Department department)
-        {
-            return await _departmentRepository.InsertDepartment(department.ToEntityModel());
-        }
-        public async Task<int> UpdateDepartment(Department department)
-        {
-            return await _departmentRepository.UpdateDepartment(department.ToEntityModel());
-        }
+        public async Task<int> InsertDepartment(Department department) => await _departmentRepository.InsertDepartment(department.ToEntityModel());
+        public async Task<int> UpdateDepartment(Department department) => await _departmentRepository.UpdateDepartment(department.ToEntityModel());
     }
 }

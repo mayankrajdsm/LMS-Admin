@@ -13,10 +13,7 @@ namespace LMS.Mapper.Services
     public class BuildingService : IBuildingService
     {
         private readonly IBuildingRepository _buildingRepository;
-        public BuildingService(IBuildingRepository buildingRepository)
-        {
-            _buildingRepository = buildingRepository;
-        }
+        public BuildingService(IBuildingRepository buildingRepository) => _buildingRepository = buildingRepository;
         public async Task<List<Building>> GetBuildings()
         {
             List<Building> buildings = new List<Building>();
@@ -32,10 +29,7 @@ namespace LMS.Mapper.Services
             var building = await _buildingRepository.GetBuildingById(new Guid(buildingId));
             return building.ToBusinessObject();
         }
-        public async Task<int> InsertBuilding(Building building)
-        {
-            return await _buildingRepository.InsertBuilding(building.ToEntityModel());
-        }
+        public async Task<int> InsertBuilding(Building building) => await _buildingRepository.InsertBuilding(building.ToEntityModel());
         public async Task<int> UpdateBuilding(Building building)
         {
             var domainReq = building.ToEntityModel();

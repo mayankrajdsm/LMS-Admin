@@ -12,26 +12,14 @@ namespace LMS.Infrastructures.Repository
     partial class ContactUsRepository: IContactUsRepository
     {
         private readonly TestContext _context;
-        public ContactUsRepository(TestContext context)
-        {
-            _context = context;
-        }
-        public async Task<IEnumerable<ContactU>> GetContactUs()
-        {
-            return await _context.ContactUs.ToListAsync();
-        }
-        public async Task<ContactU> GetContactUsById(Guid contactId)
-        {
-            return await _context.ContactUs.FindAsync(contactId);
-        }
+        public ContactUsRepository(TestContext context) => _context = context;
+        public async Task<IEnumerable<ContactU>> GetContactUs() => await _context.ContactUs.ToListAsync();
+        public async Task<ContactU> GetContactUsById(Guid contactId) => await _context.ContactUs.FindAsync(contactId);
         public async Task<int> InsertContactUs(ContactU contact)
         {
             _context.ContactUs.Add(contact);
             return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateContactUs(ContactU contact)
-        {
-            return await _context.SaveChangesAsync();
-        }
+        public async Task<int> UpdateContactUs(ContactU contact) => await _context.SaveChangesAsync();
     }
 }

@@ -14,10 +14,7 @@ namespace LMS.Mapper.Services
     public class AboutUsService: IAboutUsService
     {
         private readonly IAboutUsRepository _aboutUsRepository;
-        public AboutUsService(IAboutUsRepository aboutUsRepository)
-        {
-            _aboutUsRepository = aboutUsRepository;
-        }
+        public AboutUsService(IAboutUsRepository aboutUsRepository) => _aboutUsRepository = aboutUsRepository;
         public async Task<List<AboutU>> GetBuildings()
         {
             List<AboutU> lstAboutUs = new List<AboutU>();
@@ -33,13 +30,7 @@ namespace LMS.Mapper.Services
             var about = await _aboutUsRepository.GetAboutUsById(Guid.Parse(aboutId));
             return about.ToBusinessObject();
         }
-        public async Task<int> InsertAboutUs(AboutU about)
-        {
-            return await _aboutUsRepository.InsertAboutUs(about.ToEntityModel());
-        }
-        public async Task<int> UpdateAboutUs(AboutU about)
-        {
-            return await _aboutUsRepository.UpdateAboutUs(about.ToEntityModel());
-        }
+        public async Task<int> InsertAboutUs(AboutU about) => await _aboutUsRepository.InsertAboutUs(about.ToEntityModel());
+        public async Task<int> UpdateAboutUs(AboutU about) => await _aboutUsRepository.UpdateAboutUs(about.ToEntityModel());
     }
 }

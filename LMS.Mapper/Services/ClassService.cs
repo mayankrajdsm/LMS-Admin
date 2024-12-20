@@ -12,13 +12,7 @@ namespace LMS.Mapper.Services
     public class ClassService: IClassService
     {
         private readonly IClassRepository _classRepository;
-        public ClassService(IClassRepository classRepository)
-        {
-            _classRepository = classRepository;
-        }
-        public async Task<IEnumerable<Class>> GetAllClass()
-        {
-           return await _classRepository.GetAllClass();
-        }
+        public ClassService(IClassRepository classRepository) => _classRepository = classRepository;
+        public async Task<IEnumerable<Class>> GetAllClass() => await _classRepository.GetAllClass();
     }
 }

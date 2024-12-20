@@ -12,13 +12,7 @@ namespace LMS.Infrastructures.Repository
     public class ClassRepository: IClassRepository
     {
         private readonly TestContext _context;
-        public ClassRepository(TestContext context) 
-        {
-            _context = context;
-        }
-        public async Task<IEnumerable<Class>> GetAllClass() 
-        {
-            return await _context.Classes.ToListAsync();
-        }
+        public ClassRepository(TestContext context) => _context = context;
+        public async Task<IEnumerable<Class>> GetAllClass() => await _context.Classes.ToListAsync();
     }
 }

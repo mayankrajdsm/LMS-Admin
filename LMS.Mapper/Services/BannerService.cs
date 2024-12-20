@@ -13,10 +13,7 @@ namespace LMS.Mapper.Services
     public class BannerService: IBannerService
     {
         private readonly IBannerRepository _bannerRepository;
-        public BannerService(IBannerRepository bannerRepository)
-        {
-            _bannerRepository = bannerRepository;
-        }
+        public BannerService(IBannerRepository bannerRepository) => _bannerRepository = bannerRepository;
         public async Task<List<Banner>> GetBanners()
         {
             List<Banner> banners = new List<Banner>();
@@ -35,13 +32,7 @@ namespace LMS.Mapper.Services
             var banner = await _bannerRepository.GetBannerById(Guid.Parse(id));
             return banner.ToBusinessObject();
         }
-        public async Task<int> InsertBanner(Banner banner)
-        {
-            return await _bannerRepository.InsertBanner(banner.ToEntityModel());
-        }
-        public async Task<int> DeleteBanner(string id)
-        {
-            return await _bannerRepository.DeleteBanner(Guid.Parse(id));
-        }
+        public async Task<int> InsertBanner(Banner banner) => await _bannerRepository.InsertBanner(banner.ToEntityModel());
+        public async Task<int> DeleteBanner(string id) => await _bannerRepository.DeleteBanner(Guid.Parse(id));
     }
 }

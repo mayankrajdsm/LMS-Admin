@@ -14,18 +14,9 @@ namespace LMS.Mapper.Services
     public class DomainService : IDomainService
     {
         private readonly IDomainRepository _domainRepository;
-        public DomainService(IDomainRepository domainRepository)
-        {
-            _domainRepository = domainRepository;
-        }
-        public async Task<Domain> GetDomain()
-        {
-            return _domainRepository.GetDomains().Result.FirstOrDefault().ToBusinessObject();
-        }
-        public async Task<int> InsertDomain(BusinessObject.Domain domain)
-        {
-            return await _domainRepository.InsertDomain(domain.ToEntityModel());
-        }
+        public DomainService(IDomainRepository domainRepository) => _domainRepository = domainRepository;
+        public async Task<Domain> GetDomain() => _domainRepository.GetDomains().Result.FirstOrDefault().ToBusinessObject();
+        public async Task<int> InsertDomain(BusinessObject.Domain domain) => await _domainRepository.InsertDomain(domain.ToEntityModel());
         public async Task<int> UpdateDomain(BusinessObject.Domain domain)
         {
             var domainReq = domain.ToEntityModel();

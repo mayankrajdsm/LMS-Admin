@@ -12,26 +12,14 @@ namespace LMS.Infrastructures.Repository
     public class AboutUsRepository: IAboutUsRepository
     {
         private readonly TestContext _context;
-        public AboutUsRepository(TestContext context)
-        {
-            _context = context;
-        }
-        public async Task<IEnumerable<AboutU>> GetAboutUs()
-        {
-            return await _context.AboutUs.ToListAsync();
-        }
-        public async Task<AboutU> GetAboutUsById(Guid aboutId)
-        {
-            return await _context.AboutUs.FindAsync(aboutId);
-        }
+        public AboutUsRepository(TestContext context) => _context = context;
+        public async Task<IEnumerable<AboutU>> GetAboutUs() => await _context.AboutUs.ToListAsync();
+        public async Task<AboutU> GetAboutUsById(Guid aboutId) => await _context.AboutUs.FindAsync(aboutId);
         public async Task<int> InsertAboutUs(AboutU aboutUs)
         {
             _context.AboutUs.Add(aboutUs);
             return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateAboutUs(AboutU aboutUs)
-        {
-            return await _context.SaveChangesAsync();
-        }
+        public async Task<int> UpdateAboutUs(AboutU aboutUs) => await _context.SaveChangesAsync();
     }
 }

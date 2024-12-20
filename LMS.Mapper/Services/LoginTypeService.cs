@@ -14,10 +14,7 @@ namespace LMS.Mapper.Services
     public class LoginTypeService : ILoginTypeService
     {
         private readonly ILoginTypeRepository _loginTypeRepository;
-        public LoginTypeService(ILoginTypeRepository loginTypeRepository)
-        {
-            _loginTypeRepository = loginTypeRepository;
-        }
+        public LoginTypeService(ILoginTypeRepository loginTypeRepository) => _loginTypeRepository = loginTypeRepository;
         public async Task<List<LoginType>> GetLoginTypes()
         {
             List<LoginType> loginTypes = new List<LoginType>();
@@ -33,14 +30,7 @@ namespace LMS.Mapper.Services
             var loginType = await _loginTypeRepository.GetLoginTypeById(new Guid(roleId));
             return loginType.ToBusinessObject();
         }
-        public async Task<int> InsertLoginType(LoginType loginType)
-        {
-            return await _loginTypeRepository.InsertLoginType(loginType.ToEntityModel());
-        }
-        public async Task<int> UpdateLoginType(LoginType loginType)
-        {
-            var _loginType = loginType.ToEntityModel();
-            return await _loginTypeRepository.UpdateLoginType();
-        }
+        public async Task<int> InsertLoginType(LoginType loginType) => await _loginTypeRepository.InsertLoginType(loginType.ToEntityModel());
+        public async Task<int> UpdateLoginType(LoginType loginType) => await _loginTypeRepository.UpdateLoginType();
     }
 }

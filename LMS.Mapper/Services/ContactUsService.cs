@@ -14,10 +14,7 @@ namespace LMS.Mapper.Services
     public class ContactUsService: IContactUsService
     {
         private readonly IContactUsRepository _contactUsRepository;
-        public ContactUsService(IContactUsRepository contactUsRepository)
-        {
-            _contactUsRepository = contactUsRepository;
-        }
+        public ContactUsService(IContactUsRepository contactUsRepository) => _contactUsRepository = contactUsRepository;
         public async Task<List<ContactU>> GetContactUs()
         {
             List<ContactU> lstContactUs = new List<ContactU>();
@@ -36,13 +33,7 @@ namespace LMS.Mapper.Services
             var about = await _contactUsRepository.GetContactUsById(Guid.Parse(contactId));
             return about.ToBusinessObject();
         }
-        public async Task<int> InsertContactUs(ContactU contact)
-        {
-            return await _contactUsRepository.InsertContactUs(contact.ToEntityModel());
-        }
-        public async Task<int> UpdateContactUs(ContactU contact)
-        {
-            return await _contactUsRepository.UpdateContactUs(contact.ToEntityModel());
-        }
+        public async Task<int> InsertContactUs(ContactU contact) => await _contactUsRepository.InsertContactUs(contact.ToEntityModel());
+        public async Task<int> UpdateContactUs(ContactU contact) => await _contactUsRepository.UpdateContactUs(contact.ToEntityModel());
     }
 }
