@@ -19,9 +19,12 @@ namespace LMS.Mapper.Services
         {
             List<AboutU> lstAboutUs = new List<AboutU>();
             var existingAboutUs = await _aboutUsRepository.GetAboutUs();
-            foreach (var about in existingAboutUs)
+            if (existingAboutUs != null)
             {
-                lstAboutUs.Add(about.ToBusinessObject());
+                foreach (var about in existingAboutUs)
+                {
+                    lstAboutUs.Add(about.ToBusinessObject());
+                }
             }
             return lstAboutUs;
         }

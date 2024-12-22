@@ -18,9 +18,12 @@ namespace LMS.Mapper.Services
         {
             List<Building> buildings = new List<Building>();
             var existingBuilding = await _buildingRepository.GetBuildings();
-            foreach (var building in existingBuilding)
+            if (existingBuilding != null)
             {
-                buildings.Add(building.ToBusinessObject());
+                foreach (var building in existingBuilding)
+                {
+                    buildings.Add(building.ToBusinessObject());
+                }
             }
             return buildings;
         }

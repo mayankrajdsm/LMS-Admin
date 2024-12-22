@@ -19,9 +19,12 @@ namespace LMS.Mapper.Services
         {
             List<StaffType> staffTypes = new List<StaffType>();
             var existingStaffType = await _staffTypeRepository.GetStaffTypes();
-            foreach (var staffType in existingStaffType)
+            if (existingStaffType != null)
             {
-                staffTypes.Add(staffType.ToBusinessObject());
+                foreach (var staffType in existingStaffType)
+                {
+                    staffTypes.Add(staffType.ToBusinessObject());
+                }
             }
             return staffTypes;
         }

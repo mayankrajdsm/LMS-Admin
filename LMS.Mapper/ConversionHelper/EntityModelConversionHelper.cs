@@ -124,5 +124,203 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.ModifiedBy = string.IsNullOrEmpty(banner.ModifiedBy) ? null : Guid.Parse(banner.CreatedBy);
             return convertedModel;
         }
+        public static Barcode ToEntityModel(this BusinessObject.Barcode barcode, Barcode existingBarcode = null)
+        {
+            Barcode convertedModel = existingBarcode != null ? existingBarcode : new Barcode();
+            convertedModel.BarcodeId = string.IsNullOrEmpty(barcode.BarcodeId) ? Guid.NewGuid() : Guid.Parse(barcode.BarcodeId);
+            convertedModel.Code = barcode.Code;
+            convertedModel.IsActive = barcode.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(barcode.CreatedBy);
+            convertedModel.CreatedOn = barcode.CreatedOn;
+            convertedModel.ModifiedOn = barcode.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(barcode.ModifiedBy) ? null : Guid.Parse(barcode.CreatedBy);
+            return convertedModel;
+        }
+        public static Batch ToEntityModel(this BusinessObject.Batch batch, Batch existingBatch = null)
+        {
+            Batch convertedModel = existingBatch != null ? existingBatch : new Batch();
+            convertedModel.BatchId = string.IsNullOrEmpty(batch.BatchId) ? Guid.NewGuid() : Guid.Parse(batch.BatchId);
+            convertedModel.BatchCode = batch.BatchCode;
+            convertedModel.FromDate = batch.FromDate;
+            convertedModel.ToDate = batch.ToDate;
+            convertedModel.IsActive = batch.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(batch.CreatedBy);
+            convertedModel.CreatedOn = batch.CreatedOn;
+            convertedModel.ModifiedOn = batch.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(batch.ModifiedBy) ? null : Guid.Parse(batch.CreatedBy);
+            return convertedModel;
+        }
+        public static EmployementType ToEntityModel(this BusinessObject.EmployementType employementType, EmployementType existingEmployementType = null)
+        {
+            EmployementType convertedModel = existingEmployementType != null ? existingEmployementType : new EmployementType();
+            convertedModel.EmployementTypeId = string.IsNullOrEmpty(employementType.EmployementTypeId) ? Guid.NewGuid() : Guid.Parse(employementType.EmployementTypeId);
+            convertedModel.EmployementTypeCode = employementType.EmployementTypeCode;
+            convertedModel.EmployementTypeName = employementType.EmployementTypeName;
+            convertedModel.IsActive = employementType.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(employementType.CreatedBy);
+            convertedModel.CreatedOn = employementType.CreatedOn;
+            convertedModel.ModifiedOn = employementType.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(employementType.ModifiedBy) ? null : Guid.Parse(employementType.CreatedBy);
+            return convertedModel;
+        }
+        public static Gender ToEntityModel(this BusinessObject.Gender gender, Gender existingGender = null)
+        {
+            Gender convertedModel = existingGender != null ? existingGender : new Gender();
+            convertedModel.GenderId = string.IsNullOrEmpty(gender.GenderId) ? Guid.NewGuid() : Guid.Parse(gender.GenderId);
+            convertedModel.GenderCode = gender.GenderCode;
+            convertedModel.GenderName = gender.GenderName;
+            convertedModel.IsActive = gender.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(gender.CreatedBy);
+            convertedModel.CreatedOn = gender.CreatedOn;
+            convertedModel.ModifiedOn = gender.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(gender.ModifiedBy) ? null : Guid.Parse(gender.CreatedBy);
+            return convertedModel;
+        }
+        public static IssueBookStudent ToEntityModel(this BusinessObject.IssueBookStudent issueBookStudent, IssueBookStudent existingIssueBookStudent = null)
+        {
+            IssueBookStudent convertedModel = existingIssueBookStudent != null ? existingIssueBookStudent : new IssueBookStudent();
+            convertedModel.IssueBookStudentId = string.IsNullOrEmpty(issueBookStudent.IssueBookStudentId) ? Guid.NewGuid() : Guid.Parse(issueBookStudent.IssueBookStudentId);
+            convertedModel.StudentId = Guid.Parse(issueBookStudent.StudentId);
+            convertedModel.BookId = Guid.Parse(issueBookStudent.BookId);
+            convertedModel.FromDate = issueBookStudent.FromDate;
+            convertedModel.ToDate = issueBookStudent.ToDate;
+            convertedModel.IsActive = issueBookStudent.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(issueBookStudent.CreatedBy);
+            convertedModel.CreatedOn = issueBookStudent.CreatedOn;
+            convertedModel.ModifiedOn = issueBookStudent.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(issueBookStudent.ModifiedBy) ? null : Guid.Parse(issueBookStudent.CreatedBy);
+            return convertedModel;
+        }
+        public static MaritalStatus ToEntityModel(this BusinessObject.MaritalStatus maritalStatus, MaritalStatus existingMaritalStatus = null)
+        {
+            MaritalStatus convertedModel = existingMaritalStatus != null ? existingMaritalStatus : new MaritalStatus();
+            convertedModel.MaritalStatusId = string.IsNullOrEmpty(maritalStatus.MaritalStatusId) ? Guid.NewGuid() : Guid.Parse(maritalStatus.MaritalStatusId);
+            convertedModel.MaritalStatusCode = maritalStatus.MaritalStatusCode;
+            convertedModel.MaritalStatusName = maritalStatus.MaritalStatusName;
+            convertedModel.IsActive = maritalStatus.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(maritalStatus.CreatedBy);
+            convertedModel.CreatedOn = maritalStatus.CreatedOn;
+            convertedModel.ModifiedOn = maritalStatus.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(maritalStatus.ModifiedBy) ? null : Guid.Parse(maritalStatus.CreatedBy);
+            return convertedModel;
+        }
+        public static PaymentStatus ToEntityModel(this BusinessObject.PaymentStatus paymentStatus, PaymentStatus existingPaymentStatus = null)
+        {
+            PaymentStatus convertedModel = existingPaymentStatus != null ? existingPaymentStatus : new PaymentStatus();
+            convertedModel.PaymentStatusId = string.IsNullOrEmpty(paymentStatus.PaymentStatusId) ? Guid.NewGuid() : Guid.Parse(paymentStatus.PaymentStatusId);
+            convertedModel.PaymentStatusName = paymentStatus.PaymentStatusName;
+            convertedModel.IsActive = paymentStatus.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(paymentStatus.CreatedBy);
+            convertedModel.CreatedOn = paymentStatus.CreatedOn;
+            convertedModel.ModifiedOn = paymentStatus.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(paymentStatus.ModifiedBy) ? null : Guid.Parse(paymentStatus.CreatedBy);
+            return convertedModel;
+        }
+        public static SocialCateogory ToEntityModel(this BusinessObject.SocialCateogory socialCateogory, SocialCateogory existingSocialCateogory = null)
+        {
+            SocialCateogory convertedModel = existingSocialCateogory != null ? existingSocialCateogory : new SocialCateogory();
+            convertedModel.SocialCateogoryId = string.IsNullOrEmpty(socialCateogory.SocialCateogoryId) ? Guid.NewGuid() : Guid.Parse(socialCateogory.SocialCateogoryId);
+            convertedModel.SocialCateogoryCode = socialCateogory.SocialCateogoryCode;
+            convertedModel.SocialCateogoryName = socialCateogory.SocialCateogoryName;
+            convertedModel.IsActive = socialCateogory.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(socialCateogory.CreatedBy);
+            convertedModel.CreatedOn = socialCateogory.CreatedOn;
+            convertedModel.ModifiedOn = socialCateogory.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(socialCateogory.ModifiedBy) ? null : Guid.Parse(socialCateogory.CreatedBy);
+            return convertedModel;
+        }
+        public static StudentCateogory ToEntityModel(this BusinessObject.StudentCateogory studentCateogory, StudentCateogory existingStudentCateogory = null)
+        {
+            StudentCateogory convertedModel = existingStudentCateogory != null ? existingStudentCateogory : new StudentCateogory();
+            convertedModel.StudentCateogoryId = string.IsNullOrEmpty(studentCateogory.StudentCateogoryId) ? Guid.NewGuid() : Guid.Parse(studentCateogory.StudentCateogoryId);
+            convertedModel.StudentCateogoryName = studentCateogory.StudentCateogoryName;
+            convertedModel.IsActive = studentCateogory.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(studentCateogory.CreatedBy);
+            convertedModel.CreatedOn = studentCateogory.CreatedOn;
+            convertedModel.ModifiedOn = studentCateogory.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(studentCateogory.ModifiedBy) ? null : Guid.Parse(studentCateogory.CreatedBy);
+            return convertedModel;
+        }
+        public static StudentSeatBooking ToEntityModel(this BusinessObject.StudentSeatBooking studentSeatBooking, StudentSeatBooking existingStudentSeatBooking = null)
+        {
+            StudentSeatBooking convertedModel = existingStudentSeatBooking != null ? existingStudentSeatBooking : new StudentSeatBooking();
+            convertedModel.StudentSeatBookingId = string.IsNullOrEmpty(studentSeatBooking.StudentSeatBookingId) ? Guid.NewGuid() : Guid.Parse(studentSeatBooking.StudentSeatBookingId);
+            convertedModel.StudentId = Guid.Parse(studentSeatBooking.StudentId);
+            convertedModel.SeatNo = studentSeatBooking.SeatNo;
+            convertedModel.TokenNo = studentSeatBooking.TokenNo;
+            convertedModel.FromDate = studentSeatBooking.FromDate;
+            convertedModel.ToDate = studentSeatBooking.ToDate;
+            convertedModel.IsActive = studentSeatBooking.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(studentSeatBooking.CreatedBy);
+            convertedModel.CreatedOn = studentSeatBooking.CreatedOn;
+            convertedModel.ModifiedOn = studentSeatBooking.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(studentSeatBooking.ModifiedBy) ? null : Guid.Parse(studentSeatBooking.CreatedBy);
+            return convertedModel;
+        }
+        public static StudentSubType ToEntityModel(this BusinessObject.StudentSubType studentSubType, StudentSubType existingStudentSubType = null)
+        {
+            StudentSubType convertedModel = existingStudentSubType != null ? existingStudentSubType : new StudentSubType();
+            convertedModel.StudentSubTypeId = string.IsNullOrEmpty(studentSubType.StudentSubTypeId) ? Guid.NewGuid() : Guid.Parse(studentSubType.StudentSubTypeId);
+            convertedModel.StudentSubTypeName = studentSubType.StudentSubTypeName;
+            convertedModel.DiscountPer = studentSubType.DiscountPer;
+            convertedModel.IsActive = studentSubType.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(studentSubType.CreatedBy);
+            convertedModel.CreatedOn = studentSubType.CreatedOn;
+            convertedModel.ModifiedOn = studentSubType.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(studentSubType.ModifiedBy) ? null : Guid.Parse(studentSubType.CreatedBy);
+            return convertedModel;
+        }
+        public static SubscriptionPakage ToEntityModel(this BusinessObject.SubscriptionPakage pakage, SubscriptionPakage existingSubscriptionPakage = null)
+        {
+            SubscriptionPakage convertedModel = existingSubscriptionPakage != null ? existingSubscriptionPakage : new SubscriptionPakage();
+            convertedModel.SubscriptionPakageId = string.IsNullOrEmpty(pakage.SubscriptionPakageId) ? Guid.NewGuid() : Guid.Parse(pakage.SubscriptionPakageId);
+            convertedModel.SubscriptionPakageName = pakage.SubscriptionPakageName;
+            convertedModel.SubscriptionPeriodMonths = pakage.SubscriptionPeriodMonths;
+            convertedModel.PriceMonth = pakage.PriceMonth;
+            convertedModel.DiscountPer = pakage.DiscountPer;
+            convertedModel.Decription = pakage.Decription;
+            convertedModel.IsActive = pakage.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(pakage.CreatedBy);
+            convertedModel.CreatedOn = pakage.CreatedOn;
+            convertedModel.ModifiedOn = pakage.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(pakage.ModifiedBy) ? null : Guid.Parse(pakage.CreatedBy);
+            return convertedModel;
+        }
+        public static SubscriptionPayment ToEntityModel(this BusinessObject.SubscriptionPayment payment, SubscriptionPayment existingPayment = null)
+        {
+            SubscriptionPayment convertedModel = existingPayment != null ? existingPayment : new SubscriptionPayment();
+            convertedModel.PaymentId = string.IsNullOrEmpty(payment.PaymentId) ? Guid.NewGuid() : Guid.Parse(payment.PaymentId);
+            convertedModel.ReceiptNo = payment.ReceiptNo;
+            convertedModel.StudentTeacher = payment.StudentTeacher;
+            convertedModel.StudentTeacherId = Guid.Parse(payment.StudentTeacherId);
+            convertedModel.SubscriptionPakageId = Guid.Parse(payment.SubscriptionPakageId);
+            convertedModel.Rate = payment.Rate;
+            convertedModel.Months = payment.Months;
+            convertedModel.DiscountPer = payment.DiscountPer;
+            convertedModel.PaymentStatus = Guid.Parse(payment.PaymentStatus);
+            convertedModel.IsActive = payment.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(payment.CreatedBy);
+            convertedModel.CreatedOn = payment.CreatedOn;
+            convertedModel.ModifiedOn = payment.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(payment.ModifiedBy) ? null : Guid.Parse(payment.CreatedBy);
+            return convertedModel;
+        }
+        public static SubscriptionsTransaction ToEntityModel(this BusinessObject.SubscriptionsTransaction transaction, SubscriptionsTransaction existingTransaction = null)
+        {
+            SubscriptionsTransaction convertedModel = existingTransaction != null ? existingTransaction : new SubscriptionsTransaction();
+            convertedModel.SubscriptionsTransactionStudentId = string.IsNullOrEmpty(transaction.SubscriptionsTransactionStudentId) ? Guid.NewGuid() : Guid.Parse(transaction.SubscriptionsTransactionStudentId);
+            convertedModel.StudentTeacherId = transaction.StudentTeacherId;
+            convertedModel.StudentId = Guid.Parse(transaction.StudentId);
+            convertedModel.SubscriptionPakageId = Guid.Parse(transaction.SubscriptionPakageId);
+            convertedModel.PaymentId = Guid.Parse(transaction.PaymentId);
+            convertedModel.ValidFrom = transaction.ValidFrom;
+            convertedModel.ValidTo = transaction.ValidTo;
+            convertedModel.IsActive = transaction.IsActive;
+            convertedModel.CreatedBy = Guid.Parse(transaction.CreatedBy);
+            convertedModel.CreatedOn = transaction.CreatedOn;
+            convertedModel.ModifiedOn = transaction.ModifiedOn.Equals(null) ? null : DateTime.Now;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(transaction.ModifiedBy) ? null : Guid.Parse(transaction.CreatedBy);
+            return convertedModel;
+        }
     }
 }
