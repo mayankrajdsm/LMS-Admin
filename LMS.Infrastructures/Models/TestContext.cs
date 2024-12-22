@@ -713,9 +713,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentContact>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("StudentContact");
+            entity.HasKey(e => e.StudentContactId).HasName("PK__Students__3C2B9919B673CA");
 
             entity.Property(e => e.Address1)
                 .HasMaxLength(50)

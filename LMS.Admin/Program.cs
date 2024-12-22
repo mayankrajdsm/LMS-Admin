@@ -18,12 +18,17 @@ builder.Services.AddDbContext<TestContext>(options =>
 // Register Repository 
 builder.Services.AddScoped<IBookRepository,BookRepository>();
 builder.Services.AddScoped<IClassRepository,ClassRepository>();
+builder.Services.AddScoped<IStudentRepository,StudentRepository>();
 builder.Services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
 
 // Register Services
 builder.Services.AddScoped<IBookService,BookService>();
 builder.Services.AddScoped<IClassService,ClassService>();
+builder.Services.AddScoped<IStudentService,StudentService>();
+
+
+
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 builder.Services.AddScoped<IBuildingService, BuildingService>();
 var app = builder.Build();

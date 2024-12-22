@@ -1,0 +1,518 @@
+﻿@page
+@model List<LMS.Infrastructures.Models.Student>
+@{
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form method="post" asp-action="InsertBook" asp-controller="Book">
+            <div class="row">
+            <!-- StudentId -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="StudentId">Student ID</label>
+                    <input type="text" class="form-control" id="StudentId" name="StudentId" placeholder="Student ID" />
+                </div>
+            </div>
+
+            <!-- AdmissionNo -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="AdmissionNo">Admission No</label>
+                    <input type="number" class="form-control" id="AdmissionNo" name="AdmissionNo" placeholder="Admission No" />
+                </div>
+            </div>
+
+            <!-- AdmissionDate -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="AdmissionDate">Admission Date</label>
+                    <input type="date" class="form-control" id="AdmissionDate" name="AdmissionDate" />
+                </div>
+            </div>
+
+            <!-- JoiningDate -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="JoiningDate">Joining Date</label>
+                    <input type="date" class="form-control" id="JoiningDate" name="JoiningDate" />
+                </div>
+            </div>
+
+            <!-- FirstName -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name" required />
+                </div>
+            </div>
+
+            <!-- MiddleName -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="MiddleName">Middle Name</label>
+                    <input type="text" class="form-control" id="MiddleName" name="MiddleName" placeholder="Middle Name" />
+                </div>
+            </div>
+
+            <!-- LastName -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="LastName">Last Name</label>
+                    <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name" required />
+                </div>
+            </div>
+
+            <!-- CalledName -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="CalledName">Called Name</label>
+                    <input type="text" class="form-control" id="CalledName" name="CalledName" placeholder="Called Name" />
+                </div>
+            </div>
+
+            <!-- Batch -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Batch">Batch</label>
+                    <input type="text" class="form-control" id="Batch" name="Batch" placeholder="Batch" />
+                </div>
+            </div>
+
+            <!-- Dob -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Dob">Date of Birth</label>
+                    <input type="date" class="form-control" id="Dob" name="Dob" />
+                </div>
+            </div>
+
+            <!-- Category -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Category">Category</label>
+                    <input type="text" class="form-control" id="Category" name="Category" placeholder="Category" />
+                </div>
+            </div>
+
+            <!-- StudentSubType -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="StudentSubType">Student Sub Type</label>
+                    <input type="text" class="form-control" id="StudentSubType" name="StudentSubType" placeholder="Student Sub Type" />
+                </div>
+            </div>
+
+            <!-- ClassofAdmission -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ClassofAdmission">Class of Admission</label>
+                    <input type="number" class="form-control" id="ClassofAdmission" name="ClassofAdmission" placeholder="Class of Admission" />
+                </div>
+            </div>
+
+            <!-- YearOfAdmission -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="YearOfAdmission">Year of Admission</label>
+                    <input type="number" class="form-control" id="YearOfAdmission" name="YearOfAdmission" placeholder="Year of Admission" />
+                </div>
+            </div>
+
+            <!-- AdharNumber -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="AdharNumber">Aadhar Number</label>
+                    <input type="number" class="form-control" id="AdharNumber" name="AdharNumber" placeholder="Aadhar Number" />
+                </div>
+            </div>
+
+            <!-- RegistrationNumber -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="RegistrationNumber">Registration Number</label>
+                    <input type="text" class="form-control" id="RegistrationNumber" name="RegistrationNumber" placeholder="Registration Number" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="RegistrationNumberof9th">Registration Number of 9th</label>
+                    <input type="text" class="form-control" id="RegistrationNumberof9th" name="RegistrationNumberof9th" placeholder="Registration Number of 9th" />
+                </div>
+            </div>
+
+            <!-- RegistrationNumberof11th -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="RegistrationNumberof11th">Registration Number of 11th</label>
+                    <input type="text" class="form-control" id="RegistrationNumberof11th" name="RegistrationNumberof11th" placeholder="Registration Number of 11th" />
+                </div>
+            </div>
+
+            <!-- House -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="House">House</label>
+                    <input type="text" class="form-control" id="House" name="House" placeholder="House" />
+                </div>
+            </div>
+
+            <!-- Dorm -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Dorm">Dorm</label>
+                    <input type="text" class="form-control" id="Dorm" name="Dorm" placeholder="Dorm" />
+                </div>
+            </div>
+
+            <!-- RollNo -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="RollNo">Roll Number</label>
+                    <input type="number" class="form-control" id="RollNo" name="RollNo" placeholder="Roll Number" />
+                </div>
+            </div>
+
+            <!-- EnrollmentNo -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="EnrollmentNo">Enrollment Number</label>
+                    <input type="number" class="form-control" id="EnrollmentNo" name="EnrollmentNo" placeholder="Enrollment Number" />
+                </div>
+            </div>
+
+            <!-- Percent10 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Percent10">Percent in 10th</label>
+                    <input type="number" step="0.01" class="form-control" id="Percent10" name="Percent10" placeholder="Percent in 10th" />
+                </div>
+            </div>
+
+            <!-- RollNoof10 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="RollNoof10">Roll Number of 10th</label>
+                    <input type="number" class="form-control" id="RollNoof10" name="RollNoof10" placeholder="Roll Number of 10th" />
+                </div>
+            </div>
+
+            <!-- RollNoof12 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="RollNoof12">Roll Number of 12th</label>
+                    <input type="number" class="form-control" id="RollNoof12" name="RollNoof12" placeholder="Roll Number of 12th" />
+                </div>
+            </div>
+
+            <!-- Percent12 -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Percent12">Percent in 12th</label>
+                    <input type="number" class="form-control" id="Percent12" name="Percent12" placeholder="Percent in 12th" />
+                </div>
+            </div>
+
+            <!-- ScholarshipOffered -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ScholarshipOffered">Scholarship Offered</label>
+                    <input type="number" class="form-control" id="ScholarshipOffered" name="ScholarshipOffered" placeholder="Scholarship Offered" />
+                </div>
+            </div>
+
+            <!-- ScholarshipAmount -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="ScholarshipAmount">Scholarship Amount</label>
+                    <input type="number" class="form-control" id="ScholarshipAmount" name="ScholarshipAmount" placeholder="Scholarship Amount" />
+                </div>
+            </div>
+
+            <!-- Height -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Height">Height</label>
+                    <input type="number" class="form-control" id="Height" name="Height" placeholder="Height in cm" />
+                </div>
+            </div>
+
+            <!-- Weight -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Weight">Weight</label>
+                    <input type="number" class="form-control" id="Weight" name="Weight" placeholder="Weight in kg" />
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <select class="form-control" id="Gender" name="Gender">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sibling -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Sibling">Sibling</label>
+                    <input type="text" class="form-control" id="Sibling" name="Sibling" placeholder="Sibling Name" />
+                </div>
+            </div>
+
+            <!-- BloodGroup -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="BloodGroup">Blood Group</label>
+                    <input type="text" class="form-control" id="BloodGroup" name="BloodGroup" placeholder="Blood Group" />
+                </div>
+            </div>
+                <!-- BioIdentificationNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="BioIdentificationNo">Bio Identification No</label>
+                        <input type="text" class="form-control" id="BioIdentificationNo" name="BioIdentificationNo" placeholder="Bio Identification No" />
+                    </div>
+                </div>
+
+                <!-- BelongsToBpl -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="BelongsToBpl">Belongs to BPL</label>
+                        <select class="form-control" id="BelongsToBpl" name="BelongsToBpl">
+                            <option value="">Select</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- PhysicalDisability -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="PhysicalDisability">Physical Disability</label>
+                        <input type="text" class="form-control" id="PhysicalDisability" name="PhysicalDisability" placeholder="Physical Disability" />
+                    </div>
+                </div>
+
+                <!-- CasteCertificateNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="CasteCertificateNo">Caste Certificate No</label>
+                        <input type="number" class="form-control" id="CasteCertificateNo" name="CasteCertificateNo" placeholder="Caste Certificate No" />
+                    </div>
+                </div>
+
+                <!-- FoodSecurityCardNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="FoodSecurityCardNo">Food Security Card No</label>
+                        <input type="number" class="form-control" id="FoodSecurityCardNo" name="FoodSecurityCardNo" placeholder="Food Security Card No" />
+                    </div>
+                </div>
+
+                <!-- MedicalHistory -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="MedicalHistory">Medical History</label>
+                        <input type="text" class="form-control" id="MedicalHistory" name="MedicalHistory" placeholder="Medical History" />
+                    </div>
+                </div>
+
+                <!-- IsChildCwsn -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="IsChildCwsn">Is Child CWSN</label>
+                        <select class="form-control" id="IsChildCwsn" name="IsChildCwsn">
+                            <option value="">Select</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- PlaceOfBirth -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="PlaceOfBirth">Place of Birth</label>
+                        <input type="text" class="form-control" id="PlaceOfBirth" name="PlaceOfBirth" placeholder="Place of Birth" />
+                    </div>
+                </div>
+
+                <!-- Nationality -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Nationality">Nationality</label>
+                        <input type="text" class="form-control" id="Nationality" name="Nationality" placeholder="Nationality" />
+                    </div>
+                </div>
+
+                <!-- MotherTounge -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="MotherTounge">Mother Tongue</label>
+                        <input type="text" class="form-control" id="MotherTounge" name="MotherTounge" placeholder="Mother Tongue" />
+                    </div>
+                </div>
+
+                <!-- SocialCategory -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="SocialCategory">Social Category</label>
+                        <input type="text" class="form-control" id="SocialCategory" name="SocialCategory" placeholder="Social Category" />
+                    </div>
+                </div>
+
+                <!-- Religion -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Religion">Religion</label>
+                        <input type="text" class="form-control" id="Religion" name="Religion" placeholder="Religion" />
+                    </div>
+                </div>
+
+                <!-- Caste -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Caste">Caste</label>
+                        <input type="text" class="form-control" id="Caste" name="Caste" placeholder="Caste" />
+                    </div>
+                </div>
+
+                <!-- SubCaste -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="SubCaste">Sub-Caste</label>
+                        <input type="text" class="form-control" id="SubCaste" name="SubCaste" placeholder="Sub-Caste" />
+                    </div>
+                </div>
+
+                <!-- IsBelongsToMinority -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="IsBelongsToMinority">Belongs to Minority</label>
+                        <select class="form-control" id="IsBelongsToMinority" name="IsBelongsToMinority">
+                            <option value="">Select</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- LastObtainedMarks -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="LastObtainedMarks">Last Obtained Marks</label>
+                        <input type="number" step="0.01" class="form-control" id="LastObtainedMarks" name="LastObtainedMarks" placeholder="Last Obtained Marks" />
+                    </div>
+                </div>
+
+                <!-- BankAccountNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="BankAccountNo">Bank Account No</label>
+                        <input type="number" class="form-control" id="BankAccountNo" name="BankAccountNo" placeholder="Bank Account No" />
+                    </div>
+                </div>
+                <!-- Ifsccode -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Ifsccode">IFSC Code</label>
+                        <input type="number" class="form-control" id="Ifsccode" name="Ifsccode" placeholder="IFSC Code" />
+                    </div>
+                </div>
+
+                <!-- UniqueIdentificationNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="UniqueIdentificationNo">Unique Identification No</label>
+                        <input type="text" class="form-control" id="UniqueIdentificationNo" name="UniqueIdentificationNo" placeholder="Unique Identification No" />
+                    </div>
+                </div>
+
+                <!-- LastSchoolStudied -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="LastSchoolStudied">Last School Studied</label>
+                        <input type="text" class="form-control" id="LastSchoolStudied" name="LastSchoolStudied" placeholder="Last School Studied" />
+                    </div>
+                </div>
+
+                <!-- NoOfAttended -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="NoOfAttended">No. of Attended</label>
+                        <input type="number" class="form-control" id="NoOfAttended" name="NoOfAttended" placeholder="No. of Attended" />
+                    </div>
+                </div>
+
+                <!-- Specialization -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Specialization">Specialization</label>
+                        <input type="text" class="form-control" id="Specialization" name="Specialization" placeholder="Specialization" />
+                    </div>
+                </div>
+
+                <!-- PanNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="PanNo">PAN No</label>
+                        <input type="text" class="form-control" id="PanNo" name="PanNo" placeholder="PAN No" />
+                    </div>
+                </div>
+
+                <!-- OnlineAppNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="OnlineAppNo">Online Application No</label>
+                        <input type="number" class="form-control" id="OnlineAppNo" name="OnlineAppNo" placeholder="Online Application No" />
+                    </div>
+                </div>
+
+                <!-- LearningDisability -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="LearningDisability">Learning Disability</label>
+                        <input type="text" class="form-control" id="LearningDisability" name="LearningDisability" placeholder="Learning Disability" />
+                    </div>
+                </div>
+
+                <!-- StudentsPhoto -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="StudentsPhoto">Student Photo</label>
+                        <input type="file" class="form-control-file" id="StudentsPhoto" name="StudentsPhoto" accept="image/*" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+<form method="post" asp-action="InsertBook" asp-controller="Book">
+            <div class="row">
+               
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label for="Title">AdmissionNo</label>
+                            <input type="number" class="form-control" id="AdmissionNo" placeholder="AdmissionNo" name="AdmissionNo" />
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </form>

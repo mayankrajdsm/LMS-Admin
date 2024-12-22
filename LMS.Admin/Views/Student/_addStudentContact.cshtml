@@ -1,0 +1,131 @@
+﻿@page
+@model List<LMS.Infrastructures.Models.StudentContact>
+@{
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form method="post" asp-action="InsertStudentContact" asp-controller="student">
+            <div class="row">
+
+                <!-- Address1 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Address1">Address 1</label>
+                        <input type="text" class="form-control" id="Address1" name="Address1" placeholder="Enter Address 1" />
+                    </div>
+                </div>
+
+                <!-- Address2 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Address2">Address 2</label>
+                        <input type="text" class="form-control" id="Address2" name="Address2" placeholder="Enter Address 2" />
+                    </div>
+                </div>
+
+                <!-- Address3 -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Address3">Address 3</label>
+                        <input type="text" class="form-control" id="Address3" name="Address3" placeholder="Enter Address 3" />
+                    </div>
+                </div>
+
+                <!-- City -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="City">City</label>
+                        <input type="text" class="form-control" id="City" name="City" placeholder="Enter City" />
+                    </div>
+                </div>
+
+                <!-- District -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="District">District</label>
+                        <input type="text" class="form-control" id="District" name="District" placeholder="Enter District" />
+                    </div>
+                </div>
+
+                <!-- State -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="State">State</label>
+                        <input type="text" class="form-control" id="State" name="State" placeholder="Enter State" />
+                    </div>
+                </div>
+
+                <!-- PinCode -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="PinCode">Pin Code</label>
+                        <input type="number" class="form-control" id="PinCode" name="PinCode" placeholder="Enter Pin Code" />
+                    </div>
+                </div>
+
+                <!-- Country -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Country">Country</label>
+                        <input type="text" class="form-control" id="Country" name="Country" placeholder="Enter Country" />
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Mobile">Mobile</label>
+                        <input type="number" class="form-control" id="Mobile" name="Mobile" placeholder="Enter Mobile Number" />
+                    </div>
+                </div>
+
+                <!-- FatherMobile -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="FatherMobile">Father's Mobile</label>
+                        <input type="number" class="form-control" id="FatherMobile" name="FatherMobile" placeholder="Enter Father's Mobile Number" />
+                    </div>
+                </div>
+
+                <!-- MotherMobile -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="MotherMobile">Mother's Mobile</label>
+                        <input type="number" class="form-control" id="MotherMobile" name="MotherMobile" placeholder="Enter Mother's Mobile Number" />
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter Email Address" />
+                    </div>
+                </div>
+
+                <!-- AlternateEmail -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="AlternateEmail">Alternate Email</label>
+                        <input type="email" class="form-control" id="AlternateEmail" name="AlternateEmail" placeholder="Enter Alternate Email Address" />
+                    </div>
+                </div>
+
+                <!-- StudentId -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="StudentId">Student ID</label>
+                        <input type="text" class="form-control" id="StudentId" name="StudentId" placeholder="Enter Student ID" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+        </form>
+    </div>
+</div>

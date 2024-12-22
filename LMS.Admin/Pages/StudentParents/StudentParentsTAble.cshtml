@@ -1,0 +1,104 @@
+﻿@page
+@model List<LMS.Infrastructures.Models.StudentParent>
+@{
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Father's Name</th>
+                                <th>Mother's Name</th>
+                                <th>Father's Aadhaar</th>
+                                <th>Mother's Aadhaar</th>
+                                <th>Father's PAN</th>
+                                <th>Mother's PAN</th>
+                                <th>Relation</th>
+                                <th>Date of Birth</th>
+                                <th>Father's Qualification</th>
+                                <th>Mother's Qualification</th>
+                                <th>Father's Occupation</th>
+                                <th>Father's Company</th>
+                                <th>Father's Income</th>
+                                <th>Mother's Occupation</th>
+                                <th>Mother's Company</th>
+                                <th>Mother's Income</th>
+                                <th>Father's Email</th>
+                                <th>Mother's Email</th>
+                                <th>Father's Alternate Email</th>
+                                <th>Mother's Alternate Email</th>
+                                <th>Father's Office Address</th>
+                                <th>Mother's Office Address</th>
+                                <th>Father's Business Name</th>
+                                <th>Mother's Business Name</th>
+                                <th>Mobile</th>
+                                <th>Phone</th>
+                                <th>Father's Address</th>
+                                <th>Father's City</th>
+                                <th>Father's Country</th>
+                                <th>Father's Pincode</th>
+                                <th>Father's Nationality</th>
+                                <th>Mother's Address</th>
+                                <th>Mother's City</th>
+                                <th>Mother's State</th>
+                                <th>Mother's Pincode</th>
+                                <th>Mother's Country</th>
+                                <th>Mother's Nationality</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var parent in Model)
+                                {
+                                    <tr>
+                                        <td>@parent.FatherName</td>
+                                        <td>@parent.MotherName</td>
+                                        <td>@parent.FatherAadhaar</td>
+                                        <td>@parent.MotherAadhaar</td>
+                                        <td>@parent.FatherPan</td>
+                                        <td>@parent.MotherPan</td>
+                                        <td>@parent.Relation</td>
+                                        <td>@parent.DateofBirth</td>
+                                        <td>@parent.FatherQualification</td>
+                                        <td>@parent.MotherQualification</td>
+                                        <td>@parent.FatherOccupation</td>
+                                        <td>@parent.FatherCompanyName</td>
+                                        <td>@parent.FatherCurrencyOfIncome</td>
+                                        <td>@parent.MotherOccupation</td>
+                                        <td>@parent.MotherCompanyName</td>
+                                        <td>@parent.MotherCurrencyOfIncome</td>
+                                        <td>@parent.FatherEmail</td>
+                                        <td>@parent.MotherEmail</td>
+                                        <td>@parent.FatherAlternateEmail</td>
+                                        <td>@parent.MotherAlternateEmail</td>
+                                        <td>@parent.FatherOfficeAddress</td>
+                                        <td>@parent.MotherOfficeAddress</td>
+                                        <td>@parent.FatherBusinessName</td>
+                                        <td>@parent.MotherBusinessName</td>
+                                        <td>@parent.Mobile</td>
+                                        <td>@parent.Phone</td>
+                                        <td>@parent.FatherAddress</td>
+                                        <td>@parent.FatherCity</td>
+                                        <td>@parent.FatherCountry</td>
+                                        <td>@parent.FatherPincode</td>
+                                        <td>@parent.FatherNationality</td>
+                                        <td>@parent.MotherAddress</td>
+                                        <td>@parent.MotherCity</td>
+                                        <td>@parent.MotherState</td>
+                                        <td>@parent.MotherPincode</td>
+                                        <td>@parent.MotherCountry</td>
+                                        <td>@parent.MotherNationality</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
