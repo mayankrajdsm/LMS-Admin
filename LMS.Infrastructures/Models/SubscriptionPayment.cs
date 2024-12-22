@@ -33,7 +33,7 @@ public partial class SubscriptionPayment
 
     public Guid? ModifiedBy { get; set; }
 
-    public virtual PaymentStatus PaymentStatusNavigation { get; set; } = null!;
+    public PaymentStatus PaymentStatusNavigation { get; set; } = null!;
 
-    public virtual ICollection<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();
+    public List<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();
 }

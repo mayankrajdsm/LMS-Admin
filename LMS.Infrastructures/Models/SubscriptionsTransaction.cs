@@ -29,9 +29,9 @@ public partial class SubscriptionsTransaction
 
     public Guid? ModifiedBy { get; set; }
 
-    public virtual SubscriptionPayment Payment { get; set; } = null!;
+    public SubscriptionPayment Payment { get; set; } = null!;
 
-    public virtual Student Student { get; set; } = null!;
+    public Student Student { get; set; } = null!;
 
-    public virtual SubscriptionPakage SubscriptionPakage { get; set; } = null!;
+    public SubscriptionPakage SubscriptionPakage { get; set; } = null!;
 }

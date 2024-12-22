@@ -27,5 +27,5 @@ public partial class SubscriptionPakage
 
     public Guid? ModifiedBy { get; set; }
 
-    public virtual ICollection<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();
+    public List<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();
 }

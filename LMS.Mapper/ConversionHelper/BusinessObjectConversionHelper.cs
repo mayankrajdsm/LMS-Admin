@@ -125,19 +125,225 @@ namespace LMS.Mapper.ConversionHelper
                 ModifiedBy = Convert.ToString(banner.ModifiedBy),
             };
         }
-        //public static BusinessObject.Country ToBusinessObject(this LMS.Infrastructures.Models.Country country)
+        public static BusinessObject.Barcode ToBusinessObject(this LMS.Infrastructures.Models.Barcode barcode)
+        {
+            return new BusinessObject.Barcode
+            {
+                BarcodeId = barcode.BarcodeId == null ? "" : Convert.ToString(barcode.BarcodeId),
+                Code = barcode.Code,
+                IsActive = barcode.IsActive,
+                CreatedOn = barcode.CreatedOn,
+                CreatedBy = Convert.ToString(barcode.CreatedBy),
+                ModifiedOn = barcode.ModifiedOn,
+                ModifiedBy = Convert.ToString(barcode.ModifiedBy),
+            };
+        }
+        public static BusinessObject.Batch ToBusinessObject(this LMS.Infrastructures.Models.Batch batch)
+        {
+            return new BusinessObject.Batch
+            {
+                BatchId = batch.BatchId == null ? "" : Convert.ToString(batch.BatchId),
+                BatchCode = batch.BatchCode,
+                FromDate = batch.FromDate,
+                ToDate = batch.ToDate,
+                IsActive = batch.IsActive,
+                CreatedOn = batch.CreatedOn,
+                CreatedBy = Convert.ToString(batch.CreatedBy),
+                ModifiedOn = batch.ModifiedOn,
+                ModifiedBy = Convert.ToString(batch.ModifiedBy),
+            };
+        }
+        public static BusinessObject.EmployementType ToBusinessObject(this LMS.Infrastructures.Models.EmployementType employementType)
+        {
+            return new BusinessObject.EmployementType
+            {
+                EmployementTypeId = employementType.EmployementTypeId == null ? "" : Convert.ToString(employementType.EmployementTypeId),
+                EmployementTypeCode = employementType.EmployementTypeCode,
+                EmployementTypeName = employementType.EmployementTypeName,
+                IsActive = employementType.IsActive,
+                CreatedOn = employementType.CreatedOn,
+                CreatedBy = Convert.ToString(employementType.CreatedBy),
+                ModifiedOn = employementType.ModifiedOn,
+                ModifiedBy = Convert.ToString(employementType.ModifiedBy),
+            };
+        }
+        public static BusinessObject.Gender ToBusinessObject(this LMS.Infrastructures.Models.Gender gender)
+        {
+            return new BusinessObject.Gender
+            {
+                GenderId = gender.GenderId == null ? "" : Convert.ToString(gender.GenderId),
+                GenderCode = gender.GenderCode,
+                GenderName = gender.GenderName,
+                IsActive = gender.IsActive,
+                CreatedOn = gender.CreatedOn,
+                CreatedBy = Convert.ToString(gender.CreatedBy),
+                ModifiedOn = gender.ModifiedOn,
+                ModifiedBy = Convert.ToString(gender.ModifiedBy),
+            };
+        }
+        public static BusinessObject.IssueBookStudent ToBusinessObject(this LMS.Infrastructures.Models.IssueBookStudent issueBookStudent)
+        {
+            return new BusinessObject.IssueBookStudent
+            {
+                IssueBookStudentId = issueBookStudent.IssueBookStudentId == null ? "" : Convert.ToString(issueBookStudent.IssueBookStudentId),
+                BookId = Convert.ToString(issueBookStudent.BookId),
+                StudentId = Convert.ToString(issueBookStudent.StudentId),
+                FromDate = issueBookStudent.FromDate,
+                ToDate = issueBookStudent.ToDate,
+                IsActive = issueBookStudent.IsActive,
+                CreatedOn = issueBookStudent.CreatedOn,
+                CreatedBy = Convert.ToString(issueBookStudent.CreatedBy),
+                ModifiedOn = issueBookStudent.ModifiedOn,
+                ModifiedBy = Convert.ToString(issueBookStudent.ModifiedBy),
+                Book = issueBookStudent.Book,
+                Student = issueBookStudent.Student,
+            };
+        }
+        public static BusinessObject.MaritalStatus ToBusinessObject(this LMS.Infrastructures.Models.MaritalStatus maritalStatus)
+        {
+            return new BusinessObject.MaritalStatus
+            {
+                MaritalStatusId = maritalStatus.MaritalStatusId == null ? "" : Convert.ToString(maritalStatus.MaritalStatusId),
+                MaritalStatusCode = maritalStatus.MaritalStatusCode,
+                MaritalStatusName = Convert.ToString(maritalStatus.MaritalStatusName),
+                IsActive = maritalStatus.IsActive,
+                CreatedOn = maritalStatus.CreatedOn,
+                CreatedBy = Convert.ToString(maritalStatus.CreatedBy),
+                ModifiedOn = maritalStatus.ModifiedOn,
+                ModifiedBy = Convert.ToString(maritalStatus.ModifiedBy),
+            };
+        }
+        public static BusinessObject.PaymentStatus ToBusinessObject(this LMS.Infrastructures.Models.PaymentStatus paymentStatus)
+        {
+            return new BusinessObject.PaymentStatus
+            {
+                PaymentStatusId = paymentStatus.PaymentStatusId == null ? "" : Convert.ToString(paymentStatus.PaymentStatusId),
+                PaymentStatusName = paymentStatus.PaymentStatusName,
+                IsActive = paymentStatus.IsActive,
+                CreatedOn = paymentStatus.CreatedOn,
+                CreatedBy = Convert.ToString(paymentStatus.CreatedBy),
+                ModifiedOn = paymentStatus.ModifiedOn,
+                ModifiedBy = Convert.ToString(paymentStatus.ModifiedBy),
+            };
+        }
+        public static BusinessObject.SocialCateogory ToBusinessObject(this LMS.Infrastructures.Models.SocialCateogory socialCateogory)
+        {
+            return new BusinessObject.SocialCateogory
+            {
+                SocialCateogoryId = socialCateogory.SocialCateogoryId == null ? "" : Convert.ToString(socialCateogory.SocialCateogoryId),
+                SocialCateogoryCode = socialCateogory.SocialCateogoryCode,
+                SocialCateogoryName = socialCateogory.SocialCateogoryName,
+                IsActive = socialCateogory.IsActive,
+                CreatedOn = socialCateogory.CreatedOn,
+                CreatedBy = Convert.ToString(socialCateogory.CreatedBy),
+                ModifiedOn = socialCateogory.ModifiedOn,
+                ModifiedBy = Convert.ToString(socialCateogory.ModifiedBy),
+            };
+        }
+        public static BusinessObject.StudentCateogory ToBusinessObject(this LMS.Infrastructures.Models.StudentCateogory studentCateogory)
+        {
+            return new BusinessObject.StudentCateogory
+            {
+                StudentCateogoryId = studentCateogory.StudentCateogoryId == null ? "" : Convert.ToString(studentCateogory.StudentCateogoryId),
+                StudentCateogoryName = studentCateogory.StudentCateogoryName,
+                DiscountPer = studentCateogory.DiscountPer,
+                IsActive = studentCateogory.IsActive,
+                CreatedOn = studentCateogory.CreatedOn,
+                CreatedBy = Convert.ToString(studentCateogory.CreatedBy),
+                ModifiedOn = studentCateogory.ModifiedOn,
+                ModifiedBy = Convert.ToString(studentCateogory.ModifiedBy),
+            };
+        }
+        public static BusinessObject.StudentSeatBooking ToBusinessObject(this LMS.Infrastructures.Models.StudentSeatBooking studentSeatBooking)
+        {
+            return new BusinessObject.StudentSeatBooking
+            {
+                StudentSeatBookingId = studentSeatBooking.StudentSeatBookingId == null ? "" : Convert.ToString(studentSeatBooking.StudentSeatBookingId),
+                StudentId = Convert.ToString(studentSeatBooking.StudentId),
+                SeatNo = studentSeatBooking.SeatNo,
+                TokenNo = studentSeatBooking.TokenNo,
+                FromDate = studentSeatBooking.FromDate,
+                ToDate = studentSeatBooking.ToDate,
+                IsActive = studentSeatBooking.IsActive,
+                CreatedOn = studentSeatBooking.CreatedOn,
+                CreatedBy = Convert.ToString(studentSeatBooking.CreatedBy),
+                ModifiedOn = studentSeatBooking.ModifiedOn,
+                ModifiedBy = Convert.ToString(studentSeatBooking.ModifiedBy),
+                Student = studentSeatBooking.Student,
+            };
+        }
+        public static BusinessObject.StudentSubType ToBusinessObject(this LMS.Infrastructures.Models.StudentSubType studentSubType)
+        {
+            return new BusinessObject.StudentSubType
+            {
+                StudentSubTypeId = studentSubType.StudentSubTypeId == null ? "" : Convert.ToString(studentSubType.StudentSubTypeId),
+                StudentSubTypeName = Convert.ToString(studentSubType.StudentSubTypeName),
+                DiscountPer = studentSubType.DiscountPer,
+                IsActive = studentSubType.IsActive,
+                CreatedOn = studentSubType.CreatedOn,
+                CreatedBy = Convert.ToString(studentSubType.CreatedBy),
+                ModifiedOn = studentSubType.ModifiedOn,
+                ModifiedBy = Convert.ToString(studentSubType.ModifiedBy),
+            };
+        }
+        public static BusinessObject.SubscriptionPakage ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionPakage subscriptionPackage)
+        {
+            return new BusinessObject.SubscriptionPakage
+            {
+                SubscriptionPakageId = subscriptionPackage.SubscriptionPakageId == null ? "" : Convert.ToString(subscriptionPackage.SubscriptionPakageId),
+                SubscriptionPakageName = Convert.ToString(subscriptionPackage.SubscriptionPakageName),
+                SubscriptionPeriodMonths = subscriptionPackage.SubscriptionPeriodMonths,
+                PriceMonth = subscriptionPackage.PriceMonth,
+                DiscountPer = subscriptionPackage.DiscountPer,
+                Decription = subscriptionPackage.Decription,
+                IsActive = subscriptionPackage.IsActive,
+                CreatedOn = subscriptionPackage.CreatedOn,
+                CreatedBy = Convert.ToString(subscriptionPackage.CreatedBy),
+                ModifiedOn = subscriptionPackage.ModifiedOn,
+                ModifiedBy = Convert.ToString(subscriptionPackage.ModifiedBy),
+                //SubscriptionsTransactions = subscriptionPackage.SubscriptionsTransactions,
+            };
+        }
+        //public static BusinessObject.SubscriptionPayment ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionPayment subscriptionPayment)
         //{
-        //    return new BusinessObject.Country
+        //    return new BusinessObject.SubscriptionPayment
         //    {
-        //        CountryId = country.CountryId == null ? "" : Convert.ToString(country.CountryId),
-        //        CountryName = country.CountryName,
-        //        IsActive = country.IsActive,
-        //        CreatedOn = country.CreatedOn,
-        //        CreatedBy = Convert.ToString(country.CreatedBy),
-        //        ModifiedOn = country.ModifiedOn,
-        //        ModifiedBy = Convert.ToString(country.ModifiedBy),
-        //        States = country.States.ToList()
+        //        PaymentId = subscriptionPayment.SubscriptionPakageId == null ? "" : Convert.ToString(subscriptionPayment.SubscriptionPakageId),
+        //        ReceiptNo = Convert.ToString(subscriptionPayment.ReceiptNo),
+        //        StudentTeacher = subscriptionPayment.StudentTeacher,
+        //        StudentTeacherId = Convert.ToString(subscriptionPayment.StudentTeacherId),
+        //        SubscriptionPakageId = Convert.ToString(subscriptionPayment.SubscriptionPakageId),
+        //        Rate = subscriptionPayment.Rate,
+        //        Months = subscriptionPayment.Months,
+        //        DiscountPer = subscriptionPayment.DiscountPer,
+        //        PaymentStatus = subscriptionPayment.PaymentStatus,
+        //        IsActive = subscriptionPayment.IsActive,
+        //        CreatedOn = subscriptionPayment.CreatedOn,
+        //        CreatedBy = Convert.ToString(subscriptionPayment.CreatedBy),
+        //        ModifiedOn = subscriptionPayment.ModifiedOn,
+        //        ModifiedBy = Convert.ToString(subscriptionPayment.ModifiedBy),
+        //        PaymentStatusNavigation = subscriptionPayment.PaymentStatusNavigation,
+        //        SubscriptionsTransactions = subscriptionPayment.SubscriptionsTransactions,
         //    };
         //}
+        public static BusinessObject.SubscriptionsTransaction ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionsTransaction subscriptionsTransaction)
+        {
+            return new BusinessObject.SubscriptionsTransaction
+            {
+                SubscriptionsTransactionStudentId = subscriptionsTransaction.SubscriptionsTransactionStudentId == null ? "" : Convert.ToString(subscriptionsTransaction.SubscriptionsTransactionStudentId),
+                StudentTeacherId = Convert.ToString(subscriptionsTransaction.StudentTeacherId),
+                StudentId = Convert.ToString(subscriptionsTransaction.StudentId),
+                SubscriptionPakageId = Convert.ToString(subscriptionsTransaction.SubscriptionPakageId),
+                PaymentId = Convert.ToString(subscriptionsTransaction.PaymentId),
+                ValidFrom = subscriptionsTransaction.ValidFrom,
+                ValidTo = subscriptionsTransaction.ValidTo,
+                IsActive = subscriptionsTransaction.IsActive,
+                CreatedOn = subscriptionsTransaction.CreatedOn,
+                CreatedBy = Convert.ToString(subscriptionsTransaction.CreatedBy),
+                ModifiedOn = subscriptionsTransaction.ModifiedOn,
+                ModifiedBy = Convert.ToString(subscriptionsTransaction.ModifiedBy),
+                //Payment = subscriptionsTransaction.Payment,
+            };
+        }
     }
 }
