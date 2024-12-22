@@ -4,6 +4,7 @@ using LMS.Mapper.IService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,30 @@ namespace LMS.Mapper.Services
         public async Task<IEnumerable<StudentGuardian>> GetAllStudentGuardian()
         {
             return await _studentRepository.GetAllStudentGuardianAsync();
+        }
+        public async Task<int> InsertStudent(Student student)
+        {
+            return await _studentRepository.InsertStudent(student);
+        }
+        public async Task<int> InsertStudentContact(StudentContact studentContact)
+        {
+            return await _studentRepository.InsertStudentContact(studentContact);
+        }
+        public async Task<int> InsertStudentParents(StudentParent studentParent)
+        {
+            return await _studentRepository.InsertStudentParents(studentParent);
+        }
+        public async Task<int> InsertStudentGuardian(StudentGuardian studentGuardian)
+        {
+            return await _studentRepository.InsertStudentGuardian(studentGuardian);
+        }
+        public async Task<int> InsertStudentTransport(StudentTransport studentTransport)
+        {
+            return await _studentRepository.InsertStudentTransport(studentTransport);
+        }
+        public async Task<int> InsertStudentEducation(StudentEducation studentEducation)
+        {
+            return await _studentRepository.InsertStudentEducation(studentEducation);
         }
 
     }

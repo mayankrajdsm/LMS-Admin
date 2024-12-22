@@ -18,6 +18,12 @@ namespace LMS.Infrastructures.Interface
         Task<IEnumerable<StudentParent>> GetAllStudentParentAsync();
 
         Task<IEnumerable<StudentTransport>> GetAllStudentTransportAsync();
-        
+        Task<int> InsertStudentContact(StudentContact studentContact);
+        Task<int> InsertStudentEducation(StudentEducation studentEducation);
+        Task<int> InsertStudentGuardian(StudentGuardian studentGuardian);
+        Task<int> InsertStudentParents(StudentParent studentParent);
+        Task<int> InsertStudentTransport(StudentTransport studentTransport);
+        Task<int> InsertStudent(Student student);
+
     }
 }

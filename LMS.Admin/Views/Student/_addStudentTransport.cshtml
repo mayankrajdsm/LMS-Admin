@@ -1,0 +1,50 @@
+﻿@page
+@model List<LMS.Infrastructures.Models.StudentTransport>
+@{
+}
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New StudentEducationDetails</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form method="post" asp-action="InsertStudentTransport" asp-controller="Student">
+            <div class="row">
+
+    
+
+                <!-- ModeOfTransport -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="ModeOfTransport">Mode of Transport</label>
+                        <input type="text" class="form-control" id="ModeOfTransport" name="ModeOfTransport" placeholder="Enter Mode of Transport" />
+                    </div>
+                </div>
+
+                <!-- RollNo -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="RollNo">Roll No</label>
+                        <input type="number" class="form-control" id="RollNo" name="RollNo" placeholder="Enter Roll No" />
+                    </div>
+                </div>
+
+                <!-- PickupPoint -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="PickupPoint">Pickup Point</label>
+                        <input type="text" class="form-control" id="PickupPoint" name="PickupPoint" placeholder="Enter Pickup Point" />
+                    </div>
+                </div>
+
+           
+
+                <!-- Submit Button -->
+                <div class="col-md-12 mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

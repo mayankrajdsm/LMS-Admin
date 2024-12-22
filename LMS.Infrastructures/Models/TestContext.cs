@@ -43,8 +43,6 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<LoginType> LoginTypes { get; set; }
 
-    public virtual DbSet<Parent> Parents { get; set; }
-
     public virtual DbSet<Staff> Staff { get; set; }
 
     public virtual DbSet<StaffType> StaffTypes { get; set; }
@@ -53,19 +51,19 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Student> Students { get; set; }
 
-    public virtual DbSet<StudentContact> StudentContacts { get; set; }
+    public virtual DbSet<StudentContact> StudentContact { get; set; }
 
-    public virtual DbSet<StudentEducation> StudentEducations { get; set; }
+    public virtual DbSet<StudentEducation> StudentEducation { get; set; }
 
-    public virtual DbSet<StudentGuardian> StudentGuardians { get; set; }
+    public virtual DbSet<StudentGuardian> StudentGuardian { get; set; }
 
     public virtual DbSet<StudentParent> StudentParents { get; set; }
 
-    public virtual DbSet<StudentTransport> StudentTransports { get; set; }
+    public virtual DbSet<StudentTransport> StudentTransport { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\LocalServer;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -350,63 +348,63 @@ public partial class TestContext : DbContext
                 .HasConstraintName("FK__Education__Stude__151B244E");
         });
 
-        modelBuilder.Entity<StudentGuardian>(entity =>
-        {
-            entity.HasKey(e => e.GuardianId).HasName("PK__Guardian__0A5E1A9B0159CDB4");
+        //modelBuilder.Entity<StudentGuardian>(entity =>
+        //{
+        //    entity.HasKey(e => e.GuardianId).HasName("PK__Guardian__0A5E1A9B0159CDB4");
 
-            entity.ToTable("Guardian");
+        //    entity.ToTable("Guardian");
 
-            entity.Property(e => e.GuardianId).ValueGeneratedNever();
-            entity.Property(e => e.Address)
-                .HasMaxLength(100)
-                .IsUnicode(false);
-            entity.Property(e => e.Adhar)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.City)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Country)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Designation)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Education)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Email)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Mobile)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Occupation)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.OfficeAddress)
-                .HasMaxLength(100)
-                .IsUnicode(false);
-            entity.Property(e => e.OfficeContact)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.OrganizationName)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Relation)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.State)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+        //    entity.Property(e => e.GuardianId).ValueGeneratedNever();
+        //    entity.Property(e => e.Address)
+        //        .HasMaxLength(100)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Adhar)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.City)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Country)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Designation)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Education)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Email)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Mobile)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Name)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Occupation)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.OfficeAddress)
+        //        .HasMaxLength(100)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.OfficeContact)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.OrganizationName)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.Relation)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
+        //    entity.Property(e => e.State)
+        //        .HasMaxLength(50)
+        //        .IsUnicode(false);
 
-            entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
-                .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK__Guardian__Studen__14270015");
-        });
+        //    entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
+        //        .HasForeignKey(d => d.StudentId)
+        //        .HasConstraintName("FK__Guardian__Studen__14270015");
+        //});
 
         modelBuilder.Entity<LoginType>(entity =>
         {
@@ -822,9 +820,7 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
-                .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentGuardian_StudentId");
+            
         });
 
         modelBuilder.Entity<StudentParent>(entity =>

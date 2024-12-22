@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class StudentGuardian
+public  class StudentGuardian
 {
     public Guid GuardianId { get; set; }
 
@@ -45,5 +45,4 @@ public partial class StudentGuardian
 
     public Guid? StudentId { get; set; }
 
-    public virtual Student? Student { get; set; }
 }

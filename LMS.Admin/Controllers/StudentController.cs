@@ -18,30 +18,19 @@ namespace LMS.Admin.Controllers
         }
         public IActionResult StudentContact()
         {
-           // IEnumerable<StudentContact> contacts = new List<StudentContact>();//_studentService.GetAllStudentContact().Result;
-            IEnumerable<StudentContact> result = new List<StudentContact>() {  new StudentContact
-            {
-                StudentContactId = Guid.NewGuid(),
-                Address1 = "123 Main St",
-                Address2 = "Apt 1A",
-                Address3 = null,
-                City = "Springfield",
-                District = "Central",
-                State = "California",
-                PinCode = 12345,
-                Country = "USA",
-                Mobile = 9876543210,
-                FatherMobile = 9876501234,
-                MotherMobile = 9876512345,
-                Email = "student1@example.com",
-                AlternateEmail = "student1.alt@example.com",
-                StudentId = Guid.NewGuid()
-            },
-            };
-            return View(result);
+            IEnumerable<StudentContact> contacts = _studentService.GetAllStudentContact().Result;
+          
+            return View(contacts);
         }
         public IActionResult InsertStudentContact(StudentContact studentContact) 
         {
+            studentContact.StudentContactId = Guid.NewGuid();
+            studentContact.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            int result=_studentService.InsertStudentContact(studentContact).Result;
+            if (result > 0) 
+            {
+                return RedirectToAction("StudentContact");
+            }
             return View(studentContact);
         }
 
@@ -49,40 +38,68 @@ namespace LMS.Admin.Controllers
         {
              IEnumerable<StudentEducation> education = _studentService.GetAllStudentEducation().Result;
            
-            return View();
+            return View(education);
         }
-        public IActionResult InsertStudentEducation(StudentEducation studentContact)
+        public IActionResult InsertStudentEducation(StudentEducation studentEducation)
         {
-            return View(studentContact);
+            studentEducation.EducationId = Guid.NewGuid();
+            studentEducation.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            int result=_studentService.InsertStudentEducation(studentEducation).Result;
+            if (result > 0) 
+            {
+                return RedirectToAction("StudentEducation");
+            }
+            return View(studentEducation);
         }
         public IActionResult StudentGuardian()
         {
             IEnumerable<StudentGuardian> guardian =_studentService.GetAllStudentGuardian().Result;
 
-            return View();
+            return View(guardian);
         }
-        public IActionResult InsertStudentGuardian(StudentGuardian studentContact)
+        public IActionResult InsertStudentGuardian(StudentGuardian studentGuardian)
         {
-            return View(studentContact);
+            studentGuardian.GuardianId = Guid.NewGuid();
+            studentGuardian.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            int result=_studentService.InsertStudentGuardian(studentGuardian).Result;
+            if (result > 0) 
+            {
+                return RedirectToAction("StudentGuardian");
+            }
+            return View(studentGuardian);
         }
         public IActionResult StudentParents()
         {
-             IEnumerable<StudentParent> contacts = _studentService.GetAllStudentParent().Result;
+             IEnumerable<StudentParent> Parents = _studentService.GetAllStudentParent().Result;
 
-            return View();
+            return View(Parents);
         }
         public IActionResult InsertStudentParents(StudentParent studentContact)
         {
+            studentContact.ParentsId = Guid.NewGuid();
+            studentContact.StudentId= new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            int result=_studentService.InsertStudentParents(studentContact).Result;
+            if (result > 0) 
+            {
+                return RedirectToAction("StudentParents");
+            }
             return View(studentContact);
         }
         public IActionResult StudentTransport()
         {
-            IEnumerable<StudentTransport> contacts = _studentService.GetAllStudentTransport().Result;
+            IEnumerable<StudentTransport> Transport = _studentService.GetAllStudentTransport().Result;
 
-            return View();
+            return View(Transport);
         }
         public IActionResult InsertStudentTransport(StudentTransport studentTransport)
         {
+            studentTransport.TransportId = Guid.NewGuid();
+            studentTransport.TransportId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            int result=_studentService.InsertStudentTransport(studentTransport).Result;
+            if (result > 0) 
+            {
+                return RedirectToAction("StudentTransport");
+            }
             return View(studentTransport);
         }
     }
