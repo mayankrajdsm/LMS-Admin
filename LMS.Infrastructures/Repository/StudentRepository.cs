@@ -22,7 +22,7 @@ namespace LMS.Infrastructures.Repository
         }
         public async Task<IEnumerable<StudentContact>> GetAllStudentContactsAsync()
         {
-            return await _context.StudentContact.ToListAsync();
+            return await _context.StudentContacts.ToListAsync();
         }
         public async Task<IEnumerable<StudentEducation>> GetAllStudentEducationAsync()
         {
@@ -38,11 +38,11 @@ namespace LMS.Infrastructures.Repository
         }
         public async Task<IEnumerable<StudentTransport>> GetAllStudentTransportAsync()
         {
-            return await _context.StudentTransport.ToListAsync();
+            return await _context.StudentTransports.ToListAsync();
         }
         public async Task<int> InsertStudentContact(StudentContact studentContact)
         {
-            _context.StudentContact.Add(studentContact);
+            _context.StudentContacts.Add(studentContact);
             return _context.SaveChanges();
         }
         public async Task<int> InsertStudent(Student student)
@@ -67,7 +67,7 @@ namespace LMS.Infrastructures.Repository
         }
         public async Task<int> InsertStudentTransport(StudentTransport studentTransport)
         {
-            _context.StudentTransport.Add(studentTransport);
+            _context.StudentTransports.Add(studentTransport);
             return _context.SaveChanges();
         }
 

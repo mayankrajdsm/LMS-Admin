@@ -1,5 +1,6 @@
 ﻿using LMS.Infrastructures.Interface;
 using LMS.Mapper.BusinessObject;
+using LMS.Mapper.ConversionHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace LMS.Mapper.Services
             {
                 foreach (var barcode in existingBarcodes)
                 {
-                    barcodes.Add(barcode);
+                    barcodes.Add(barcode.ToBusinessObject());
                 }
             }
             return barcodes;
