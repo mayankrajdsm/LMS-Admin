@@ -1,0 +1,76 @@
+﻿@model List<LMS.Infrastructures.Models.StudentGuardian>
+@{
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditStudentGuardianPopUp">
+                        <i class="mdi mdi-plus"></i>Add New StudentGuardian
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Aadhaar</th>
+                                <th>Relation</th>
+                                <th>Date of Birth</th>
+                                <th>Education</th>
+                                <th>Occupation</th>
+                                <th>Annual Income</th>
+                                <th>Organization Name</th>
+                                <th>Designation</th>
+                                <th>Office Contact</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Office Address</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Pincode</th>
+                                <th>Country</th>
+                                <th>Mobile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                @foreach (var guardian in Model)
+                                {
+                                    <tr>
+                                        <td>@guardian.Name</td>
+                                        <td>@guardian.Adhar</td>
+                                        <td>@guardian.Relation</td>
+                                        <td>@guardian.DateOfBirth</td>
+                                        <td>@guardian.Education</td>
+                                        <td>@guardian.Occupation</td>
+                                        <td>@guardian.AnnualIncome</td>
+                                        <td>@guardian.OrganizationName</td>
+                                        <td>@guardian.Designation</td>
+                                        <td>@guardian.OfficeContact</td>
+                                        <td>@guardian.Email</td>
+                                        <td>@guardian.Address</td>
+                                        <td>@guardian.OfficeAddress</td>
+                                        <td>@guardian.City</td>
+                                        <td>@guardian.State</td>
+                                        <td>@guardian.Pincode</td>
+                                        <td>@guardian.Country</td>
+                                        <td>@guardian.Mobile</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditStudentGuardianPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("_addStudentGuardian")
+    </div>
+</div>

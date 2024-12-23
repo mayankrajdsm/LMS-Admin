@@ -1,6 +1,9 @@
-﻿using LMS.Infrastructures.Interface;
+﻿using LMS.Infrastructures.DataAccess;
+using LMS.Infrastructures.Extensions;
+using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +15,20 @@ namespace LMS.Infrastructures.Repository
     public class ClassRepository: IClassRepository
     {
         private readonly TestContext _context;
-        public ClassRepository(TestContext context) => _context = context;
-        public async Task<IEnumerable<Class>> GetAllClass() => await _context.Classes.ToListAsync();
+        public ClassRepository(TestContext context) 
+        {
+            _context = context;
+        }
+        public async Task<IEnumerable<Class>> GetAllClass() 
+        {
+
+            return await _context.Classes.ToListAsync();
+        }
+        public async Task<int> InsertClass(Class classes)
+        {
+            _context.Classes.Add(classes);
+            return await _context.SaveChangesAsync();   
+        }
+
     }
 }

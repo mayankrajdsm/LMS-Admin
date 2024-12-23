@@ -5,6 +5,7 @@ namespace LMS.Infrastructures.Models;
 
 public partial class StudentContact
 {
+    public Guid StudentContactId {  get; set; }
     public string? Address1 { get; set; }
 
     public string? Address2 { get; set; }

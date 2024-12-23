@@ -1,3 +1,4 @@
+using LMS.Infrastructures.DataAccess;
 using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
 using LMS.Infrastructures.Repository;
@@ -12,17 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<TestContext>(options =>
-        options.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"));
+        options.UseSqlServer("Server=(localdb)\\LocalServer;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"));
 
 // Register Repository 
 builder.Services.AddScoped<IBookRepository,BookRepository>();
 builder.Services.AddScoped<IClassRepository,ClassRepository>();
+builder.Services.AddScoped<IStudentRepository,StudentRepository>();
 builder.Services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
 
 // Register Services
 builder.Services.AddScoped<IBookService,BookService>();
 builder.Services.AddScoped<IClassService,ClassService>();
+builder.Services.AddScoped<IStudentService,StudentService>();
+
+
+
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 builder.Services.AddScoped<IBuildingService, BuildingService>();
 var app = builder.Build();

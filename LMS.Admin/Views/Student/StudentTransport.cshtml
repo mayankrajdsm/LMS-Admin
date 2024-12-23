@@ -1,0 +1,47 @@
+﻿@model List<LMS.Infrastructures.Models.StudentTransport>
+@{
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditStudentTransportPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Student Transport
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mode of Transport</th>
+                                <th>Roll No</th>
+                                <th>Pickup Point</th>
+                                <th>Student ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var transport in Model)
+                                {
+                                    <tr>
+                                        <td>@transport.ModeOfTransport</td>
+                                        <td>@transport.RollNo</td>
+                                        <td>@transport.PickupPoint</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditStudentTransportPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("_addStudentTransport")
+    </div>
+</div>

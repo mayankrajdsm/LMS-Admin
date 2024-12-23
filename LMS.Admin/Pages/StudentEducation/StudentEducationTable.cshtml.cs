@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LMS.Admin.Views.Book
+namespace LMS.Admin.Pages.StudentEducation
 {
-    public class _addBookModel : PageModel
+    public class StudentEducationTableModel : PageModel
     {
-      
         public void OnGet()
         {
         }

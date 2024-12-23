@@ -10,5 +10,6 @@ namespace LMS.Infrastructures.Interface
     public interface IClassRepository
     {
         Task<IEnumerable<Class>> GetAllClass();
+        Task<int> InsertClass(Class classes);
     }
 }

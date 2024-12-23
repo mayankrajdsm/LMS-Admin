@@ -1,0 +1,166 @@
+﻿
+@model List<LMS.Infrastructures.Models.Student>
+@{
+}
+<div class="row">
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="template-demo">
+                <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                        data-bs-toggle="modal" data-bs-target="#dvAddEditStudentPopUp">
+                    <i class="mdi mdi-plus"></i>Add New Student
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>AdmissionNo</th>
+                            <th>AdmissionDate</th>
+                            <th>JoiningDate</th>
+                            <th>FirstName</th>
+                            <th>MiddleName</th>
+                            <th>LastName</th>
+                            <th>CalledName</th>
+                            <th>Batch</th>
+                            <th>Dob</th>
+                            <th>Category</th>
+                            <th>StudentSubType</th>
+                            <th>ClassofAdmission</th>
+                            <th>YearOfAdmission</th>
+                            <th>AdharNumber</th>
+                            <th>RegistrationNumber</th>
+                            <th>RegistrationNumberof9th</th>
+                            <th>RegistrationNumberof11th</th>
+                            <th>House</th>
+                            <th>Dorm</th>
+                            <th>RollNo</th>
+
+                            <th>EnrollmentNo</th>
+                            <th>Percent10</th>
+                            <th>RollNoof10</th>
+                            <th>RollNoof12</th>
+                            <th>Percent12</th>
+                            <th>ScholarshipOffered</th>
+                            <th>ScholarshipAmount</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>Gender</th>
+                            <th>Sibling</th>
+                            <th>BloodGroup</th>
+                            <th>BioIdentificationNo</th>
+                            <th>BelongsToBpl</th>
+                            <th>PhysicalDisability</th>
+                            <th>CasteCertificateNo</th>
+                            <th>FoodSecurityCardNo</th>
+                            <th>MedicalHistory</th>
+                            <th>IsChildCwsn</th>
+                            <th>PlaceOfBirth</th>
+
+                            <th>Nationality</th>
+                            <th>MotherTounge</th>
+                            <th>SocialCategory</th>
+                            <th>Religion</th>
+                            <th>Caste</th>
+                            <th>SubCaste</th>
+                            <th>IsBelongsToMinority</th>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>Gender</th>
+                            <th>Sibling</th>
+                            <th>BloodGroup</th>
+                            <th>BioIdentificationNo</th>
+                            <th>BelongsToBpl</th>
+                            <th>PhysicalDisability</th>
+                            <th>CasteCertificateNo</th>
+                            <th>FoodSecurityCardNo</th>
+                            <th>MedicalHistory</th>
+                            <th>IsChildCwsn</th>
+                            <th>PlaceOfBirth</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.AdmissionNo</td>
+                                    <td>@item.AdmissionDate</td>
+                                    <td>@item.JoiningDate</td>
+                                    <td>@item.CalledName</td>
+                                    <td>@item.FirstName</td>
+                                    <td>@item.MiddleName</td>
+                                    <td>@item.LastName</td>
+                                    <td>@item.CalledName</td>
+                                    <td>@item.Batch</td>
+                                    <td>@item.Dob</td>
+                                    <td>@item.Category</td>
+                                    <td>@item.StudentSubType</td>
+                                    <td>@item.ClassofAdmission</td>
+                                    <td>@item.YearOfAdmission</td>
+                                    <td>@item.AdharNumber</td>
+                                    <td>@item.RegistrationNumber</td>
+                                    <td>@item.RegistrationNumberof9th</td>
+                                    <td>@item.RegistrationNumberof11th</td>
+                                    <td>@item.House</td>
+                                    <td>@item.Dorm</td>
+                                    <td>@item.RollNo</td>
+                                    <td>@item.EnrollmentNo</td>
+                                    <td>@item.Percent10</td>
+                                    <td>@item.RollNoof10</td>
+                                    <td>@item.RollNoof12</td>
+                                    <td>@item.Percent12</td>
+                                    <td>@item.ScholarshipOffered</td>
+                                    <td>@item.ScholarshipAmount</td>
+                                    <td>@item.CalledName</td>
+                                    <td>@item.Height</td>
+                                    <td>@item.Weight</td>
+                                    <td>@item.Gender</td>
+                                    <td>@item.Sibling</td>
+                                    <td>@item.BloodGroup</td>
+                                    <td>@item.BioIdentificationNo</td>
+                                    <td>@item.BelongsToBpl</td>
+                                    <td>@item.PhysicalDisability</td>
+                                    <td>@item.CasteCertificateNo</td>
+                                    <td>@item.FoodSecurityCardNo</td>
+                                    <td>@item.MedicalHistory</td>
+                                    <td>@item.IsChildCwsn</td>
+                                    <td>@item.PlaceOfBirth</td>
+                                    <td>@item.Nationality</td>
+                                    <td>@item.MotherTounge</td>
+                                    <td>@item.SocialCategory</td>
+                                    <td>@item.Religion</td>
+                                    <td>@item.Caste</td>
+                                    <td>@item.SubCaste</td>
+                                    <td>@item.IsBelongsToMinority</td>
+                                    <td>@item.LastObtainedMarks</td>
+                                    <td>@item.BankAccountNo</td>
+                                    <td>@item.Ifsccode</td>
+                                    <td>@item.UniqueIdentificationNo</td>
+                                    <td>@item.LastSchoolStudied</td>
+                                    <td>@item.NoOfAttended</td>
+                                    <td>@item.Specialization</td>
+                                    <td>@item.PanNo</td>
+                                    <td>@item.OnlineAppNo</td>
+                                    <td>@item.LearningDisability</td>
+                                    <td>@item.StudentsPhoto</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="dvAddEditStudentPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("_addEditStudent")
+    </div>
+</div>

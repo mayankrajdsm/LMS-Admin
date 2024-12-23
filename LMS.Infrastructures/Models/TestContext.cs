@@ -67,9 +67,9 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<StudentContact> StudentContacts { get; set; }
 
-    public virtual DbSet<StudentEducation> StudentEducations { get; set; }
+    public virtual DbSet<StudentEducation> StudentEducation { get; set; }
 
-    public virtual DbSet<StudentGuardian> StudentGuardians { get; set; }
+    public virtual DbSet<StudentGuardian> StudentGuardian { get; set; }
 
     public virtual DbSet<StudentParent> StudentParents { get; set; }
 
@@ -87,7 +87,7 @@ public partial class TestContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\LocalServer;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -521,6 +521,101 @@ public partial class TestContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<StudentParent>(entity =>
+        {
+            entity.HasKey(e => e.ParentsId).HasName("PK__Parents__66DBADEE2D63C2B7");
+
+            entity.Property(e => e.ParentsId).ValueGeneratedNever();
+            entity.Property(e => e.FatherAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherAlternateEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherBusinessName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherCity)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherCompanyName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherCountry)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherNationality)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherOccupation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherOfficeAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherPan)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FatherQualification)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherAlternateEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherBusinessName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherCity)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherCompanyName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherCountry)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherNationality)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherOccupation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherOfficeAddress)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherPan)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherQualification)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MotherState)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Relation)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentParents)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK__Parents__Student__160F4887");
+        });
+
         modelBuilder.Entity<Staff>(entity =>
         {
             entity.HasKey(e => e.StaffId).HasName("PK__Staff__32D1F3C3BFA9F8CF");
@@ -729,9 +824,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentContact>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("StudentContact");
+            entity.HasKey(e => e.StudentContactId).HasName("PK__Students__3C2B9919B673CA");
 
             entity.Property(e => e.Address1)
                 .HasMaxLength(50)
@@ -818,12 +911,7 @@ public partial class TestContext : DbContext
             entity.Property(e => e.Education)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.Email)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Mobile)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+            entity.Property(e => e.Mobile);
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -831,8 +919,7 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.OfficeAddress)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+                .HasMaxLength(100);
             entity.Property(e => e.OfficeContact)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -846,9 +933,7 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
-                .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentGuardian_StudentId");
+            
         });
 
         modelBuilder.Entity<StudentParent>(entity =>
@@ -996,7 +1081,6 @@ public partial class TestContext : DbContext
             entity.HasKey(e => e.TransportId).HasName("PK__StudentT__19E9A11D88CF0BE5");
 
             entity.ToTable("StudentTransport");
-
             entity.Property(e => e.TransportId).ValueGeneratedNever();
             entity.Property(e => e.ModeOfTransport)
                 .HasMaxLength(50)
@@ -1004,7 +1088,6 @@ public partial class TestContext : DbContext
             entity.Property(e => e.PickupPoint)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-
             entity.HasOne(d => d.Student).WithMany(p => p.StudentTransports)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK_StudentTransport_StudentId");
