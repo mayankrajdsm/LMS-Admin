@@ -19,12 +19,9 @@ namespace LMS.Mapper.Services
         {
             List<LoginType> loginTypes = new List<LoginType>();
             var existingLoginTypes = await _loginTypeRepository.GetLoginTypes();
-            if (existingLoginTypes != null)
+            foreach (var loginType in existingLoginTypes)
             {
-                foreach (var loginType in existingLoginTypes)
-                {
-                    loginTypes.Add(loginType.ToBusinessObject());
-                }
+                loginTypes.Add(loginType.ToBusinessObject());
             }
             return loginTypes;
         }

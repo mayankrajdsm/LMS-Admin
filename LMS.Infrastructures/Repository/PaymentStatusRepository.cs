@@ -1,5 +1,4 @@
-﻿using LMS.Infrastructures.Interface;
-using LMS.Infrastructures.Models;
+﻿using LMS.Infrastructures.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LMS.Infrastructures.Repository
 {
-    public class PaymentStatusRepository : IPaymentStatusRepository
+    public class PaymentStatusRepository
     {
         private readonly TestContext _context;
 

@@ -18,12 +18,9 @@ namespace LMS.Mapper.Services
         {
             List<Department> departments = new List<Department>();
             var existingDepartments = await _departmentRepository.GetDepartments();
-            if (existingDepartments != null)
+            foreach (var department in existingDepartments)
             {
-                foreach (var department in existingDepartments)
-                {
-                    departments.Add(department.ToBusinessObject());
-                }
+                departments.Add(department.ToBusinessObject());
             }
             return departments;
         }

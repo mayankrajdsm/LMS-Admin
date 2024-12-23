@@ -13,6 +13,6 @@ namespace LMS.Infrastructures.Interface
         Task<PaymentStatus> GetPaymentStatusById(Guid paymentStatusId);
         Task<int> InsertPaymentStatus(PaymentStatus paymentStatus);
         Task<int> UpdatePaymentStatus(PaymentStatus paymentStatus);
-        Task<int> DeletePaymentStatus(Guid paymentStatusId);
+        Task DeletePaymentStatus(Guid paymentStatusId);
     }
 }
