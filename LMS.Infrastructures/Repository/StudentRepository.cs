@@ -26,11 +26,11 @@ namespace LMS.Infrastructures.Repository
         }
         public async Task<IEnumerable<StudentEducation>> GetAllStudentEducationAsync()
         {
-            return await _context.StudentEducation.ToListAsync();
+            return await _context.StudentEducations.ToListAsync();
         }
         public async Task<IEnumerable<StudentGuardian>> GetAllStudentGuardianAsync()
         {
-            return await _context.StudentGuardian.ToListAsync();
+            return await _context.StudentGuardians.ToListAsync();
         }
         public async Task<IEnumerable<StudentParent>> GetAllStudentParentAsync()
         {
@@ -52,12 +52,12 @@ namespace LMS.Infrastructures.Repository
         }
         public async Task<int> InsertStudentEducation(StudentEducation studentEducation)
         {
-            _context.StudentEducation.Add(studentEducation);
+            _context.StudentEducations.Add(studentEducation);
             return _context.SaveChanges();
         }
         public async Task<int> InsertStudentGuardian(StudentGuardian studentGuardian)
         {
-            _context.StudentGuardian.Add(studentGuardian);
+            _context.StudentGuardians.Add(studentGuardian);
             return _context.SaveChanges();
         }
         public async Task<int> InsertStudentParents(StudentParent studentParent)

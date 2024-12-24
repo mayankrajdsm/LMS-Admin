@@ -13,18 +13,18 @@ namespace LMS.Infrastructures.Repository
     {
         private readonly TestContext _context;
         public SubscriptionPackageRepository(TestContext context) => _context = context;
-        public async Task<IEnumerable<SubscriptionPakage>> GetSubscriptionPakages() => await _context.SubscriptionPakages.ToListAsync();
-        public async Task<SubscriptionPakage> GetSubscriptionPakageById(Guid subscriptionPakageId) => await _context.SubscriptionPakages.FindAsync(subscriptionPakageId);
-        public async Task<int> InsertSubscriptionPakage(SubscriptionPakage subscriptionPakage)
+        public async Task<IEnumerable<SubscriptionPackage>> GetSubscriptionPackages() => await _context.SubscriptionPackages.ToListAsync();
+        public async Task<SubscriptionPackage> GetSubscriptionPackageById(Guid subscriptionPackageId) => await _context.SubscriptionPackages.FindAsync(subscriptionPackageId);
+        public async Task<int> InsertSubscriptionPackage(SubscriptionPackage subscriptionPackage)
         {
-            _context.SubscriptionPakages.Add(subscriptionPakage);
+            _context.SubscriptionPackages.Add(subscriptionPackage);
             return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateSubscriptionPakage(SubscriptionPakage subscriptionPakage) => await _context.SaveChangesAsync();
-        public async Task<int> DeleteSubscriptionPakage(Guid subscriptionPakageId)
+        public async Task<int> UpdateSubscriptionPackage(SubscriptionPackage subscriptionPackage) => await _context.SaveChangesAsync();
+        public async Task<int> DeleteSubscriptionPackage(Guid subscriptionPackageId)
         {
-            var subscriptionPakage = await _context.SubscriptionPakages.FindAsync(subscriptionPakageId);
-            _context.SubscriptionPakages.Remove(subscriptionPakage);
+            var subscriptionPackage = await _context.SubscriptionPackages.FindAsync(subscriptionPackageId);
+            _context.SubscriptionPackages.Remove(subscriptionPackage);
             return await _context.SaveChangesAsync();
         }
     }

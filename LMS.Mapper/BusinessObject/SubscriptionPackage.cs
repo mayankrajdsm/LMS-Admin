@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LMS.Mapper.BusinessObject
 {
-    public class SubscriptionPakage
+    public class SubscriptionPackage
     {
-        public string SubscriptionPakageId { get; set; }
+        public string SubscriptionPackageId { get; set; }
 
-        public string SubscriptionPakageName { get; set; } = null!;
+        public string SubscriptionPackageName { get; set; } = null!;
 
         public int SubscriptionPeriodMonths { get; set; }
 

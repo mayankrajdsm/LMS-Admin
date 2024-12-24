@@ -9,10 +9,10 @@ namespace LMS.Infrastructures.Interface
 {
     public interface ISubscriptionPackageRepository
     {
-        Task<IEnumerable<SubscriptionPakage>> GetSubscriptionPakages();
-        Task<SubscriptionPakage> GetSubscriptionPakageById(Guid subscriptionPakageId);
-        Task<int> InsertSubscriptionPakage(SubscriptionPakage subscriptionPakage);
-        Task<int> UpdateSubscriptionPakage(SubscriptionPakage subscriptionPakage);
-        Task<int> DeleteSubscriptionPakage(Guid subscriptionPakageId);
+        Task<IEnumerable<SubscriptionPackage>> GetSubscriptionPackages();
+        Task<SubscriptionPackage> GetSubscriptionPackageById(Guid subscriptionPackageId);
+        Task<int> InsertSubscriptionPackage(SubscriptionPackage subscriptionPackage);
+        Task<int> UpdateSubscriptionPackage(SubscriptionPackage subscriptionPackage);
+        Task<int> DeleteSubscriptionPackage(Guid subscriptionPackageId);
     }
 }

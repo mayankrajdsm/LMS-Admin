@@ -7,9 +7,9 @@ public partial class SubscriptionsTransaction
 {
     public Guid SubscriptionsTransactionStudentId { get; set; }
 
-    public string StudentTeacherId { get; set; } = null!;
+    public string StudentTeacher { get; set; } = null!;
 
-    public Guid StudentId { get; set; }
+    public Guid StudentTeacherId { get; set; }
 
     public Guid SubscriptionPakageId { get; set; }
 
@@ -29,9 +29,9 @@ public partial class SubscriptionsTransaction
 
     public Guid? ModifiedBy { get; set; }
 
-    public SubscriptionPayment Payment { get; set; } = null!;
+    public virtual SubscriptionPayment Payment { get; set; } = null!;
 
-    public Student Student { get; set; } = null!;
+    public virtual Student StudentTeacherNavigation { get; set; } = null!;
 
-    public SubscriptionPakage SubscriptionPakage { get; set; } = null!;
+    public virtual SubscriptionPackage SubscriptionPakage { get; set; } = null!;
 }

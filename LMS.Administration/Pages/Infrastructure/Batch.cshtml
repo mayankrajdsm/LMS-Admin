@@ -2,3 +2,95 @@
 @model LMS.Administration.Pages.Infrastructure.BatchModel
 @{
 }
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditBatchPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditBatchPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Batch
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Domain Name</th>
+                                <th>Batch Name</th>
+                                <th>Address 1</th>
+                                <th>Address2</th>
+                                <th>Country</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>ContactPerson</th>
+                                <th>Contact Number</th>
+                                <th>Contact Email</th>
+                                <th>IsActive</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.Batchs.Any())
+                                {
+                                    @foreach (var item in Model.Batchs)
+                                    {
+                                        <tr>
+                                            <td>@item.BatchName</td>
+                                            <td>@item.Address1</td>
+                                            <td>@item.Address2</td>
+                                            <td>@item.CountryId</td>
+                                            <td>@item.StateId</td>
+                                            <td>@item.CityId</td>
+                                            <td>@item.ContactPerson</td>
+                                            <td>@item.ContactNo</td>
+                                            <td>@item.ContactEmail</td>
+                                            <td>@item.IsActive</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.BatchId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditBatchPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Batch</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_addEditBatch.cshtml", new Batch())
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Item Section -->
+@if (Model.editBatch != null)
+{
+    <div class="modal fade" id="dvAddEditBatchPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Batch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_addEditBatch.cshtml", Model.editBatch)
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -11,9 +11,9 @@ namespace LMS.Mapper.BusinessObject
     {
         public string SubscriptionsTransactionStudentId { get; set; }
 
-        public string StudentTeacherId { get; set; } = null!;
+        public string StudentTeacher { get; set; } = null!;
 
-        public string StudentId { get; set; }
+        public string StudentTeacherId { get; set; }
 
         public string SubscriptionPakageId { get; set; }
 
@@ -37,6 +37,6 @@ namespace LMS.Mapper.BusinessObject
 
         public Student Student { get; set; } = null!;
 
-        public SubscriptionPakage SubscriptionPakage { get; set; } = null!;
+        public SubscriptionPackage SubscriptionPakage { get; set; } = null!;
     }
 }

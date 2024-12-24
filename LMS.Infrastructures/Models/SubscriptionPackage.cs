@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class SubscriptionPakage
+public partial class SubscriptionPackage
 {
-    public Guid SubscriptionPakageId { get; set; }
+    public Guid SubscriptionPackageId { get; set; }
 
-    public string SubscriptionPakageName { get; set; } = null!;
+    public string SubscriptionPackageName { get; set; } = null!;
 
     public int SubscriptionPeriodMonths { get; set; }
 
@@ -27,5 +27,5 @@ public partial class SubscriptionPakage
 
     public Guid? ModifiedBy { get; set; }
 
-    public List<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();
+    public virtual ICollection<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();
 }

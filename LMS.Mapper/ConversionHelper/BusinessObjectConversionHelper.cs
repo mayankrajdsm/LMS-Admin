@@ -286,12 +286,12 @@ namespace LMS.Mapper.ConversionHelper
                 ModifiedBy = Convert.ToString(studentSubType.ModifiedBy),
             };
         }
-        public static BusinessObject.SubscriptionPakage ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionPakage subscriptionPackage)
+        public static BusinessObject.SubscriptionPackage ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionPackage subscriptionPackage)
         {
-            return new BusinessObject.SubscriptionPakage
+            return new BusinessObject.SubscriptionPackage
             {
-                SubscriptionPakageId = subscriptionPackage.SubscriptionPakageId == null ? "" : Convert.ToString(subscriptionPackage.SubscriptionPakageId),
-                SubscriptionPakageName = Convert.ToString(subscriptionPackage.SubscriptionPakageName),
+                SubscriptionPackageId = subscriptionPackage.SubscriptionPackageId == null ? "" : Convert.ToString(subscriptionPackage.SubscriptionPackageId),
+                SubscriptionPackageName = Convert.ToString(subscriptionPackage.SubscriptionPackageName),
                 SubscriptionPeriodMonths = subscriptionPackage.SubscriptionPeriodMonths,
                 PriceMonth = subscriptionPackage.PriceMonth,
                 DiscountPer = subscriptionPackage.DiscountPer,
@@ -304,35 +304,35 @@ namespace LMS.Mapper.ConversionHelper
                 //SubscriptionsTransactions = subscriptionPackage.SubscriptionsTransactions,
             };
         }
-        //public static BusinessObject.SubscriptionPayment ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionPayment subscriptionPayment)
-        //{
-        //    return new BusinessObject.SubscriptionPayment
-        //    {
-        //        PaymentId = subscriptionPayment.SubscriptionPakageId == null ? "" : Convert.ToString(subscriptionPayment.SubscriptionPakageId),
-        //        ReceiptNo = Convert.ToString(subscriptionPayment.ReceiptNo),
-        //        StudentTeacher = subscriptionPayment.StudentTeacher,
-        //        StudentTeacherId = Convert.ToString(subscriptionPayment.StudentTeacherId),
-        //        SubscriptionPakageId = Convert.ToString(subscriptionPayment.SubscriptionPakageId),
-        //        Rate = subscriptionPayment.Rate,
-        //        Months = subscriptionPayment.Months,
-        //        DiscountPer = subscriptionPayment.DiscountPer,
-        //        PaymentStatus = subscriptionPayment.PaymentStatus,
-        //        IsActive = subscriptionPayment.IsActive,
-        //        CreatedOn = subscriptionPayment.CreatedOn,
-        //        CreatedBy = Convert.ToString(subscriptionPayment.CreatedBy),
-        //        ModifiedOn = subscriptionPayment.ModifiedOn,
-        //        ModifiedBy = Convert.ToString(subscriptionPayment.ModifiedBy),
-        //        PaymentStatusNavigation = subscriptionPayment.PaymentStatusNavigation,
-        //        SubscriptionsTransactions = subscriptionPayment.SubscriptionsTransactions,
-        //    };
-        //}
+        public static BusinessObject.SubscriptionPayment ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionPayment subscriptionPayment)
+        {
+            return new BusinessObject.SubscriptionPayment
+            {
+                PaymentId = subscriptionPayment.SubscriptionPakageId == null ? "" : Convert.ToString(subscriptionPayment.SubscriptionPakageId),
+                ReceiptNo = Convert.ToString(subscriptionPayment.ReceiptNo),
+                StudentTeacher = subscriptionPayment.StudentTeacher,
+                StudentTeacherId = Convert.ToString(subscriptionPayment.StudentTeacherId),
+                SubscriptionPakageId = Convert.ToString(subscriptionPayment.SubscriptionPakageId),
+                Rate = subscriptionPayment.Rate,
+                Months = subscriptionPayment.Months,
+                DiscountPer = subscriptionPayment.DiscountPer,
+                PaymentStatus = Convert.ToString(subscriptionPayment.PaymentStatus),
+                IsActive = subscriptionPayment.IsActive,
+                CreatedOn = subscriptionPayment.CreatedOn,
+                CreatedBy = Convert.ToString(subscriptionPayment.CreatedBy),
+                ModifiedOn = subscriptionPayment.ModifiedOn,
+                ModifiedBy = Convert.ToString(subscriptionPayment.ModifiedBy),
+                //PaymentStatusNavigation = subscriptionPayment.PaymentStatusNavigation,
+                //SubscriptionsTransactions = subscriptionPayment.SubscriptionsTransactions,
+            };
+        }
         public static BusinessObject.SubscriptionsTransaction ToBusinessObject(this LMS.Infrastructures.Models.SubscriptionsTransaction subscriptionsTransaction)
         {
             return new BusinessObject.SubscriptionsTransaction
             {
                 SubscriptionsTransactionStudentId = subscriptionsTransaction.SubscriptionsTransactionStudentId == null ? "" : Convert.ToString(subscriptionsTransaction.SubscriptionsTransactionStudentId),
+                StudentTeacher = subscriptionsTransaction.StudentTeacher,
                 StudentTeacherId = Convert.ToString(subscriptionsTransaction.StudentTeacherId),
-                StudentId = Convert.ToString(subscriptionsTransaction.StudentId),
                 SubscriptionPakageId = Convert.ToString(subscriptionsTransaction.SubscriptionPakageId),
                 PaymentId = Convert.ToString(subscriptionsTransaction.PaymentId),
                 ValidFrom = subscriptionsTransaction.ValidFrom,
