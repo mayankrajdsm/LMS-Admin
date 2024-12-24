@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model LMS.Administration.Pages.Configuration.EmployementType
+@{
+}
+<form method="post">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label asp-for="EmployementTypeCode" class="form-label"></label>
+                <input asp-for="EmployementTypeCode" class="form-control" />
+                <span asp-validation-for="EmployementTypeCode" class="text-danger"></span>
+                <input type="hidden" asp-for="EmployementTypeId" />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label asp-for="EmployementTypeName" class="form-label"></label>
+                <input asp-for="EmployementTypeName" class="form-control" />
+                <span asp-validation-for="EmployementTypeName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="IsActive" class="form-label"></label>
+                    <input type="checkbox" asp-for="IsActive" class="form-control" />
+                    <span asp-validation-for="IsActive" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+</form>

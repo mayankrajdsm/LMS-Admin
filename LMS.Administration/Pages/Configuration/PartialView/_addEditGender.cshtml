@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model LMS.Administration.Pages.Configuration.Gender
+@{
+}
+<form method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-check">
+                    <label asp-for="GenderCode" class="form-label"></label>
+                    <input asp-for="GenderCode" class="form-control" />
+                    <span asp-validation-for="GenderCode" class="text-danger"></span>
+                    <input type="hidden" asp-for="GenderId" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label asp-for="GenderName" class="form-label"></label>
+                <input asp-for="GenderName" class="form-control" />
+                <span asp-validation-for="GenderName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="IsActive" class="form-label"></label>
+                    <input type="checkbox" asp-for="IsActive" class="form-control" />
+                    <span asp-validation-for="IsActive" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+</form>

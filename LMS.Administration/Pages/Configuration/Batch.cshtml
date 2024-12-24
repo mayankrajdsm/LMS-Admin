@@ -1,5 +1,5 @@
 ﻿@page
-@model LMS.Administration.Pages.Infrastructure.BatchModel
+@model LMS.Administration.Pages.Configuration.BatchModel
 @{
 }
 <div class="row">
@@ -16,41 +16,39 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Domain Name</th>
-                                <th>Batch Name</th>
-                                <th>Address 1</th>
-                                <th>Address2</th>
-                                <th>Country</th>
-                                <th>State</th>
-                                <th>City</th>
-                                <th>ContactPerson</th>
-                                <th>Contact Number</th>
-                                <th>Contact Email</th>
-                                <th>IsActive</th>
+                                <th>Batch Code</th>
+                                <th>From Date</th>
+                                <th>To Date</th>
+                                <th>Status</th>
+                                <th>Created By</th>
+                                <th>Created On</th>
+                                <th>Modified By</th>
+                                <th>Modified On</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (Model != null)
                             {
-                                if (Model.Batchs.Any())
+                                if (Model.batches.Any())
                                 {
-                                    @foreach (var item in Model.Batchs)
+                                    @foreach (var item in Model.batches)
                                     {
                                         <tr>
-                                            <td>@item.BatchName</td>
-                                            <td>@item.Address1</td>
-                                            <td>@item.Address2</td>
-                                            <td>@item.CountryId</td>
-                                            <td>@item.StateId</td>
-                                            <td>@item.CityId</td>
-                                            <td>@item.ContactPerson</td>
-                                            <td>@item.ContactNo</td>
-                                            <td>@item.ContactEmail</td>
-                                            <td>@item.IsActive</td>
+                                            <td>@item.BatchCode</td>
+                                            <td>@item.FromDate</td>
+                                            <td>@item.ToDate</td>
+                                            <td>@item.IsActive?"Active":"In Active"</td>
+                                            <td>@item.CreatedBy</td>
+                                            <td>@item.CreatedOn</td>
+                                            <td>@item.ModifiedBy</td>
+                                            <td>@item.ModifiedOn</td>
                                             <td>
                                                 <form method="get" asp-page-handler="Edit" asp-route-id="@item.BatchId" class="d-inline">
                                                     <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                                <form method="get" asp-page-handler="Delete" asp-route-id="@item.BatchId" class="d-inline">
+                                                    <button type="submit" class="btn btn-error btn-sm">Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -72,7 +70,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_addEditBatch.cshtml", new Batch())
+                @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditBatch.cshtml", new Batch())
             </div>
         </div>
     </div>
@@ -88,7 +86,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_addEditBatch.cshtml", Model.editBatch)
+                    @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditBatch.cshtml", Model.editBatch)
                 </div>
             </div>
         </div>
