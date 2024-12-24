@@ -61,6 +61,8 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<State> States { get; set; }
 
+    public virtual DbSet<Status> Statuses { get; set; }
+
     public virtual DbSet<Student> Students { get; set; }
 
     public virtual DbSet<StudentCateogory> StudentCateogories { get; set; }
@@ -603,6 +605,23 @@ public partial class TestContext : DbContext
                 .HasConstraintName("FK__State__Country_I__31EC6D26");
         });
 
+        modelBuilder.Entity<Status>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Status__3214EC276EA8F769");
+
+            entity.ToTable("Status");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.Name)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Student>(entity =>
         {
             entity.HasKey(e => e.StudentId).HasName("PK__Students__32C52B9919B673CA");
@@ -967,6 +986,10 @@ public partial class TestContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("Token_No");
+
+            entity.HasOne(d => d.BookingStatusNavigation).WithMany(p => p.StudentSeatBookings)
+                .HasForeignKey(d => d.BookingStatus)
+                .HasConstraintName("FK_StudentSeatBooking_Status");
 
             entity.HasOne(d => d.Student).WithMany(p => p.StudentSeatBookings)
                 .HasForeignKey(d => d.StudentId)

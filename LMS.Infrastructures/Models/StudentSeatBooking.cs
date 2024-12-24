@@ -27,5 +27,9 @@ public partial class StudentSeatBooking
 
     public Guid? ModifiedBy { get; set; }
 
+    public Guid? BookingStatus { get; set; }
+
+    public virtual Status? BookingStatusNavigation { get; set; }
+
     public virtual Student Student { get; set; } = null!;
 }

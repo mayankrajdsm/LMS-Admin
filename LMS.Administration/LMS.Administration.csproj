@@ -37,6 +37,7 @@
     <Folder Include="Pages\Country\PartialView\" />
     <Folder Include="Pages\Generate\PartialView\" />
     <Folder Include="Pages\Home\PartialView\" />
+    <Folder Include="Pages\Configuration\" />
   </ItemGroup>
 
 </Project>
