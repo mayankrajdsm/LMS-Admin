@@ -1,7 +1,5 @@
 using LMS.Administration.Middleware;
-using LMS.Administration.Pages.Infrastructure;
 using LMS.Mapper.IService;
-using LMS.Mapper.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
@@ -26,10 +24,16 @@ namespace LMS.Admin.Views.Home
         public AboutUs aboutUs { get; set; }
         public async Task<IActionResult> OnGet()
         {
-            var existingAbout = _aboutUsService.GetBuildings().Result.FirstOrDefault();
-            aboutUs.id = existingAbout.AboutUsId;
-            aboutUs.heading = existingAbout.AboutUsTitle;
-            aboutUs.message = existingAbout.AboutUsText;
+            //var existingAbout = await _aboutUsService.GetBuildings();
+            //if (existingAbout.Any())
+            //{
+            //    for (int i = 0; i == 0; i++)
+            //    {
+            //        aboutUs.id = existingAbout[i].AboutUsId;
+            //        aboutUs.heading = existingAbout[i].AboutUsTitle;
+            //        aboutUs.message = existingAbout[i].AboutUsText;
+            //    }
+            //}
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()

@@ -1,0 +1,13 @@
+﻿body {
+}
+.dataTables_filter {
+    float: right;
+}
+.dataTables_paginate {
+    text-align: center;
+    margin-left: 20%;
+    margin-top: -3%;
+}
+.dataTables_info {
+    float: right;
+}

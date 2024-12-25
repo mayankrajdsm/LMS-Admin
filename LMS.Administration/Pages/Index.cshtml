@@ -2,14 +2,9 @@
 @model LMS.Admin.Views.Home.IndexModel
 @{
     ViewBag.Ref = "";
-    ViewBag.Title = "";
+    ViewBag.Title = "Home";
 }
-@* <div class="page-header flex-wrap">
-    <div class="header-left">
-        <h2>Welcome to Library Management System</h2>
-    </div>
-</div> *@
-<!-- first row starts here -->
+<!-- Widgets -->
 <div class="row clearfix">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="info-box bg-pink hover-expand-effect">
@@ -312,3 +307,17 @@
     </div>
     <!-- #END# Browser Usage -->
 </div>
+
+<!-- ChartJs -->
+<script src="~/assets/plugins/chartjs/Chart.bundle.js"></script>
+
+<!-- Flot Charts Plugin Js -->
+<script src="~/assets/plugins/flot-charts/jquery.flot.js"></script>
+<script src="~/assets/plugins/flot-charts/jquery.flot.resize.js"></script>
+<script src="~/assets/plugins/flot-charts/jquery.flot.pie.js"></script>
+<script src="~/assets/plugins/flot-charts/jquery.flot.categories.js"></script>
+<script src="~/assets/plugins/flot-charts/jquery.flot.time.js"></script>
+
+<!-- Sparkline Chart Plugin Js -->
+<script src="~/assets/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="~/assets/js/pages/index.js"></script> 

@@ -1,27 +1,4 @@
-﻿@* <div class="page-header">
-    @if (!string.IsNullOrEmpty(ViewBag.Title))
-    {
-        <h3 class="page-title">@ViewBag.Title</h3>
-    }
-    else
-    {
-        <h3 class="page-title"></h3>
-    }
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">@ViewBag.Ref</a></li>
-            <li class="breadcrumb-item active" aria-current="page"> @ViewBag.Title </li>
-        </ol>
-    </nav>
-</div> *@
-<div class="block-header">
-    @if (!string.IsNullOrEmpty(ViewBag.Title))
-    {
-        <h2>@ViewBag.Title</h2>
-    }
-    else
-    {
-        <h2></h2>
-    }
-    
-</div>
+﻿<ol class="breadcrumb breadcrumb-bg-pink">
+    <li><a href="javascript:void(0);"><i class="material-icons">home</i> @ViewBag.Ref</a></li>
+    <li class="active"><i class="material-icons">library_books</i> @ViewBag.Title</li>
+</ol>

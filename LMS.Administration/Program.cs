@@ -28,6 +28,8 @@ builder.Services.AddDbContext<TestContext>(options =>
 
 //builder.Services.AddScoped<CustomAuthFilter>();
 builder.Services.AddScoped<IActiveUserService, ActiveUserService>();
+builder.Services.AddScoped<IAboutUsRepository, AboutUsRepository>();
+builder.Services.AddScoped<IAboutUsService, AboutUsService>();
 
 // Register Repository 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
