@@ -24,7 +24,7 @@ namespace LMS.Admin.Controllers
         }
         public IActionResult InsertStudentContact(StudentContact studentContact) 
         {
-            studentContact.StudentContactId = Guid.NewGuid();
+            //studentContact.StudentContactId = Guid.NewGuid();
             studentContact.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
             int result=_studentService.InsertStudentContact(studentContact).Result;
             if (result > 0) 

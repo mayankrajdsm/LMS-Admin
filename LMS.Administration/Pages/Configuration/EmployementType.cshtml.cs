@@ -1,6 +1,9 @@
 using LMS.Administration.Middleware;
+using LMS.Mapper.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMS.Administration.Pages.Configuration
 {
@@ -16,7 +19,9 @@ namespace LMS.Administration.Pages.Configuration
             _activeUserService = activeUserService;
         }
         public List<LMS.Mapper.BusinessObject.EmployementType> employementTypes { get; set; }
+        [BindProperty]
         public EmployementType newEmployementType { get; set; }
+        [BindProperty]
         public EmployementType editEmployementType { get; set; }
         public async Task<IActionResult> OnGet()
         {
@@ -39,19 +44,19 @@ namespace LMS.Administration.Pages.Configuration
                 employementType.IsActive = true;
                 employementType.CreatedOn = DateTime.Now;
                 employementType.CreatedBy = _activeUserService.UserId;
-                int isSave = await _employementTypeService.InsertEmployementType(batch);
+                int isSave = await _employementTypeService.InsertEmployementType(employementType);
             }
             else
             {
-                var existingEmployementType = await _batchService.GetBatchById(newEmployementType.BatchId);
+                var existingEmployementType = await _employementTypeService.GetEmployementTypeById(newEmployementType.EmployementTypeId);
                 if (existingEmployementType != null)
                 {
-                    existingEmployementType.EmployementTypeCode = newBuilding.EmployementTypeCode;
-                    existingEmployementType.EmployementTypeName = newBuilding.EmployementTypeName;
-                    existingEmployementType.IsActive = newBuilding.IsActive;
+                    existingEmployementType.EmployementTypeCode = newEmployementType.EmployementTypeCode;
+                    existingEmployementType.EmployementTypeName = newEmployementType.EmployementTypeName;
+                    existingEmployementType.IsActive = newEmployementType.IsActive;
                     existingEmployementType.ModifiedOn = DateTime.Now;
                     existingEmployementType.ModifiedBy = _activeUserService.UserId;
-                    int isUpdated = await _employementTypeService.UpdateEmployementType(existingBatch);
+                    int isUpdated = await _employementTypeService.UpdateEmployementType(existingEmployementType);
                 }
             }
 
@@ -60,7 +65,7 @@ namespace LMS.Administration.Pages.Configuration
 
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            var existingEmployementType = await _employementTypeService.GetEmployementTypeById(newEmployementType.BatchId);
+            var existingEmployementType = await _employementTypeService.GetEmployementTypeById(newEmployementType.EmployementTypeId);
             if (existingEmployementType == null)
             {
                 return NotFound();
@@ -76,6 +81,8 @@ namespace LMS.Administration.Pages.Configuration
         public async Task<IActionResult> OnPostDeleteAsync(string id)
         {
             int isDeleted = await _employementTypeService.DeleteEmployementType(id);
+
+            employementTypes = await _employementTypeService.GetEmployementTypes();
             return Page();
         }
     }
@@ -87,7 +94,7 @@ namespace LMS.Administration.Pages.Configuration
         public string EmployementTypeCode { get; set; } = null!;
         [Required]
         [DisplayName("Employement Type Name")]
-        public DateTime EmployementTypeName { get; set; }
-        public string IsActive { get; set; }
+        public string EmployementTypeName { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace LMS.Administration.Pages.Infrastructure
             _logger = logger;
             _domainService = domainService;
         }
+        [BindProperty]
         public Domain domain { get; set; }
         public async Task<IActionResult> OnGet()
         {

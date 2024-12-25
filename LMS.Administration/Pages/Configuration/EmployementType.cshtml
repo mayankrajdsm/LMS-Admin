@@ -29,15 +29,13 @@
                         <tbody>
                             @if (Model != null)
                             {
-                                if (Model.batches.Any())
+                                if (Model.employementTypes.Any())
                                 {
-                                    @foreach (var item in Model.batches)
+                                    @foreach (var item in Model.employementTypes)
                                     {
                                         <tr>
-                                            <td>@item.BatchId</td>
-                                            <td>@item.BatchCode</td>
-                                            <td>@item.FromDate</td>
-                                            <td>@item.ToDate</td>
+                                            <td>@item.EmployementTypeCode</td>
+                                            <td>@item.EmployementTypeName</td>
                                             <td>@item.IsActive?"Active":"In Active"</td>
                                             <td>@item.CreatedBy</td>
                                             <td>@item.CreatedOn</td>
@@ -47,7 +45,7 @@
                                                 <form method="get" asp-page-handler="Edit" asp-route-id="@item.EmployementTypeId" class="d-inline">
                                                     <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                                                 </form>
-                                                <form method="get" asp-page-handler="Delete" asp-route-id="@item.EmployementTypeId" class="d-inline">
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.EmployementTypeId" class="d-inline">
                                                     <button type="submit" class="btn btn-error btn-sm">Delete</button>
                                                 </form>
                                             </td>

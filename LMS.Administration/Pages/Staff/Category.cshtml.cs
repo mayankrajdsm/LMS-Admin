@@ -23,6 +23,7 @@ namespace LMS.Administration.Pages.Staff
             _staffTypeService = staffTypeService;
             _activeUserService = activeUserService;
         }
+        [BindProperty]
         public List<LMS.Mapper.BusinessObject.StaffType> _lstStaffType { get; set; }
 
         public Designation newDesignation { get; set; }

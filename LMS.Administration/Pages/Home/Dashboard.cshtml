@@ -4,590 +4,305 @@
     ViewBag.Ref = "Home";
     ViewBag.Title = "Dashboard";
 }
-@* <div class="page-header flex-wrap">
-    <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
-        <div class="d-flex align-items-center">
-            <a href="#">
-                <p class="m-0 pr-3">Dashboard</p>
-            </a>
-            <a class="pl-3 mr-4" href="#">
-                <p class="m-0">ADE-00234</p>
-            </a>
+<div class="row clearfix">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-pink hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">playlist_add_check</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW TASKS</div>
+                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+            </div>
         </div>
-        <button type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-            <i class="mdi mdi-plus-circle"></i> Add Prodcut
-        </button>
     </div>
-</div> *@
-<!-- first row starts here -->
-<div class="row">
-    <div class="col-xl-9 stretch-card grid-margin">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-cyan hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">help</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW TICKETS</div>
+                <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-light-green hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">forum</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW COMMENTS</div>
+                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-orange hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">person_add</i>
+            </div>
+            <div class="content">
+                <div class="text">NEW VISITORS</div>
+                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Widgets -->
+<!-- CPU Usage -->
+<div class="row clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between flex-wrap">
-                    <div>
-                        <div class="card-title mb-0">Sales Revenue</div>
-                        <h3 class="font-weight-bold mb-0">$32,409</h3>
+            <div class="header">
+                <div class="row clearfix">
+                    <div class="col-xs-12 col-sm-6">
+                        <h2>CPU USAGE (%)</h2>
                     </div>
-                    <div>
-                        <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
-                            <div class="d-flex mr-5">
-                                <button type="button" class="btn btn-social-icon btn-outline-sales">
-                                    <i class="mdi mdi-inbox-arrow-down"></i>
-                                </button>
-                                <div class="pl-2">
-                                    <h4 class="mb-0 font-weight-semibold head-count"> $8,217 </h4>
-                                    <span class="font-10 font-weight-semibold text-muted">TOTAL SALES</span>
-                                </div>
-                            </div>
-                            <div class="d-flex mr-3 mt-2 mt-sm-0">
-                                <button type="button" class="btn btn-social-icon btn-outline-sales profit">
-                                    <i class="mdi mdi-cash text-info"></i>
-                                </button>
-                                <div class="pl-2">
-                                    <h4 class="mb-0 font-weight-semibold head-count"> 2,804 </h4>
-                                    <span class="font-10 font-weight-semibold text-muted">TOTAL PROFIT</span>
-                                </div>
-                            </div>
+                    <div class="col-xs-12 col-sm-6 align-right">
+                        <div class="switch panel-switch-btn">
+                            <span class="m-r-10 font-12">REAL TIME</span>
+                            <label>OFF<input type="checkbox" id="realtime" checked><span class="lever switch-col-cyan"></span>ON</label>
                         </div>
                     </div>
                 </div>
-                <p class="text-muted font-13 mt-2 mt-sm-0">
-                    Your sales monitoring dashboard template. <a class="text-muted font-13" href="#"><u>Learn more</u></a>
-                </p>
-                <div class="flot-chart-wrapper">
-                    <div id="flotChart" class="flot-chart">
-                        <canvas class="flot-base"></canvas>
-                    </div>
-                </div>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);">Action</a></li>
+                            <li><a href="javascript:void(0);">Another action</a></li>
+                            <li><a href="javascript:void(0);">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
-    <div class="col-xl-3 stretch-card grid-margin">
-        <div class="card card-img">
-            <div class="card-body d-flex align-items-center">
-                <div class="text-white">
-                    <h1 class="font-20 font-weight-semibold mb-0"> Get premium </h1>
-                    <h1 class="font-20 font-weight-semibold">account!</h1>
-                    <p>to optimize your selling prodcut</p>
-                    <p class="font-10 font-weight-semibold"> Enjoy the advantage of premium. </p>
-                    <button class="btn bg-white font-12">Get Premium</button>
-                </div>
+            <div class="body">
+                <div id="real_time_chart" class="dashboard-flot-chart"></div>
             </div>
         </div>
     </div>
 </div>
-<!-- chart row starts here -->
-<div class="row">
-    <div class="col-sm-6 stretch-card grid-margin">
+<!-- #END# CPU Usage -->
+<div class="row clearfix">
+    <!-- Visitors -->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div class="card-title">
-                        Customers <small class="d-block text-muted">August 01 - August 31</small>
-                    </div>
-                    <div class="d-flex text-muted font-20">
-                        <i class="mdi mdi-printer mouse-pointer"></i>
-                        <i class="mdi mdi-help-circle-outline ml-2 mouse-pointer"></i>
-                    </div>
+            <div class="body bg-pink">
+                <div class="sparkline" data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
+                     data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
+                     data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
+                     data-fill-Color="rgba(0, 188, 212, 0)">
+                    12,10,9,6,5,6,10,5,7,5,12,13,7,12,11
                 </div>
-                <h3 class="font-weight-bold mb-0">
-                    2,409 <span class="text-success h5">4,5%<i class="mdi mdi-arrow-up"></i></span>
-                </h3>
-                <span class="text-muted font-13">Avg customers/Day</span>
-                <div class="line-chart-wrapper">
-                    <canvas id="linechart" height="80"></canvas>
-                </div>
+                <ul class="dashboard-stat-list">
+                    <li>
+                        TODAY
+                        <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        YESTERDAY
+                        <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                    </li>
+                    <li>
+                        LAST WEEK
+                        <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="col-sm-6 stretch-card grid-margin">
+    <!-- #END# Visitors -->
+    <!-- Latest Social Trends -->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div class="card-title">
-                        Conversions <small class="d-block text-muted">August 01 - August 31</small>
-                    </div>
-                    <div class="d-flex text-muted font-20">
-                        <i class="mdi mdi-printer mouse-pointer"></i>
-                        <i class="mdi mdi-help-circle-outline ml-2 mouse-pointer"></i>
-                    </div>
-                </div>
-                <h3 class="font-weight-bold mb-0">
-                    0.40% <span class="text-success h5">0.20%<i class="mdi mdi-arrow-up"></i></span>
-                </h3>
-                <span class="text-muted font-13">Avg customers/Day</span>
-                <div class="bar-chart-wrapper">
-                    <canvas id="barchart" height="80"></canvas>
-                </div>
+            <div class="body bg-cyan">
+                <div class="m-b--35 font-bold">LATEST SOCIAL TRENDS</div>
+                <ul class="dashboard-stat-list">
+                    <li>
+                        #socialtrends
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                    <li>
+                        #materialdesign
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                    <li>#adminbsb</li>
+                    <li>#freeadmintemplate</li>
+                    <li>#bootstraptemplate</li>
+                    <li>
+                        #freehtmltemplate
+                        <span class="pull-right">
+                            <i class="material-icons">trending_up</i>
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+    <!-- #END# Latest Social Trends -->
+    <!-- Answered Tickets -->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="body bg-teal">
+                <div class="font-bold m-b--35">ANSWERED TICKETS</div>
+                <ul class="dashboard-stat-list">
+                    <li>
+                        TODAY
+                        <span class="pull-right"><b>12</b> <small>TICKETS</small></span>
+                    </li>
+                    <li>
+                        YESTERDAY
+                        <span class="pull-right"><b>15</b> <small>TICKETS</small></span>
+                    </li>
+                    <li>
+                        LAST WEEK
+                        <span class="pull-right"><b>90</b> <small>TICKETS</small></span>
+                    </li>
+                    <li>
+                        LAST MONTH
+                        <span class="pull-right"><b>342</b> <small>TICKETS</small></span>
+                    </li>
+                    <li>
+                        LAST YEAR
+                        <span class="pull-right"><b>4 225</b> <small>TICKETS</small></span>
+                    </li>
+                    <li>
+                        ALL
+                        <span class="pull-right"><b>8 752</b> <small>TICKETS</small></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- #END# Answered Tickets -->
 </div>
-<!-- image card row starts here -->
-<div class="row">
-    <div class="col-sm-4 stretch-card grid-margin">
+
+<div class="row clearfix">
+    <!-- Task Info -->
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <div class="card">
-            <div class="card-body p-0">
-                <img class="img-fluid w-100" src="../assets/images/dashboard/img_1.jpg" alt="" />
+            <div class="header">
+                <h2>TASK INFOS</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);">Action</a></li>
+                            <li><a href="javascript:void(0);">Another action</a></li>
+                            <li><a href="javascript:void(0);">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <div class="card-body px-3 text-dark">
-                <div class="d-flex justify-content-between">
-                    <p class="text-muted font-13 mb-0">ENTIRE APARTMENT</p>
-                    <i class="mdi mdi-heart-outline"></i>
-                </div>
-                <h5 class="font-weight-semibold"> Cosy Studio flat in London </h5>
-                <div class="d-flex justify-content-between font-weight-semibold">
-                    <p class="mb-0">
-                        <i class="mdi mdi-star star-color pr-1"></i>4.60 (35)
-                    </p>
-                    <p class="mb-0">$5,267/night</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 stretch-card grid-margin">
-        <div class="card">
-            <div class="card-body p-0">
-                <img class="img-fluid w-100" src="../assets/images/dashboard/img_2.jpg" alt="" />
-            </div>
-            <div class="card-body px-3 text-dark">
-                <div class="d-flex justify-content-between">
-                    <p class="text-muted font-13 mb-0">ENTIRE APARTMENT</p>
-                    <i class="mdi mdi-heart-outline"></i>
-                </div>
-                <h5 class="font-weight-semibold"> Victoria Bedsit Studio Ensuite </h5>
-                <div class="d-flex justify-content-between font-weight-semibold">
-                    <p class="mb-0">
-                        <i class="mdi mdi-star star-color pr-1"></i>4.83 (12)
-                    </p>
-                    <p class="mb-0">$6,144/night</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-4 stretch-card grid-margin">
-        <div class="card">
-            <div class="card-body p-0">
-                <img class="img-fluid" src="../assets/images/dashboard/img_3.jpg" alt="" />
-            </div>
-            <div class="card-body px-3 text-dark">
-                <div class="d-flex justify-content-between">
-                    <p class="text-muted font-13 mb-0">ENTIRE APARTMENT</p>
-                    <i class="mdi mdi-heart-outline"></i>
-                </div>
-                <h5 class="font-weight-semibold">Fabulous Huge Room</h5>
-                <div class="d-flex justify-content-between font-weight-semibold">
-                    <p class="mb-0">
-                        <i class="mdi mdi-star star-color pr-1"></i>3.83 (15)
-                    </p>
-                    <p class="mb-0">$5,267/night</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- table row starts here -->
-<div class="row">
-    <div class="col-xl-4 grid-margin">
-        <div class="card card-stat stretch-card mb-3">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div class="text-white">
-                        <h3 class="font-weight-bold mb-0">$168.90</h3>
-                        <h6>This Month</h6>
-                        <div class="badge badge-danger">23%</div>
-                    </div>
-                    <div class="flot-bar-wrapper">
-                        <div id="column-chart" class="flot-chart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card stretch-card mb-3">
-            <div class="card-body d-flex flex-wrap justify-content-between">
-                <div>
-                    <h4 class="font-weight-semibold mb-1 text-black"> Member Profit </h4>
-                    <h6 class="text-muted">Average Weekly Profit</h6>
-                </div>
-                <h3 class="text-success font-weight-bold">+168.900</h3>
-            </div>
-        </div>
-        <div class="card stretch-card mb-3">
-            <div class="card-body d-flex flex-wrap justify-content-between">
-                <div>
-                    <h4 class="font-weight-semibold mb-1 text-black"> Total Profit </h4>
-                    <h6 class="text-muted">Weekly Customer Orders</h6>
-                </div>
-                <h3 class="text-success font-weight-bold">+6890.00</h3>
-            </div>
-        </div>
-        <div class="card mt-3">
-            <div class="card-body d-flex flex-wrap justify-content-between">
-                <div>
-                    <h4 class="font-weight-semibold mb-1 text-black"> Issue Reports </h4>
-                    <h6 class="text-muted">System bugs and issues</h6>
-                </div>
-                <h3 class="text-danger font-weight-bold">-8380.00</h3>
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-8 stretch-card grid-margin">
-        <div class="card">
-            <div class="card-body pb-0">
-                <h4 class="card-title">Financial management review</h4>
-            </div>
-            <div class="card-body p-0">
+            <div class="body">
                 <div class="table-responsive">
-                    <table class="table custom-table text-dark">
+                    <table class="table table-hover dashboard-task-infos">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Sale Rate</th>
-                                <th>Actual</th>
-                                <th>Variance</th>
+                                <th>#</th>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Manager</th>
+                                <th>Progress</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td>1</td>
+                                <td>Task A</td>
+                                <td><span class="label bg-green">Doing</span></td>
+                                <td>John Doe</td>
                                 <td>
-                                    <img src="../assets/images/faces/face2.jpg" class="mr-2" alt="image" /> Jacob Jensen
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">85%</span>
-                                        <select id="star-1" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
                                     </div>
                                 </td>
-                                <td>32,435</td>
-                                <td>40,234</td>
                             </tr>
                             <tr>
+                                <td>2</td>
+                                <td>Task B</td>
+                                <td><span class="label bg-blue">To Do</span></td>
+                                <td>John Doe</td>
                                 <td>
-                                    <img src="../assets/images/faces/face3.jpg" class="mr-2" alt="image" /> Cecelia Bradley
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">55%</span>
-                                        <select id="star-2" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
                                     </div>
                                 </td>
-                                <td>4,36780</td>
-                                <td>765728</td>
                             </tr>
                             <tr>
+                                <td>3</td>
+                                <td>Task C</td>
+                                <td><span class="label bg-light-blue">On Hold</span></td>
+                                <td>John Doe</td>
                                 <td>
-                                    <img src="../assets/images/faces/face4.jpg" class="mr-2" alt="image" /> Leah Sherman
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">23%</span>
-                                        <select id="star-3" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
                                     </div>
                                 </td>
-                                <td>2300</td>
-                                <td>22437</td>
                             </tr>
                             <tr>
+                                <td>4</td>
+                                <td>Task D</td>
+                                <td><span class="label bg-orange">Wait Approvel</span></td>
+                                <td>John Doe</td>
                                 <td>
-                                    <img src="../assets/images/faces/face5.jpg" class="mr-2" alt="image" /> Ina Curry
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">44%</span>
-                                        <select id="star-4" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
                                     </div>
                                 </td>
-                                <td>53462</td>
-                                <td>1,75938</td>
                             </tr>
                             <tr>
+                                <td>5</td>
+                                <td>Task E</td>
                                 <td>
-                                    <img src="../assets/images/faces/face7.jpg" class="mr-2" alt="image" /> Lida Fitzgerald
+                                    <span class="label bg-red">Suspended</span>
                                 </td>
+                                <td>John Doe</td>
                                 <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">65%</span>
-                                        <select id="star-5" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
                                     </div>
                                 </td>
-                                <td>67453</td>
-                                <td>765377</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../assets/images/faces/face2.jpg" class="mr-2" alt="image" /> Stella Johnson
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">49%</span>
-                                        <select id="star-6" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td>43662</td>
-                                <td>96535</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../assets/images/faces/face9.jpg" class="mr-2" alt="image" /> Maria Ortiz
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="pr-2 d-flex align-items-center">65%</span>
-                                        <select id="star-7" name="rating" autocomplete="off">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td>76555</td>
-                                <td>258546</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="text-black d-block pl-4 pt-2 pb-2 pb-lg-0 font-13 font-weight-bold" href="#">Show more</a>
             </div>
         </div>
     </div>
-</div>
-<!-- doughnut chart row starts -->
-<div class="row">
-    <div class="col-sm-12 stretch-card grid-margin">
+    <!-- #END# Task Info -->
+    <!-- Browser Usage -->
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div class="card">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <div class="card-title">Channel Sessions</div>
-                            <div class="d-flex flex-wrap">
-                                <div class="doughnut-wrapper w-50">
-                                    <canvas id="doughnutChart1" width="100" height="100"></canvas>
-                                </div>
-                                <div id="doughnut-chart-legend" class="pl-lg-3 rounded-legend align-self-center flex-grow legend-vertical legend-bottom-left"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <div class="card-title">News Sessions</div>
-                            <div class="d-flex flex-wrap">
-                                <div class="doughnut-wrapper w-50">
-                                    <canvas id="doughnutChart2" width="100" height="100"></canvas>
-                                </div>
-                                <div id="doughnut-chart-legend2" class="pl-lg-3 rounded-legend align-self-center flex-grow legend-vertical legend-bottom-left"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card border-0">
-                        <div class="card-body">
-                            <div class="card-title">Device Sessions</div>
-                            <div class="d-flex flex-wrap">
-                                <div class="doughnut-wrapper w-50">
-                                    <canvas id="doughnutChart3" width="100" height="100"></canvas>
-                                </div>
-                                <div id="doughnut-chart-legend3" class="pl-lg-3 rounded-legend align-self-center flex-grow legend-vertical legend-bottom-left"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="header">
+                <h2>BROWSER USAGE</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);">Action</a></li>
+                            <li><a href="javascript:void(0);">Another action</a></li>
+                            <li><a href="javascript:void(0);">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div id="donut_chart" class="dashboard-donut-chart"></div>
             </div>
         </div>
     </div>
-</div>
-<!-- last row starts here -->
-<div class="row">
-    <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title mb-2">Upcoming events (3)</div>
-                <h3 class="mb-3">23 september 2019</h3>
-                <div class="d-flex border-bottom border-top py-3">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" checked />
-                        </label>
-                    </div>
-                    <div class="pl-2">
-                        <span class="font-12 text-muted">Tue, Mar 5, 9.30am</span>
-                        <p class="m-0 text-black"> Hey12345 I attached some new PSD files… </p>
-                    </div>
-                </div>
-                <div class="d-flex border-bottom py-3">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" />
-                        </label>
-                    </div>
-                    <div class="pl-2">
-                        <span class="font-12 text-muted">Mon, Mar 11, 4.30 PM</span>
-                        <p class="m-0 text-black"> Discuss performance with manager </p>
-                    </div>
-                </div>
-                <div class="d-flex border-bottom py-3">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" />
-                        </label>
-                    </div>
-                    <div class="pl-2">
-                        <span class="font-12 text-muted">Tue, Mar 5, 9.30am</span>
-                        <p class="m-0 text-black">Meeting with Alisa</p>
-                    </div>
-                </div>
-                <div class="d-flex pt-3">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" />
-                        </label>
-                    </div>
-                    <div class="pl-2">
-                        <span class="font-12 text-muted">Mon, Mar 11, 4.30 PM</span>
-                        <p class="m-0 text-black"> Hey I attached some new PSD files… </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex border-bottom mb-4 pb-2">
-                    <div class="hexagon">
-                        <div class="hex-mid hexagon-warning">
-                            <i class="mdi mdi-clock-outline"></i>
-                        </div>
-                    </div>
-                    <div class="pl-4">
-                        <h4 class="font-weight-bold text-warning mb-0"> 12.45 </h4>
-                        <h6 class="text-muted">Schedule Meeting</h6>
-                    </div>
-                </div>
-                <div class="d-flex border-bottom mb-4 pb-2">
-                    <div class="hexagon">
-                        <div class="hex-mid hexagon-danger">
-                            <i class="mdi mdi-account-outline"></i>
-                        </div>
-                    </div>
-                    <div class="pl-4">
-                        <h4 class="font-weight-bold text-danger mb-0">34568</h4>
-                        <h6 class="text-muted">Profile visits</h6>
-                    </div>
-                </div>
-                <div class="d-flex border-bottom mb-4 pb-2">
-                    <div class="hexagon">
-                        <div class="hex-mid hexagon-success">
-                            <i class="mdi mdi-laptop-chromebook"></i>
-                        </div>
-                    </div>
-                    <div class="pl-4">
-                        <h4 class="font-weight-bold text-success mb-0"> 33.50% </h4>
-                        <h6 class="text-muted">Bounce Rate</h6>
-                    </div>
-                </div>
-                <div class="d-flex border-bottom mb-4 pb-2">
-                    <div class="hexagon">
-                        <div class="hex-mid hexagon-info">
-                            <i class="mdi mdi-clock-outline"></i>
-                        </div>
-                    </div>
-                    <div class="pl-4">
-                        <h4 class="font-weight-bold text-info mb-0">12.45</h4>
-                        <h6 class="text-muted">Schedule Meeting</h6>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="hexagon">
-                        <div class="hex-mid hexagon-primary">
-                            <i class="mdi mdi-timer-sand"></i>
-                        </div>
-                    </div>
-                    <div class="pl-4">
-                        <h4 class="font-weight-bold text-primary mb-0"> 12.45 </h4>
-                        <h6 class="text-muted mb-0">Browser Usage</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
-        <div class="card color-card-wrapper">
-            <div class="card-body">
-                <img class="img-fluid card-top-img w-100" src="../assets/images/dashboard/img_5.jpg" alt="" />
-                <div class="d-flex flex-wrap justify-content-around color-card-outer">
-                    <div class="col-6 p-0 mb-4">
-                        <div class="color-card primary m-auto">
-                            <i class="mdi mdi-clock-outline"></i>
-                            <p class="font-weight-semibold mb-0">Delivered</p>
-                            <span class="small">15 Packages</span>
-                        </div>
-                    </div>
-                    <div class="col-6 p-0 mb-4">
-                        <div class="color-card bg-success m-auto">
-                            <i class="mdi mdi-tshirt-crew"></i>
-                            <p class="font-weight-semibold mb-0">Ordered</p>
-                            <span class="small">72 Items</span>
-                        </div>
-                    </div>
-                    <div class="col-6 p-0">
-                        <div class="color-card bg-info m-auto">
-                            <i class="mdi mdi-trophy-outline"></i>
-                            <p class="font-weight-semibold mb-0">Arrived</p>
-                            <span class="small">34 Upgraded</span>
-                        </div>
-                    </div>
-                    <div class="col-6 p-0">
-                        <div class="color-card bg-danger m-auto">
-                            <i class="mdi mdi-presentation"></i>
-                            <p class="font-weight-semibold mb-0">Reported</p>
-                            <span class="small">72 Support</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- #END# Browser Usage -->
 </div>

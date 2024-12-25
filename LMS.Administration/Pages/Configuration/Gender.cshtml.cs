@@ -1,6 +1,9 @@
 using LMS.Administration.Middleware;
+using LMS.Mapper.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMS.Administration.Pages.Configuration
 {
@@ -16,7 +19,9 @@ namespace LMS.Administration.Pages.Configuration
             _activeUserService = activeUserService;
         }
         public List<LMS.Mapper.BusinessObject.Gender> genders { get; set; }
+        [BindProperty]
         public Gender newGender { get; set; }
+        [BindProperty]
         public Gender editGender { get; set; }
         public async Task<IActionResult> OnGet()
         {
@@ -33,25 +38,25 @@ namespace LMS.Administration.Pages.Configuration
 
             if (string.IsNullOrEmpty(newGender.GenderId))
             {
-                LMS.Mapper.BusinessObject.Gender Gender = new Mapper.BusinessObject.Gender();
-                Gender.GenderCode = newGender.GenderCode;
-                Gender.GenderName = newGender.GenderName;
-                Gender.IsActive = true;
-                Gender.CreatedOn = DateTime.Now;
-                Gender.CreatedBy = _activeUserService.UserId;
-                int isSave = await _genderService.InsertGender(batch);
+                LMS.Mapper.BusinessObject.Gender gender = new Mapper.BusinessObject.Gender();
+                gender.GenderCode = newGender.GenderCode;
+                gender.GenderName = newGender.GenderName;
+                gender.IsActive = true;
+                gender.CreatedOn = DateTime.Now;
+                gender.CreatedBy = _activeUserService.UserId;
+                int isSave = await _genderService.InsertGender(gender);
             }
             else
             {
-                var existingGender = await _batchService.GetBatchById(newGender.BatchId);
+                var existingGender = await _genderService.GetGenderById(newGender.GenderId);
                 if (existingGender != null)
                 {
-                    existingGender.GenderCode = newBuilding.GenderCode;
-                    existingGender.GenderName = newBuilding.GenderName;
-                    existingGender.IsActive = newBuilding.IsActive;
+                    existingGender.GenderCode = newGender.GenderCode;
+                    existingGender.GenderName = newGender.GenderName;
+                    existingGender.IsActive = newGender.IsActive;
                     existingGender.ModifiedOn = DateTime.Now;
                     existingGender.ModifiedBy = _activeUserService.UserId;
-                    int isUpdated = await _genderService.UpdateGender(existingBatch);
+                    int isUpdated = await _genderService.UpdateGender(existingGender);
                 }
             }
 
@@ -60,7 +65,7 @@ namespace LMS.Administration.Pages.Configuration
 
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            var existingGender = await _genderService.GetGenderById(newGender.BatchId);
+            var existingGender = await _genderService.GetGenderById(newGender.GenderId);
             if (existingGender == null)
             {
                 return NotFound();
@@ -87,7 +92,7 @@ namespace LMS.Administration.Pages.Configuration
         public string GenderCode { get; set; } = null!;
         [Required]
         [DisplayName("Gender Name")]
-        public DateTime GenderName { get; set; }
-        public string IsActive { get; set; }
+        public string GenderName { get; set; }
+        public bool IsActive { get; set; }
     }
 }

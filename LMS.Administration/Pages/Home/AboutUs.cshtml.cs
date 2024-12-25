@@ -22,7 +22,7 @@ namespace LMS.Admin.Views.Home
             _aboutUsService = aboutUsService;
             _activeUserService = activeUserService;
         }
-
+        [BindProperty]
         public AboutUs aboutUs { get; set; }
         public async Task<IActionResult> OnGet()
         {

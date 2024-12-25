@@ -1,7 +1,10 @@
 using LMS.Administration.Middleware;
 using LMS.Administration.Pages.Infrastructure;
+using LMS.Mapper.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMS.Administration.Pages.Configuration
 {
@@ -17,7 +20,9 @@ namespace LMS.Administration.Pages.Configuration
             _activeUserService = activeUserService;
         }
         public List<LMS.Mapper.BusinessObject.Batch> batches { get; set; }
+        [BindProperty]
         public Batch newBatch { get; set; }
+        [BindProperty]
         public Batch editBatch { get; set; }
         public async Task<IActionResult> OnGet()
         {
@@ -48,10 +53,10 @@ namespace LMS.Administration.Pages.Configuration
                 var existingBatch = await _batchService.GetBatchById(newBatch.BatchId);
                 if (existingBatch != null)
                 {
-                    existingBatch.BatchCode = newBuilding.BatchCode;
-                    existingBatch.FromDate = newBuilding.FromDate;
-                    existingBatch.ToDate = newBuilding.ToDate;
-                    existingBatch.IsActive = newBuilding.IsActive;
+                    existingBatch.BatchCode = newBatch.BatchCode;
+                    existingBatch.FromDate = newBatch.FromDate;
+                    existingBatch.ToDate = newBatch.ToDate;
+                    existingBatch.IsActive = newBatch.IsActive;
                     existingBatch.ModifiedOn = DateTime.Now;
                     existingBatch.ModifiedBy = _activeUserService.UserId;
                     int isUpdated = await _batchService.UpdateBatch(existingBatch);
@@ -69,11 +74,11 @@ namespace LMS.Administration.Pages.Configuration
                 return NotFound();
             }
 
-            editBatch.BatchId = existingBuilding.BatchId;
-            editBatch.BatchCode = existingBuilding.BatchCode;
-            editBatch.FromDate = existingBuilding.FromDate;
-            editBatch.ToDate = existingBuilding.ToDate;
-            editBatch.IsActive = existingBuilding.IsActive;
+            editBatch.BatchId = existingBatch.BatchId;
+            editBatch.BatchCode = existingBatch.BatchCode;
+            editBatch.FromDate = existingBatch.FromDate;
+            editBatch.ToDate = existingBatch.ToDate;
+            editBatch.IsActive = existingBatch.IsActive;
 
             batches = await _batchService.GetBatches();
             return Page();
@@ -96,6 +101,6 @@ namespace LMS.Administration.Pages.Configuration
         [Required]
         [DisplayName("Batch End Date")]
         public DateTime ToDate { get; set; }
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

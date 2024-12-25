@@ -2,3 +2,93 @@
 @model LMS.Administration.Pages.Configuration.SocialCategoryModel
 @{
 }
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditSocialCategoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditSocialCategoryPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Social Category
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Discount</th>
+                                <th>Status</th>
+                                <th>Created By</th>
+                                <th>Created On</th>
+                                <th>Modified By</th>
+                                <th>Modified On</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.socialCateogories.Any())
+                                {
+                                    @foreach (var item in Model.socialCateogories)
+                                    {
+                                        <tr>
+                                            <td>@item.SocialCateogoryCode</td>
+                                            <td>@item.SocialCateogoryName</td>
+                                            <td>@item.DiscountPer</td>
+                                            <td>@item.IsActive?"Active":"In Active"</td>
+                                            <td>@item.CreatedBy</td>
+                                            <td>@item.CreatedOn</td>
+                                            <td>@item.ModifiedBy</td>
+                                            <td>@item.ModifiedOn</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.SocialCateogoryId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.SocialCateogoryId" class="d-inline">
+                                                    <button type="submit" class="btn btn-error btn-sm">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditSocialCategoryPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Social Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditSocialCategory.cshtml", new SocialCateogory())
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Item Section -->
+@if (Model.editSocialCateogory != null)
+{
+    <div class="modal fade" id="dvAddEditSocialCategoryPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Social Category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditSocialCategory.cshtml", Model.editSocialCateogory)
+                </div>
+            </div>
+        </div>
+    </div>
+}

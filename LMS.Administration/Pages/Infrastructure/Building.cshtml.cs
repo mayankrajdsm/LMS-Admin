@@ -23,9 +23,10 @@ namespace LMS.Administration.Pages.Infrastructure
             _activeUserService = activeUserService;
         }
         public List<LMS.Mapper.BusinessObject.Building> buildings { get; set; }
+        [BindProperty]
         public Building newBuilding { get; set; }
+        [BindProperty]
         public Building editBuilding { get; set; }
-
         public async Task<IActionResult> OnGet()
         {
             buildings = await _buildingService.GetBuildings();

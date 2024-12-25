@@ -21,6 +21,7 @@ namespace LMS.Admin.Views.Home
             _contactUsService = contactUsService;
             _activeUserService = activeUserService;
         }
+        [BindProperty]
         public ContactUs contactUs { get; set; }
         public async Task<IActionResult> OnGet()
         {

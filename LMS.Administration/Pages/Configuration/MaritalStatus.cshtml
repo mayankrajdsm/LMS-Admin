@@ -2,3 +2,91 @@
 @model LMS.Administration.Pages.Configuration.MaritalStatusModel
 @{
 }
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditMaritalStatusPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditMaritalStatusPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Marital Status
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Created By</th>
+                                <th>Created On</th>
+                                <th>Modified By</th>
+                                <th>Modified On</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.maritalStatuses.Any())
+                                {
+                                    @foreach (var item in Model.maritalStatuses)
+                                    {
+                                        <tr>
+                                            <td>@item.MaritalStatusCode</td>
+                                            <td>@item.MaritalStatusName</td>
+                                            <td>@item.IsActive?"Active":"In Active"</td>
+                                            <td>@item.CreatedBy</td>
+                                            <td>@item.CreatedOn</td>
+                                            <td>@item.ModifiedBy</td>
+                                            <td>@item.ModifiedOn</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.MaritalStatusId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                                <form method="get" asp-page-handler="Delete" asp-route-id="@item.MaritalStatusId" class="d-inline">
+                                                    <button type="submit" class="btn btn-error btn-sm">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditMaritalStatusPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Marital Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditMaritalStatus.cshtml", new MaritalStatus())
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit Item Section -->
+@if (Model.editMaritalStatus != null)
+{
+    <div class="modal fade" id="dvAddEditMaritalStatusPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Marital Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditMaritalStatus.cshtml", Model.editMaritalStatus)
+                </div>
+            </div>
+        </div>
+    </div>
+}
