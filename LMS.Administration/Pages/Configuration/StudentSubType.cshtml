@@ -1,6 +1,8 @@
 ﻿@page
-@model LMS.Administration.Pages.Library.SeatsModel
+@model LMS.Administration.Pages.Configuration.StudentTypeModel
 @{
+    ViewBag.Ref = "Configuration";
+    ViewBag.Title = "Manage Student Type";
 }
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -16,7 +18,7 @@
                         </a>
                         <ul class="dropdown-menu pull-right">
                             <li>
-                                <a data-toggle="modal" data-target="#defaultModal">Book New Seat</a>
+                                <a data-toggle="modal" data-target="#defaultModal">Add New Student Type</a>
                             </li>
                         </ul>
                     </li>
@@ -27,11 +29,8 @@
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Student</th>
-                                <th>Seat No</th>
-                                <th>Token No</th>
-                                <th>From</th>
-                                <th>To</th>
+                                <th>Name</th>
+                                <th>Discount</th>
                                 <th>Status</th>
                                 <th>Created By</th>
                                 <th>Created On</th>
@@ -41,28 +40,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (Model.studentSeatBookings != null)
+                            @if (Model.studentSubTypes != null)
                             {
-                                if (Model.studentSeatBookings.Any())
+                                if (Model.studentSubTypes.Any())
                                 {
-                                    @foreach (var item in Model.studentSeatBookings)
+                                    @foreach (var item in Model.studentSubTypes)
                                     {
                                         <tr>
-                                            <td>@string.Concat(item.Student.FirstName, " ", item.Student.MiddleName, " ", item.Student.LastName)</td>
-                                            <td>@item.SeatNo</td>
-                                            <td>@item.TokenNo</td>
-                                            <td>@item.FromDate</td>
-                                            <td>@item.ToDate</td>
+                                            <td>@item.StudentSubTypeName</td>
+                                            <td>@item.DiscountPer</td>
                                             <td>@item.IsActive?"Active":"In Active"</td>
                                             <td>@item.CreatedBy</td>
                                             <td>@item.CreatedOn</td>
                                             <td>@item.ModifiedBy</td>
                                             <td>@item.ModifiedOn</td>
                                             <td>
-                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.StudentSeatBookingId" class="d-inline">
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.StudentSubTypeId" class="d-inline">
                                                     <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                                                 </form>
-                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.StudentSeatBookingId" class="d-inline">
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.StudentSubTypeId" class="d-inline">
                                                     <button type="submit" class="btn btn-error btn-sm">Delete</button>
                                                 </form>
                                             </td>
@@ -81,21 +77,21 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">Book New Seat</h4>
+                <h4 class="modal-title" id="defaultModalLabel">Add New Student Type</h4>
             </div>
-            @await Html.PartialAsync("~/Pages/Library/PartialView/_bookUpdateSeat.cshtml", new StudentSeatBooking())
+            @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditStudentSubType.cshtml", new StudentSubType())
         </div>
     </div>
 </div>
-@if (Model.editStudentSeatBooking != null)
+@if (Model.editStudentType != null)
 {
     <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="defaultModalLabel">Edit Booking</h4>
+                    <h4 class="modal-title" id="defaultModalLabel">Edit Student Type</h4>
                 </div>
-                @await Html.PartialAsync("~/Pages/Library/PartialView/_bookUpdateSeat.cshtml", Model.editStudentSeatBooking)
+                @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditStudentSubType.cshtml", Model.editStudentType)
             </div>
         </div>
     </div>

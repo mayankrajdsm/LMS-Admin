@@ -24,16 +24,16 @@ namespace LMS.Admin.Views.Home
         public AboutUs aboutUs { get; set; }
         public async Task<IActionResult> OnGet()
         {
-            //var existingAbout = await _aboutUsService.GetBuildings();
-            //if (existingAbout.Any())
-            //{
-            //    for (int i = 0; i == 0; i++)
-            //    {
-            //        aboutUs.id = existingAbout[i].AboutUsId;
-            //        aboutUs.heading = existingAbout[i].AboutUsTitle;
-            //        aboutUs.message = existingAbout[i].AboutUsText;
-            //    }
-            //}
+            var existingAbout = await _aboutUsService.GetBuildings();
+            if (existingAbout.Any())
+            {
+                for (int i = 0; i == 0; i++)
+                {
+                    aboutUs.id = existingAbout[i].AboutUsId;
+                    aboutUs.heading = existingAbout[i].AboutUsTitle;
+                    aboutUs.message = existingAbout[i].AboutUsText;
+                }
+            }
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace LMS.Administration.Pages.StudentInfo
+namespace LMS.Administration.Pages.Configuration
 {
-    public class StudentCategoryModel : PageModel
+    public class FeeCategoryModel : PageModel
     {
         public void OnGet()
         {

@@ -2,7 +2,7 @@
 @model LMS.Administration.Pages.Infrastructure.DomainModel
 @{
 }
-<div class="row">
+@* <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -87,6 +87,98 @@
                             <button type="submit" class="btn btn-primary mr-2"> Submit</button>
                             <button class="btn btn-light mr-2">Reset</button>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> *@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>@ViewBag.Title</h2>
+            </div>
+            <div class="body">
+                <form class="forms-sample">
+                    <div style="float:right;">
+                        <button type="submit" class="btn btn-primary mr-2">Edit</button>
+                    </div>
+                </form>
+                <form id="form_advanced_validation" method="POST">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.RegisteredName" class="form-label"></label>
+                                <input asp-for="domain.RegisteredName" class="form-control" />
+                                <span asp-validation-for="domain.RegisteredName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.Address1" class="form-label"></label>
+                                <input asp-for="domain.Address1" class="form-control" />
+                                <span asp-validation-for="domain.Address1" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.Address2" class="form-label"></label>
+                                <input asp-for="domain.Address2" class="form-control" />
+                                <span asp-validation-for="domain.Address2" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.CountryId" class="form-label"></label>
+                                @Html.DropDownListFor(domain => domain.domain.CountryId, new SelectList(Model.domain.lstCountry), new { @class = "form-control" })
+                                <span asp-validation-for="domain.CountryId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.StateId" class="form-label"></label>
+                                @Html.DropDownListFor(domain => domain.domain.StateId, new SelectList(Model.domain.lstState), new { @class = "form-control" })
+                                <span asp-validation-for="domain.StateId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.CityId" class="form-label"></label>
+                                @Html.DropDownListFor(domain => domain.domain.CityId, new SelectList(Model.domain.lstCity), new { @class = "form-control" })
+                                <span asp-validation-for="domain.CityId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.ContactEmail" class="form-label"></label>
+                                <input type="email" asp-for="domain.ContactEmail" class="form-control" />
+                                <span asp-validation-for="domain.ContactEmail" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.ContactPerson" class="form-label"></label>
+                                <input asp-for="domain.ContactPerson" class="form-control" />
+                                <span asp-validation-for="domain.ContactPerson" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.Website" class="form-label"></label>
+                                <input type="url" asp-for="domain.Website" class="form-control" />
+                                <span asp-validation-for="domain.Website" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label asp-for="domain.FinancialYearStartDate" class="form-label"></label>
+                                <input type="date" asp-for="domain.FinancialYearStartDate" class="form-control" />
+                                <span asp-validation-for="domain.FinancialYearStartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                        <button class="btn bg-blue-grey waves-effect" type="button">RESET</button>
                     </div>
                 </form>
             </div>

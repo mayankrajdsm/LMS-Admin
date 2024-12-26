@@ -4,7 +4,7 @@
     ViewBag.Ref = "Infrastructure";
     ViewBag.Title = "Manage Building";
 }
-<div class="row">
+@* <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -92,6 +92,102 @@
                 <div class="modal-body">
                     @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", Model.editBuilding)
                 </div>
+            </div>
+        </div>
+    </div>
+} *@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    @ViewBag.Title
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-toggle="modal" data-target="#defaultModal">Add New Building</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Domain Name</th>
+                                <th>Building Name</th>
+                                <th>Address 1</th>
+                                <th>Address2</th>
+                                <th>Country</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>ContactPerson</th>
+                                <th>Contact Number</th>
+                                <th>Contact Email</th>
+                                <th>IsActive</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                if (Model.buildings.Any())
+                                {
+                                    @foreach (var item in Model.buildings)
+                                    {
+                                        <tr>
+                                            <td>@item.BuildingName</td>
+                                            <td>@item.Address1</td>
+                                            <td>@item.Address2</td>
+                                            <td>@item.CountryId</td>
+                                            <td>@item.StateId</td>
+                                            <td>@item.CityId</td>
+                                            <td>@item.ContactPerson</td>
+                                            <td>@item.ContactNo</td>
+                                            <td>@item.ContactEmail</td>
+                                            <td>@item.IsActive</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.BuildingId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Add New Building</h4>
+            </div>
+            @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", new Building())
+        </div>
+    </div>
+</div>
+@if (Model.editBuilding != null)
+{
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Edit Building</h4>
+                </div>
+                @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", Model.editBuilding)
             </div>
         </div>
     </div>

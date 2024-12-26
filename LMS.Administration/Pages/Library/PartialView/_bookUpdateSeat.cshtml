@@ -1,5 +1,54 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model LMS.Administration.Pages.Library.StudentSeatBooking
 @{
 }
+<form id="form_advanced_validation" method="POST">
+    <div class="modal-body">
+        <div class="form-group form-float">
+            <label asp-for="StudentId" class="form-label"></label>
+            <div class="form-line">
+                @Html.DropDownListFor(m => m.StudentId, new SelectList(Model.lstStudents), new { @class = "form-control" })
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+                <input type="hidden" asp-for="StudentSeatBookingId" />
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="SeatNo" class="form-label"></label>
+            <div class="form-line">
+                <input type="number" asp-for="SeatNo" class="form-control" />
+                <span asp-validation-for="SeatNo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="TokenNo" class="form-label"></label>
+            <div class="form-line">
+                <input asp-for="TokenNo" class="form-control" />
+                <span asp-validation-for="TokenNo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="FromDate" class="form-label"></label>
+            <div class="form-line">
+                <input type="datetime" asp-for="FromDate" class="form-control" />
+                <span asp-validation-for="FromDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="ToDate" class="form-label"></label>
+            <div class="form-line">
+                <input type="datetime" asp-for="ToDate" class="form-control" />
+                <span asp-validation-for="ToDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="IsActive" class="form-label"></label>
+            <div class="form-line">
+                <input type="checkbox" asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary waves-effect">SUBMIT</button>
+        <button type="button" class="btn bg-blue-grey waves-effect" data-dismiss="modal">CLOSE</button>
+    </div>
+</form>

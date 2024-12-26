@@ -2,7 +2,7 @@
 @model LMS.Administration.Pages.Configuration.BatchModel
 @{
 }
-<div class="row">
+@* <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -88,6 +88,100 @@
                 <div class="modal-body">
                     @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditBatch.cshtml", Model.editBatch)
                 </div>
+            </div>
+        </div>
+    </div>
+} *@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    @ViewBag.Title
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-toggle="modal" data-target="#defaultModal">Add New Batch</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Batch Code</th>
+                                <th>From Date</th>
+                                <th>To Date</th>
+                                <th>Status</th>
+                                <th>Created By</th>
+                                <th>Created On</th>
+                                <th>Modified By</th>
+                                <th>Modified On</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.batches != null)
+                            {
+                                if (Model.batches.Any())
+                                {
+                                    @foreach (var item in Model.batches)
+                                    {
+                                        <tr>
+                                            <td>@item.BatchCode</td>
+                                            <td>@item.FromDate</td>
+                                            <td>@item.ToDate</td>
+                                            <td>@item.IsActive?"Active":"In Active"</td>
+                                            <td>@item.CreatedBy</td>
+                                            <td>@item.CreatedOn</td>
+                                            <td>@item.ModifiedBy</td>
+                                            <td>@item.ModifiedOn</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.BatchId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.BatchId" class="d-inline">
+                                                    <button type="submit" class="btn btn-error btn-sm">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Add New Batch</h4>
+            </div>
+            @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditBatch.cshtml", new Batch())
+        </div>
+    </div>
+</div>
+@if (Model.editBatch != null)
+{
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Edit Batch</h4>
+                </div>
+                @await Html.PartialAsync("~/Pages/Configuration/PartialView/_addEditBatch.cshtml", Model.editBatch)
             </div>
         </div>
     </div>
