@@ -40,11 +40,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (Model.studentSubTypes != null)
+                            @if (Model.studentCategories != null)
                             {
-                                if (Model.studentSubTypes.Any())
+                                if (Model.studentCategories.Any())
                                 {
-                                    @foreach (var item in Model.studentSubTypes)
+                                    @foreach (var item in Model.studentCategories)
                                     {
                                         <tr>
                                             <td>@item.StudentCateogoryName</td>

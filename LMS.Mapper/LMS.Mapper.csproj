@@ -10,4 +10,8 @@
     <ProjectReference Include="..\LMS.Infrastructures\LMS.Infrastructures.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
 </Project>

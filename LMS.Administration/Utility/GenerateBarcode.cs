@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace LMS.Mapper.Utility
+namespace LMS.Administration.Utility
 {
     public static class GenerateBarcode
     {
@@ -23,7 +23,74 @@ namespace LMS.Mapper.Utility
             {"+", "nwnnnwnwn"}, {"%", "nnnwnwnwn"}
         };
         private static string code39Alpha = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. *$/+%";
-        public static Bitmap GetBarcode(string strBarcode)
+        public static byte[] GetBarcode()
+        {
+            Random rnd = new Random();
+            string strBarcode = rnd.Next(10).ToString();
+
+            int intwidth;
+            int intBarcodeLen;
+            int indexCode39;
+            strBarcode = "*" + strBarcode + "*";
+
+            strBarcode = strBarcode.Replace("'", "").Replace(",", "").ToUpper();
+            intwidth = (strBarcode.Length * 15) + (strBarcode.Length - 1);
+            Bitmap bitmap = new Bitmap(intwidth, 40);
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(Color.White);
+                float xCurrPos = 0;
+                float xNextPos = 1;
+
+                for (intBarcodeLen = 0; intBarcodeLen < strBarcode.Length; intBarcodeLen++)
+                {
+                    indexCode39 = code39Alpha.IndexOf(strBarcode[intBarcodeLen]);
+                    string strPattern = code39Pattern[indexCode39, 1];
+                    Brush brush = Brushes.Black;
+                    Pen pen = Pens.Black;
+
+                    for (int i = 0; i < strPattern.Length; i++)
+                    {
+                        if (strPattern[i] == 'n')
+                        {
+                            xNextPos = xCurrPos + 1;
+                            g.DrawRectangle(pen, xCurrPos, 0, xNextPos, 40);
+                            g.FillRectangle(brush, xCurrPos, 0, xNextPos, 40);
+                        }
+                        else
+                        {
+                            xNextPos = xCurrPos + 3;
+                            g.DrawRectangle(pen, xCurrPos, 0, xNextPos, 40);
+                            g.FillRectangle(brush, xCurrPos, 0, xNextPos, 40);
+                        }
+                        xCurrPos = xNextPos;
+                        if (pen == Pens.White)
+                        {
+                            pen = Pens.Black;
+                            brush = Brushes.Black;
+                        }
+                        else
+                        {
+                            pen = Pens.White;
+                            brush = Brushes.White;
+                        }
+                    }
+                    xNextPos = xCurrPos + 1;
+                    g.DrawRectangle(Pens.White, xCurrPos, 0, xNextPos, 40);
+                    g.FillRectangle(Brushes.White, xCurrPos, 0, xNextPos, 40);
+                    xCurrPos = xNextPos;
+                }
+            }
+            var code = bitmap;
+            byte[] imageBytes;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                code.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                imageBytes = ms.ToArray();
+            }
+            return imageBytes;
+        }
+        public static byte[] GetBarcode(string strBarcode)
         {
             int intwidth;
             int intBarcodeLen;
@@ -78,7 +145,14 @@ namespace LMS.Mapper.Utility
                     xCurrPos = xNextPos;
                 }
             }
-            return bitmap;
+            var code = bitmap;
+            byte[] imageBytes;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                code.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                imageBytes = ms.ToArray();
+            }
+            return imageBytes;
         }
     }
 }

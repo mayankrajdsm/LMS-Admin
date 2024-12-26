@@ -2,15 +2,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using LMS.Mapper.IService;
 using LMS.Administration.Middleware;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace LMS.Administration.Pages.Configuration
 {
     public class StudentTypeModel : PageModel
     {
         private readonly ILogger<StudentTypeModel> _logger;
-        private readonly IStudentTypeService _studentTypeService;
+        private readonly IStudentSubTypeService _studentTypeService;
         private readonly IActiveUserService _activeUserService;
-        public StudentTypeModel(ILogger<StudentTypeModel> logger, IStudentTypeService studentTypeService, IActiveUserService activeUserService)
+        public StudentTypeModel(ILogger<StudentTypeModel> logger, IStudentSubTypeService studentTypeService, IActiveUserService activeUserService)
         {
             _logger = logger;
             _studentTypeService = studentTypeService;
@@ -42,7 +44,7 @@ namespace LMS.Administration.Pages.Configuration
                 studentSubType.IsActive = true;
                 studentSubType.CreatedOn = DateTime.Now;
                 studentSubType.CreatedBy = _activeUserService.UserId;
-                int isSave = await _studentTypeService.InsertStudentSubType(socialCateogory);
+                int isSave = await _studentTypeService.InsertStudentSubType(studentSubType);
             }
             else
             {
@@ -69,7 +71,7 @@ namespace LMS.Administration.Pages.Configuration
                 return NotFound();
             }
 
-            editStudentType.SocialCateogoryName = existingModel.SocialCateogoryName;
+            editStudentType.StudentSubTypeName = existingModel.StudentSubTypeName;
             editStudentType.DiscountPer = existingModel.DiscountPer;
             editStudentType.IsActive = existingModel.IsActive;
 

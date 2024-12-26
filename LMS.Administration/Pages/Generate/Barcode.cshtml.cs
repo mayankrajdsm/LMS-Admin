@@ -1,6 +1,12 @@
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using LMS.Admin.Views.Home;
+using LMS.Administration.Middleware;
+using LMS.Administration.Utility;
 using LMS.Mapper.IService;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LMS.Administration.Pages.Generate
 {
@@ -18,7 +24,7 @@ namespace LMS.Administration.Pages.Generate
             _activeUserService = activeUserService;
         }
         [BindProperty]
-        public Barcode barcode { get; set; }
+        public Barcode addBarcode { get; set; }
         public async Task<IActionResult> OnGet()
         {
             return Page();
@@ -28,7 +34,7 @@ namespace LMS.Administration.Pages.Generate
             if (!ModelState.IsValid)
             {
                 LMS.Mapper.BusinessObject.Barcode barcode = new Mapper.BusinessObject.Barcode();
-                barcode.Code = GenerateBarcode.GetBarcode("12345");
+                barcode.Code = GenerateBarcode.GetBarcode(addBarcode.Item);
                 barcode.CreatedOn = DateTime.Now;
                 barcode.CreatedBy = _activeUserService.UserId;
 
@@ -37,7 +43,6 @@ namespace LMS.Administration.Pages.Generate
             }
             return Page();
         }
-
     }
     public class Barcode
     {

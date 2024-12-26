@@ -1,6 +1,9 @@
 using LMS.Administration.Middleware;
+using LMS.Mapper.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMS.Administration.Pages.Configuration
 {
@@ -68,9 +71,9 @@ namespace LMS.Administration.Pages.Configuration
                 return NotFound();
             }
 
-            editStudentType.StudentCategoryId = existingModel.StudentCateogoryName;
-            editStudentType.DiscountPer = existingModel.DiscountPer;
-            editStudentType.IsActive = existingModel.IsActive;
+            editStudentCategory.StudentCategoryId = existingModel.StudentCateogoryName;
+            editStudentCategory.DiscountPer = existingModel.DiscountPer;
+            editStudentCategory.IsActive = existingModel.IsActive;
 
             return Page();
         }

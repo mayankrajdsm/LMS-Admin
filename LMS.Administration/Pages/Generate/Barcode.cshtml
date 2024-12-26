@@ -1,5 +1,5 @@
 ﻿@page
-@model LMS.Admin.Views.Generate.BarcodeModel
+@model LMS.Administration.Pages.Generate.BarcodeModel
 @{
     ViewBag.Ref = "Library";
     ViewBag.Title = "Generate Barcode";
@@ -42,19 +42,10 @@
             <div class="body">
                 <form id="form_advanced_validation" method="POST">
                     <div class="form-group form-float">
-                        <label asp-for="aboutUs.heading" class="form-label"></label>
+                        <label asp-for="addBarcode.Item" class="form-label"></label>
                         <div class="form-line">
-                            <input asp-for="aboutUs.heading" class="form-control" />
-                            <span asp-validation-for="aboutUs.heading" class="text-danger"></span>
-                            <input type="hidden" asp-for="aboutUs.id" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group form-float">
-                        <label asp-for="aboutUs.message" class="form-label"></label>
-                        <div class="form-line">
-                            <input asp-for="aboutUs.heading" class="form-control" />
-                            <span asp-validation-for="aboutUs.heading" class="text-danger"></span>
-                            <input type="hidden" asp-for="aboutUs.id" class="form-control" />
+                            <input asp-for="addBarcode.Item" class="form-control" />
+                            <span asp-validation-for="addBarcode.Item" class="text-danger"></span>
                         </div>
                     </div>
                     <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>

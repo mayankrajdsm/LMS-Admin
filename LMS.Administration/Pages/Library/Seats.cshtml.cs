@@ -1,7 +1,12 @@
 using LMS.Administration.Middleware;
 using LMS.Administration.Pages.Configuration;
+using LMS.Mapper.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMS.Administration.Pages.Library
 {
@@ -52,12 +57,12 @@ namespace LMS.Administration.Pages.Library
                 var existingModel = await _studentSeatBookingService.GetStudentSeatBookingById(newStudentSeatBooking.StudentSeatBookingId);
                 if (existingModel != null)
                 {
-                    existingModel.StudentId = newStudentType.StudentId;
-                    existingModel.SeatNo = newStudentType.SeatNo;
-                    existingModel.TokenNo = newStudentType.TokenNo;
-                    existingModel.FromDate = newStudentType.FromDate;
-                    existingModel.ToDate = newStudentType.ToDate;
-                    existingModel.IsActive = newStudentType.IsActive;
+                    existingModel.StudentId = newStudentSeatBooking.StudentId;
+                    existingModel.SeatNo = newStudentSeatBooking.SeatNo;
+                    existingModel.TokenNo = newStudentSeatBooking.TokenNo;
+                    existingModel.FromDate = newStudentSeatBooking.FromDate;
+                    existingModel.ToDate = newStudentSeatBooking.ToDate;
+                    existingModel.IsActive = newStudentSeatBooking.IsActive;
                     existingModel.ModifiedOn = DateTime.Now;
                     existingModel.ModifiedBy = _activeUserService.UserId;
                     int isUpdated = await _studentSeatBookingService.UpdateStudentSeatBooking(existingModel);
@@ -69,18 +74,18 @@ namespace LMS.Administration.Pages.Library
 
         public async Task<IActionResult> OnGetEditAsync(string id)
         {
-            var existingModel = await _studentSeatBookingService.GetStudentSubTypeById(id);
+            var existingModel = await _studentSeatBookingService.GetStudentSeatBookingById(id);
             if (existingModel == null)
             {
                 return NotFound();
             }
 
-            editStudentType.StudentId = existingModel.StudentId;
-            editStudentType.SeatNo = existingModel.SeatNo;
-            editStudentType.TokenNo = existingModel.TokenNo;
-            editStudentType.FromDate = existingModel.FromDate;
-            editStudentType.ToDate = existingModel.ToDate;
-            editStudentType.IsActive = existingModel.IsActive;
+            editStudentSeatBooking.StudentId = existingModel.StudentId;
+            editStudentSeatBooking.SeatNo = existingModel.SeatNo;
+            editStudentSeatBooking.TokenNo = existingModel.TokenNo;
+            editStudentSeatBooking.FromDate = existingModel.FromDate;
+            editStudentSeatBooking.ToDate = existingModel.ToDate;
+            editStudentSeatBooking.IsActive = existingModel.IsActive;
 
             studentSeatBookings = await _studentSeatBookingService.GetStudentSeatBookings();
             return Page();
@@ -108,10 +113,10 @@ namespace LMS.Administration.Pages.Library
         public string TokenNo { get; set; } = null!;
         [Required]
         [DisplayName("From")]
-        public Datetime FromDate { get; set; } = null!;
+        public DateTime FromDate { get; set; } = DateTime.Now;
         [Required]
         [DisplayName("To")]
-        public Datetime ToDate { get; set; } = null!;
+        public DateTime ToDate { get; set; } = DateTime.Now;
         [DisplayName("Status")]
         public bool IsActive { get; set; }
     }

@@ -10,7 +10,7 @@ namespace LMS.Mapper.BusinessObject
     {
         public string BarcodeId { get; set; }
 
-        public string Code { get; set; } = null!;
+        public byte[] Code { get; set; }
 
         public bool IsActive { get; set; }
 
