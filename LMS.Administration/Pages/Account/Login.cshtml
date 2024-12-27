@@ -3,43 +3,43 @@
 @{
     Layout = "~/Pages/Shared/_LayoutLogin.cshtml";
 }
-<div class="row">
-    <div class="col-md-3 grid-margin stretch-card">
-    </div>
-    <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Login</h4>
-                <p class="card-description">Login to Academy of Modern Learning</p>
-                <form method="post">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><label asp-for="Input.Email"></label></span>
-                            </div>
-                            <input asp-for="@Model.Input.Email" class="form-control" />
-                            <br />
-                            <span asp-validation-for="Input.Email" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><label asp-for="Input.Password"></label></span>
-                            </div>
-                            <input asp-for="Input.Password" class="form-control" />
-                            <span asp-validation-for="Input.Password" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="form-check mx-sm-2">
-                        <input asp-for="Input.RememberMe" class="form-check-input" />
-                        <label asp-for="Input.RememberMe" class="form-check-label"></label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Log in</button>
-                </form>
+<div class="card">
+    <div class="body">
+        <form id="sign_in" method="POST">
+            @* <div class="msg">Sign in to start your session</div> *@
+            <h4>Login</h4>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="material-icons">person</i>
+                </span>
+                <div class="form-line">
+                    <input asp-for="@Model.Input.Email" class="form-control" placeholder="Username" autofocus />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col-md-3 grid-margin stretch-card">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="material-icons">lock</i>
+                </span>
+                <div class="form-line">
+                    <input type="password" asp-for="Input.Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 p-t-5">
+                    <input asp-for="Input.RememberMe" class="filled-in chk-col-pink" />
+                    <label asp-for="Input.RememberMe" class="form-check-label"></label>
+                </div>
+                <div class="col-xs-4">
+                    <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                </div>
+            </div>
+            <div class="row m-t-15 m-b--20">
+                <div class="col-xs-6">
+                    <a href="/Account/ForgotPassword">Forgot Password?</a>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

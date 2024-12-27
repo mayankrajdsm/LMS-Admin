@@ -1,4 +1,7 @@
 ﻿<ol class="breadcrumb breadcrumb-bg-pink">
-    <li><a href="javascript:void(0);"><i class="material-icons">home</i> @ViewBag.Ref</a></li>
+    @if (!string.IsNullOrEmpty(ViewBag.Ref))
+    {
+        <li><a href="javascript:void(0);"><i class="material-icons">home</i> @ViewBag.Ref</a></li>
+    }
     <li class="active"><i class="material-icons">library_books</i> @ViewBag.Title</li>
 </ol>

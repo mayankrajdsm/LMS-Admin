@@ -7722,8 +7722,8 @@ fieldset[disabled] .form-control {
 .login-page {
   background-color: #00BCD4;
   padding-left: 0;
-  max-width: 360px;
-  margin: 5% auto;
+  max-width: 40%;
+  margin: 3% auto;
   overflow-x: hidden; }
   .login-page .login-box .msg {
     color: #555;
