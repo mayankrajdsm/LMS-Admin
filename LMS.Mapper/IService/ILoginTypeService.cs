@@ -10,6 +10,8 @@ namespace LMS.Mapper.IService
     public interface ILoginTypeService
     {
         Task<List<LoginType>> GetLoginTypes();
-        Task<int> InsertLoginType(string name, string key, string createdBy);
+        Task<LoginType> GetLoginTypeById(string roleId);
+        Task<int> InsertLoginType(LoginType loginType);
+        Task<int> UpdateLoginType(LoginType loginType);
     }
 }

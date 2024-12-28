@@ -4,16 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel;
 using System.Security.Claims;
+using LMS.Administration.Middleware;
 
 namespace LMS.Administration.Pages.Account
 {
     public class LoginModel : PageModel
     {
         private readonly ILogger<LoginModel> _logger;
+        private readonly IActiveUserService _activeUserService;
 
-        public LoginModel(ILogger<LoginModel> logger)
+        public LoginModel(ILogger<LoginModel> logger, IActiveUserService activeUserService)
         {
             _logger = logger;
+            _activeUserService = activeUserService;
         }
 
         [BindProperty]
@@ -38,7 +41,7 @@ namespace LMS.Administration.Pages.Account
                         new Claim("Id", "12345"),
                         new Claim(ClaimTypes.Role, "Admin")
                     };
-
+                    _activeUserService.SetUserId("12345");
                     // Create claims identity
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 

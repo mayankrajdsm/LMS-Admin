@@ -15,7 +15,7 @@ namespace LMS.Admin.Controllers
         public IActionResult Index()
         {
             IEnumerable<Building> _getBuilding = new List<Building>();
-            _getBuilding = _buildingService.GetBuildings();
+            //_getBuilding = _buildingService.GetBuildings();
             return View(_getBuilding);
         }
     }

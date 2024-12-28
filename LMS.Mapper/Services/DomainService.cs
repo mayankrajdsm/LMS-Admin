@@ -1,5 +1,6 @@
 ﻿using LMS.Infrastructures.Interface;
-using LMS.Infrastructures.Models;
+using LMS.Infrastructures.Repository;
+using LMS.Mapper.BusinessObject;
 using LMS.Mapper.ConversionHelper;
 using LMS.Mapper.IService;
 using System;
@@ -13,29 +14,9 @@ namespace LMS.Mapper.Services
     public class DomainService : IDomainService
     {
         private readonly IDomainRepository _domainRepository;
-        public DomainService(IDomainRepository domainRepository)
-        {
-            _domainRepository = domainRepository;
-        }
-        public async Task<IEnumerable<Domain>> GetDomains()
-        {
-            return await _domainRepository.GetDomains();
-        }
-        public async Task<Domain> GetDomainsById(string domainId)
-        {
-            if (!string.IsNullOrEmpty(domainId))
-            {
-                return await _domainRepository.GetDomainsById(new Guid(domainId));
-            }
-            else
-            {
-                return null;
-            }
-        }
-        public async Task<int> InsertDomain(BusinessObject.Domain domain)
-        {
-            return await _domainRepository.InsertDomain(domain.ToEntityModel());
-        }
+        public DomainService(IDomainRepository domainRepository) => _domainRepository = domainRepository;
+        public async Task<Domain> GetDomain() => _domainRepository.GetDomains().Result.FirstOrDefault().ToBusinessObject();
+        public async Task<int> InsertDomain(BusinessObject.Domain domain) => await _domainRepository.InsertDomain(domain.ToEntityModel());
         public async Task<int> UpdateDomain(BusinessObject.Domain domain)
         {
             var domainReq = domain.ToEntityModel();

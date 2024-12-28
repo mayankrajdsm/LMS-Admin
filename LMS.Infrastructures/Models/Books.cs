@@ -78,4 +78,6 @@ public partial class Book
     public string Source { get; set; } = null!;
 
     public string Reference { get; set; } = null!;
+
+    public virtual ICollection<IssueBookStudent> IssueBookStudents { get; set; } = new List<IssueBookStudent>();
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class ContactUs
+public partial class PaymentStatus
 {
-    public Guid ContactUsId { get; set; }
+    public Guid PaymentStatusId { get; set; }
 
-    public string ContactUsText { get; set; } = null!;
+    public string PaymentStatusName { get; set; } = null!;
 
     public bool IsActive { get; set; }
 
@@ -18,4 +18,6 @@ public partial class ContactUs
     public DateTime? ModifiedOn { get; set; }
 
     public Guid? ModifiedBy { get; set; }
+
+    public virtual ICollection<SubscriptionPayment> SubscriptionPayments { get; set; } = new List<SubscriptionPayment>();
 }

@@ -10,6 +10,8 @@ namespace LMS.Mapper.IService
     public interface IStaffTypeService
     {
         Task<List<StaffType>> GetStaffTypes();
-        Task<int> InsertStaffType(string name, string createdBy);
+        Task<StaffType> GetStaffTypeById(string staffTypeId);
+        Task<int> InsertStaffType(StaffType staffType);
+        Task<int> UpdateStaffType(StaffType staffType);
     }
 }

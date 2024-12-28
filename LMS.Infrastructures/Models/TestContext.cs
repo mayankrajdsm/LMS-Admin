@@ -19,6 +19,10 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Banner> Banners { get; set; }
 
+    public virtual DbSet<Barcode> Barcodes { get; set; }
+
+    public virtual DbSet<Batch> Batches { get; set; }
+
     public virtual DbSet<Book> Books { get; set; }
 
     public virtual DbSet<Building> Buildings { get; set; }
@@ -37,11 +41,19 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Domain> Domains { get; set; }
 
-    public virtual DbSet<Education> Educations { get; set; }
+    public virtual DbSet<EmployementType> EmployementTypes { get; set; }
 
-    public virtual DbSet<Guardian> Guardians { get; set; }
+    public virtual DbSet<Gender> Genders { get; set; }
+
+    public virtual DbSet<IssueBookStudent> IssueBookStudents { get; set; }
 
     public virtual DbSet<LoginType> LoginTypes { get; set; }
+
+    public virtual DbSet<MaritalStatus> MaritalStatuses { get; set; }
+
+    public virtual DbSet<PaymentStatus> PaymentStatuses { get; set; }
+
+    public virtual DbSet<SocialCateogory> SocialCateogories { get; set; }
 
     public virtual DbSet<Staff> Staff { get; set; }
 
@@ -51,7 +63,9 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Student> Students { get; set; }
 
-    public virtual DbSet<StudentContact> StudentContact { get; set; }
+    public virtual DbSet<StudentCateogory> StudentCateogories { get; set; }
+
+    public virtual DbSet<StudentContact> StudentContacts { get; set; }
 
     public virtual DbSet<StudentEducation> StudentEducation { get; set; }
 
@@ -59,7 +73,17 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<StudentParent> StudentParents { get; set; }
 
-    public virtual DbSet<StudentTransport> StudentTransport { get; set; }
+    public virtual DbSet<StudentSeatBooking> StudentSeatBookings { get; set; }
+
+    public virtual DbSet<StudentSubType> StudentSubTypes { get; set; }
+
+    public virtual DbSet<StudentTransport> StudentTransports { get; set; }
+
+    public virtual DbSet<SubscriptionPakage> SubscriptionPakages { get; set; }
+
+    public virtual DbSet<SubscriptionPayment> SubscriptionPayments { get; set; }
+
+    public virtual DbSet<SubscriptionsTransaction> SubscriptionsTransactions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -71,7 +95,7 @@ public partial class TestContext : DbContext
         {
             entity.HasKey(e => e.AboutUsId).HasName("PK__AboutUs__3EC10C104288052C");
 
-            entity.ToTable("AboutUS");
+            entity.ToTable("AboutU");
 
             entity.Property(e => e.AboutUsId)
                 .ValueGeneratedNever()
@@ -100,6 +124,39 @@ public partial class TestContext : DbContext
                 .HasColumnName("Banner_Name");
             entity.Property(e => e.CreatedOn).HasColumnType("datetime");
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Barcode>(entity =>
+        {
+            entity.ToTable("Barcode");
+
+            entity.Property(e => e.BarcodeId)
+                .ValueGeneratedNever()
+                .HasColumnName("Barcode_ID");
+            entity.Property(e => e.Code)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<Batch>(entity =>
+        {
+            entity.HasKey(e => e.BatchId).HasName("PK__Batch__28E47C5348263B17");
+
+            entity.ToTable("Batch");
+
+            entity.Property(e => e.BatchId)
+                .ValueGeneratedNever()
+                .HasColumnName("Batch_ID");
+            entity.Property(e => e.BatchCode)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("Batch_Code");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.FromDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.ToDate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<Book>(entity =>
@@ -226,7 +283,7 @@ public partial class TestContext : DbContext
         {
             entity.HasKey(e => e.ContactUsId).HasName("PK__ContactU__56224EAA998E9DDE");
 
-            entity.ToTable("ContactUS");
+            entity.ToTable("ContactU");
 
             entity.Property(e => e.ContactUsId)
                 .ValueGeneratedNever()
@@ -322,89 +379,70 @@ public partial class TestContext : DbContext
             entity.Property(e => e.StateId).HasColumnName("State_ID");
         });
 
-        modelBuilder.Entity<StudentEducation>(entity =>
+        modelBuilder.Entity<EmployementType>(entity =>
         {
-            entity.HasKey(e => e.EducationId).HasName("PK__Educatio__4BBE38051DAA9064");
+            entity.HasKey(e => e.EmployementTypeId).HasName("PK__Employem__FD9D315579896085");
 
-            entity.ToTable("Education");
+            entity.ToTable("EmployementType");
 
-            entity.Property(e => e.EducationId).ValueGeneratedNever();
-            entity.Property(e => e.Class)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("class");
-            entity.Property(e => e.Percentage).HasColumnType("decimal(2, 2)");
-            entity.Property(e => e.SchoolAddress)
+            entity.Property(e => e.EmployementTypeId)
+                .ValueGeneratedNever()
+                .HasColumnName("EmployementType_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.EmployementTypeCode)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.SchoolAffiliatedTo)
-                .HasMaxLength(50)
+            entity.Property(e => e.EmployementTypeName)
+                .HasMaxLength(100)
                 .IsUnicode(false);
-            entity.Property(e => e.SchoolName)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.HasOne(d => d.Student).WithMany(p => p.StudentEducations)
-                .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK__Education__Stude__151B244E");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
         });
 
-        //modelBuilder.Entity<StudentGuardian>(entity =>
-        //{
-        //    entity.HasKey(e => e.GuardianId).HasName("PK__Guardian__0A5E1A9B0159CDB4");
+        modelBuilder.Entity<Gender>(entity =>
+        {
+            entity.HasKey(e => e.GenderId).HasName("PK__Gender__AF750E64A28CF8A5");
 
-        //    entity.ToTable("Guardian");
+            entity.ToTable("Gender");
 
-        //    entity.Property(e => e.GuardianId).ValueGeneratedNever();
-        //    entity.Property(e => e.Address)
-        //        .HasMaxLength(100)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Adhar)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.City)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Country)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Designation)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Education)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Email)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Mobile)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Name)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Occupation)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.OfficeAddress)
-        //        .HasMaxLength(100)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.OfficeContact)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.OrganizationName)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.Relation)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
-        //    entity.Property(e => e.State)
-        //        .HasMaxLength(50)
-        //        .IsUnicode(false);
+            entity.Property(e => e.GenderId)
+                .ValueGeneratedNever()
+                .HasColumnName("Gender_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.GenderCode)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.GenderName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
 
-        //    entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
-        //        .HasForeignKey(d => d.StudentId)
-        //        .HasConstraintName("FK__Guardian__Studen__14270015");
-        //});
+        modelBuilder.Entity<IssueBookStudent>(entity =>
+        {
+            entity.HasKey(e => e.IssueBookStudentId).HasName("PK__IssueBoo__667816AE30F9610D");
+
+            entity.ToTable("IssueBookStudent");
+
+            entity.Property(e => e.IssueBookStudentId)
+                .ValueGeneratedNever()
+                .HasColumnName("IssueBookStudent_ID");
+            entity.Property(e => e.BookId).HasColumnName("Book_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.FromDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.StudentId).HasColumnName("Student_ID");
+            entity.Property(e => e.ToDate).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.IssueBookStudents)
+                .HasForeignKey(d => d.BookId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__IssueBook__Book___2FCF1A8A");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.IssueBookStudents)
+                .HasForeignKey(d => d.StudentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__IssueBook__Stude__2EDAF651");
+        });
 
         modelBuilder.Entity<LoginType>(entity =>
         {
@@ -425,6 +463,62 @@ public partial class TestContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("LoginType_Name");
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<MaritalStatus>(entity =>
+        {
+            entity.HasKey(e => e.MaritalStatusId).HasName("PK__MaritalS__F2263977B9EA3A48");
+
+            entity.ToTable("MaritalStatus");
+
+            entity.Property(e => e.MaritalStatusId)
+                .ValueGeneratedNever()
+                .HasColumnName("MaritalStatus_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.MaritalStatusCode)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.MaritalStatusName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<PaymentStatus>(entity =>
+        {
+            entity.HasKey(e => e.PaymentStatusId).HasName("PK__PaymentS__44DFB35F3780195B");
+
+            entity.ToTable("PaymentStatus");
+
+            entity.Property(e => e.PaymentStatusId)
+                .ValueGeneratedNever()
+                .HasColumnName("PaymentStatus_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.PaymentStatusName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("PaymentStatus_Name");
+        });
+
+        modelBuilder.Entity<SocialCateogory>(entity =>
+        {
+            entity.HasKey(e => e.SocialCateogoryId).HasName("PK__SocialCa__7898669AAE9F1BF6");
+
+            entity.ToTable("SocialCateogory");
+
+            entity.Property(e => e.SocialCateogoryId)
+                .ValueGeneratedNever()
+                .HasColumnName("SocialCateogory_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.SocialCateogoryCode)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SocialCateogoryName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<StudentParent>(entity =>
@@ -608,6 +702,8 @@ public partial class TestContext : DbContext
         {
             entity.HasKey(e => e.StudentId).HasName("PK__Students__32C52B9919B673CA");
 
+            entity.ToTable("Student");
+
             entity.Property(e => e.StudentId).ValueGeneratedNever();
             entity.Property(e => e.AdmissionDate).HasColumnType("datetime");
             entity.Property(e => e.Batch)
@@ -705,6 +801,23 @@ public partial class TestContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.StudentsPhoto).HasColumnType("image");
             entity.Property(e => e.SubCaste)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<StudentCateogory>(entity =>
+        {
+            entity.HasKey(e => e.StudentCateogoryId).HasName("PK__StudentC__09CD11E71CA3A7F6");
+
+            entity.ToTable("StudentCateogory");
+
+            entity.Property(e => e.StudentCateogoryId)
+                .ValueGeneratedNever()
+                .HasColumnName("StudentCateogory_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.StudentCateogoryName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -827,6 +940,8 @@ public partial class TestContext : DbContext
         {
             entity.HasKey(e => e.ParentsId).HasName("PK__StudentP__66DBADEE58BFF80D");
 
+            entity.ToTable("StudentParent");
+
             entity.Property(e => e.ParentsId).ValueGeneratedNever();
             entity.Property(e => e.FatherAddress)
                 .HasMaxLength(50)
@@ -918,6 +1033,49 @@ public partial class TestContext : DbContext
                 .HasConstraintName("FK_StudentParents_StudentId");
         });
 
+        modelBuilder.Entity<StudentSeatBooking>(entity =>
+        {
+            entity.HasKey(e => e.StudentSeatBookingId).HasName("PK__StudentS__D21ED6FF5C6B348C");
+
+            entity.ToTable("StudentSeatBooking");
+
+            entity.Property(e => e.StudentSeatBookingId)
+                .ValueGeneratedNever()
+                .HasColumnName("StudentSeatBooking_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.FromDate).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.SeatNo).HasColumnName("Seat_No");
+            entity.Property(e => e.StudentId).HasColumnName("Student_ID");
+            entity.Property(e => e.ToDate).HasColumnType("datetime");
+            entity.Property(e => e.TokenNo)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("Token_No");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.StudentSeatBookings)
+                .HasForeignKey(d => d.StudentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__StudentSe__Stude__339FAB6E");
+        });
+
+        modelBuilder.Entity<StudentSubType>(entity =>
+        {
+            entity.HasKey(e => e.StudentSubTypeId).HasName("PK__StudentS__1CB60DB87BEEBA85");
+
+            entity.ToTable("StudentSubType");
+
+            entity.Property(e => e.StudentSubTypeId)
+                .ValueGeneratedNever()
+                .HasColumnName("StudentSubType_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.StudentSubTypeName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<StudentTransport>(entity =>
         {
             entity.HasKey(e => e.TransportId).HasName("PK__StudentT__19E9A11D88CF0BE5");
@@ -933,6 +1091,94 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Student).WithMany(p => p.StudentTransports)
                 .HasForeignKey(d => d.StudentId)
                 .HasConstraintName("FK_StudentTransport_StudentId");
+        });
+
+        modelBuilder.Entity<SubscriptionPakage>(entity =>
+        {
+            entity.HasKey(e => e.SubscriptionPakageId).HasName("PK__Subscrip__7118996C1BBFA4EA");
+
+            entity.ToTable("SubscriptionPakage");
+
+            entity.Property(e => e.SubscriptionPakageId)
+                .ValueGeneratedNever()
+                .HasColumnName("SubscriptionPakage_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.PriceMonth)
+                .HasColumnType("numeric(18, 2)")
+                .HasColumnName("Price_Month");
+            entity.Property(e => e.SubscriptionPakageName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.SubscriptionPeriodMonths).HasColumnName("SubscriptionPeriod_Months");
+        });
+
+        modelBuilder.Entity<SubscriptionPayment>(entity =>
+        {
+            entity.HasKey(e => e.PaymentId).HasName("PK__Subscrip__DA6C7FE1ED834CA0");
+
+            entity.ToTable("SubscriptionPayment");
+
+            entity.Property(e => e.PaymentId)
+                .ValueGeneratedNever()
+                .HasColumnName("Payment_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.PaymentStatus).HasColumnName("Payment_Status");
+            entity.Property(e => e.Rate).HasColumnType("numeric(18, 2)");
+            entity.Property(e => e.ReceiptNo)
+                .HasMaxLength(250)
+                .IsUnicode(false);
+            entity.Property(e => e.StudentTeacher)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("Student_Teacher");
+            entity.Property(e => e.StudentTeacherId).HasColumnName("Student_Teacher_ID");
+            entity.Property(e => e.SubscriptionPakageId).HasColumnName("SubscriptionPakage_ID");
+
+            entity.HasOne(d => d.PaymentStatusNavigation).WithMany(p => p.SubscriptionPayments)
+                .HasForeignKey(d => d.PaymentStatus)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Subscript__Payme__4F47C5E3");
+        });
+
+        modelBuilder.Entity<SubscriptionsTransaction>(entity =>
+        {
+            entity.HasKey(e => e.SubscriptionsTransactionStudentId).HasName("PK__Subscrip__ACCA0E12861F5F78");
+
+            entity.ToTable("SubscriptionsTransaction");
+
+            entity.Property(e => e.SubscriptionsTransactionStudentId)
+                .ValueGeneratedNever()
+                .HasColumnName("SubscriptionsTransactionStudent_ID");
+            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
+            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
+            entity.Property(e => e.PaymentId).HasColumnName("Payment_ID");
+            entity.Property(e => e.StudentId).HasColumnName("Student_ID");
+            entity.Property(e => e.StudentTeacherId)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("Student_Teacher_ID");
+            entity.Property(e => e.SubscriptionPakageId).HasColumnName("SubscriptionPakage_ID");
+            entity.Property(e => e.ValidFrom).HasColumnType("datetime");
+            entity.Property(e => e.ValidTo).HasColumnType("datetime");
+
+            entity.HasOne(d => d.Payment).WithMany(p => p.SubscriptionsTransactions)
+                .HasForeignKey(d => d.PaymentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Subscript__Payme__55009F39");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.SubscriptionsTransactions)
+                .HasForeignKey(d => d.StudentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Subscript__Stude__531856C7");
+
+            entity.HasOne(d => d.SubscriptionPakage).WithMany(p => p.SubscriptionsTransactions)
+                .HasForeignKey(d => d.SubscriptionPakageId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Subscript__Subsc__540C7B00");
         });
 
         OnModelCreatingPartial(modelBuilder);

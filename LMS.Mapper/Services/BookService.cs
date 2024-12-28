@@ -12,18 +12,8 @@ namespace LMS.Mapper.Services
     public class BookService: IBookService
     {
         private readonly IBookRepository _bookRepository;
-        public BookService(IBookRepository bookRepository)
-        {
-            _bookRepository = bookRepository;
-        }
-        public IEnumerable<Book> GetAllBooks()
-        {
-            return _bookRepository.GetAllBooks().Result;
-
-        }
-        public int InsertBook(Book book) 
-        {
-            return _bookRepository.InsertBook(book).Result;
-        }
+        public BookService(IBookRepository bookRepository) => _bookRepository = bookRepository;
+        public IEnumerable<Book> GetAllBooks() => _bookRepository.GetAllBooks().Result;
+        public int InsertBook(Book book) => _bookRepository.InsertBook(book).Result;
     }
 }

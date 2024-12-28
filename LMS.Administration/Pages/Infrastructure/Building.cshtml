@@ -9,8 +9,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="template-demo">
-                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
-                            data-bs-toggle="modal" data-bs-target="#dvAddEditBookPopUp">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditBuildingPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditBuildingPopUp">
                         <i class="mdi mdi-plus"></i>Add New Building
                     </button>
                 </div>
@@ -29,17 +29,17 @@
                                 <th>Contact Number</th>
                                 <th>Contact Email</th>
                                 <th>IsActive</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (Model != null)
                             {
-                                @* if (Model.buildings.Any())
+                                if (Model.buildings.Any())
                                 {
                                     @foreach (var item in Model.buildings)
                                     {
                                         <tr>
-                                            <td>@item.DomainName</td>
                                             <td>@item.BuildingName</td>
                                             <td>@item.Address1</td>
                                             <td>@item.Address2</td>
@@ -50,9 +50,14 @@
                                             <td>@item.ContactNo</td>
                                             <td>@item.ContactEmail</td>
                                             <td>@item.IsActive</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.BuildingId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     }
-                                } *@
+                                }
                             }
                         </tbody>
                     </table>
@@ -61,9 +66,33 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="dvAddEditBuildingPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-        @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", Model.buildings)
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Building</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", new Building())
+            </div>
+        </div>
     </div>
 </div>
-
+<!-- Edit Item Section -->
+@if (Model.editBuilding != null)
+{
+    <div class="modal fade" id="dvAddEditBuildingPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Building</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("~/Pages/Infrastructure/PartialView/_AddBuilding.cshtml", Model.editBuilding)
+                </div>
+            </div>
+        </div>
+    </div>
+}

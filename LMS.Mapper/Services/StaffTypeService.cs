@@ -14,10 +14,7 @@ namespace LMS.Mapper.Services
     public class StaffTypeService : IStaffTypeService
     {
         private readonly IStaffTypeRepository _staffTypeRepository;
-        public StaffTypeService(IStaffTypeRepository staffTypeRepository)
-        {
-            _staffTypeRepository = staffTypeRepository;
-        }
+        public StaffTypeService(IStaffTypeRepository staffTypeRepository) => _staffTypeRepository = staffTypeRepository;
         public async Task<List<StaffType>> GetStaffTypes()
         {
             List<StaffType> staffTypes = new List<StaffType>();
@@ -28,14 +25,12 @@ namespace LMS.Mapper.Services
             }
             return staffTypes;
         }
-        public async Task<int> InsertStaffType(string name, string createdBy)
+        public async Task<StaffType> GetStaffTypeById(string staffTypeId)
         {
-            StaffType staffType = new StaffType();
-            staffType.StaffTypeName = name;
-            staffType.IsActive = true;
-            staffType.CreatedOn = DateTime.Now;
-            staffType.CreatedBy = createdBy;
-            return await _staffTypeRepository.InsertStaffType(staffType.ToEntityModel());
+            var staffType = await _staffTypeRepository.GetStaffTypeById(Guid.Parse(staffTypeId));
+            return staffType.ToBusinessObject();
         }
+        public async Task<int> InsertStaffType(StaffType staffType) => await _staffTypeRepository.InsertStaffType(staffType.ToEntityModel());
+        public async Task<int> UpdateStaffType(StaffType staffType) => await _staffTypeRepository.UpdateStaffType(staffType.ToEntityModel());
     }
 }

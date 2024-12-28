@@ -9,14 +9,14 @@
                 <div class="template-demo">
                     <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
                             data-bs-toggle="modal" data-bs-target="#dvAddEditInventoryPopUp">
-                        <i class="mdi mdi-plus"></i>Add New Category
+                        <i class="mdi mdi-plus"></i>Add New Designation
                     </button>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Staff Type</th>
+                                <th>Designation</th>
                                 <th>Status</th>
                                 <th>Created On</th>
                                 <th>Created By</th>
@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @* @foreach (var item in Model._lstStaffType)
+                            @foreach (var item in Model._lstStaffType)
                             {
                                 <tr>
                                     <td>@item.StaffTypeName</td>
@@ -36,18 +36,12 @@
                                     <td>@item.ModifiedOn</td>
                                     <td>@item.ModifiedBy</td>
                                     <td>
-                                        <button type="button" class="btn btn-social-icon-text btn-google">
-                                            <i class="mdi mdi-plus"></i>Edit
-                                        </button>
-                                        @item.IsActive?      <button type="button" class="btn btn-social-icon-text btn-google">
-                                            <i class="mdi mdi-plus"></i>In Active
-                                        </button>:      <button type="button" class="btn btn-social-icon-text btn-google">
-                                            <i class="mdi mdi-plus"></i>Active
-                                        </button>
-                                  
+                                        <form method="get" asp-page-handler="Edit" asp-route-id="@item.StaffTypeId" class="d-inline">
+                                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                        </form>
                                     </td>
                                 </tr>
-                            } *@
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -55,8 +49,33 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="dvAddEditInventoryPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditStaffType.cshtml", new StaffTypeCls())
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add New Designation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditStaffType.cshtml", new Designation())
+            </div>
+        </div>
     </div>
 </div>
+<!-- Edit Item Section -->
+@if (Model.editDesignation != null)
+{
+    <div class="modal fade" id="dvAddEditLoginTypePopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditLoginType.cshtml", Model.editDesignation)
+                </div>
+            </div>
+        </div>
+    </div>
+}

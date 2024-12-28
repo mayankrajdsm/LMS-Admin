@@ -1,3 +1,4 @@
+using LMS.Administration.Middleware;
 using LMS.Infrastructures.Interface;
 using LMS.Mapper.BusinessObject;
 using LMS.Mapper.IService;
@@ -11,16 +12,18 @@ namespace LMS.Administration.Pages.Staff
     {
         private readonly ILogger<RoleModel> _logger;
         private readonly ILoginTypeService _loginTypeService;
-        public RoleModel(ILogger<RoleModel> logger, ILoginTypeService loginTypeService)
+        private readonly IActiveUserService _activeUserService;
+        public RoleModel(ILogger<RoleModel> logger, ILoginTypeService loginTypeService, IActiveUserService activeUserService)
         {
             _logger = logger;
             _loginTypeService = loginTypeService;
+            _activeUserService = activeUserService;
         }
         public List<LoginType> _loginTypes { get; set; }
         [BindProperty]
-        public Role NewItem { get; set; }
+        public Role addRole { get; set; }
         [BindProperty]
-        public Role EditItem { get; set; }
+        public Role editRole { get; set; }
         public async Task<IActionResult> OnGet()
         {
             _loginTypes = await _loginTypeService.GetLoginTypes();
@@ -28,46 +31,51 @@ namespace LMS.Administration.Pages.Staff
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            //    // Add a new item
             if (!ModelState.IsValid)
             {
                 _loginTypes = await _loginTypeService.GetLoginTypes();
                 return Page();
             }
 
-            //    if (NewItem.Id == 0)
-            //    {
-            //        // Create new item
-            //        _dbContext.Items.Add(NewItem);
-            //    }
-            //    else
-            //    {
-            //        // Edit existing item
-            //        var existingItem = await _dbContext.Items.FindAsync(NewItem.Id);
-            //        if (existingItem != null)
-            //        {
-            //            existingItem.Name = NewItem.Name;
-            //            existingItem.Description = NewItem.Description;
-            //        }
-            //    }
+            if (string.IsNullOrEmpty(addRole.LoginTypeId))
+            {
+                LMS.Mapper.BusinessObject.LoginType loginType = new LMS.Mapper.BusinessObject.LoginType();
+                loginType.LoginTypeName = addRole.LoginTypeName;
+                loginType.LoginTypeKey = addRole.LoginTypeKey;
+                loginType.IsActive = true;
+                loginType.CreatedOn = DateTime.Now;
+                loginType.CreatedBy = _activeUserService.UserId;
+                int isSave = await _loginTypeService.InsertLoginType(loginType);
+            }
+            else
+            {
+                var existingRole = await _loginTypeService.GetLoginTypeById(addRole.LoginTypeId);
+                if (existingRole != null)
+                {
+                    existingRole.LoginTypeName = addRole.LoginTypeName;
+                    existingRole.LoginTypeKey = addRole.LoginTypeKey;
+                    existingRole.ModifiedOn = DateTime.Now;
+                    existingRole.ModifiedBy = _activeUserService.UserId;
+                    int isUpdated = await _loginTypeService.UpdateLoginType(existingRole);
+                }
+            }
 
-            //    await _dbContext.SaveChangesAsync();
-            return RedirectToPage();
+            return Page();
         }
+        public async Task<IActionResult> OnGetEditAsync(string id)
+        {
+            var existingRole = await _loginTypeService.GetLoginTypeById(id);
+            if (existingRole == null)
+            {
+                return NotFound();
+            }
 
-        //public async Task<IActionResult> OnGetEditAsync(int id)
-        //{
-        //    // Load the item to edit
-        //    var item = await _dbContext.Items.FindAsync(id);
-        //    if (item == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    EditItem = item;
-        //    Items = await _dbContext.Items.ToListAsync();
-        //    return Page();
-        //}
+            editRole.LoginTypeId = existingRole.LoginTypeId;
+            editRole.LoginTypeName = existingRole.LoginTypeName;
+            editRole.LoginTypeKey = existingRole.LoginTypeKey;
+            _loginTypes = await _loginTypeService.GetLoginTypes();
+            return Page();
+        }
 
         //public async Task<IActionResult> OnPostDeleteAsync(int id)
         //{
@@ -84,6 +92,7 @@ namespace LMS.Administration.Pages.Staff
     }
     public class Role
     {
+        public string LoginTypeId { get; set; }
         public string LoginTypeName { get; set; }
         public string LoginTypeKey { get; set; }
     }

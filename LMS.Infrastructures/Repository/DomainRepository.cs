@@ -11,33 +11,21 @@ namespace LMS.Infrastructures.Repository
 {
     public class DomainRepository : IDomainRepository
     {
-        private readonly TestContext _lMSDbContext;
-        public DomainRepository(TestContext lMSDbContext)
-        {
-            _lMSDbContext = lMSDbContext;
-        }
-        public async Task<IEnumerable<Domain>> GetDomains()
-        {
-            return _lMSDbContext.Domains.ToList();
-        }
-        public async Task<Domain> GetDomainsById(Guid domainId)
-        {
-            return await _lMSDbContext.Domains.FindAsync(domainId);
-        }
+        private readonly TestContext _context;
+        public DomainRepository(TestContext context) => _context = context;
+        public async Task<IEnumerable<Domain>> GetDomains() => _context.Domains.ToList();
+        public async Task<Domain> GetDomainsById(Guid domainId) => await _context.Domains.FindAsync(domainId);
         public async Task<int> InsertDomain(Domain domain)
         {
-            _lMSDbContext.Domains.Add(domain);
-            return await _lMSDbContext.SaveChangesAsync();
+            _context.Domains.Add(domain);
+            return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateDomain(Domain domain)
-        {
-            return await _lMSDbContext.SaveChangesAsync();
-        }
+        public async Task<int> UpdateDomain(Domain domain) => await _context.SaveChangesAsync();
         public async Task<int> DeleteDomain(Guid domainId)
         {
-            var existingDomain = await _lMSDbContext.Domains.FindAsync(domainId);
-            _lMSDbContext.Domains.Remove(existingDomain);
-            return await _lMSDbContext.SaveChangesAsync();
+            var existingDomain = await _context.Domains.FindAsync(domainId);
+            _context.Domains.Remove(existingDomain);
+            return await _context.SaveChangesAsync();
         }
     }
 }

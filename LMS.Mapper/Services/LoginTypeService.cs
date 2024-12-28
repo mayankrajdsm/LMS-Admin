@@ -11,13 +11,10 @@ using System.Threading.Tasks;
 
 namespace LMS.Mapper.Services
 {
-    public class LoginTypeService: ILoginTypeService
+    public class LoginTypeService : ILoginTypeService
     {
         private readonly ILoginTypeRepository _loginTypeRepository;
-        public LoginTypeService(ILoginTypeRepository loginTypeRepository)
-        {
-            _loginTypeRepository = loginTypeRepository;
-        }
+        public LoginTypeService(ILoginTypeRepository loginTypeRepository) => _loginTypeRepository = loginTypeRepository;
         public async Task<List<LoginType>> GetLoginTypes()
         {
             List<LoginType> loginTypes = new List<LoginType>();
@@ -28,15 +25,12 @@ namespace LMS.Mapper.Services
             }
             return loginTypes;
         }
-        public async Task<int> InsertLoginType(string name, string key, string createdBy)
+        public async Task<LoginType> GetLoginTypeById(string roleId)
         {
-            LoginType loginType = new LoginType();
-            loginType.LoginTypeName = name;
-            loginType.LoginTypeKey = key;
-            loginType.IsActive = true;
-            loginType.CreatedOn = DateTime.Now;
-            loginType.CreatedBy = createdBy;
-            return await _loginTypeRepository.InsertLoginType(loginType.ToEntityModel());
+            var loginType = await _loginTypeRepository.GetLoginTypeById(new Guid(roleId));
+            return loginType.ToBusinessObject();
         }
+        public async Task<int> InsertLoginType(LoginType loginType) => await _loginTypeRepository.InsertLoginType(loginType.ToEntityModel());
+        public async Task<int> UpdateLoginType(LoginType loginType) => await _loginTypeRepository.UpdateLoginType();
     }
 }
