@@ -25,6 +25,25 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="form-check">
+                    <label asp-for="MenuIds" class="form-label"></label>
+                    <select asp-for="MenuIds" name="MenuIds" class="form-control show-tick" multiple data-selected-text-format="count">
+                        @foreach (var item in Model.lstMenus)
+                        {
+                            @* <option value="@item.Value" @(Model.MenuIds.Contains(item.Value) ? "selected" : "")>
+                                @item.Text
+                            </option> *@
+                            <option value="@item.Value">
+                                @item.Text
+                            </option>
+                        }
+                    </select>
+                    <span asp-validation-for="MenuIds" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary">Submit</button>

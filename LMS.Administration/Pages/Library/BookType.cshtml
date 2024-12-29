@@ -1,8 +1,8 @@
 ﻿@page
-@model LMS.Administration.Pages.StudentInfo.SubjectModel
+@model LMS.Administration.Pages.Library.BookTypeModel
 @{
     ViewBag.Ref = "Student Information";
-    ViewBag.Title = "Subject";
+    ViewBag.Title = "Manage Book Type";
 }
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -18,7 +18,7 @@
                         </a>
                         <ul class="dropdown-menu pull-right">
                             <li>
-                                <a data-toggle="modal" data-target="#defaultModal">Add New Subject</a>
+                                <a data-toggle="modal" data-target="#defaultModal">Add New Book Type</a>
                             </li>
                         </ul>
                     </li>
@@ -29,12 +29,8 @@
                     <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
-                                <th>Package Name</th>
-                                <th>Subscription Period</th>
-                                <th>Price (Monthly)</th>
-                                <th>Discount(%)</th>
-                                <th>Subscription Amount</th>
-                                <th>Description</th>
+                                <th>Code</th>
+                                <th>Name</th>
                                 <th>Status</th>
                                 <th>Created By</th>
                                 <th>Created On</th>
@@ -44,31 +40,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @* @if (Model.subscriptionPackages != null)
+                           @*  @if (Model.studentSubTypes != null)
                             {
-                                if (Model.subscriptionPackages.Any())
+                                if (Model.studentSubTypes.Any())
                                 {
-                                    @foreach (var item in Model.subscriptionPackages)
+                                    @foreach (var item in Model.studentSubTypes)
                                     {
-                                        var amount = ((item.PriceMonth * item.SubscriptionPeriodMonths) * (1 - item.DiscountPer));
-
                                         <tr>
-                                            <td>@item.SubscriptionPackageName</td>
-                                            <td>@item.SubscriptionPeriodMonths</td>
-                                            <td>@item.PriceMonth</td>
+                                            <td>@item.StudentSubTypeName</td>
                                             <td>@item.DiscountPer</td>
-                                            <td>@amount</td>
-                                            <td>@item.Decription</td>
                                             <td>@item.IsActive?"Active":"In Active"</td>
                                             <td>@item.CreatedBy</td>
                                             <td>@item.CreatedOn</td>
                                             <td>@item.ModifiedBy</td>
                                             <td>@item.ModifiedOn</td>
                                             <td>
-                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.SubscriptionPackageId" class="d-inline">
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.StudentSubTypeId" class="d-inline">
                                                     <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                                                 </form>
-                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.SubscriptionPackageId" class="d-inline">
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.StudentSubTypeId" class="d-inline">
                                                     <button type="submit" class="btn btn-error btn-sm">Delete</button>
                                                 </form>
                                             </td>
@@ -84,24 +74,24 @@
     </div>
 </div>
 <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">Add New Subject</h4>
+                <h4 class="modal-title" id="defaultModalLabel">Add New Book Type</h4>
             </div>
-            @await Html.PartialAsync("~/Pages/StudentInfo/PartialView/_addEditSubject.cshtml", new Subject())
+            @await Html.PartialAsync("~/Pages/Library/PartialView/_addEditBookType.cshtml", new BookType())
         </div>
     </div>
 </div>
-@if (Model.editSubject != null)
+@if (Model.editBookType != null)
 {
     <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="defaultModalLabel">Edit Subject</h4>
+                    <h4 class="modal-title" id="defaultModalLabel">Edit Book Type</h4>
                 </div>
-                @await Html.PartialAsync("~/Pages/StudentInfo/PartialView/_addEditSubject.cshtml", Model.editSubject)
+                @await Html.PartialAsync("~/Pages/Library/PartialView/_addEditBookType.cshtml", Model.editBookType)
             </div>
         </div>
     </div>

@@ -4,7 +4,10 @@ using LMS.Mapper.BusinessObject;
 using LMS.Mapper.IService;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace LMS.Administration.Pages.Staff
 {
@@ -93,7 +96,18 @@ namespace LMS.Administration.Pages.Staff
     public class Role
     {
         public string LoginTypeId { get; set; }
+
+        [Required(ErrorMessage = "Role name required.")]
+        [DisplayName("Role Name")]
         public string LoginTypeName { get; set; }
+
+        [Required(ErrorMessage = "Role key required.")]
+        [DisplayName("Role Key")]
         public string LoginTypeKey { get; set; }
+
+        [Required(ErrorMessage = "menus required.")]
+        [DisplayName("Menus")]
+        public string[] MenuIds { get; set; }
+        public List<SelectListItem> lstMenus { get; set; }
     }
 }
