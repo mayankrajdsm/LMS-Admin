@@ -1,0 +1,108 @@
+﻿@page
+@model LMS.Administration.Pages.Subscription.IndexModel
+@{
+}
+@{
+    ViewBag.Ref = "Subscription";
+    ViewBag.Title = "Extend";
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    @ViewBag.Title
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-toggle="modal" data-target="#defaultModal">Extend Subscription</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Student/Teacher</th>
+                                <th>Name</th>
+                                <th>Active Package</th>
+                                <th>Valid From</th>
+                                <th>Valid To</th>
+                                <th>Payment Status</th>
+                                <th>Status</th>
+                                <th>Created By</th>
+                                <th>Created On</th>
+                                <th>Modified By</th>
+                                <th>Modified On</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.subscriptionsTransactions != null)
+                            {
+                                if (Model.subscriptionsTransactions.Any())
+                                {
+                                    @foreach (var item in Model.subscriptionsTransactions)
+                                    {
+                                        <tr>
+                                            <td>@item.StudentTeacher</td>
+                                            <td>@item.Student</td>
+                                            <td>@item.SubscriptionPakage.SubscriptionPackageName</td>
+                                            <td>@item.ValidFrom</td>
+                                            <td>@item.ValidTo</td>
+                                            <td>@item.Payment.PaymentStatusNavigation.PaymentStatusName</td>
+                                            <td>@item.IsActive?"Active":"In Active"</td>
+                                            <td>@item.CreatedBy</td>
+                                            <td>@item.CreatedOn</td>
+                                            <td>@item.ModifiedBy</td>
+                                            <td>@item.ModifiedOn</td>
+                                            <td>
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.SubscriptionsTransactionStudentId" class="d-inline">
+                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                </form>
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.SubscriptionsTransactionStudentId" class="d-inline">
+                                                    <button type="submit" class="btn btn-error btn-sm">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Extend Subscription</h4>
+            </div>
+            @await Html.PartialAsync("~/Pages/Subscription/PartialView/_addEditExtendSubscription.cshtml", new SubscriptionsTransaction())
+        </div>
+    </div>
+</div>
+@if (Model.subscriptionsTransaction != null)
+{
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="defaultModalLabel">Edit Package</h4>
+                </div>
+                @await Html.PartialAsync("~/Pages/Subscription/PartialView/_viewSubscriptionDetails.cshtml", Model.subscriptionsTransaction)
+            </div>
+        </div>
+    </div>
+}

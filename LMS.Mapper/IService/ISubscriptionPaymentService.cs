@@ -10,7 +10,7 @@ namespace LMS.Mapper.IService
     public interface ISubscriptionPaymentService
     {
         Task<List<SubscriptionPayment>> GetSubscriptionPayments();
-        Task<SubscriptionPayment> GetSubscriptionPakageById(string id);
+        Task<SubscriptionPayment> GetSubscriptionPaymentById(string id);
         Task<int> InsertSubscriptionPayment(SubscriptionPayment subscriptionPayment);
         Task<int> UpdateSubscriptionPayment(SubscriptionPayment subscriptionPayment);
         Task<int> DeleteSubscriptionPayment(string id);

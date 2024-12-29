@@ -1,0 +1,67 @@
+﻿@model LMS.Administration.Pages.Subscription.SubscriptionsTransaction
+@{
+}
+<form id="form_advanced_validation" method="POST">
+    <div class="modal-body">
+        <div class="form-group form-float">
+            <label asp-for="StudentTeacher" class="form-label"></label>
+            <div class="form-line">
+                <div class="demo-radio-button">
+                    @foreach (var option in Model.lstStudentTeacher)
+                    {
+                        <input type="radio" id="option-@option.Value" name="StudentTeacher" value="@option.Value"
+                        @(Model.StudentTeacher == option.Value ? "checked" : "") />
+                        <label for="option-@option.Value">@option.Text</label>
+                    }
+                </div>
+                <span asp-validation-for="StudentTeacher" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="StudentId" class="form-label"></label>
+            <div class="form-line">
+                @Html.DropDownListFor(m => m.StudentId, new SelectList(Model.lstStudents), new { @class = "form-control" })
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="TeacherId" class="form-label"></label>
+            <div class="form-line">
+                @Html.DropDownListFor(m => m.TeacherId, new SelectList(Model.lstTeachers), new { @class = "form-control" })
+                <span asp-validation-for="TeacherId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="SubscriptionPackageId" class="form-label"></label>
+            <div class="form-line">
+                @Html.DropDownListFor(m => m.SubscriptionPackageId, new SelectList(Model.lstSubscriptionPackage), new { @class = "form-control" })
+                <span asp-validation-for="SubscriptionPackageId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="ValidFrom" class="form-label"></label>
+            <div class="form-line">
+                <input type="text" asp-for="ValidFrom" class="datepicker form-control" placeholder="Please choose a date...	" />
+                <span asp-validation-for="ValidFrom" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="ValidTo" class="form-label"></label>
+            <div class="form-line">
+                <input type="text" asp-for="ValidTo" class="datepicker form-control" placeholder="Please choose a date...	" />
+                <span asp-validation-for="ValidTo" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group form-float">
+            <label asp-for="IsActive" class="form-label"></label>
+            <div class="form-line">
+                <input type="checkbox" asp-for="IsActive" class="form-control" />
+                <span asp-validation-for="IsActive" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary waves-effect">SUBMIT</button>
+        <button type="button" class="btn bg-blue-grey waves-effect" data-dismiss="modal">CLOSE</button>
+    </div>
+</form>

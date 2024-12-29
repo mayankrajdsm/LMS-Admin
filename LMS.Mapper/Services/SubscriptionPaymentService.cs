@@ -27,7 +27,7 @@ namespace LMS.Mapper.Services
             }
             return subscriptionPayments;
         }
-        public async Task<SubscriptionPayment> GetSubscriptionPakageById(string id)
+        public async Task<SubscriptionPayment> GetSubscriptionPaymentById(string id)
         {
             var subscriptionPayment = await _subscriptionPaymentRepository.GetSubscriptionPaymentById(Guid.Parse(id));
             return subscriptionPayment.ToBusinessObject();
