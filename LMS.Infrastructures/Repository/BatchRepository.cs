@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class BatchRepository: IBatchRepository
     {
-        private readonly TestContext _context;
-        public BatchRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public BatchRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Batch>> GetBatchs() => await _context.Batches.ToListAsync();
         public async Task<Batch> GetBatchById(Guid batchId) => await _context.Batches.FindAsync(batchId);
         public async Task<int> InsertBatch(Batch batch)

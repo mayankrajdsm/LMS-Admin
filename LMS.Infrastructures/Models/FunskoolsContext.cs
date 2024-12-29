@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class TestContext : DbContext
+public partial class FunskoolsContext : DbContext
 {
-    public TestContext()
+    public FunskoolsContext()
     {
     }
 
-    public TestContext(DbContextOptions<TestContext> options)
+    public FunskoolsContext(DbContextOptions<FunskoolsContext> options)
         : base(options)
     {
     }
 
-    public virtual DbSet<AboutU> AboutUs { get; set; }
+    public virtual DbSet<AboutU> Aboutus { get; set; }
 
     public virtual DbSet<Banner> Banners { get; set; }
 
@@ -31,13 +31,11 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Class> Classes { get; set; }
 
-    public virtual DbSet<ContactU> ContactUs { get; set; }
+    public virtual DbSet<ContactU> Contactus { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<Department> Departments { get; set; }
-
-    public virtual DbSet<Designation> Designations { get; set; }
 
     public virtual DbSet<Domain> Domains { get; set; }
 
@@ -53,7 +51,7 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<PaymentStatus> PaymentStatuses { get; set; }
 
-    public virtual DbSet<SocialCateogory> SocialCateogories { get; set; }
+    public virtual DbSet<SocialCategory> SocialCategories { get; set; }
 
     public virtual DbSet<Staff> Staff { get; set; }
 
@@ -65,7 +63,7 @@ public partial class TestContext : DbContext
 
     public virtual DbSet<Student> Students { get; set; }
 
-    public virtual DbSet<StudentCateogory> StudentCateogories { get; set; }
+    public virtual DbSet<StudentCategory> StudentCategories { get; set; }
 
     public virtual DbSet<StudentContact> StudentContacts { get; set; }
 
@@ -89,15 +87,13 @@ public partial class TestContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=funskools;User Id=sa;Password=Mayank#1992;Encrypt=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AboutU>(entity =>
         {
-            entity.HasKey(e => e.AboutUsId).HasName("PK__AboutUs__3EC10C104288052C");
-
-            entity.ToTable("AboutU");
+            entity.HasKey(e => e.AboutUsId).HasName("PK__AboutU__3EC10C10AFF9D8CD");
 
             entity.Property(e => e.AboutUsId)
                 .ValueGeneratedNever()
@@ -113,7 +109,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Banner>(entity =>
         {
-            entity.HasKey(e => e.BannerId).HasName("PK__Banner__8177AC24AD234F0D");
+            entity.HasKey(e => e.BannerId).HasName("PK__Banner__8177AC24DF82CC49");
 
             entity.ToTable("Banner");
 
@@ -144,7 +140,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Batch>(entity =>
         {
-            entity.HasKey(e => e.BatchId).HasName("PK__Batch__28E47C5348263B17");
+            entity.HasKey(e => e.BatchId).HasName("PK__Batch__28E47C53A23764BD");
 
             entity.ToTable("Batch");
 
@@ -163,7 +159,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.BooksId).HasName("PK__Books__959FD33C13820D02");
+            entity.HasKey(e => e.BooksId).HasName("PK__Books__959FD33C6FF267E4");
 
             entity.Property(e => e.BooksId)
                 .ValueGeneratedNever()
@@ -194,7 +190,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Building>(entity =>
         {
-            entity.HasKey(e => e.BuildingId).HasName("PK__Building__D6D8522A9D343BDF");
+            entity.HasKey(e => e.BuildingId).HasName("PK__Building__D6D8522AAD071553");
 
             entity.ToTable("Building");
 
@@ -230,12 +226,12 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Domain).WithMany(p => p.Buildings)
                 .HasForeignKey(d => d.DomainId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Building__Domain__2B3F6F97");
+                .HasConstraintName("FK__Building__Domain__25518C17");
         });
 
         modelBuilder.Entity<City>(entity =>
         {
-            entity.HasKey(e => e.CityId).HasName("PK__City__DE9DE020FCC12353");
+            entity.HasKey(e => e.CityId).HasName("PK__City__DE9DE02034100D3A");
 
             entity.ToTable("City");
 
@@ -253,12 +249,12 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.State).WithMany(p => p.Cities)
                 .HasForeignKey(d => d.StateId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__City__State_ID__35BCFE0A");
+                .HasConstraintName("FK__City__State_ID__2645B050");
         });
 
         modelBuilder.Entity<Class>(entity =>
         {
-            entity.HasKey(e => e.ClassesId).HasName("PK__Classes__A373D24522CD11D2");
+            entity.HasKey(e => e.ClassesId).HasName("PK__Class__A373D245098B6CA8");
 
             entity.ToTable("Class");
 
@@ -283,9 +279,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<ContactU>(entity =>
         {
-            entity.HasKey(e => e.ContactUsId).HasName("PK__ContactU__56224EAA998E9DDE");
-
-            entity.ToTable("ContactU");
+            entity.HasKey(e => e.ContactUsId).HasName("PK__ContactU__56224EAA1A1F6790");
 
             entity.Property(e => e.ContactUsId)
                 .ValueGeneratedNever()
@@ -297,7 +291,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Country>(entity =>
         {
-            entity.HasKey(e => e.CountryId).HasName("PK__Country__8036CB4E5FF4AC26");
+            entity.HasKey(e => e.CountryId).HasName("PK__Country__8036CB4E04480B7F");
 
             entity.ToTable("Country");
 
@@ -314,7 +308,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Department>(entity =>
         {
-            entity.HasKey(e => e.DepartmentId).HasName("PK__Departme__151675D19AE008A5");
+            entity.HasKey(e => e.DepartmentId).HasName("PK__Departme__151675D133467915");
 
             entity.ToTable("Department");
 
@@ -329,26 +323,9 @@ public partial class TestContext : DbContext
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
         });
 
-        modelBuilder.Entity<Designation>(entity =>
-        {
-            entity.HasKey(e => e.DesignationId).HasName("PK__Designat__E11882CF95FD2A33");
-
-            entity.ToTable("Designation");
-
-            entity.Property(e => e.DesignationId)
-                .ValueGeneratedNever()
-                .HasColumnName("Designation_ID");
-            entity.Property(e => e.CreatedOn).HasColumnType("datetime");
-            entity.Property(e => e.DesignationName)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("Designation_Name");
-            entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-        });
-
         modelBuilder.Entity<Domain>(entity =>
         {
-            entity.HasKey(e => e.DomainId).HasName("PK__Domain__538014FEF32A349C");
+            entity.HasKey(e => e.DomainId).HasName("PK__Domain__538014FEBD28E735");
 
             entity.ToTable("Domain");
 
@@ -383,7 +360,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<EmployementType>(entity =>
         {
-            entity.HasKey(e => e.EmployementTypeId).HasName("PK__Employem__FD9D315579896085");
+            entity.HasKey(e => e.EmployementTypeId).HasName("PK__Employem__FD9D3155ED80EA36");
 
             entity.ToTable("EmployementType");
 
@@ -402,7 +379,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Gender>(entity =>
         {
-            entity.HasKey(e => e.GenderId).HasName("PK__Gender__AF750E64A28CF8A5");
+            entity.HasKey(e => e.GenderId).HasName("PK__Gender__AF750E64E80E1BC7");
 
             entity.ToTable("Gender");
 
@@ -421,7 +398,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<IssueBookStudent>(entity =>
         {
-            entity.HasKey(e => e.IssueBookStudentId).HasName("PK__IssueBoo__667816AE30F9610D");
+            entity.HasKey(e => e.IssueBookStudentId).HasName("PK__IssueBoo__667816AE09BE087E");
 
             entity.ToTable("IssueBookStudent");
 
@@ -438,17 +415,17 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Book).WithMany(p => p.IssueBookStudents)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__IssueBook__Book___2FCF1A8A");
+                .HasConstraintName("FK__IssueBook__Book___2739D489");
 
             entity.HasOne(d => d.Student).WithMany(p => p.IssueBookStudents)
                 .HasForeignKey(d => d.StudentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__IssueBook__Stude__2EDAF651");
+                .HasConstraintName("FK__IssueBook__Stude__282DF8C2");
         });
 
         modelBuilder.Entity<LoginType>(entity =>
         {
-            entity.HasKey(e => e.LoginTypeId).HasName("PK__LoginTyp__8A52B0A2B62C57BA");
+            entity.HasKey(e => e.LoginTypeId).HasName("PK__LoginTyp__8A52B0A2899212B6");
 
             entity.ToTable("LoginType");
 
@@ -469,7 +446,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<MaritalStatus>(entity =>
         {
-            entity.HasKey(e => e.MaritalStatusId).HasName("PK__MaritalS__F2263977B9EA3A48");
+            entity.HasKey(e => e.MaritalStatusId).HasName("PK__MaritalS__F2263977778186C4");
 
             entity.ToTable("MaritalStatus");
 
@@ -488,7 +465,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<PaymentStatus>(entity =>
         {
-            entity.HasKey(e => e.PaymentStatusId).HasName("PK__PaymentS__44DFB35F3780195B");
+            entity.HasKey(e => e.PaymentStatusId).HasName("PK__PaymentS__44DFB35FC39E15B4");
 
             entity.ToTable("PaymentStatus");
 
@@ -503,29 +480,29 @@ public partial class TestContext : DbContext
                 .HasColumnName("PaymentStatus_Name");
         });
 
-        modelBuilder.Entity<SocialCateogory>(entity =>
+        modelBuilder.Entity<SocialCategory>(entity =>
         {
-            entity.HasKey(e => e.SocialCateogoryId).HasName("PK__SocialCa__7898669AAE9F1BF6");
+            entity.HasKey(e => e.SocialCategoryId).HasName("PK__SocialCa__E06868286FF7EBEA");
 
-            entity.ToTable("SocialCateogory");
+            entity.ToTable("SocialCategory");
 
-            entity.Property(e => e.SocialCateogoryId)
+            entity.Property(e => e.SocialCategoryId)
                 .ValueGeneratedNever()
-                .HasColumnName("SocialCateogory_ID");
+                .HasColumnName("SocialCategory_ID");
             entity.Property(e => e.CreatedOn).HasColumnType("datetime");
             entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-            entity.Property(e => e.SocialCateogoryCode)
+            entity.Property(e => e.SocialCategoryCode)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.SocialCateogoryName)
+            entity.Property(e => e.SocialCategoryName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
         });
 
         modelBuilder.Entity<Staff>(entity =>
         {
-            entity.HasKey(e => e.StaffId).HasName("PK__Staff__32D1F3C3BFA9F8CF");
+            entity.HasKey(e => e.StaffId).HasName("PK__Staff__32D1F3C30CBC13AC");
 
             entity.Property(e => e.StaffId)
                 .ValueGeneratedNever()
@@ -557,17 +534,17 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.LoginType).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.LoginTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__LoginType__403A8C7D");
+                .HasConstraintName("FK__Staff__LoginType__29221CFB");
 
             entity.HasOne(d => d.StaffType).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.StaffTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__StaffType__3F466844");
+                .HasConstraintName("FK__Staff__StaffType__2A164134");
         });
 
         modelBuilder.Entity<StaffType>(entity =>
         {
-            entity.HasKey(e => e.StaffTypeId).HasName("PK__StaffTyp__13742AC873FD091C");
+            entity.HasKey(e => e.StaffTypeId).HasName("PK__StaffTyp__13742AC840E5FEE2");
 
             entity.ToTable("StaffType");
 
@@ -584,7 +561,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<State>(entity =>
         {
-            entity.HasKey(e => e.StateId).HasName("PK__State__AF9338D7243F019D");
+            entity.HasKey(e => e.StateId).HasName("PK__State__AF9338D70696C639");
 
             entity.ToTable("State");
 
@@ -602,12 +579,12 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Country).WithMany(p => p.States)
                 .HasForeignKey(d => d.CountryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__State__Country_I__31EC6D26");
+                .HasConstraintName("FK__State__Country_I__2B0A656D");
         });
 
         modelBuilder.Entity<Status>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Status__3214EC276EA8F769");
+            entity.HasKey(e => e.Id).HasName("PK__Status__3214EC27B2F4A3AA");
 
             entity.ToTable("Status");
 
@@ -624,7 +601,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<Student>(entity =>
         {
-            entity.HasKey(e => e.StudentId).HasName("PK__Students__32C52B9919B673CA");
+            entity.HasKey(e => e.StudentId).HasName("PK__Student__32C52B991F5FE099");
 
             entity.ToTable("Student");
 
@@ -729,19 +706,19 @@ public partial class TestContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<StudentCateogory>(entity =>
+        modelBuilder.Entity<StudentCategory>(entity =>
         {
-            entity.HasKey(e => e.StudentCateogoryId).HasName("PK__StudentC__09CD11E71CA3A7F6");
+            entity.HasKey(e => e.StudentCategoryId).HasName("PK__StudentC__DB35EE354D8D7260");
 
-            entity.ToTable("StudentCateogory");
+            entity.ToTable("StudentCategory");
 
-            entity.Property(e => e.StudentCateogoryId)
+            entity.Property(e => e.StudentCategoryId)
                 .ValueGeneratedNever()
-                .HasColumnName("StudentCateogory_ID");
+                .HasColumnName("StudentCategory_ID");
             entity.Property(e => e.CreatedOn).HasColumnType("datetime");
             entity.Property(e => e.DiscountPer).HasColumnName("Discount_Per");
             entity.Property(e => e.ModifiedOn).HasColumnType("datetime");
-            entity.Property(e => e.StudentCateogoryName)
+            entity.Property(e => e.StudentCategoryName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
@@ -787,7 +764,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentEducation>(entity =>
         {
-            entity.HasKey(e => e.EducationId).HasName("PK__StudentE__4BBE3805B6682A13");
+            entity.HasKey(e => e.EducationId).HasName("PK__StudentE__4BBE38051AB8BCC1");
 
             entity.ToTable("StudentEducation");
 
@@ -814,7 +791,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentGuardian>(entity =>
         {
-            entity.HasKey(e => e.GuardianId).HasName("PK__StudentG__0A5E1A9B892943B1");
+            entity.HasKey(e => e.GuardianId).HasName("PK__StudentG__0A5E1A9B1AE83D3D");
 
             entity.ToTable("StudentGuardian");
 
@@ -872,7 +849,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentParent>(entity =>
         {
-            entity.HasKey(e => e.ParentsId).HasName("PK__StudentP__66DBADEE58BFF80D");
+            entity.HasKey(e => e.ParentsId).HasName("PK__StudentP__66DBADEEF77D27FA");
 
             entity.ToTable("StudentParent");
 
@@ -969,7 +946,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentSeatBooking>(entity =>
         {
-            entity.HasKey(e => e.StudentSeatBookingId).HasName("PK__StudentS__D21ED6FF5C6B348C");
+            entity.HasKey(e => e.StudentSeatBookingId).HasName("PK__StudentS__D21ED6FF36C0DB7F");
 
             entity.ToTable("StudentSeatBooking");
 
@@ -994,12 +971,12 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Student).WithMany(p => p.StudentSeatBookings)
                 .HasForeignKey(d => d.StudentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__StudentSe__Stude__339FAB6E");
+                .HasConstraintName("FK__StudentSe__Stude__2FCF1A8A");
         });
 
         modelBuilder.Entity<StudentSubType>(entity =>
         {
-            entity.HasKey(e => e.StudentSubTypeId).HasName("PK__StudentS__1CB60DB87BEEBA85");
+            entity.HasKey(e => e.StudentSubTypeId).HasName("PK__StudentS__1CB60DB8C936B230");
 
             entity.ToTable("StudentSubType");
 
@@ -1016,7 +993,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentTransport>(entity =>
         {
-            entity.HasKey(e => e.TransportId).HasName("PK__StudentT__19E9A11D88CF0BE5");
+            entity.HasKey(e => e.TransportId).HasName("PK__StudentT__19E9A11D6688F173");
 
             entity.ToTable("StudentTransport");
 
@@ -1035,7 +1012,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<SubscriptionPackage>(entity =>
         {
-            entity.HasKey(e => e.SubscriptionPackageId).HasName("PK__Subscrip__7118996C1BBFA4EA");
+            entity.HasKey(e => e.SubscriptionPackageId).HasName("PK__Subscrip__4AED5BA28892FBC1");
 
             entity.ToTable("SubscriptionPackage");
 
@@ -1056,7 +1033,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<SubscriptionPayment>(entity =>
         {
-            entity.HasKey(e => e.PaymentId).HasName("PK__Subscrip__DA6C7FE1ED834CA0");
+            entity.HasKey(e => e.PaymentId).HasName("PK__Subscrip__DA6C7FE1B1E693A3");
 
             entity.ToTable("SubscriptionPayment");
 
@@ -1081,12 +1058,12 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.PaymentStatusNavigation).WithMany(p => p.SubscriptionPayments)
                 .HasForeignKey(d => d.PaymentStatus)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Subscript__Payme__4F47C5E3");
+                .HasConstraintName("FK__Subscript__Payme__32AB8735");
         });
 
         modelBuilder.Entity<SubscriptionsTransaction>(entity =>
         {
-            entity.HasKey(e => e.SubscriptionsTransactionStudentId).HasName("PK__Subscrip__ACCA0E12861F5F78");
+            entity.HasKey(e => e.SubscriptionsTransactionStudentId).HasName("PK__Subscrip__ACCA0E12E18FB383");
 
             entity.ToTable("SubscriptionsTransaction");
 
@@ -1108,17 +1085,17 @@ public partial class TestContext : DbContext
             entity.HasOne(d => d.Payment).WithMany(p => p.SubscriptionsTransactions)
                 .HasForeignKey(d => d.PaymentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Subscript__Payme__55009F39");
+                .HasConstraintName("FK__Subscript__Payme__339FAB6E");
 
             entity.HasOne(d => d.StudentTeacherNavigation).WithMany(p => p.SubscriptionsTransactions)
                 .HasForeignKey(d => d.StudentTeacherId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Subscript__Stude__531856C7");
+                .HasConstraintName("FK__Subscript__Stude__3493CFA7");
 
             entity.HasOne(d => d.SubscriptionPakage).WithMany(p => p.SubscriptionsTransactions)
                 .HasForeignKey(d => d.SubscriptionPakageId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Subscript__Subsc__540C7B00");
+                .HasConstraintName("FK__Subscript__Subsc__3587F3E0");
         });
 
         OnModelCreatingPartial(modelBuilder);

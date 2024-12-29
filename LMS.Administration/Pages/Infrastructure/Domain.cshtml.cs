@@ -23,7 +23,7 @@ namespace LMS.Administration.Pages.Infrastructure
         public Domain domain { get; set; }
         public async Task<IActionResult> OnGet()
         {
-            var existingDomain = _domainService.GetDomain().Result;
+            var existingDomain = await _domainService.GetDomain();
             domain.RegisteredName = existingDomain.RegisteredName;
             domain.Address1 = existingDomain.Address1;
             domain.Address2 = existingDomain.Address2;

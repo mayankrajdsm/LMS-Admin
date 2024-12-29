@@ -128,7 +128,7 @@ namespace LMS.Mapper.ConversionHelper
         {
             Barcode convertedModel = existingBarcode != null ? existingBarcode : new Barcode();
             convertedModel.BarcodeId = string.IsNullOrEmpty(barcode.BarcodeId) ? Guid.NewGuid() : Guid.Parse(barcode.BarcodeId);
-            convertedModel.Code = barcode.Code;
+            // convertedModel.Code = barcode.Code;
             convertedModel.IsActive = barcode.IsActive;
             convertedModel.CreatedBy = Guid.Parse(barcode.CreatedBy);
             convertedModel.CreatedOn = barcode.CreatedOn;
@@ -216,12 +216,12 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.ModifiedBy = string.IsNullOrEmpty(paymentStatus.ModifiedBy) ? null : Guid.Parse(paymentStatus.CreatedBy);
             return convertedModel;
         }
-        public static SocialCateogory ToEntityModel(this BusinessObject.SocialCateogory socialCateogory, SocialCateogory existingSocialCateogory = null)
+        public static SocialCategory ToEntityModel(this BusinessObject.SocialCategory socialCateogory, SocialCategory existingSocialCateogory = null)
         {
-            SocialCateogory convertedModel = existingSocialCateogory != null ? existingSocialCateogory : new SocialCateogory();
-            convertedModel.SocialCateogoryId = string.IsNullOrEmpty(socialCateogory.SocialCateogoryId) ? Guid.NewGuid() : Guid.Parse(socialCateogory.SocialCateogoryId);
-            convertedModel.SocialCateogoryCode = socialCateogory.SocialCateogoryCode;
-            convertedModel.SocialCateogoryName = socialCateogory.SocialCateogoryName;
+            SocialCategory convertedModel = existingSocialCateogory != null ? existingSocialCateogory : new SocialCategory();
+            convertedModel.SocialCategoryId = string.IsNullOrEmpty(socialCateogory.SocialCategoryId) ? Guid.NewGuid() : Guid.Parse(socialCateogory.SocialCategoryId);
+            convertedModel.SocialCategoryCode = socialCateogory.SocialCategoryCode;
+            convertedModel.SocialCategoryName = socialCateogory.SocialCategoryName;
             convertedModel.IsActive = socialCateogory.IsActive;
             convertedModel.CreatedBy = Guid.Parse(socialCateogory.CreatedBy);
             convertedModel.CreatedOn = socialCateogory.CreatedOn;
@@ -229,11 +229,11 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.ModifiedBy = string.IsNullOrEmpty(socialCateogory.ModifiedBy) ? null : Guid.Parse(socialCateogory.CreatedBy);
             return convertedModel;
         }
-        public static StudentCateogory ToEntityModel(this BusinessObject.StudentCateogory studentCateogory, StudentCateogory existingStudentCateogory = null)
+        public static StudentCategory ToEntityModel(this BusinessObject.StudentCategory studentCateogory, StudentCategory existingStudentCateogory = null)
         {
-            StudentCateogory convertedModel = existingStudentCateogory != null ? existingStudentCateogory : new StudentCateogory();
-            convertedModel.StudentCateogoryId = string.IsNullOrEmpty(studentCateogory.StudentCateogoryId) ? Guid.NewGuid() : Guid.Parse(studentCateogory.StudentCateogoryId);
-            convertedModel.StudentCateogoryName = studentCateogory.StudentCateogoryName;
+            StudentCategory convertedModel = existingStudentCateogory != null ? existingStudentCateogory : new StudentCategory();
+            convertedModel.StudentCategoryId = string.IsNullOrEmpty(studentCateogory.StudentCategoryId) ? Guid.NewGuid() : Guid.Parse(studentCateogory.StudentCategoryId);
+            convertedModel.StudentCategoryName = studentCateogory.StudentCategoryName;
             convertedModel.IsActive = studentCateogory.IsActive;
             convertedModel.CreatedBy = Guid.Parse(studentCateogory.CreatedBy);
             convertedModel.CreatedOn = studentCateogory.CreatedOn;

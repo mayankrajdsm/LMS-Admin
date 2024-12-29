@@ -47,7 +47,7 @@
                                     @foreach (var item in Model.studentCategories)
                                     {
                                         <tr>
-                                            <td>@item.StudentCateogoryName</td>
+                                            <td>@item.StudentCategoryName</td>
                                             <td>@item.DiscountPer</td>
                                             <td>@item.IsActive?"Active":"In Active"</td>
                                             <td>@item.CreatedBy</td>
@@ -55,10 +55,10 @@
                                             <td>@item.ModifiedBy</td>
                                             <td>@item.ModifiedOn</td>
                                             <td>
-                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.StudentCateogoryId" class="d-inline">
+                                                <form method="get" asp-page-handler="Edit" asp-route-id="@item.StudentCategoryId" class="d-inline">
                                                     <button type="submit" class="btn btn-warning btn-sm">Edit</button>
                                                 </form>
-                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.StudentCateogoryId" class="d-inline">
+                                                <form method="post" asp-page-handler="Delete" asp-route-id="@item.StudentCategoryId" class="d-inline">
                                                     <button type="submit" class="btn btn-error btn-sm">Delete</button>
                                                 </form>
                                             </td>

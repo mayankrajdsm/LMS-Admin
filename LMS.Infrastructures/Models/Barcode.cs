@@ -7,7 +7,7 @@ public partial class Barcode
 {
     public Guid BarcodeId { get; set; }
 
-    public byte[] Code { get; set; }
+    public string Code { get; set; } = null!;
 
     public bool IsActive { get; set; }
 

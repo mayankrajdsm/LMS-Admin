@@ -19,7 +19,7 @@ namespace LMS.Administration.Pages.Configuration
             _socialCateogoryService = socialCateogoryService;
             _activeUserService = activeUserService;
         }
-        public List<LMS.Mapper.BusinessObject.SocialCateogory> socialCateogories { get; set; }
+        public List<LMS.Mapper.BusinessObject.SocialCategory> socialCateogories { get; set; }
         [BindProperty]
         public SocialCateogory newSocialCateogory { get; set; }
         [BindProperty]
@@ -39,9 +39,9 @@ namespace LMS.Administration.Pages.Configuration
 
             if (string.IsNullOrEmpty(newSocialCateogory.SocialCateogoryId))
             {
-                LMS.Mapper.BusinessObject.SocialCateogory socialCateogory = new Mapper.BusinessObject.SocialCateogory();
-                socialCateogory.SocialCateogoryCode = newSocialCateogory.SocialCateogoryCode;
-                socialCateogory.SocialCateogoryName = newSocialCateogory.SocialCateogoryName;
+                LMS.Mapper.BusinessObject.SocialCategory socialCateogory = new Mapper.BusinessObject.SocialCategory();
+                socialCateogory.SocialCategoryCode = newSocialCateogory.SocialCateogoryCode;
+                socialCateogory.SocialCategoryName = newSocialCateogory.SocialCateogoryName;
                 socialCateogory.DiscountPer = newSocialCateogory.DiscountPer;
                 socialCateogory.IsActive = true;
                 socialCateogory.CreatedOn = DateTime.Now;
@@ -53,8 +53,8 @@ namespace LMS.Administration.Pages.Configuration
                 var existingSocialCateogory = await _socialCateogoryService.GetSocialCateogoryById(newSocialCateogory.SocialCateogoryId);
                 if (existingSocialCateogory != null)
                 {
-                    existingSocialCateogory.SocialCateogoryCode = newSocialCateogory.SocialCateogoryCode;
-                    existingSocialCateogory.SocialCateogoryName = newSocialCateogory.SocialCateogoryName;
+                    existingSocialCateogory.SocialCategoryCode = newSocialCateogory.SocialCateogoryCode;
+                    existingSocialCateogory.SocialCategoryName = newSocialCateogory.SocialCateogoryName;
                     existingSocialCateogory.DiscountPer = newSocialCateogory.DiscountPer;
                     existingSocialCateogory.IsActive = newSocialCateogory.IsActive;
                     existingSocialCateogory.ModifiedOn = DateTime.Now;
@@ -74,8 +74,8 @@ namespace LMS.Administration.Pages.Configuration
                 return NotFound();
             }
 
-            editSocialCateogory.SocialCateogoryCode = existingSocialCateogory.SocialCateogoryCode;
-            editSocialCateogory.SocialCateogoryName = existingSocialCateogory.SocialCateogoryName;
+            editSocialCateogory.SocialCateogoryCode = existingSocialCateogory.SocialCategoryCode;
+            editSocialCateogory.SocialCateogoryName = existingSocialCateogory.SocialCategoryName;
             editSocialCateogory.DiscountPer = existingSocialCateogory.DiscountPer;
             editSocialCateogory.IsActive = existingSocialCateogory.IsActive;
 

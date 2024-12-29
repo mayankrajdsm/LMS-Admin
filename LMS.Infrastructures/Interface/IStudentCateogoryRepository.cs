@@ -9,10 +9,10 @@ namespace LMS.Infrastructures.Interface
 {
     public interface IStudentCateogoryRepository
     {
-        Task<IEnumerable<StudentCateogory>> GetStudentCateogories();
-        Task<StudentCateogory> GetStudentCateogoryById(Guid studentCateogoryId);
-        Task<int> InsertStudentCateogory(StudentCateogory studentCateogory);
-        Task<int> UpdateStudentCateogory(StudentCateogory studentCateogory);
+        Task<IEnumerable<StudentCategory>> GetStudentCateogories();
+        Task<StudentCategory> GetStudentCateogoryById(Guid studentCateogoryId);
+        Task<int> InsertStudentCateogory(StudentCategory studentCateogory);
+        Task<int> UpdateStudentCateogory(StudentCategory studentCateogory);
         Task<int> DeleteStudentCateogory(Guid studentCateogoryId);
     }
 }

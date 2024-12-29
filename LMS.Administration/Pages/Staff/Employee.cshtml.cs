@@ -14,19 +14,19 @@ namespace LMS.Administration.Pages.Staff
     }
     public class StaffGeneral
     {
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [Required(ErrorMessage = "Title Required.")]
         [DisplayName("Title")]
-        public string Title { get; set; }
-        public List<SelectListItem> lstTitle { get; set; }
+        public required string Title { get; set; }
+        public List<SelectListItem>? lstTitle { get; set; }
 
         [Required(ErrorMessage = "First Name Required.")]
         [DisplayName("First Name")]
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
 
         [DisplayName("Middle Name")]
-        public string MiddleName { get; set; }
+        public required string MiddleName { get; set; }
 
         [Required(ErrorMessage = "Last Name Required.")]
         [DisplayName("Last Name")]

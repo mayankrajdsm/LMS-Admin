@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class LoginTypeRepository : ILoginTypeRepository
     {
-        private readonly TestContext _context;
-        public LoginTypeRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public LoginTypeRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<LoginType>> GetLoginTypes() => _context.LoginTypes.ToList();
         public async Task<LoginType> GetLoginTypeById(Guid roleId) => await _context.LoginTypes.FindAsync(roleId);
         public async Task<int> InsertLoginType(LoginType loginType)

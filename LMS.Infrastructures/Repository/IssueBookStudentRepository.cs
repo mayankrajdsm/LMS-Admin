@@ -12,8 +12,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class IssueBookStudentRepository : IIssueBookStudentRepository
     {
-        private readonly TestContext _context;
-        public IssueBookStudentRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public IssueBookStudentRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<IssueBookStudent>> GetIssueBookStudents() => await _context.IssueBookStudents.ToListAsync();
         public async Task<IssueBookStudent> GetIssueBookStudentById(Guid issueBookStudentId)
         {

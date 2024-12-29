@@ -11,9 +11,9 @@ namespace LMS.Infrastructures.Repository
 {
     public class StudentSeatBookingRepository : IStudentSeatBookingRepository
     {
-        private readonly TestContext _context;
+        private readonly FunskoolsContext _context;
 
-        public StudentSeatBookingRepository(TestContext context) => _context = context;
+        public StudentSeatBookingRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<StudentSeatBooking>> GetStudentSeatBookings() => await _context.StudentSeatBookings.ToListAsync();
         public async Task<StudentSeatBooking> GetStudentSeatBookingById(Guid bookingId) => await _context.StudentSeatBookings.FindAsync(bookingId);
         public async Task<int> InsertStudentSeatBooking(StudentSeatBooking studentSeatBooking)

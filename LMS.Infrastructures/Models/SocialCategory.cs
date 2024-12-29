@@ -3,11 +3,15 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class Designation
+public partial class SocialCategory
 {
-    public Guid DesignationId { get; set; }
+    public Guid SocialCategoryId { get; set; }
 
-    public string DesignationName { get; set; } = null!;
+    public string SocialCategoryCode { get; set; } = null!;
+
+    public string SocialCategoryName { get; set; } = null!;
+
+    public int DiscountPer { get; set; }
 
     public bool IsActive { get; set; }
 

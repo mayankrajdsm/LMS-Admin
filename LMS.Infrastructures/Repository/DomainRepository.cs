@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class DomainRepository : IDomainRepository
     {
-        private readonly TestContext _context;
-        public DomainRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public DomainRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Domain>> GetDomains() => _context.Domains.ToList();
         public async Task<Domain> GetDomainsById(Guid domainId) => await _context.Domains.FindAsync(domainId);
         public async Task<int> InsertDomain(Domain domain)

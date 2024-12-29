@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class SocialCateogory
+public partial class StudentCategory
 {
-    public Guid SocialCateogoryId { get; set; }
+    public Guid StudentCategoryId { get; set; }
 
-    public string SocialCateogoryCode { get; set; } = null!;
-
-    public string SocialCateogoryName { get; set; } = null!;
+    public string StudentCategoryName { get; set; } = null!;
 
     public int DiscountPer { get; set; }
 

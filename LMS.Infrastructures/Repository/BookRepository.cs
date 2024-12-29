@@ -12,8 +12,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class BookRepository: IBookRepository
     {
-        private readonly TestContext _context;
-        public BookRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public BookRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Book>> GetAllBooks() => await _context.Books.ToListAsync();
         public async Task<int> InsertBook(Book book)
         {

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class BuildingRepository : IBuildingRepository
     {
-        private readonly TestContext _context;
-        public BuildingRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public BuildingRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Building>> GetBuildings() => await _context.Buildings.ToListAsync();
         public async Task<Building> GetBuildingById(Guid buildingId) => await _context.Buildings.FindAsync(buildingId);
         public async Task<int> InsertBuilding(Building building)

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class SubscriptionPackageRepository: ISubscriptionPackageRepository
     {
-        private readonly TestContext _context;
-        public SubscriptionPackageRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public SubscriptionPackageRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<SubscriptionPackage>> GetSubscriptionPackages() => await _context.SubscriptionPackages.ToListAsync();
         public async Task<SubscriptionPackage> GetSubscriptionPackageById(Guid subscriptionPackageId) => await _context.SubscriptionPackages.FindAsync(subscriptionPackageId);
         public async Task<int> InsertSubscriptionPackage(SubscriptionPackage subscriptionPackage)

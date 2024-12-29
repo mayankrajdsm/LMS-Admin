@@ -130,7 +130,7 @@ namespace LMS.Mapper.ConversionHelper
             return new BusinessObject.Barcode
             {
                 BarcodeId = barcode.BarcodeId == null ? "" : Convert.ToString(barcode.BarcodeId),
-                Code = barcode.Code,
+                // Code = Convert.ToByte(barcode.Code),
                 IsActive = barcode.IsActive,
                 CreatedOn = barcode.CreatedOn,
                 CreatedBy = Convert.ToString(barcode.CreatedBy),
@@ -226,13 +226,13 @@ namespace LMS.Mapper.ConversionHelper
                 ModifiedBy = Convert.ToString(paymentStatus.ModifiedBy),
             };
         }
-        public static BusinessObject.SocialCateogory ToBusinessObject(this LMS.Infrastructures.Models.SocialCateogory socialCateogory)
+        public static BusinessObject.SocialCategory ToBusinessObject(this LMS.Infrastructures.Models.SocialCategory socialCateogory)
         {
-            return new BusinessObject.SocialCateogory
+            return new BusinessObject.SocialCategory
             {
-                SocialCateogoryId = socialCateogory.SocialCateogoryId == null ? "" : Convert.ToString(socialCateogory.SocialCateogoryId),
-                SocialCateogoryCode = socialCateogory.SocialCateogoryCode,
-                SocialCateogoryName = socialCateogory.SocialCateogoryName,
+                SocialCategoryId = socialCateogory.SocialCategoryId == null ? "" : Convert.ToString(socialCateogory.SocialCategoryId),
+                SocialCategoryCode = socialCateogory.SocialCategoryCode,
+                SocialCategoryName = socialCateogory.SocialCategoryName,
                 IsActive = socialCateogory.IsActive,
                 CreatedOn = socialCateogory.CreatedOn,
                 CreatedBy = Convert.ToString(socialCateogory.CreatedBy),
@@ -240,12 +240,12 @@ namespace LMS.Mapper.ConversionHelper
                 ModifiedBy = Convert.ToString(socialCateogory.ModifiedBy),
             };
         }
-        public static BusinessObject.StudentCateogory ToBusinessObject(this LMS.Infrastructures.Models.StudentCateogory studentCateogory)
+        public static BusinessObject.StudentCategory ToBusinessObject(this LMS.Infrastructures.Models.StudentCategory studentCateogory)
         {
-            return new BusinessObject.StudentCateogory
+            return new BusinessObject.StudentCategory
             {
-                StudentCateogoryId = studentCateogory.StudentCateogoryId == null ? "" : Convert.ToString(studentCateogory.StudentCateogoryId),
-                StudentCateogoryName = studentCateogory.StudentCateogoryName,
+                StudentCategoryId = studentCateogory.StudentCategoryId == null ? "" : Convert.ToString(studentCateogory.StudentCategoryId),
+                StudentCategoryName = studentCateogory.StudentCategoryName,
                 DiscountPer = studentCateogory.DiscountPer,
                 IsActive = studentCateogory.IsActive,
                 CreatedOn = studentCateogory.CreatedOn,

@@ -16,9 +16,9 @@ namespace LMS.Mapper.Services
 
         public SocialCateogoryService(ISocialCateogoryRepository socialCateogoryRepository) => _socialCateogoryRepository = socialCateogoryRepository;
 
-        public async Task<List<SocialCateogory>> GetSocialCateogories()
+        public async Task<List<SocialCategory>> GetSocialCateogories()
         {
-            List<SocialCateogory> socialCateogories = new List<SocialCateogory>();
+            List<SocialCategory> socialCateogories = new List<SocialCategory>();
             var existingSocialCateogories = await _socialCateogoryRepository.GetSocialCateogories();
             if (existingSocialCateogories != null)
             {
@@ -29,13 +29,13 @@ namespace LMS.Mapper.Services
             }
             return socialCateogories;
         }
-        public async Task<SocialCateogory> GetSocialCateogoryById(string id)
+        public async Task<SocialCategory> GetSocialCateogoryById(string id)
         {
             var socialCateogory = await _socialCateogoryRepository.GetSocialCateogoryById(Guid.Parse(id));
             return socialCateogory.ToBusinessObject();
         }
-        public async Task<int> InsertSocialCateogory(SocialCateogory socialCateogory) => await _socialCateogoryRepository.InsertSocialCateogory(socialCateogory.ToEntityModel());
-        public async Task<int> UpdateSocialCateogory(SocialCateogory socialCateogory) => await _socialCateogoryRepository.UpdateSocialCateogory(socialCateogory.ToEntityModel());
+        public async Task<int> InsertSocialCateogory(SocialCategory socialCateogory) => await _socialCateogoryRepository.InsertSocialCateogory(socialCateogory.ToEntityModel());
+        public async Task<int> UpdateSocialCateogory(SocialCategory socialCateogory) => await _socialCateogoryRepository.UpdateSocialCateogory(socialCateogory.ToEntityModel());
         public async Task<int> DeleteSocialCateogory(string id) => await _socialCateogoryRepository.DeleteSocialCateogory(Guid.Parse(id));
     }
 }

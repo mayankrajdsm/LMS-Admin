@@ -18,7 +18,7 @@ namespace LMS.Administration.Pages.Configuration
             _studentCateogoryService = studentCateogoryService;
             _activeUserService = activeUserService;
         }
-        public List<LMS.Mapper.BusinessObject.StudentCateogory> studentCategories { get; set; }
+        public List<LMS.Mapper.BusinessObject.StudentCategory> studentCategories { get; set; }
         [BindProperty]
         public StudentCategory newStudentCategory { get; set; }
         [BindProperty]
@@ -38,8 +38,8 @@ namespace LMS.Administration.Pages.Configuration
 
             if (string.IsNullOrEmpty(newStudentCategory.StudentCategoryId))
             {
-                LMS.Mapper.BusinessObject.StudentCateogory model = new Mapper.BusinessObject.StudentCateogory();
-                model.StudentCateogoryName = newStudentCategory.StudentCategoryName;
+                LMS.Mapper.BusinessObject.StudentCategory model = new Mapper.BusinessObject.StudentCategory();
+                model.StudentCategoryName = newStudentCategory.StudentCategoryName;
                 model.DiscountPer = newStudentCategory.DiscountPer;
                 model.IsActive = true;
                 model.CreatedOn = DateTime.Now;
@@ -51,7 +51,7 @@ namespace LMS.Administration.Pages.Configuration
                 var existingModel = await _studentCateogoryService.GetStudentCateogoryById(newStudentCategory.StudentCategoryId);
                 if (existingModel != null)
                 {
-                    existingModel.StudentCateogoryName = newStudentCategory.StudentCategoryName;
+                    existingModel.StudentCategoryName = newStudentCategory.StudentCategoryName;
                     existingModel.DiscountPer = newStudentCategory.DiscountPer;
                     existingModel.IsActive = newStudentCategory.IsActive;
                     existingModel.ModifiedOn = DateTime.Now;
@@ -71,7 +71,7 @@ namespace LMS.Administration.Pages.Configuration
                 return NotFound();
             }
 
-            editStudentCategory.StudentCategoryId = existingModel.StudentCateogoryName;
+            editStudentCategory.StudentCategoryId = existingModel.StudentCategoryName;
             editStudentCategory.DiscountPer = existingModel.DiscountPer;
             editStudentCategory.IsActive = existingModel.IsActive;
 

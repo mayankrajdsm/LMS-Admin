@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class DepartmentRepository: IDepartmentRepository
     {
-        private readonly TestContext _context;
-        public DepartmentRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public DepartmentRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Department>> GetDepartments() => await _context.Departments.ToListAsync();
         public async Task<Department> GetDepartmentById(Guid departmentId) => await _context.Departments.FindAsync(departmentId);
         public async Task<int> InsertDepartment(Department department)

@@ -11,9 +11,9 @@ namespace LMS.Infrastructures.Repository
 {
     public class PaymentStatusRepository: IPaymentStatusRepository
     {
-        private readonly TestContext _context;
+        private readonly FunskoolsContext _context;
 
-        public PaymentStatusRepository(TestContext context) => _context = context;
+        public PaymentStatusRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<PaymentStatus>> GetPaymentStatuses() => await _context.PaymentStatuses.ToListAsync();
         public async Task<PaymentStatus> GetPaymentStatusById(Guid paymentStatusId) => await _context.PaymentStatuses.FindAsync(paymentStatusId);
         public async Task<int> InsertPaymentStatus(PaymentStatus paymentStatus)

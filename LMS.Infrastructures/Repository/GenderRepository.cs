@@ -1,4 +1,5 @@
-﻿using LMS.Infrastructures.Models;
+﻿using LMS.Infrastructures.Interface;
+using LMS.Infrastructures.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace LMS.Infrastructures.Repository
 {
-    public class GenderRepository
+    public class GenderRepository: IGenderRepository
     {
-        private readonly TestContext _context;
-        public GenderRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public GenderRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Gender>> GetGenders() => _context.Genders.ToList();
         public async Task<Gender> GetGenderById(Guid genderId) => await _context.Genders.FindAsync(genderId);
         public async Task<int> InsertGender(Gender gender)

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class BarcodeRepository: IBarcodeRepository
     {
-        private readonly TestContext _context;
-        public BarcodeRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public BarcodeRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Barcode>> GetBarcodes() => await _context.Barcodes.ToListAsync();
         public async Task<Barcode> GetBarcodeById(Guid barcodeId) => await _context.Barcodes.FindAsync(barcodeId);
         public async Task<int> InsertBarcode(Barcode barcode)

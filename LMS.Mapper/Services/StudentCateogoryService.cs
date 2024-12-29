@@ -16,9 +16,9 @@ namespace LMS.Mapper.Services
 
         public StudentCateogoryService(IStudentCateogoryRepository studentCateogoryRepository) => _studentCateogoryRepository = studentCateogoryRepository;
 
-        public async Task<List<StudentCateogory>> GetSocialCateogories()
+        public async Task<List<StudentCategory>> GetSocialCateogories()
         {
-            List<StudentCateogory> studentCateogories = new List<StudentCateogory>();
+            List<StudentCategory> studentCateogories = new List<StudentCategory>();
             var existingStudentCateogories = await _studentCateogoryRepository.GetStudentCateogories();
             if (existingStudentCateogories != null)
             {
@@ -29,13 +29,13 @@ namespace LMS.Mapper.Services
             }
             return studentCateogories;
         }
-        public async Task<StudentCateogory> GetStudentCateogoryById(string id)
+        public async Task<StudentCategory> GetStudentCateogoryById(string id)
         {
             var studentCateogory = await _studentCateogoryRepository.GetStudentCateogoryById(Guid.Parse(id));
             return studentCateogory.ToBusinessObject();
         }
-        public async Task<int> InsertStudentCateogory(StudentCateogory studentCateogory) => await _studentCateogoryRepository.InsertStudentCateogory(studentCateogory.ToEntityModel());
-        public async Task<int> UpdateStudentCateogory(StudentCateogory studentCateogory) => await _studentCateogoryRepository.UpdateStudentCateogory(studentCateogory.ToEntityModel());
+        public async Task<int> InsertStudentCateogory(StudentCategory studentCateogory) => await _studentCateogoryRepository.InsertStudentCateogory(studentCateogory.ToEntityModel());
+        public async Task<int> UpdateStudentCateogory(StudentCategory studentCateogory) => await _studentCateogoryRepository.UpdateStudentCateogory(studentCateogory.ToEntityModel());
         public async Task<int> DeleteStudentCateogory(string id) => await _studentCateogoryRepository.DeleteStudentCateogory(Guid.Parse(id));
     }
 }
