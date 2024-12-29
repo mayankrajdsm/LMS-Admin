@@ -1,0 +1,121 @@
+﻿
+@* Added by Zafar Iqubal *@
+@page
+@model LMS.Admin.Views.Books.IndexModel
+@* @model List<LMS.Infrastructures.Models.Book>
+@{
+
+    }
+} *@
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditBookPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Book
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+
+                                <th>Accession Number</th>
+                                <th>Accessor Date</th>
+                                <th>Bar Code</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Year</th>
+                                <th>Edition</th>
+                                <th>Publisher</th>
+                                <th>Publisher Location</th>
+                                <th>Volume</th>
+                                <th>Vendor Name</th>
+                                <th>Vendor Place</th>
+                                <th>Original Amount(MPRP)</th>
+                                <th>Cost</th>
+                                <th>Discount</th>
+                                <th>Bill No</th>
+                                <th>No of Copies</th>
+                                <th>Bill Date</th>
+                                <th>Class No</th>
+                                <th>Book Number</th>
+                                <th>Collection No</th>
+                                <th>ISBN Number</th>
+                                <th>Location</th>
+                                <th>Rack No</th>
+                                <th>Shelf No</th>
+                                <th>Language</th>
+                                <th>Series</th>
+                                <th>Issue No</th>
+                                <th>Withdrawal On</th>
+                                <th>Custom Tags</th>
+                                <th>Remarks</th>
+                                <th>Subject Code</th>
+                                <th>Pages</th>
+                                <th>Month and Year</th>
+                                <th>Source</th>
+                                <th>Reference</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var book in Model.allbooks)
+                                {
+                                    <tr>
+                                        <td>@book.AccessionNumber</td>
+                                        <td>@book.AccessorDate</td>
+                                        <td>@book.Barcode</td>
+                                        <td>@book.Title</td>
+                                        <td>@book.Author</td>
+                                        <td>@book.Year</td>
+                                        <td>@book.Edition</td>
+                                        <td>@book.Publisher</td>
+                                        <td>@book.PublisherLocation</td>
+                                        <td>@book.Volume</td>
+                                        <td>@book.VendorName</td>
+                                        <td>@book.VendorPlace</td>
+                                        <td>@book.OriginalAmount</td>
+                                        <td>@book.Cost</td>
+                                        <td>@book.Discount</td>
+                                        <td>@book.BillNo</td>
+                                        <td>@book.NoofCopies</td>
+                                        <td>@book.BillDate.ToShortDateString()</td>
+                                        <td>@book.ClassNo</td>
+                                        <td>@book.BookNumber</td>
+                                        <td>@book.CollectionNo</td>
+                                        <td>@book.Isbnnumber</td>
+                                        <td>@book.Location</td>
+                                        <td>@book.RackNo</td>
+                                        <td>@book.ShelfNo</td>
+                                        <td>@book.Language</td>
+                                        <td>@book.Series</td>
+                                        <td>@book.IssueNo</td>
+                                        <td>@book.WithdrawalOn.ToShortDateString()</td>
+                                        <td>@book.CustomTags</td>
+                                        <td>@book.Remarks</td>
+                                        <td>@book.SubjectCode</td>
+                                        <td>@book.Pages</td>
+                                        <td>@book.MonthandYear</td>
+                                        <td>@book.Source</td>
+                                        <td>@book.Reference</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        @await Html.PartialAsync("_addBook")
+    </div>
+</div>
+

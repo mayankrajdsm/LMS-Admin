@@ -1,0 +1,56 @@
+﻿@page
+@model LMS.Administration.Pages.Students.StudentEducationModel
+@{
+}
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="template-demo">
+                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditStudentEducationPopUp"
+                            data-bs-toggle="modal" data-bs-target="#dvAddEditStudentEducationPopUp">
+                        <i class="mdi mdi-plus"></i>Add New Student Education
+                    </button>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>School Name</th>
+                                    <th>School Address</th>
+                                    <th>Affiliated To</th>
+                                    <th>Class</th>
+                                    <th>Year</th>
+                                    <th>Marks</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    @foreach (var education in Model.studentEducations)
+                                    {
+                                        <tr>
+                                            <td>@education.SchoolName</td>
+                                            <td>@education.SchoolAddress</td>
+                                            <td>@education.SchoolAffiliatedTo</td>
+                                            <td>@education.Class</td>
+                                            <td>@education.Year</td>
+                                            <td>@education.Marks</td>
+                                            <td>@education.Percentage</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dvAddEditStudentEducationPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            @await Html.PartialAsync("_addStudentEducation")
+        </div>
+    </div>
+
+

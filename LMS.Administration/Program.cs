@@ -36,6 +36,7 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IClassRepository, ClassRepository>();
 builder.Services.AddScoped<IUserProfileRepository, UserProfileRepository>();
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 //builder.Services.AddScoped<IStaffTypeRepository, StaffTypeRepository>();
 //builder.Services.AddScoped<ILoginTypeRepository, LoginTypeRepository>();
 
@@ -44,6 +45,7 @@ builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
 builder.Services.AddScoped<IBuildingService, BuildingService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 //builder.Services.AddScoped<IStaffTypeService, StaffTypeService>();
 //builder.Services.AddScoped<ILoginTypeService, LoginTypeService>();
 
