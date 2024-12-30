@@ -8,18 +8,27 @@ namespace LMS.Administration.Pages.Staff
 {
     public class StaffGeneralInfoModel : PageModel
     {
-        public void OnGet()
+        public StaffGeneral staffGeneral { get; set; }
+        public async Task<IActionResult> OnGet()
         {
+        //    staffGeneral.lstTitle = new List<SelectListItem>
+        //     {
+        //         new SelectListItem{Text = "Mr.", Value="1"},
+        //         new SelectListItem{Text = "Ms.", Value="2"},
+        //         new SelectListItem{Text = "Mrs.", Value="3"},
+        //         new SelectListItem{Text = "Dr.", Value="4"},
+        //     };
+            return Page();
         }
     }
     public class StaffGeneral
     {
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         [Required(ErrorMessage = "Title Required.")]
         [DisplayName("Title")]
-        public required string Title { get; set; }
-        public List<SelectListItem>? lstTitle { get; set; }
+        public string Title { get; set; }
+        public List<SelectListItem> lstTitle { get; set; }
 
         [Required(ErrorMessage = "First Name Required.")]
         [DisplayName("First Name")]

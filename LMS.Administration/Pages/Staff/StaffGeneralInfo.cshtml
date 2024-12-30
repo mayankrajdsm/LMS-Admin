@@ -16,7 +16,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="home">
-                        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditGeneralInfo.cshtml")
+                        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditGeneralInfo.cshtml", Model.staffGeneral)
                     </div>
                 </div>
             </div>
