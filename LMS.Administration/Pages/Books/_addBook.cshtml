@@ -3,334 +3,657 @@
 @model LMS.Admin.Views.Books.IndexModel
 @{
 }
+<form id="form_advanced_validation" method="POST">
+	<div>
+		<div class="modal-body">
+			<!-- Existing Fields -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="AccessionNumber" required>
+						<label class="form-label">Accession Number</label>
+					</div>
+				</div>
+			</div>
 
-<div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        <form method="post" asp-action="InsertBook" asp-controller="Book" >
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="AccessionNumber">Book Addition Mode</label>
-                            <input type="text" id="AccessionNumber" class="form-control" name="UserInput.Name" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="Title">Bar Code</label>
-                            <input type="text" class="form-control" id="Title" placeholder="Bar Code" name="Barcode" />
-                        </div>
-                    </div>
-                </div>
+			<!-- Accessor Date -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="date" class="form-control" name="AccessorDate" required>
+						<label class="form-label">Accessor Date</label>
+					</div>
+				</div>
+			</div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Accession Number</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" placeholder="Accession Number" name="AccessionNumber" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Accessor Date</label>
-                            <input type="date" class="form-control" id="exampleInputUsername1" name="AccessorDate" placeholder="Accessor Date" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Title</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Title" placeholder="Title" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Author</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Author" placeholder="Author" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Year</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="Year" placeholder="Year" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Edition</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Edition" placeholder="Edition" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Publisher</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Publisher" placeholder="Publisher" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Publisher Location</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="PublisherLocation" placeholder="Publisher Location" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Volume</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Volume" placeholder="Volume" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Vendor Name</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="VendorName" placeholder="Vendor Name" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Vendor Place</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="VendorPlace" placeholder="Vendor Place" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Original Amount(MPRP)</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="OriginalAmount" placeholder="Original Amount" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Cost</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="Cost" placeholder="Cost" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Discount</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="Discount" placeholder="Discount" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Bill No</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="BillNo" placeholder="Bill No" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">No of Copies</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="NoofCopies" placeholder="No of Copies" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Bill Date</label>
-                            <input type="date" class="form-control" id="exampleInputUsername1" name="BillDate" placeholder="Bill Date" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Class No</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="ClassNo" placeholder="Class No" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Book Number</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="BookNumber" placeholder="Book Number" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Collection No</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="CollectionNo" placeholder="Collection No" />
-                        </div>
-                    </div>
-                </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">ISBN Number</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="Isbnnumber" placeholder="ISBN Number" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Location</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Location" placeholder="Location" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Rack No</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="RackNo" placeholder="Rack No" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Shelf No</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="ShelfNo" placeholder="Shelf No" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Language</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Language" placeholder="Language" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Series</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Series" placeholder="Series" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Issue No</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="IssueNo" placeholder="Issue No" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Withdrawal On</label>
-                            <input type="date" class="form-control" id="exampleInputUsername1" name="WithdrawalOn" placeholder="Withdrawal On" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Tags</label>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Custom Tags</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="CustomTags" placeholder="Custom Tags" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Remarks</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Remarks" placeholder="Remarks" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Subject Code</label>
-                            <input type="number" class="form-control" id="exampleInputUsername1" name="SubjectCode" placeholder="Subject Code" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Pages</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Pages" placeholder="Pages" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Month and Year</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="MonthandYear" placeholder="Month and Year" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Source</label>
-                            <input type="text" class="form-control" id="exampleInputUsername1" name="Source" placeholder="Source" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <div class="form-check">
-                            <label for="exampleInputUsername1">Reference</label>
-                            <input type="checkbox" class="form-control" id="exampleInputUsername1" name="Reference" placeholder="Reference" />
-                        </div>
-                    </div>
-                </div>
+			<!-- Barcode -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Barcode" maxlength="255" required>
+						<label class="form-label">Barcode</label>
+					</div>
+				</div>
+			</div>
 
-                
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </form>
-    </div>
-</div>
+			<!-- Title -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Title" maxlength="255" required>
+						<label class="form-label">Title</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Author -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Author" maxlength="255" required>
+						<label class="form-label">Author</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Year -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Year" min="1900" max="2100" required>
+						<label class="form-label">Year</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Edition -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Edition" maxlength="255" required>
+						<label class="form-label">Edition</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Publisher -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Publisher" maxlength="255" required>
+						<label class="form-label">Publisher</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Publisher Location -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="PublisherLocation" maxlength="255" required>
+						<label class="form-label">Publisher Location</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Volume -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Volume" maxlength="255" required>
+						<label class="form-label">Volume</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Vendor Name -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="VendorName" maxlength="255" required>
+						<label class="form-label">Vendor Name</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Vendor Place -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="VendorPlace" maxlength="255" required>
+						<label class="form-label">Vendor Place</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Original Amount -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="OriginalAmount" required>
+						<label class="form-label">Original Amount</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Cost" min="0" required>
+						<label class="form-label">Cost</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Discount -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Discount" step="0.01" min="0" required>
+						<label class="form-label">Discount</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bill Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="BillNo" required>
+						<label class="form-label">Bill Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Number of Copies -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="NoofCopies" min="1" required>
+						<label class="form-label">Number of Copies</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bill Date -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="date" class="form-control" name="BillDate" required>
+						<label class="form-label">Bill Date</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Class Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="ClassNo" required>
+						<label class="form-label">Class Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Book Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="BookNumber" required>
+						<label class="form-label">Book Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Collection Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="CollectionNo" required>
+						<label class="form-label">Collection Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- ISBN Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Isbnnumber" min="0" required>
+						<label class="form-label">ISBN Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Location -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Location" maxlength="255" required>
+						<label class="form-label">Location</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Rack Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="RackNo" min="1" required>
+						<label class="form-label">Rack Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Shelf Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="ShelfNo" min="1" required>
+						<label class="form-label">Shelf Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Language -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Language" maxlength="255" required>
+						<label class="form-label">Language</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Series -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Series" maxlength="255" required>
+						<label class="form-label">Series</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Issue Number -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="IssueNo" required>
+						<label class="form-label">Issue Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Withdrawal On -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="date" class="form-control" name="WithdrawalOn" required>
+						<label class="form-label">Withdrawal On</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Custom Tags -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="CustomTags" maxlength="255" required>
+						<label class="form-label">Custom Tags</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Remarks -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Remarks" maxlength="255" required>
+						<label class="form-label">Remarks</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Subject Code -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="SubjectCode" required>
+						<label class="form-label">Subject Code</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Pages -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Pages" maxlength="255" required>
+						<label class="form-label">Pages</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Month and Year -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="MonthandYear" maxlength="255" required>
+						<label class="form-label">Month and Year</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Source -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Source" maxlength="255" required>
+						<label class="form-label">Source</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Reference -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Reference" maxlength="255" required>
+						<label class="form-label">Reference</label>
+					</div>
+				</div>
+			</div>
+	</div>
+	<div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary">Save Changes</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		</div>
+	</div>
+</form>
+
+@* <form id="form_advanced_validation" method="POST">
+	<div>
+		<div class="modal-body">
+			<!-- First Column -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="BooksId" required>
+						<label class="form-label">Books ID (Guid)</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="AccessionNumber" required>
+						<label class="form-label">Accession Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="date" class="form-control" name="AccessorDate" required>
+						<label class="form-label">Accessor Date</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Barcode" required>
+						<label class="form-label">Barcode</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Title" maxlength="100" required>
+						<label class="form-label">Title</label>
+					</div>
+				
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Author" maxlength="100" required>
+						<label class="form-label">Author</label>
+					</div>
+					
+				</div>
+			</div>
+
+
+			<!-- Second Column -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Year" min="1900" max="2100" required>
+						<label class="form-label">Year</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Edition" maxlength="50" required>
+						<label class="form-label">Edition</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Publisher" maxlength="100" required>
+						<label class="form-label">Publisher</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="PublisherLocation" maxlength="100" required>
+						<label class="form-label">Publisher Location</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Volume" maxlength="50" required>
+						<label class="form-label">Volume</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="VendorName" maxlength="100" required>
+						<label class="form-label">Vendor Name</label>
+					</div>
+				
+				</div>
+			</div>
+
+			<!-- Third Column -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="VendorPlace" maxlength="100" required>
+						<label class="form-label">Vendor Place</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="OriginalAmount" required>
+						<label class="form-label">Original Amount</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Cost" required>
+						<label class="form-label">Cost</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Discount" step="0.01" required>
+						<label class="form-label">Discount</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="BillNo" required>
+						<label class="form-label">Bill Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="NoofCopies" required>
+						<label class="form-label">Number of Copies</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fourth Column -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="date" class="form-control" name="BillDate" required>
+						<label class="form-label">Bill Date</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="ClassNo" required>
+						<label class="form-label">Class Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="BookNumber" required>
+						<label class="form-label">Book Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="CollectionNo" required>
+						<label class="form-label">Collection Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="Isbnnumber" required>
+						<label class="form-label">ISBN Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Location" maxlength="100" required>
+						<label class="form-label">Location</label>
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- Fifth Column -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="RackNo" required>
+						<label class="form-label">Rack Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="ShelfNo" required>
+						<label class="form-label">Shelf Number</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Language" maxlength="50" required>
+						<label class="form-label">Language</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="Series" maxlength="100" required>
+						<label class="form-label">Series</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="number" class="form-control" name="IssueNo" required>
+						<label class="form-label">Issue Number</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sixth Column -->
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="date" class="form-control" name="WithdrawalOn" required>
+						<label class="form-label">Withdrawal Date</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group form-float">
+					<div class="form-line">
+						<input type="text" class="form-control" name="CustomTags" maxlength="100" required>
+						<label class="form-label">Custom Tags</label>
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary">Save Changes</button>
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		</div>
+	</div>
+</form> *@

@@ -2,7 +2,81 @@
 @model LMS.Administration.Pages.Class.IndexModel
 @{
 }
-<div class="modal-content">
+<form id="form_classes" method="POST">
+    <div class="modal-body">
+        <!-- First Column -->
+        
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" class="form-control" name="ClassesName" required>
+                    <label class="form-label">Classes Name</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <select class="form-control" name="IsActive" required>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                    
+                </div>
+            </div>
+        </div>
+
+   
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="number" class="form-control" name="Code" required>
+                    <label class="form-label">Code</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" class="form-control" name="Sequence" required>
+                    <label class="form-label">Sequence</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fourth Column -->
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="text" class="form-control" name="BatchName" required>
+                    <label class="form-label">Batch Name</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="date" class="form-control" name="StartDate" required>
+                    <label class="form-label">Start Date</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <input type="date" class="form-control" name="EndDate" required>
+                    <label class="form-label">End Date</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
+
+@* <div class="modal-content">
     <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add New Book</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -95,5 +169,5 @@
             </div>
         </form>
     </div>
-</div>
+</div> *@
 

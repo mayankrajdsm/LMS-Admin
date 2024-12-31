@@ -1,24 +1,32 @@
-﻿
-@* Added by Zafar Iqubal *@
-@page
+﻿@page
 @model LMS.Admin.Views.Books.IndexModel
-@* @model List<LMS.Infrastructures.Models.Book>
 @{
-
-    }
-} *@
-<div class="row">
-    <div class="col-lg-12 grid-margin stretch-card">
+    ViewBag.Ref = "Infrastructure";
+    ViewBag.Title = "Manage Inventory";
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
-            <div class="card-body">
-                <div class="template-demo">
-                    <button type="button" class="btn btn-social-icon-text btn-google" id="btnAddEditInventoryPopUp"
-                            data-bs-toggle="modal" data-bs-target="#dvAddEditBookPopUp">
-                        <i class="mdi mdi-plus"></i>Add New Book
-                    </button>
-                </div>
+            <div class="header">
+                <h2>
+                    @ViewBag.Title
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-toggle="modal" data-target="#defaultModal">Add New</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                         <thead>
                             <tr>
 
@@ -107,15 +115,20 @@
                                 }
                             }
                         </tbody>
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="dvAddEditBookPopUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        @await Html.PartialAsync("_addBook")
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Add New Inventory</h4>
+            </div>
+            @await Html.PartialAsync("~/Pages/Books/_addBook.cshtml", Model.book)
+        </div>
     </div>
 </div>
-

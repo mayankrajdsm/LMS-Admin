@@ -9,6 +9,7 @@ namespace LMS.Administration.Pages.Students
     public class IndexModel : PageModel
     {
         public readonly IStudentService _studentService;
+
         public IndexModel(IStudentService studentService)
         {
             
@@ -32,7 +33,13 @@ namespace LMS.Administration.Pages.Students
            
             int result = _studentService.InsertStudent(student).Result;
 
-            return RedirectToPage(); // Redirect to the same page (or another page if needed)
+            return RedirectToPage("AddOrEditContact",new {studentid = student.StudentId }); // Redirect to the same page (or another page if needed)
+        }
+        public async Task<IActionResult> OnPostDeleteAsync(Guid StudentId)
+        {
+            var student = await _studentService.DeleteStudent(StudentId);
+            return RedirectToPage();
+           
         }
     }
 }

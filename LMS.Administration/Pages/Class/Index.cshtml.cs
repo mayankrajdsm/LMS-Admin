@@ -1,3 +1,4 @@
+using LMS.Administration.Middleware;
 using LMS.Infrastructures.Models;
 using LMS.Mapper.IService;
 using LMS.Mapper.Services;
@@ -10,9 +11,11 @@ namespace LMS.Administration.Pages.Class
     public class IndexModel : PageModel
     {
         private readonly IClassService _classService;
-        public IndexModel(IClassService classService)
+        private readonly IActiveUserService _activeUserService;
+        public IndexModel(IClassService classService, IActiveUserService activeUserService)
         {
             _classService = classService;
+            _activeUserService = activeUserService;
         }
         public IEnumerable<Entity.Class> classes { get; set; }
         public void OnGet()
@@ -24,8 +27,10 @@ namespace LMS.Administration.Pages.Class
         public IActionResult OnPost()
         {
             Postclass.ClassesId = Guid.NewGuid();
-            Postclass.CreatedBy = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
-            Postclass.ModifiedBy = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            Postclass.CreatedBy =Guid.Parse("9454C4CB-1F43-42E3-B439-04C879701AA5");//new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            Postclass.ModifiedBy = Guid.Parse("9454C4CB-1F43-42E3-B439-04C879701AA5");
+            Postclass.CreatedOn = DateTime.Now;
+            Postclass.ModifiedOn = DateTime.Now;
             if (!ModelState.IsValid)
             {
                 return Page(); // Return the page with validation errors

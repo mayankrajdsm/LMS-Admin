@@ -1,6 +1,7 @@
 ﻿using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
 using LMS.Mapper.IService;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,30 @@ namespace LMS.Mapper.Services
         public async Task<int> InsertStudentEducation(StudentEducation studentEducation)
         {
             return await _studentRepository.InsertStudentEducation(studentEducation);
+        }   
+        public async Task<int> DeleteStudent(Guid studentID)
+        {
+            return await _studentRepository.DeleteStudent(studentID);
+        }
+        public async Task<int> DeleteStudentContact(Guid studentContactID)
+        {
+            return await _studentRepository.DeleteStudentContact(studentContactID);
+        }
+        public async Task<int> DeleteStudentEducation(Guid studentEducationID)
+        {
+            return await _studentRepository.DeleteStudentEducation(studentEducationID);
+        }
+        public async Task<int> DeleteStudentGuardian(Guid studentGuardianID)
+        {
+            return await _studentRepository.DeleteStudentGuardian(studentGuardianID);
+        }
+        public async Task<int> DeleteStudentParents(Guid studentParentID)
+        {
+            return await _studentRepository.DeleteStudentParents(studentParentID);
+        }
+        public async Task<int> DeleteStudentTransport(Guid studentTransportID)
+        {
+            return await _studentRepository.DeleteStudentTransport(studentTransportID);
         }
 
     }

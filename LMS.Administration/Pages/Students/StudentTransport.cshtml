@@ -1,6 +1,67 @@
 ﻿@page
 @model LMS.Administration.Pages.Students.StudentTransportModel
 @{
+    ViewBag.Ref = "Infrastructure";
+    ViewBag.Title = "Student Parent Details";
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    @ViewBag.Title
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a data-toggle="modal" href="/Students/addeditstudent">Add New</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                        <thead>
+                            <tr>
+                                <th>Mode of Transport</th>
+                                <th>Roll No</th>
+                                <th>Pickup Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                @foreach (var transport in Model.studentTransports)
+                                {
+                                    <tr>
+                                        <td>@transport.ModeOfTransport</td>
+                                        <td>@transport.RollNo</td>
+                                        <td>@transport.PickupPoint</td>
+                                        <td>
+
+                                            <a href="@Url.Page("addEditStudent" ,transport)" class="btn btn-primary">Edit</a>
+                                            <form method="post" asp-page-handler="Delete" asp-route-TransportId="@transport.TransportId" onsubmit="return confirm('Are you sure you want to delete this student?');">
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* @{
 }
 <div class="row">
     <div class="col-lg-12 grid-margin stretch-card">
@@ -30,7 +91,10 @@
                                         <td>@transport.ModeOfTransport</td>
                                         <td>@transport.RollNo</td>
                                         <td>@transport.PickupPoint</td>
-                                        <td><button onclick="openEditPopup(this)">Edit</button></td>
+                                        <td>
+                                            <a href="@Url.Page("AddOrEditStudentTransport" ,transport)">Edit</a>
+                                            <a href="@Url.Page("")">Delete</a>
+                                        </td>
                                     </tr>
                                 }
                             }
@@ -53,4 +117,4 @@
         debugger;
      
     }
-</script>
+</script> *@

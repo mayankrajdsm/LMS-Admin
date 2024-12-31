@@ -31,5 +31,11 @@ namespace LMS.Administration.Pages.Students
 
             return RedirectToPage(); // Redirect to the same page (or another page if needed)
         }
+        public async Task<IActionResult> OnPostDeleteAsync(Guid EducationId)
+        {
+            var student = await _studentService.DeleteStudentEducation(EducationId);
+            return RedirectToPage();
+
+        }
     }
 }

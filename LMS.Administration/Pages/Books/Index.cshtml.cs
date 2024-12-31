@@ -27,11 +27,12 @@ namespace LMS.Admin.Views.Books
         public entity.Book book { get; set; }
         public IActionResult OnPost()
         {
+            book.BooksId = Guid.NewGuid();
             if (!ModelState.IsValid)
             {
                 return Page(); // Return the page with validation errors
             }
-            book.BooksId = Guid.NewGuid();
+            
 
             int result = _bookService.InsertBook(book);
 

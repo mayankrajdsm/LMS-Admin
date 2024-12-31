@@ -90,6 +90,7 @@ public partial class TestContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=localhost;Database=test;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\LocalServer;Database=test;Integrated Security=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -435,6 +436,10 @@ public partial class TestContext : DbContext
             entity.Property(e => e.StudentId).HasColumnName("Student_ID");
             entity.Property(e => e.ToDate).HasColumnType("datetime");
 
+            //entity.HasOne(d => d.Book).WithMany(p => p.IssueBookStudents)
+            //    .HasForeignKey(d => d.BookId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__IssueBook__Book___2739D489");
             entity.HasOne(d => d.Book).WithMany(p => p.IssueBookStudents)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -748,9 +753,7 @@ public partial class TestContext : DbContext
 
         modelBuilder.Entity<StudentContact>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("StudentContact");
+            entity.HasKey(e => e.StudentContactId).HasName("PK_STUDENTCONTACT");
 
             entity.Property(e => e.Address1)
                 .HasMaxLength(50)
@@ -782,7 +785,7 @@ public partial class TestContext : DbContext
 
             entity.HasOne(d => d.Student).WithMany()
                 .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentContact_StudentId");
+                .HasConstraintName("FK_StudentContact_StudentId").OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<StudentEducation>(entity =>
@@ -809,7 +812,7 @@ public partial class TestContext : DbContext
 
             entity.HasOne(d => d.Student).WithMany(p => p.StudentEducations)
                 .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentEducation_StudentId");
+                .HasConstraintName("FK_StudentEducation_StudentId").OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<StudentGuardian>(entity =>
@@ -867,7 +870,7 @@ public partial class TestContext : DbContext
 
             entity.HasOne(d => d.Student).WithMany(p => p.StudentGuardians)
                 .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentGuardian_StudentId");
+                .HasConstraintName("FK_StudentGuardian_StudentId").OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<StudentParent>(entity =>
@@ -964,7 +967,7 @@ public partial class TestContext : DbContext
 
             entity.HasOne(d => d.Student).WithMany(p => p.StudentParents)
                 .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentParents_StudentId");
+                .HasConstraintName("FK_StudentParents_StudentId").OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<StudentSeatBooking>(entity =>
@@ -1030,7 +1033,7 @@ public partial class TestContext : DbContext
 
             entity.HasOne(d => d.Student).WithMany(p => p.StudentTransports)
                 .HasForeignKey(d => d.StudentId)
-                .HasConstraintName("FK_StudentTransport_StudentId");
+                .HasConstraintName("FK_StudentTransport_StudentId").OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<SubscriptionPackage>(entity =>

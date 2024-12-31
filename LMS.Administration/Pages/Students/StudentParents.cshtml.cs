@@ -20,17 +20,23 @@ namespace LMS.Administration.Pages.Students
         }
         [BindProperty]
         public StudentParent StudentParent { get; set; }
-        public IActionResult OnPost()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page(); // Return the page with validation errors
-            }
-            StudentParent.ParentsId = Guid.NewGuid();
-            StudentParent.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
-            int result = _studentService.InsertStudentParents(StudentParent).Result;
+        //public IActionResult OnPost()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page(); // Return the page with validation errors
+        //    }
+        //    StudentParent.ParentsId = Guid.NewGuid();
+        //    StudentParent.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+        //    int result = _studentService.InsertStudentParents(StudentParent).Result;
 
-            return RedirectToPage(); // Redirect to the same page (or another page if needed)
+        //    return RedirectToPage(); // Redirect to the same page (or another page if needed)
+        //}
+        public async Task<IActionResult> OnPostDeleteAsync(Guid ParentsId)
+        {
+            var student = await _studentService.DeleteStudentParents(ParentsId);
+            return RedirectToPage();
+
         }
     }
 }

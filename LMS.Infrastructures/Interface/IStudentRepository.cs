@@ -24,6 +24,12 @@ namespace LMS.Infrastructures.Interface
         Task<int> InsertStudentParents(StudentParent studentParent);
         Task<int> InsertStudentTransport(StudentTransport studentTransport);
         Task<int> InsertStudent(Student student);
+        Task<int> DeleteStudent(Guid studentid);
+        Task<int> DeleteStudentContact(Guid studentContactid);
+        Task<int> DeleteStudentEducation(Guid studentEducationid);
+        Task<int> DeleteStudentGuardian(Guid studentGuardianid);
+        Task<int> DeleteStudentParents(Guid studentParentid);
+        Task<int> DeleteStudentTransport(Guid studentTransportid);
 
     }
 }

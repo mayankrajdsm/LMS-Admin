@@ -70,6 +70,74 @@ namespace LMS.Infrastructures.Repository
             _context.StudentTransports.Add(studentTransport);
             return _context.SaveChanges();
         }
+        public async Task<int> DeleteStudent(Guid studentid)
+        {
+           var result= _context.Students.FindAsync(studentid).Result;
+           
+            if (result != null)
+            {
+                _context.Students.RemoveRange(result);
+                _context.Students.Remove(result);
+                return _context.SaveChanges();
+            }
+           return _context.SaveChanges();
+            
+        }
+        public async Task<int> DeleteStudentContact(Guid studentContactid)
+        {
+            var result = _context.StudentContacts.FindAsync(studentContactid).Result;
+            if (result != null)
+            {
+                _context.StudentContacts.Remove(result);
+                return _context.SaveChanges();
+            }
+            return _context.SaveChanges();
+
+        }
+        public async Task<int> DeleteStudentEducation(Guid studentEducationid)
+        {
+            var result = _context.Students.FindAsync(studentEducationid).Result;
+            if (result != null)
+            {
+                _context.Students.Remove(result);
+                return _context.SaveChanges();
+            }
+            return _context.SaveChanges();
+
+        }
+        public async Task<int> DeleteStudentGuardian(Guid studentGuardianid)
+        {
+            var result = _context.Students.FindAsync(studentGuardianid).Result;
+            if (result != null)
+            {
+                _context.Students.Remove(result);
+                return _context.SaveChanges();
+            }
+            return _context.SaveChanges();
+
+        }
+        public async Task<int> DeleteStudentParents(Guid studentParentid)
+        {
+            var result = _context.Students.FindAsync(studentParentid).Result;
+            if (result != null)
+            {
+                _context.Students.Remove(result);
+                return _context.SaveChanges();
+            }
+            return _context.SaveChanges();
+
+        }
+        public async Task<int> DeleteStudentTransport(Guid studentTransportid)
+        {
+            var result = _context.Students.FindAsync(studentTransportid).Result;
+            if (result != null)
+            {
+                _context.Students.Remove(result);
+                return _context.SaveChanges();
+            }
+            return _context.SaveChanges();
+
+        }
 
     }
 }

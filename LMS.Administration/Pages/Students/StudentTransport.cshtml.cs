@@ -20,17 +20,23 @@ namespace LMS.Administration.Pages.Students
         }
         [BindProperty]
         public StudentTransport studentTransport { get; set; }
-        public IActionResult OnPost()
+        //public IActionResult OnPost()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page(); // Return the page with validation errors
+        //    }
+        //    studentTransport.TransportId = Guid.NewGuid();
+        //    studentTransport.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
+        //    int result= _studentService.InsertStudentTransport(studentTransport).Result;
+
+        //    return RedirectToPage(); // Redirect to the same page (or another page if needed)
+        //}
+        public async Task<IActionResult> OnPostDeleteAsync(Guid TransportId)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page(); // Return the page with validation errors
-            }
-            studentTransport.TransportId = Guid.NewGuid();
-            studentTransport.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");
-            int result= _studentService.InsertStudentTransport(studentTransport).Result;
-            
-            return RedirectToPage(); // Redirect to the same page (or another page if needed)
+            var student = await _studentService.DeleteStudentTransport(TransportId);
+            return RedirectToPage();
+
         }
     }
 }
