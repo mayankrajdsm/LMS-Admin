@@ -1,5 +1,5 @@
 ﻿@page
-@model LMS.Administration.Pages.Staff.StaffPersonalInfoModel
+@model LMS.Administration.Pages.Staff.StaffQualificationModel
 @{
 }
 <div class="row">
@@ -9,14 +9,14 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs tab-nav-right" role="tablist">
                     <li role="presentation"><a href="#" data-toggle="tab">GENERAL INFORMATION</a></li>
-                    <li role="presentation" class="active"><a href="#" data-toggle="tab">PERSONAL INFORMATION</a></li>
+                    <li role="presentation"><a href="#" data-toggle="tab">PERSONAL INFORMATION</a></li>
                     <li role="presentation"><a href="#" data-toggle="tab">CONTACT INFORMATION</a></li>
-                    <li role="presentation"><a href="#" data-toggle="tab">QUALIFICATION/EXPERIENCE</a></li>
+                    <li role="presentation" class="active"><a href="#" data-toggle="tab">QUALIFICATION/EXPERIENCE</a></li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="home">
-                        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditPersonalInfo.cshtml", Model.staffPersonal)
+                        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditStaffQualification.cshtml", Model.staffQE)
                     </div>
                 </div>
             </div>

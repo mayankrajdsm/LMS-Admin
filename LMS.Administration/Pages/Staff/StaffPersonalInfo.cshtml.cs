@@ -8,17 +8,30 @@ namespace LMS.Administration.Pages.Staff
 {
     public class StaffPersonalInfoModel : PageModel
     {
-        public StaffPersonal staffPersonal{ get; set; }
+        public StaffPersonal staffPersonal { get; set; }
+        public string ReturnUrl { get; set; }
         public async Task<IActionResult> OnGet()
         {
-        //    staffGeneral.lstTitle = new List<SelectListItem>
-        //     {
-        //         new SelectListItem{Text = "Mr.", Value="1"},
-        //         new SelectListItem{Text = "Ms.", Value="2"},
-        //         new SelectListItem{Text = "Mrs.", Value="3"},
-        //         new SelectListItem{Text = "Dr.", Value="4"},
-        //     };
+            //    staffGeneral.lstTitle = new List<SelectListItem>
+            //     {
+            //         new SelectListItem{Text = "Mr.", Value="1"},
+            //         new SelectListItem{Text = "Ms.", Value="2"},
+            //         new SelectListItem{Text = "Mrs.", Value="3"},
+            //         new SelectListItem{Text = "Dr.", Value="4"},
+            //     };
             return Page();
+        }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                //batches = await _batchService.GetBatches();
+                return Page();
+            }
+
+            //ReturnUrl ??= Url.Content($"~/Staff/StaffPersonalInfo/{staffPersonal.StaffId}");
+            ReturnUrl ??= Url.Content($"~/Staff/StaffPersonalInfo");
+            return LocalRedirect(ReturnUrl);
         }
     }
     public class StaffPersonal
@@ -43,7 +56,7 @@ namespace LMS.Administration.Pages.Staff
 
         [Required(ErrorMessage = "Spouse Name Required.")]
         [DisplayName("Spouse Name")]
-        public DateTime SpouseName { get; set; }
+        public string SpouseName { get; set; }
 
         [Required(ErrorMessage = "Father's Name Required.")]
         [DisplayName("Father's Name")]
@@ -68,9 +81,9 @@ namespace LMS.Administration.Pages.Staff
         public string EmployementTypeId { get; set; }
         public List<SelectListItem> lstEmployementType { get; set; }
 
-        [Required(ErrorMessage = "Biometric identification number Required.")]
-        [DisplayName("Biometric identification number")]
-        public string BiometricIdentificationNumberId { get; set; }
+        [Required(ErrorMessage = "Marriage Anniversary Required.")]
+        [DisplayName("Marriage Anniversary")]
+        public string MarriageAnniversary { get; set; }
 
         [DisplayName("Only Viewing rights")]
         public bool OnlyViewingrights { get; set; }
@@ -80,11 +93,11 @@ namespace LMS.Administration.Pages.Staff
 
         [Required(ErrorMessage = "Shift In Time Required.")]
         [DisplayName("Shift In Time")]
-        public TimeOnly ShiftInTime { get; set; }
+        public string ShiftInTime { get; set; }
 
         [Required(ErrorMessage = "Shift Out Time Required.")]
         [DisplayName("Shift Out Time")]
-        public TimeOnly ShiftOutTime { get; set; }
+        public string ShiftOutTime { get; set; }
 
         [Required(ErrorMessage = "Bank Name Required.")]
         [DisplayName("BankName")]
@@ -94,5 +107,9 @@ namespace LMS.Administration.Pages.Staff
         [Required(ErrorMessage = "Ifsc Code Required.")]
         [DisplayName("Ifsc Code")]
         public string IfscCode { get; set; }
+
+        [Required(ErrorMessage = "Account Number Required.")]
+        [DisplayName("Account Number")]
+        public string AccountNumber { get; set; }
     }
 }

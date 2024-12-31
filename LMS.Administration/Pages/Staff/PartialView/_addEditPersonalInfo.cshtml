@@ -1,11 +1,9 @@
-﻿@model LMS.Administration.Pages.Staff.StaffGeneral
+﻿@model LMS.Administration.Pages.Staff.StaffPersonal
 
 <!-- Bootstrap Material Datetime Picker Css -->
 <link href="~/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
-
 <!-- Wait Me Css -->
 <link href="~/assets/plugins/waitme/waitMe.css" rel="stylesheet" />
-
 <!-- Custom Css -->
 <link href="~/assets/css/style.css" rel="stylesheet">
 
@@ -14,7 +12,26 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group form-float">
-                    <label asp-for="Title" class="form-label"></label>
+                    <label asp-for="ProfilePicture" class="form-label"></label>
+                    <div class="form-line">
+                        <input type="file" asp-for="ProfilePicture" class="form-control" />
+                        <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                        <input type="hidden" asp-for="StaffId" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="AadharCardNo" class="form-label"></label>
+                    <div class="form-line">
+                        <input type="number" asp-for="AadharCardNo" class="form-control" />
+                        <span asp-validation-for="AadharCardNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="MaritalStatus" class="form-label"></label>
                     <div class="form-line">
                         @* @Html.DropDownListFor(m => m.Title, Model.lstTitle, new
                             {
@@ -29,49 +46,58 @@
                             <option value="40">40</option>
                             <option value="50">50</option>
                         </select>
-                        <span asp-validation-for="Title" class="text-danger"></span>
+                        <span asp-validation-for="MaritalStatus" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group form-float">
-                    <label asp-for="FirstName" class="form-label"></label>
+                    <label asp-for="MarriageAnniversary" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                        <input asp-for="MarriageAnniversary" class="datepicker form-control" placeholder="Please choose a date..." />
+                        <span asp-validation-for="MarriageAnniversary" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group form-float">
-                    <label asp-for="MiddleName" class="form-label"></label>
+                    <label asp-for="SpouseName" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="MiddleName" class="form-control" />
-                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                        <input asp-for="SpouseName" class="form-control" />
+                        <span asp-validation-for="SpouseName" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group form-float">
-                    <label asp-for="LastName" class="form-label"></label>
+                    <label asp-for="PanCardNo" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-float">
-                    <label asp-for="DoJ" class="form-label"></label>
-                    <div class="form-line">
-                        <input asp-for="DoJ" class="datepicker form-control" placeholder="Please choose a date..." />
-                        <span asp-validation-for="DoJ" class="text-danger"></span>
+                        <input asp-for="PanCardNo" class="form-control" />
+                        <span asp-validation-for="PanCardNo" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="GenderId" class="form-label"></label>
+                    <label asp-for="FatherName" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="FatherName" class="form-control" />
+                        <span asp-validation-for="FatherName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="MotherName" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="MotherName" class="form-control" />
+                        <span asp-validation-for="MotherName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="BloodGroupId" class="form-label"></label>
                     <div class="form-line">
                         @* @Html.DropDownListFor(m => m.Title, Model.lstTitle, new
                             {
@@ -86,22 +112,13 @@
                             <option value="40">40</option>
                             <option value="50">50</option>
                         </select>
-                        <span asp-validation-for="GenderId" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-float">
-                    <label asp-for="DoB" class="form-label"></label>
-                    <div class="form-line">
-                        <input asp-for="DoB" class="datepicker form-control" placeholder="Please choose a date..." />
-                        <span asp-validation-for="DoB" class="text-danger"></span>
+                        <span asp-validation-for="BloodGroupId" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="DepartmentId" class="form-label"></label>
+                    <label asp-for="Nationality" class="form-label"></label>
                     <div class="form-line">
                         @* @Html.DropDownListFor(m => m.Title, Model.lstTitle, new
                             {
@@ -116,13 +133,13 @@
                             <option value="40">40</option>
                             <option value="50">50</option>
                         </select>
-                        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="DesignationId" class="form-label"></label>
+                    <label asp-for="EmployementTypeId" class="form-label"></label>
                     <div class="form-line">
                         @* @Html.DropDownListFor(m => m.Title, Model.lstTitle, new
                             {
@@ -137,118 +154,70 @@
                             <option value="40">40</option>
                             <option value="50">50</option>
                         </select>
-                        <span asp-validation-for="DesignationId" class="text-danger"></span>
+                        <span asp-validation-for="EmployementTypeId" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group form-float">
-                    <label asp-for="SalaryOffered" class="form-label"></label>
+                    <label asp-for="OnlyViewingrights" class="form-label"></label>
                     <div class="form-line">
-                        <input type="number" asp-for="SalaryOffered" class="form-control" />
-                        <span asp-validation-for="SalaryOffered" class="text-danger"></span>
+                        <input type="checkbox" asp-for="OnlyViewingrights" class="form-control" />
+                        <span asp-validation-for="OnlyViewingrights" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="Qualification" class="form-label"></label>
+                    <label asp-for="UANNumber" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="Qualification" class="form-control" />
-                        <span asp-validation-for="Qualification" class="text-danger"></span>
+                        <input type="number" asp-for="UANNumber" class="form-control" />
+                        <span asp-validation-for="UANNumber" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="Experience" class="form-label"></label>
+                    <label asp-for="ShiftInTime" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="Experience" class="form-control" />
-                        <span asp-validation-for="Experience" class="text-danger"></span>
+                        <input asp-for="ShiftInTime" class="timepicker form-control" placeholder="Please choose a time..." />
+                        <span asp-validation-for="ShiftInTime" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="Experience" class="form-label"></label>
+                    <label asp-for="ShiftOutTime" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="Experience" class="form-control" />
-                        <span asp-validation-for="Experience" class="text-danger"></span>
+                        <input asp-for="ShiftOutTime" class="timepicker form-control" placeholder="Please choose a time..." />
+                        <span asp-validation-for="ShiftOutTime" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="AreaOfSpecialization" class="form-label"></label>
+                    <label asp-for="AccountNumber" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="AreaOfSpecialization" class="form-control" />
-                        <span asp-validation-for="AreaOfSpecialization" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-float">
-                    <label asp-for="BiometricIdentificationNumberId" class="form-label"></label>
-                    <div class="form-line">
-                        <input asp-for="BiometricIdentificationNumberId" class="form-control" />
-                        <span asp-validation-for="BiometricIdentificationNumberId" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-float">
-                    <label asp-for="DateOfSuperannuation" class="form-label"></label>
-                    <div class="form-line">
-                        <input asp-for="DateOfSuperannuation" class="datepicker form-control" placeholder="Please choose a date..." />
-                        <span asp-validation-for="DateOfSuperannuation" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-float">
-                    <label asp-for="DateOfRegularAppointment" class="form-label"></label>
-                    <div class="form-line">
-                        <input asp-for="DateOfRegularAppointment" class="datepicker form-control" placeholder="Please choose a date..." />
-                        <span asp-validation-for="DateOfRegularAppointment" class="text-danger"></span>
+                        <input type="number" asp-for="AccountNumber" class="form-control" />
+                        <span asp-validation-for="AccountNumber" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="form-group form-float">
-                    <label asp-for="SocialCategoryId" class="form-label"></label>
+                    <label asp-for="BankName" class="form-label"></label>
                     <div class="form-line">
-                        @* @Html.DropDownListFor(m => m.Title, Model.lstTitle, new
-                            {
-                                @class =
-                                 "form-control"
-                            }) *@
-                        <select class="form-control show-tick">
-                            <option value="">-- Please select --</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                            <option value="30">30</option>
-                            <option value="40">40</option>
-                            <option value="50">50</option>
-                        </select>
-                        <span asp-validation-for="SocialCategoryId" class="text-danger"></span>
+                        <input asp-for="BankName" class="form-control" />
+                        <span asp-validation-for="BankName" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group form-float">
-                    <label asp-for="Caste" class="form-label"></label>
+                    <label asp-for="IfscCode" class="form-label"></label>
                     <div class="form-line">
-                        <input asp-for="Caste" class="form-control" />
-                        <span asp-validation-for="Caste" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="form-group form-float">
-                    <label asp-for="LibraryCardNumber" class="form-label"></label>
-                    <div class="form-line">
-                        <input asp-for="LibraryCardNumber" class="form-control" />
-                        <span asp-validation-for="LibraryCardNumber" class="text-danger"></span>
+                        <input asp-for="IfscCode" class="form-control" />
+                        <span asp-validation-for="IfscCode" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -256,13 +225,11 @@
     </div>
     <div class="modal-footer">
         <button type="submit" class="btn btn-primary waves-effect">SUBMIT & NEXT</button>
-        <a href="/Staff/Employee" class="btn bg-blue-grey waves-effect">BACK</a>
+        <a href="/Staff/StaffGeneralInfo" class="btn bg-blue-grey waves-effect">BACK</a>
         <button type="button" class="btn bg-blue-grey waves-effect">RESET</button>
     </div>
 </form>
 
-<!-- Moment Plugin Js -->
 <script src="~/assets/plugins/momentjs/moment.js"></script>
-<!-- Bootstrap Material Datetime Picker Plugin Js -->
 <script src="~/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 <script src="~/assets/js/pages/forms/basic-form-elements.js"></script>

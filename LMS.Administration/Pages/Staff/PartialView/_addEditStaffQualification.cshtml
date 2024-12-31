@@ -1,0 +1,183 @@
+﻿@model LMS.Administration.Pages.Staff.StaffQE
+@{
+}
+<!-- Bootstrap Material Datetime Picker Css -->
+<link href="~/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+<!-- Wait Me Css -->
+<link href="~/assets/plugins/waitme/waitMe.css" rel="stylesheet" />
+<!-- Custom Css -->
+<link href="~/assets/css/style.css" rel="stylesheet">
+
+<div class="modal-body">
+    <div class="row">
+        <h2>Qalification</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffQalification.Qualification" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffQalification.Qualification" class="form-control" />
+                            <span asp-validation-for="staffQalification.Qualification" class="text-danger"></span>
+                            <input type="hidden" asp-for="staffQalification.StaffId" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffQalification.Subject" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffQalification.Subject" class="form-control" />
+                            <span asp-validation-for="staffQalification.Subject" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffQalification.Board" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffQalification.Board" class="form-control" />
+                            <span asp-validation-for="staffQalification.Board" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffQalification.PassingYear" class="form-label"></label>
+                        <div class="form-line">
+                            <input type="number" asp-for="staffQalification.PassingYear" class="form-control" />
+                            <span asp-validation-for="staffQalification.PassingYear" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffQalification.Percentage" class="form-label"></label>
+                        <div class="form-line">
+                            <input type="number" asp-for="staffQalification.Percentage" class="form-control" />
+                            <span asp-validation-for="staffQalification.Percentage" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label></label>
+                        <div class="form-line">
+                            <button type="button" class="btn bg-primary waves-effect">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Qualification</th>
+                                    <th>Subject</th>
+                                    <th>Board/University</th>
+                                    <th>Passing Year</th>
+                                    <th>Percentage</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td><button type="button" class="btn btn-danger waves-effect">DELETE</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <h2>Experience</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffExperience.Organization" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffExperience.Organization" class="form-control" />
+                            <input type="hidden" asp-for="staffExperience.StaffId" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffExperience.Designation" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffExperience.Designation" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffExperience.From" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffExperience.From" class="datepicker form-control" placeholder="Please choose a date..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-float">
+                        <label asp-for="staffExperience.To" class="form-label"></label>
+                        <div class="form-line">
+                            <input asp-for="staffExperience.To" class="datepicker form-control" placeholder="Please choose a date..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Organization</th>
+                                    <th>Designation</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td><button type="button" class="btn btn-danger waves-effect">DELETE</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="submit" class="btn btn-primary waves-effect">SUBMIT</button>
+    <a href="/Staff/StaffContactInfo" class="btn bg-blue-grey waves-effect">BACK</a>
+    <button type="button" class="btn bg-blue-grey waves-effect">RESET</button>
+</div>
+<script src="~/assets/plugins/momentjs/moment.js"></script>
+<script src="~/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<script src="~/assets/js/pages/forms/basic-form-elements.js"></script>

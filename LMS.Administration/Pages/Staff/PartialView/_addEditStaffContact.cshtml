@@ -1,0 +1,222 @@
+﻿@model LMS.Administration.Pages.Staff.StaffContact
+
+<form id="form_advanced_validation" method="POST">
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="Mobile" class="form-label"></label>
+                    <div class="form-line">
+                        <input type="number" asp-for="Mobile" class="form-control" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                        <input type="hidden" asp-for="StaffId" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="EmailId" class="form-label"></label>
+                    <div class="form-line">
+                        <input type="email" asp-for="EmailId" class="form-control" />
+                        <span asp-validation-for="EmailId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="AlternateEmailId" class="form-label"></label>
+                    <div class="form-line">
+                        <input type="email" asp-for="AlternateEmailId" class="form-control" />
+                        <span asp-validation-for="AlternateEmailId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="LinkedInProfile" class="form-label"></label>
+                    <div class="form-line">
+                        <input type="url" asp-for="LinkedInProfile" class="form-control" />
+                        <span asp-validation-for="LinkedInProfile" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="PresentAddress1" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="PresentAddress1" class="form-control" />
+                        <span asp-validation-for="PresentAddress1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="PresentAddress2" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="PresentAddress2" class="form-control" />
+                        <span asp-validation-for="PresentAddress2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PresentCountryId" class="form-label"></label>
+                    <div class="form-line">
+                        @* @Html.DropDownListFor(m => m.PresentCountryId, Model.lstTitle, new
+                            {
+                                @class =
+                                 "form-control"
+                            }) *@
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span asp-validation-for="PresentCountryId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PresentStateId" class="form-label"></label>
+                    <div class="form-line">
+                        @* @Html.DropDownListFor(m => m.PresentStateId, Model.lstTitle, new
+                            {
+                                @class =
+                                 "form-control"
+                            }) *@
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span asp-validation-for="PresentStateId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PresentCityId" class="form-label"></label>
+                    <div class="form-line">
+                        @* @Html.DropDownListFor(m => m.PresentCityId, Model.lstTitle, new
+                            {
+                                @class =
+                                 "form-control"
+                            }) *@
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span asp-validation-for="PermanentCityId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PermanentPincode" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="PermanentPincode" class="form-control" />
+                        <span asp-validation-for="PermanentPincode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-float">
+                    <label asp-for="PermanentAddress1" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="PermanentAddress1" class="form-control" />
+                        <span asp-validation-for="PermanentAddress1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PermanentCountryId" class="form-label"></label>
+                    <div class="form-line">
+                        @* @Html.DropDownListFor(m => m.PermanentCountryId, Model.lstTitle, new
+                            {
+                                @class =
+                                 "form-control"
+                            }) *@
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span asp-validation-for="PermanentCountryId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PermanentStateId" class="form-label"></label>
+                    <div class="form-line">
+                        @* @Html.DropDownListFor(m => m.PermanentCountryId, Model.lstTitle, new
+                            {
+                                @class =
+                                 "form-control"
+                            }) *@
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span asp-validation-for="PermanentStateId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PermanentCityId" class="form-label"></label>
+                    <div class="form-line">
+                        @* @Html.DropDownListFor(m => m.PermanentCountryId, Model.lstTitle, new
+                            {
+                                @class =
+                                 "form-control"
+                            }) *@
+                        <select class="form-control show-tick">
+                            <option value="">-- Please select --</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span asp-validation-for="PermanentCityId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group form-float">
+                    <label asp-for="PermanentPincode" class="form-label"></label>
+                    <div class="form-line">
+                        <input asp-for="PermanentPincode" class="form-control" />
+                        <span asp-validation-for="PermanentPincode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary waves-effect">SUBMIT & NEXT</button>
+        <a href="/Staff/StaffPersonalInfo" class="btn bg-blue-grey waves-effect">BACK</a>
+        <button type="button" class="btn bg-blue-grey waves-effect">RESET</button>
+    </div>
+</form>

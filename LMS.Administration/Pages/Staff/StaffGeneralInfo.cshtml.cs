@@ -9,16 +9,29 @@ namespace LMS.Administration.Pages.Staff
     public class StaffGeneralInfoModel : PageModel
     {
         public StaffGeneral staffGeneral { get; set; }
+        public string ReturnUrl { get; set; }
         public async Task<IActionResult> OnGet()
         {
-        //    staffGeneral.lstTitle = new List<SelectListItem>
-        //     {
-        //         new SelectListItem{Text = "Mr.", Value="1"},
-        //         new SelectListItem{Text = "Ms.", Value="2"},
-        //         new SelectListItem{Text = "Mrs.", Value="3"},
-        //         new SelectListItem{Text = "Dr.", Value="4"},
-        //     };
+            //    staffGeneral.lstTitle = new List<SelectListItem>
+            //     {
+            //         new SelectListItem{Text = "Mr.", Value="1"},
+            //         new SelectListItem{Text = "Ms.", Value="2"},
+            //         new SelectListItem{Text = "Mrs.", Value="3"},
+            //         new SelectListItem{Text = "Dr.", Value="4"},
+            //     };
             return Page();
+        }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                //batches = await _batchService.GetBatches();
+                return Page();
+            }
+
+            //ReturnUrl ??= Url.Content($"~/Staff/StaffPersonalInfo/{staffGeneral.Id}");
+            ReturnUrl ??= Url.Content($"~/Staff/StaffPersonalInfo");
+            return LocalRedirect(ReturnUrl);
         }
     }
     public class StaffGeneral
@@ -43,7 +56,7 @@ namespace LMS.Administration.Pages.Staff
 
         [Required(ErrorMessage = "Date of Joining Required.")]
         [DisplayName("Date of Joining")]
-        public DateTime DoJ { get; set; }
+        public string DoJ { get; set; }
 
         [Required(ErrorMessage = "Gender Required.")]
         [DisplayName("Gender")]
@@ -52,7 +65,7 @@ namespace LMS.Administration.Pages.Staff
 
         [Required(ErrorMessage = "Date of Birth Required.")]
         [DisplayName("Date of Birth")]
-        public DateTime DoB { get; set; }
+        public string DoB { get; set; }
 
         [Required(ErrorMessage = "Department Required.")]
         [DisplayName("Department")]
@@ -71,7 +84,7 @@ namespace LMS.Administration.Pages.Staff
 
         [Required(ErrorMessage = "Salary Offered Required.")]
         [DisplayName("Salary Offered")]
-        public decimal SalaryOffered { get; set; }
+        public string SalaryOffered { get; set; }
 
         [Required(ErrorMessage = "Qualification Required.")]
         [DisplayName("Qualification")]
@@ -85,17 +98,17 @@ namespace LMS.Administration.Pages.Staff
         [DisplayName("Area Of Specialization")]
         public string AreaOfSpecialization { get; set; }
 
-        [Required(ErrorMessage = "Marriage Anniversary Required.")]
-        [DisplayName("Marriage Anniversary")]
-        public DateTime MarriageAnniversary { get; set; }
+        [Required(ErrorMessage = "Biometric identification number Required.")]
+        [DisplayName("Biometric identification number")]
+        public string BiometricIdentificationNumberId { get; set; }
 
         [Required(ErrorMessage = "Date Of Superannuation Required.")]
         [DisplayName("Date Of Superannuation")]
-        public DateTime DateOfSuperannuation { get; set; }
+        public string DateOfSuperannuation { get; set; }
 
         [Required(ErrorMessage = "Date Of Regular Appointment Required.")]
         [DisplayName("Date Of Regular Appointment")]
-        public DateTime DateOfRegularAppointment { get; set; }
+        public string DateOfRegularAppointment { get; set; }
 
         [Required(ErrorMessage = "Social Category Required.")]
         [DisplayName("Social Category")]
