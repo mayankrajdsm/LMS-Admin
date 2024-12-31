@@ -16,9 +16,9 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.RegisteredName = domain.RegisteredName;
             convertedModel.Address1 = domain.Address1;
             convertedModel.Address2 = domain.Address2;
-            convertedModel.CountryId = Guid.Parse(domain.CountryId);
-            convertedModel.StateId = Guid.Parse(domain.StateId);
-            convertedModel.CityId = Guid.Parse(domain.CityId);
+            convertedModel.CountryId = string.IsNullOrEmpty(domain.CountryId) ? Guid.NewGuid() : Guid.Parse(domain.CountryId);
+            convertedModel.StateId = string.IsNullOrEmpty(domain.StateId) ? Guid.NewGuid() : Guid.Parse(domain.StateId);
+            convertedModel.CityId = string.IsNullOrEmpty(domain.CityId) ? Guid.NewGuid() : Guid.Parse(domain.CityId);
             convertedModel.ContactPerson = domain.ContactPerson;
             convertedModel.ContactNo = domain.ContactNo;
             convertedModel.ContactEmail = domain.ContactEmail;
