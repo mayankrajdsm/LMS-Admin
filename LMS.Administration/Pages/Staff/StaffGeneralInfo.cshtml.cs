@@ -84,7 +84,7 @@ namespace LMS.Administration.Pages.Staff
 
         [Required(ErrorMessage = "Salary Offered Required.")]
         [DisplayName("Salary Offered")]
-        public string SalaryOffered { get; set; }
+        public decimal SalaryOffered { get; set; }
 
         [Required(ErrorMessage = "Qualification Required.")]
         [DisplayName("Qualification")]

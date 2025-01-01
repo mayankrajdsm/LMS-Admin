@@ -29,7 +29,15 @@ public partial class StudentSeatBooking
 
     public Guid? BookingStatus { get; set; }
 
+    public Guid BuildingId { get; set; }
+
     public virtual Status? BookingStatusNavigation { get; set; }
+
+    public virtual Building Building { get; set; } = null!;
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 
     public virtual Student Student { get; set; } = null!;
 }

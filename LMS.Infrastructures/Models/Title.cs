@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class StaffType
+public partial class Title
 {
-    public Guid StaffTypeId { get; set; }
+    public Guid TitleId { get; set; }
 
-    public string StaffTypeName { get; set; } = null!;
+    public string TitleCode { get; set; } = null!;
+
+    public string TitleName { get; set; } = null!;
 
     public bool IsActive { get; set; }
 
@@ -18,10 +20,6 @@ public partial class StaffType
     public DateTime? ModifiedOn { get; set; }
 
     public Guid? ModifiedBy { get; set; }
-
-    public virtual Staff CreatedByNavigation { get; set; } = null!;
-
-    public virtual Staff? ModifiedByNavigation { get; set; }
 
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 }

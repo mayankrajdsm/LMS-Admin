@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class StaffType
+public partial class BloodGroup
 {
-    public Guid StaffTypeId { get; set; }
+    public Guid BloodGroupId { get; set; }
 
-    public string StaffTypeName { get; set; } = null!;
+    public string BloodGroupName { get; set; } = null!;
 
     public bool IsActive { get; set; }
 

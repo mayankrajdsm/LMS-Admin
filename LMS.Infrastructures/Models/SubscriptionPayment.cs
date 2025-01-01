@@ -33,6 +33,10 @@ public partial class SubscriptionPayment
 
     public Guid? ModifiedBy { get; set; }
 
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
+
     public virtual PaymentStatus PaymentStatusNavigation { get; set; } = null!;
 
     public virtual ICollection<SubscriptionsTransaction> SubscriptionsTransactions { get; set; } = new List<SubscriptionsTransaction>();

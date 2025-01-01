@@ -36,4 +36,6 @@ public partial class Domain
     public Guid? ModifiedBy { get; set; }
 
     public virtual ICollection<Building> Buildings { get; set; } = new List<Building>();
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 }

@@ -21,5 +21,9 @@ public partial class LoginType
 
     public Guid? ModifiedBy { get; set; }
 
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
+
     public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 }

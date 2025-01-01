@@ -79,5 +79,19 @@ public partial class Book
 
     public string Reference { get; set; } = null!;
 
+    public bool IsActive { get; set; }
+
+    public Guid CreatedBy { get; set; }
+
+    public DateTime CreatedOn { get; set; }
+
+    public Guid? ModifiedBy { get; set; }
+
+    public DateTime? ModifiedOn { get; set; }
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
     public virtual ICollection<IssueBookStudent> IssueBookStudents { get; set; } = new List<IssueBookStudent>();
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 }

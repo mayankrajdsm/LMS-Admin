@@ -102,7 +102,7 @@ namespace LMS.Administration.Pages.Staff
         [Required(ErrorMessage = "Bank Name Required.")]
         [DisplayName("BankName")]
         public string BankName { get; set; }
-        public List<SelectListItem> lstBanks { get; set; }
+        //public List<SelectListItem> lstBanks { get; set; }
 
         [Required(ErrorMessage = "Ifsc Code Required.")]
         [DisplayName("Ifsc Code")]

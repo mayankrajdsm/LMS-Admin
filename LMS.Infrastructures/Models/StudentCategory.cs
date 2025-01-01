@@ -20,4 +20,8 @@ public partial class StudentCategory
     public DateTime? ModifiedOn { get; set; }
 
     public Guid? ModifiedBy { get; set; }
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 }
