@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace LMS.Mapper.BusinessObject
 {
-    public class SocialCateogory
+    public class SocialCategory
     {
-        public string SocialCateogoryId { get; set; }
+        public string SocialCategoryId { get; set; }
 
-        public string SocialCateogoryCode { get; set; } = null!;
+        public string SocialCategoryCode { get; set; } = null!;
 
-        public string SocialCateogoryName { get; set; } = null!;
+        public string SocialCategoryName { get; set; } = null!;
 
         public int DiscountPer { get; set; }
 

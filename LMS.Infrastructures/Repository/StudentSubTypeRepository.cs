@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class StudentSubTypeRepository: IStudentSubTypeRepository
     {
-        private readonly TestContext _context;
-        public StudentSubTypeRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public StudentSubTypeRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<StudentSubType>> GetStudentSubTypes() => await _context.StudentSubTypes.ToListAsync();
         public async Task<StudentSubType> GetStudentSubTypeById(Guid studentSubTypeId) => await _context.StudentSubTypes.FindAsync(studentSubTypeId);
         public async Task<int> InsertStudentSubType(StudentSubType studentSubType)

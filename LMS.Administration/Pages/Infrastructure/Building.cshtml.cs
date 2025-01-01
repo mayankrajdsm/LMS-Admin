@@ -29,7 +29,9 @@ namespace LMS.Administration.Pages.Infrastructure
         public Building editBuilding { get; set; }
         public async Task<IActionResult> OnGet()
         {
-            buildings = await _buildingService.GetBuildings();
+            List<LMS.Mapper.BusinessObject.Building> lstBuildings = new List<LMS.Mapper.BusinessObject.Building>();
+            lstBuildings = await _buildingService.GetBuildings();
+            buildings = lstBuildings;
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()

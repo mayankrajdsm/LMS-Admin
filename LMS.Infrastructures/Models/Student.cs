@@ -123,7 +123,25 @@ public partial class Student
 
     public byte[]? StudentsPhoto { get; set; }
 
+    public Guid BuildingId { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public Guid? CreatedBy { get; set; }
+
+    public DateTime CreatedOn { get; set; }
+
+    public Guid? ModifiedBy { get; set; }
+
+    public DateTime? ModifiedOn { get; set; }
+
+    public virtual Building Building { get; set; } = null!;
+
+    public virtual Staff? CreatedByNavigation { get; set; }
+
     public virtual ICollection<IssueBookStudent> IssueBookStudents { get; set; } = new List<IssueBookStudent>();
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 
     public virtual ICollection<StudentEducation> StudentEducations { get; set; } = new List<StudentEducation>();
 

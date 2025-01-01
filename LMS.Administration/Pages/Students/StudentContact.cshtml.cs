@@ -26,7 +26,7 @@ namespace LMS.Administration.Pages.Students
             {
                 return Page(); // Return the page with validation errors
             }
-            studentContact.StudentContactId = Guid.NewGuid();
+            //studentContact.StudentContactId = Guid.NewGuid();
             studentContact.StudentId = new Guid("9454C4CB-1F43-42E3-B439-04C879701AA5");// we have to get the student Id from the student 
             int result = _studentService.InsertStudentContact(studentContact).Result;
 

@@ -24,4 +24,12 @@ public partial class State
     public virtual ICollection<City> Cities { get; set; } = new List<City>();
 
     public virtual Country Country { get; set; } = null!;
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
+
+    public virtual ICollection<Staff> StaffPermanentStates { get; set; } = new List<Staff>();
+
+    public virtual ICollection<Staff> StaffPresentStates { get; set; } = new List<Staff>();
 }

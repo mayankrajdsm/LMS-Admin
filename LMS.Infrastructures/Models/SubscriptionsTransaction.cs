@@ -29,6 +29,10 @@ public partial class SubscriptionsTransaction
 
     public Guid? ModifiedBy { get; set; }
 
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
+
     public virtual SubscriptionPayment Payment { get; set; } = null!;
 
     public virtual Student StudentTeacherNavigation { get; set; } = null!;

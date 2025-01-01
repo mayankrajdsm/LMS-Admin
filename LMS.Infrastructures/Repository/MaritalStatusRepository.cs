@@ -11,9 +11,9 @@ namespace LMS.Infrastructures.Repository
 {
     public class MaritalStatusRepository: IMaritalStatusRepository
     {
-        private readonly TestContext _context;
+        private readonly FunskoolsContext _context;
 
-        public MaritalStatusRepository(TestContext context) => _context = context;
+        public MaritalStatusRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<MaritalStatus>> GetMaritalStatus() => await _context.MaritalStatuses.ToListAsync();
         public async Task<MaritalStatus> GetMaritalStatusById(Guid maritalStatusId) => await _context.MaritalStatuses.FindAsync(maritalStatusId);
         public async Task<int> InsertMaritalStatus(MaritalStatus maritalStatus)

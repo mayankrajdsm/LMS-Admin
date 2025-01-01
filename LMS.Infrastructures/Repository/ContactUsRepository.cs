@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace LMS.Infrastructures.Repository
 {
-    partial class ContactUsRepository: IContactUsRepository
+    public class ContactUsRepository: IContactUsRepository
     {
-        private readonly TestContext _context;
-        public ContactUsRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public ContactUsRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<ContactU>> GetContactUs() => await _context.ContactUs.ToListAsync();
         public async Task<ContactU> GetContactUsById(Guid contactId) => await _context.ContactUs.FindAsync(contactId);
         public async Task<int> InsertContactUs(ContactU contact)

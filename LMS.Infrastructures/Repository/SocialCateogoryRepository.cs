@@ -11,20 +11,20 @@ namespace LMS.Infrastructures.Repository
 {
     public class SocialCateogoryRepository: ISocialCateogoryRepository
     {
-        private readonly TestContext _context;
-        public SocialCateogoryRepository(TestContext context) => _context = context;
-        public async Task<IEnumerable<SocialCateogory>> GetSocialCateogories() => await _context.SocialCateogories.ToListAsync();
-        public async Task<SocialCateogory> GetSocialCateogoryById(Guid socialCateogoryId) => await _context.SocialCateogories.FindAsync(socialCateogoryId);
-        public async Task<int> InsertSocialCateogory(SocialCateogory socialCateogory)
+        private readonly FunskoolsContext _context;
+        public SocialCateogoryRepository(FunskoolsContext context) => _context = context;
+        public async Task<IEnumerable<SocialCategory>> GetSocialCateogories() => await _context.SocialCategories.ToListAsync();
+        public async Task<SocialCategory> GetSocialCateogoryById(Guid socialCateogoryId) => await _context.SocialCategories.FindAsync(socialCateogoryId);
+        public async Task<int> InsertSocialCateogory(SocialCategory socialCateogory)
         {
-            _context.SocialCateogories.Add(socialCateogory);
+            _context.SocialCategories.Add(socialCateogory);
             return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateSocialCateogory(SocialCateogory socialCateogory) => await _context.SaveChangesAsync();
+        public async Task<int> UpdateSocialCateogory(SocialCategory socialCateogory) => await _context.SaveChangesAsync();
         public async Task<int> DeleteSocialCateogory(Guid socialCateogoryId)
         {
-            var socialCateogory = await _context.SocialCateogories.FindAsync(socialCateogoryId);
-            _context.SocialCateogories.Remove(socialCateogory);
+            var socialCateogory = await _context.SocialCategories.FindAsync(socialCateogoryId);
+            _context.SocialCategories.Remove(socialCateogory);
             return await _context.SaveChangesAsync();
         }
     }

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class SubscriptionPaymentRepository : ISubscriptionPaymentRepository
     {
-        private readonly TestContext _context;
-        public SubscriptionPaymentRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public SubscriptionPaymentRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<SubscriptionPayment>> GetSubscriptionPayments() => await _context.SubscriptionPayments.ToListAsync();
         public async Task<SubscriptionPayment> GetSubscriptionPaymentById(Guid subscriptionPaymentId) => await _context.SubscriptionPayments.FindAsync(subscriptionPaymentId);
         public async Task<int> InsertSubscriptionPayment(SubscriptionPayment subscriptionPayment)

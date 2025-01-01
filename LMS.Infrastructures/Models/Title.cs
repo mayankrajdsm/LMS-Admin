@@ -3,15 +3,13 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class SocialCateogory
+public partial class Title
 {
-    public Guid SocialCateogoryId { get; set; }
+    public Guid TitleId { get; set; }
 
-    public string SocialCateogoryCode { get; set; } = null!;
+    public string TitleCode { get; set; } = null!;
 
-    public string SocialCateogoryName { get; set; } = null!;
-
-    public int DiscountPer { get; set; }
+    public string TitleName { get; set; } = null!;
 
     public bool IsActive { get; set; }
 
@@ -22,4 +20,6 @@ public partial class SocialCateogory
     public DateTime? ModifiedOn { get; set; }
 
     public Guid? ModifiedBy { get; set; }
+
+    public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 }

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class BannerRepository: IBannerRepository
     {
-        private readonly TestContext _context;
-        public BannerRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public BannerRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<Banner>> GetBanners() => await _context.Banners.ToListAsync();
         public async Task<Banner> GetBannerById(Guid bannerId) => await _context.Banners.FindAsync(bannerId);
         public async Task<int> InsertBanner(Banner banner)

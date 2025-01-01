@@ -10,8 +10,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class StaffTypeRepository : IStaffTypeRepository
     {
-        private readonly TestContext _context;
-        public StaffTypeRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public StaffTypeRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<StaffType>> GetStaffTypes() => _context.StaffTypes.ToList();
         public async Task<StaffType> GetStaffTypeById(Guid staffType) => await _context.StaffTypes.FindAsync(staffType);
         public async Task<int> InsertStaffType(StaffType staffType)

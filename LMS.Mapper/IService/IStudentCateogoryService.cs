@@ -9,10 +9,10 @@ namespace LMS.Mapper.IService
 {
     public interface IStudentCateogoryService
     {
-        Task<List<StudentCateogory>> GetSocialCateogories();
-        Task<StudentCateogory> GetStudentCateogoryById(string id);
-        Task<int> InsertStudentCateogory(StudentCateogory studentCateogory);
-        Task<int> UpdateStudentCateogory(StudentCateogory studentCateogory);
+        Task<List<StudentCategory>> GetSocialCateogories();
+        Task<StudentCategory> GetStudentCateogoryById(string id);
+        Task<int> InsertStudentCateogory(StudentCategory studentCateogory);
+        Task<int> UpdateStudentCateogory(StudentCategory studentCateogory);
         Task<int> DeleteStudentCateogory(string id);
     }
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace LMS.Infrastructures.Models;
 
-public partial class StudentCateogory
+public partial class StudentCategory
 {
-    public Guid StudentCateogoryId { get; set; }
+    public Guid StudentCategoryId { get; set; }
 
-    public string StudentCateogoryName { get; set; } = null!;
+    public string StudentCategoryName { get; set; } = null!;
 
     public int DiscountPer { get; set; }
 
@@ -20,4 +20,8 @@ public partial class StudentCateogory
     public DateTime? ModifiedOn { get; set; }
 
     public Guid? ModifiedBy { get; set; }
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 }

@@ -95,7 +95,9 @@
   transform: scale(1); }
 
 .navbar-header {
-  padding: 10px 7px; }
+  /*padding: 10px 7px;*/ 
+
+}
   .navbar-header .bars {
     float: left;
     text-decoration: none; }
@@ -6733,7 +6735,9 @@ fieldset[disabled] .form-control {
   transform: scale(1); }
 
 .navbar-header {
-  padding: 10px 7px; }
+  /*padding: 10px 7px;*/ 
+
+}
   .navbar-header .bars {
     float: left;
     text-decoration: none; }

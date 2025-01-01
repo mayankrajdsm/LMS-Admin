@@ -28,4 +28,8 @@ public partial class Class
     public DateTime StartDate { get; set; }
 
     public DateTime EndDate { get; set; }
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
 }

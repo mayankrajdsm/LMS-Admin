@@ -1,4 +1,5 @@
-﻿using LMS.Infrastructures.Models;
+﻿using LMS.Infrastructures.Interface;
+using LMS.Infrastructures.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace LMS.Infrastructures.Repository
 {
-    public class EmployementTypeRepository
+    public class EmployementTypeRepository : IEmployementTypeRepository
     {
-        private readonly TestContext _context;
-        public EmployementTypeRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public EmployementTypeRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<EmployementType>> GetEmployementTypes() => await _context.EmployementTypes.ToListAsync();
         public async Task<EmployementType> GetEmployementTypeById(Guid employementTypeId) => await _context.EmployementTypes.FindAsync(employementTypeId);
         public async Task<int> InsertEmployementType(EmployementType employementType)

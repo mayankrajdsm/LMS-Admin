@@ -1,0 +1,25 @@
+﻿@page
+@model LMS.Administration.Pages.Staff.StaffContactModel
+@{
+}
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                    <li role="presentation"><a href="#" data-toggle="tab">GENERAL INFORMATION</a></li>
+                    <li role="presentation"><a href="#" data-toggle="tab">PERSONAL INFORMATION</a></li>
+                    <li role="presentation" class="active"><a href="#" data-toggle="tab">CONTACT INFORMATION</a></li>
+                    <li role="presentation"><a href="#" data-toggle="tab">QUALIFICATION/EXPERIENCE</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="home">
+                        @await Html.PartialAsync("~/Pages/Staff/PartialView/_addEditStaffContact.cshtml", Model.staffContact)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,8 +11,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class SubscriptionsTransactionRepository: ISubscriptionsTransactionRepository
     {
-        private readonly TestContext _context;
-        public SubscriptionsTransactionRepository(TestContext context) => _context = context;
+        private readonly FunskoolsContext _context;
+        public SubscriptionsTransactionRepository(FunskoolsContext context) => _context = context;
         public async Task<IEnumerable<SubscriptionsTransaction>> GetSubscriptionsTransactions() => await _context.SubscriptionsTransactions.ToListAsync();
         public async Task<SubscriptionsTransaction> GetSubscriptionsTransactionById(Guid subscriptionsTransactionId) => await _context.SubscriptionsTransactions.FindAsync(subscriptionsTransactionId);
         public async Task<int> InsertSubscriptionsTransaction(SubscriptionsTransaction subscriptionsTransaction)

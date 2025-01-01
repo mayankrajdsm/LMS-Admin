@@ -1,5 +1,4 @@
-﻿using LMS.Infrastructures.DataAccess;
-using LMS.Infrastructures.Extensions;
+﻿using LMS.Infrastructures.Extensions;
 using LMS.Infrastructures.Interface;
 using LMS.Infrastructures.Models;
 using Microsoft.EntityFrameworkCore;
@@ -14,8 +13,8 @@ namespace LMS.Infrastructures.Repository
 {
     public class ClassRepository: IClassRepository
     {
-        private readonly TestContext _context;
-        public ClassRepository(TestContext context) 
+        private readonly FunskoolsContext _context;
+        public ClassRepository(FunskoolsContext context) 
         {
             _context = context;
         }

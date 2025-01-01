@@ -37,5 +37,19 @@ public partial class Building
 
     public Guid? ModifiedBy { get; set; }
 
+    public virtual ICollection<Barcode> Barcodes { get; set; } = new List<Barcode>();
+
+    public virtual Staff CreatedByNavigation { get; set; } = null!;
+
     public virtual Domain Domain { get; set; } = null!;
+
+    public virtual ICollection<IssueBookStudent> IssueBookStudents { get; set; } = new List<IssueBookStudent>();
+
+    public virtual Staff? ModifiedByNavigation { get; set; }
+
+    public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
+
+    public virtual ICollection<StudentSeatBooking> StudentSeatBookings { get; set; } = new List<StudentSeatBooking>();
+
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }
