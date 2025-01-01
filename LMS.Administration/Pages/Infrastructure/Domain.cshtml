@@ -52,15 +52,15 @@
                                 </div>
                             </div>
                         </div>
-                        @* <div class="col-lg-6">
+                        <div class="col-lg-6">
                             <div class="form-group form-float">
                                 <label asp-for="domain.CountryId" class="form-label"></label>
                                 <div class="form-line">
-                                @Html.DropDownListFor(domain => domain.domain.CountryId, new SelectList(Model.domain.lstCountry), new { @class = "form-control" })
+                                @Html.DropDownListFor(domain => domain.domain.CountryId, new SelectList(Model.domain.lstCountry, "CountryId","CountryName"), new { @class = "form-control" })
                                     <span asp-validation-for="domain.CountryId" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div> *@
+                        </div>
                         @* <div class="col-lg-6">
                             <div class="form-group form-float">
                                 <label asp-for="domain.StateId" class="form-label"></label>

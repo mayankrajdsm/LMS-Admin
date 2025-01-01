@@ -104,6 +104,13 @@ builder.Services.AddScoped<ISubscriptionPaymentService, SubscriptionPaymentServi
 builder.Services.AddScoped<ISubscriptionsTransactionRepository, SubscriptionsTransactionRepository>();
 builder.Services.AddScoped<ISubscriptionsTransactionService, SubscriptionsTransactionService>();
 
+builder.Services.AddScoped<IStaffRepository, StaffRepository>();
+builder.Services.AddScoped<IStaffService, StaffService>();
+
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<ICountryService, CountryService>();
+
+
 // // Register Repository 
 // builder.Services.AddScoped<IBookRepository, BookRepository>();
 // builder.Services.AddScoped<IClassRepository, ClassRepository>();

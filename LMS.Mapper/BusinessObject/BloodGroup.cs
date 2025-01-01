@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LMS.Mapper.BusinessObject
 {
-    public class Country
+    public class BloodGroup
     {
-        public string CountryId { get; set; }
+        public string BloodGroupId { get; set; }
 
-        public string CountryName { get; set; } = null!;
+        public string BloodGroupName { get; set; } = null!;
 
         public bool IsActive { get; set; }
 
@@ -21,6 +21,11 @@ namespace LMS.Mapper.BusinessObject
         public DateTime? ModifiedOn { get; set; }
 
         public string? ModifiedBy { get; set; }
-        public List<State> States { get; set; } = new List<State>();
+
+        public Staff CreatedByNavigation { get; set; } = null!;
+
+        public Staff? ModifiedByNavigation { get; set; }
+
+        public List<Staff> Staff { get; set; } = new List<Staff>();
     }
 }

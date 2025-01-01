@@ -16,12 +16,14 @@ namespace LMS.Administration.Pages.Infrastructure
     {
         private readonly ILogger<DomainModel> _logger;
         private readonly IDomainService _domainService;
+        private readonly ICountryService _countryService;
         private readonly IActiveUserService _activeUserService;
-        public DomainModel(ILogger<DomainModel> logger, IDomainService domainService, IActiveUserService activeUserService)
+        public DomainModel(ILogger<DomainModel> logger, IDomainService domainService, IActiveUserService activeUserService, ICountryService countryService)
         {
             _logger = logger;
             _domainService = domainService;
             _activeUserService = activeUserService;
+            _countryService = countryService;
         }
         [BindProperty]
         public Domain domain { get; set; }
@@ -30,13 +32,15 @@ namespace LMS.Administration.Pages.Infrastructure
         public async Task<IActionResult> OnGet()
         {
             Domain dd = new Domain();
+            var lstCountry = await _countryService.GetCountries();
             var existingDomain = await _domainService.GetDomain();
             if (existingDomain != null && existingDomain.DomainId != null)
             {
                 dd.RegisteredName = existingDomain.RegisteredName;
                 dd.Address1 = existingDomain.Address1;
                 dd.Address2 = existingDomain.Address2;
-                // dd.CountryId = existingDomain.CountryId;
+                dd.CountryId = existingDomain.CountryId;
+                dd.lstCountry = lstCountry;
                 // dd.StateId = existingDomain.StateId;
                 // dd.CityId = existingDomain.CityId;
                 dd.ContactPerson = existingDomain.ContactPerson;
@@ -58,13 +62,13 @@ namespace LMS.Administration.Pages.Infrastructure
                 domainUpdate.RegisteredName = domain.RegisteredName;
                 domainUpdate.Address1 = domain.Address1;
                 domainUpdate.Address2 = domain.Address2;
-                // domainUpdate.CountryId = domain.CountryId;
+                domainUpdate.CountryId = domain.CountryId;
                 // domainUpdate.StateId = domain.StateId;
                 // domainUpdate.CityId = domain.CityId;
                 domainUpdate.ContactPerson = domain.ContactPerson;
                 domainUpdate.ContactNo = domain.ContactNo;
                 domainUpdate.ContactEmail = domain.ContactEmail;
-                domainUpdate.CreatedBy = Guid.NewGuid().ToString();
+                domainUpdate.CreatedBy = User.FindFirst(ClaimTypes.Sid)?.Value;
 
                 int isSave = await _domainService.UpdateDomain(domainUpdate);
 
@@ -91,20 +95,20 @@ namespace LMS.Administration.Pages.Infrastructure
         [DisplayName("Address 2")]
         public string Address2 { get; set; } = null!;
 
-        //[Required]
-        // [DisplayName("Country")]
-        // public string CountryId { get; set; }
-        // public List<SelectListItem> lstCountry { get; set; }
+        [Required]
+        [DisplayName("Country")]
+        public string CountryId { get; set; }
+        public List<LMS.Mapper.BusinessObject.Country> lstCountry { get; set; }
 
-        //[Required]
-       // [DisplayName("State")]
-        //public string StateId { get; set; }
-        // public List<SelectListItem> lstState { get; set; }
+        [Required]
+       [DisplayName("State")]
+        public string StateId { get; set; }
+        public List<SelectListItem> lstState { get; set; }
 
-        //[Required]
-       // [DisplayName("City")]
-        //public string CityId { get; set; }
-        // public List<SelectListItem> lstCity { get; set; }
+        [Required]
+       [DisplayName("City")]
+        public string CityId { get; set; }
+        public List<SelectListItem> lstCity { get; set; }
 
         [Required]
         [DisplayName("Contact Person ")]

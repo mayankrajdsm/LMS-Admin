@@ -1,11 +1,15 @@
-﻿ <!-- User Info -->
+﻿ @{
+    var username = User.Identity.Name;
+    var email = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value;
+}   
+ <!-- User Info -->
 <div class="user-info">
     <div class="image">
         <img src="~/assets/images/user.png" width="48" height="48" alt="User" />
     </div>
     <div class="info-container">
-        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-        <div class="email">john.doe@example.com</div>
+        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@username</div>
+        <div class="email">@email</div>
         <div class="btn-group user-helper-dropdown">
             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
             <ul class="dropdown-menu pull-right">

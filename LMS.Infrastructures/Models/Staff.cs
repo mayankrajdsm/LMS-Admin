@@ -7,11 +7,11 @@ public partial class Staff
 {
     public Guid StaffId { get; set; }
 
-    public Guid TitleId { get; set; }
+    public Guid? TitleId { get; set; }
 
     public string FirstName { get; set; } = null!;
 
-    public string MiddleName { get; set; } = null!;
+    public string? MiddleName { get; set; }
 
     public string LastName { get; set; } = null!;
 
@@ -21,15 +21,15 @@ public partial class Staff
 
     public DateTime DoB { get; set; }
 
-    public Guid DepartmentId { get; set; }
+    public Guid? DepartmentId { get; set; }
 
-    public Guid DesignationId { get; set; }
+    public Guid? DesignationId { get; set; }
 
-    public Guid RoleId { get; set; }
+    public Guid? RoleId { get; set; }
 
     public decimal? SalaryOffered { get; set; }
 
-    public string Qualification { get; set; } = null!;
+    public string? Qualification { get; set; }
 
     public string? Experience { get; set; }
 
@@ -41,9 +41,9 @@ public partial class Staff
 
     public DateTime? DateOfRegularAppointment { get; set; }
 
-    public Guid SocialCategoryId { get; set; }
+    public Guid? SocialCategoryId { get; set; }
 
-    public string Caste { get; set; } = null!;
+    public string? Caste { get; set; }
 
     public string? LibraryCardNumber { get; set; }
 
@@ -51,7 +51,7 @@ public partial class Staff
 
     public int? AadharCardNo { get; set; }
 
-    public Guid MaritalStatusId { get; set; }
+    public Guid? MaritalStatusId { get; set; }
 
     public DateTime? MarriageAnniversary { get; set; }
 
@@ -59,13 +59,13 @@ public partial class Staff
 
     public string? PanCardNo { get; set; }
 
-    public string FatherName { get; set; } = null!;
+    public string? FatherName { get; set; }
 
-    public string MotherName { get; set; } = null!;
+    public string? MotherName { get; set; }
 
     public Guid? BloodGroupId { get; set; }
 
-    public Guid Nationality { get; set; }
+    public Guid? Nationality { get; set; }
 
     public Guid? EmployementTypeId { get; set; }
 
@@ -73,9 +73,9 @@ public partial class Staff
 
     public int? Uannumber { get; set; }
 
-    public string ShiftInTime { get; set; } = null!;
+    public string? ShiftInTime { get; set; }
 
-    public string ShiftOutTime { get; set; } = null!;
+    public string? ShiftOutTime { get; set; }
 
     public string? BankName { get; set; }
 
@@ -85,13 +85,13 @@ public partial class Staff
 
     public int? Mobile { get; set; }
 
-    public string EmailId { get; set; } = null!;
+    public string? EmailId { get; set; }
 
     public string? AlternateEmailId { get; set; }
 
     public string? LinkedInProfile { get; set; }
 
-    public string PermanentAddress1 { get; set; } = null!;
+    public string? PermanentAddress1 { get; set; }
 
     public string? PermanentAddress2 { get; set; }
 
@@ -103,7 +103,7 @@ public partial class Staff
 
     public int? PermanentPincode { get; set; }
 
-    public string PresentAddress1 { get; set; } = null!;
+    public string? PresentAddress1 { get; set; }
 
     public string? PresentAddress2 { get; set; }
 
@@ -125,7 +125,9 @@ public partial class Staff
 
     public Guid? ModifiedBy { get; set; }
 
-    public Guid BuildingId { get; set; }
+    public Guid? BuildingId { get; set; }
+
+    public string? Password { get; set; }
 
     public virtual ICollection<AboutU> AboutUCreatedByNavigations { get; set; } = new List<AboutU>();
 
@@ -153,7 +155,7 @@ public partial class Staff
 
     public virtual ICollection<Book> BookModifiedByNavigations { get; set; } = new List<Book>();
 
-    public virtual Building Building { get; set; } = null!;
+    public virtual Building? Building { get; set; }
 
     public virtual ICollection<Building> BuildingCreatedByNavigations { get; set; } = new List<Building>();
 
@@ -175,15 +177,13 @@ public partial class Staff
 
     public virtual ICollection<Country> CountryModifiedByNavigations { get; set; } = new List<Country>();
 
-    public virtual Staff CreatedByNavigation { get; set; } = null!;
-
-    public virtual Department Department { get; set; } = null!;
+    public virtual Department? Department { get; set; }
 
     public virtual ICollection<Department> DepartmentCreatedByNavigations { get; set; } = new List<Department>();
 
     public virtual ICollection<Department> DepartmentModifiedByNavigations { get; set; } = new List<Department>();
 
-    public virtual StaffType Designation { get; set; } = null!;
+    public virtual StaffType? Designation { get; set; }
 
     public virtual ICollection<Domain> Domains { get; set; } = new List<Domain>();
 
@@ -193,13 +193,9 @@ public partial class Staff
 
     public virtual ICollection<EmployementType> EmployementTypeModifiedByNavigations { get; set; } = new List<EmployementType>();
 
-    public virtual Gender Gender { get; set; } = null!;
-
     public virtual ICollection<Gender> GenderCreatedByNavigations { get; set; } = new List<Gender>();
 
     public virtual ICollection<Gender> GenderModifiedByNavigations { get; set; } = new List<Gender>();
-
-    public virtual ICollection<Staff> InverseCreatedByNavigation { get; set; } = new List<Staff>();
 
     public virtual ICollection<Staff> InverseModifiedByNavigation { get; set; } = new List<Staff>();
 
@@ -211,7 +207,7 @@ public partial class Staff
 
     public virtual ICollection<LoginType> LoginTypeModifiedByNavigations { get; set; } = new List<LoginType>();
 
-    public virtual MaritalStatus MaritalStatus { get; set; } = null!;
+    public virtual MaritalStatus? MaritalStatus { get; set; }
 
     public virtual ICollection<MaritalStatus> MaritalStatusCreatedByNavigations { get; set; } = new List<MaritalStatus>();
 
@@ -219,13 +215,11 @@ public partial class Staff
 
     public virtual Staff? ModifiedByNavigation { get; set; }
 
-    public virtual Country NationalityNavigation { get; set; } = null!;
+    public virtual Country? NationalityNavigation { get; set; }
 
     public virtual ICollection<PaymentStatus> PaymentStatusCreatedByNavigations { get; set; } = new List<PaymentStatus>();
 
     public virtual ICollection<PaymentStatus> PaymentStatusModifiedByNavigations { get; set; } = new List<PaymentStatus>();
-
-    public virtual City? PermanentCity { get; set; }
 
     public virtual Country? PermanentCountry { get; set; }
 
@@ -237,9 +231,9 @@ public partial class Staff
 
     public virtual State? PresentState { get; set; }
 
-    public virtual LoginType Role { get; set; } = null!;
+    public virtual LoginType? Role { get; set; }
 
-    public virtual SocialCategory SocialCategory { get; set; } = null!;
+    public virtual SocialCategory? SocialCategory { get; set; }
 
     public virtual ICollection<SocialCategory> SocialCategoryCreatedByNavigations { get; set; } = new List<SocialCategory>();
 
@@ -313,5 +307,5 @@ public partial class Staff
 
     public virtual ICollection<SubscriptionsTransaction> SubscriptionsTransactionModifiedByNavigations { get; set; } = new List<SubscriptionsTransaction>();
 
-    public virtual Title Title { get; set; } = null!;
+    public virtual Title? Title { get; set; }
 }

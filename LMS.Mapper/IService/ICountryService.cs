@@ -1,5 +1,5 @@
 ﻿using LMS.Infrastructures.Interface;
-using LMS.Infrastructures.Models;
+using LMS.Mapper.BusinessObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,6 @@ namespace LMS.Mapper.IService
 {
     public interface ICountryService
     {
-        Task<IEnumerable<Country>> GetCountries();
+        Task<List<Country>> GetCountries();
     }
 }

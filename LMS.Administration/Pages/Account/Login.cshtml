@@ -6,7 +6,7 @@
 <div class="card">
     <div class="body">
         <form id="sign_in" method="POST">
-            @* <div class="msg">Sign in to start your session</div> *@
+            
             <h4>Login</h4>
             <div class="input-group">
                 <span class="input-group-addon">
@@ -40,6 +40,10 @@
                     <a href="/Account/ForgotPassword">Forgot Password?</a>
                 </div>
             </div>
+            @if(!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+            <div class="msg">@Model.ErrorMessage</div>
+            }
         </form>
     </div>
 </div>

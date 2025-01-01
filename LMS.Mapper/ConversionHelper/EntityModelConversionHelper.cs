@@ -322,5 +322,74 @@ namespace LMS.Mapper.ConversionHelper
             convertedModel.ModifiedBy = string.IsNullOrEmpty(transaction.ModifiedBy) ? null : Guid.Parse(transaction.CreatedBy);
             return convertedModel;
         }
+        public static Staff ToEntityModel(this BusinessObject.Staff staff, Staff existingStaff = null)
+        {
+            Staff convertedModel = existingStaff != null ? existingStaff : new Staff();
+
+            convertedModel.StaffId = string.IsNullOrEmpty(staff.StaffId) ? Guid.NewGuid() : Guid.Parse(staff.StaffId);
+            convertedModel.TitleId = string.IsNullOrEmpty(staff.TitleId) ? null : Guid.Parse(staff.TitleId);
+            convertedModel.FirstName = staff.FirstName ?? string.Empty;
+            convertedModel.MiddleName = staff.MiddleName ?? string.Empty;
+            convertedModel.LastName = staff.LastName ?? string.Empty;
+            convertedModel.DoJ = staff.DoJ;
+            convertedModel.GenderId = Guid.Parse(staff.GenderId);
+            convertedModel.DoB = staff.DoB;
+            convertedModel.DepartmentId = string.IsNullOrEmpty(staff.DepartmentId) ? null : Guid.Parse(staff.DepartmentId);
+            convertedModel.DesignationId = string.IsNullOrEmpty(staff.DesignationId) ? null : Guid.Parse(staff.DesignationId);
+            convertedModel.RoleId = string.IsNullOrEmpty(staff.RoleId) ? null : Guid.Parse(staff.RoleId);
+            convertedModel.SalaryOffered = staff.SalaryOffered ?? 0;
+            convertedModel.Qualification = staff.Qualification ?? string.Empty;
+            convertedModel.Experience = staff.Experience ?? string.Empty;
+            convertedModel.AreaOfSpecialization = staff.AreaOfSpecialization ?? string.Empty;
+            convertedModel.BiometricIdentificationNumberId = staff.BiometricIdentificationNumberId ?? string.Empty;
+            convertedModel.DateOfSuperannuation = staff.DateOfSuperannuation;
+            convertedModel.DateOfRegularAppointment = staff.DateOfRegularAppointment;
+            convertedModel.SocialCategoryId = string.IsNullOrEmpty(staff.SocialCategoryId) ? null : Guid.Parse(staff.SocialCategoryId);
+            convertedModel.Caste = staff.Caste ?? string.Empty;
+            convertedModel.LibraryCardNumber = staff.LibraryCardNumber ?? string.Empty;
+            convertedModel.ProfilePicture = staff.ProfilePicture ?? string.Empty;
+            convertedModel.AadharCardNo = staff.AadharCardNo ?? 0;
+            convertedModel.MaritalStatusId = string.IsNullOrEmpty(staff.MaritalStatusId) ? null : Guid.Parse(staff.MaritalStatusId);
+            convertedModel.MarriageAnniversary = staff.MarriageAnniversary ?? null;
+            convertedModel.SpouseName = staff.SpouseName ?? string.Empty;
+            convertedModel.PanCardNo = staff.PanCardNo ?? string.Empty;
+            convertedModel.FatherName = staff.FatherName ?? string.Empty;
+            convertedModel.MotherName = staff?.MotherName ?? string.Empty;
+            convertedModel.BloodGroupId = string.IsNullOrEmpty(staff.BloodGroupId) ? null : Guid.Parse(staff.BloodGroupId);
+            convertedModel.Nationality = string.IsNullOrEmpty(staff.Nationality) ? null : Guid.Parse(staff.Nationality);
+            convertedModel.EmployementTypeId = string.IsNullOrEmpty(staff.EmployementTypeId) ? null : Guid.Parse(staff.EmployementTypeId);
+            convertedModel.OnlyViewingrights = staff.OnlyViewingrights ?? false;
+            convertedModel.Uannumber = staff.Uannumber ?? 0;
+            convertedModel.ShiftInTime = staff.ShiftInTime ?? string.Empty;
+            convertedModel.ShiftOutTime = staff.ShiftOutTime ?? string.Empty;
+            convertedModel.BankName = staff.BankName ?? string.Empty;
+            convertedModel.IfscCode = staff.IfscCode ?? string.Empty;
+            convertedModel.AccountNumber = staff.AccountNumber ?? 0;
+            convertedModel.Mobile = staff.Mobile ?? 0;
+            convertedModel.EmailId = staff.EmailId ?? string.Empty;
+            convertedModel.AlternateEmailId = staff.AlternateEmailId ?? string.Empty;
+            convertedModel.LinkedInProfile = staff.LinkedInProfile ?? string.Empty;
+            convertedModel.PermanentAddress1 = staff.PermanentAddress1 ?? string.Empty;
+            convertedModel.PermanentAddress2 = staff.PermanentAddress2 ?? string.Empty;
+            convertedModel.PermanentCountryId = string.IsNullOrEmpty(staff.PermanentCountryId) ? null : Guid.Parse(staff.PermanentCountryId);
+            convertedModel.PermanentStateId = string.IsNullOrEmpty(staff.PermanentStateId) ? null : Guid.Parse(staff.PermanentStateId);
+            convertedModel.PermanentCityId = string.IsNullOrEmpty(staff.PermanentCityId) ? null : Guid.Parse(staff.PermanentCityId);
+            convertedModel.PermanentPincode = staff.PermanentPincode ?? 0;
+            convertedModel.PresentAddress1 = staff.PresentAddress1 ?? string.Empty;
+            convertedModel.PresentAddress2 = staff.PresentAddress2 ?? string.Empty;
+            convertedModel.PresentCountryId = string.IsNullOrEmpty(staff.PermanentCityId) ? null : Guid.Parse(staff.PermanentCityId);
+            convertedModel.PresentStateId = string.IsNullOrEmpty(staff.PresentStateId) ? null : Guid.Parse(staff.PresentStateId);
+            convertedModel.PresentCityId = string.IsNullOrEmpty(staff.PresentCityId) ? null : Guid.Parse(staff.PresentCityId);
+            convertedModel.PresentPincode = staff.PresentPincode ?? 0;
+            convertedModel.IsActive = staff.IsActive;
+            convertedModel.CreatedOn = staff.CreatedOn;
+            convertedModel.CreatedBy = Guid.Parse(staff.CreatedBy);
+            convertedModel.ModifiedOn = staff.ModifiedOn == null ? DateTime.Now : staff.ModifiedOn;
+            convertedModel.ModifiedBy = string.IsNullOrEmpty(staff.ModifiedBy) ? null : Guid.Parse(staff.ModifiedBy);
+            convertedModel.BuildingId = string.IsNullOrEmpty(staff.BuildingId) ? null : Guid.Parse(staff.BuildingId);
+            convertedModel.Password = staff.Password ?? "";
+
+            return convertedModel;
+        }
     }
 }

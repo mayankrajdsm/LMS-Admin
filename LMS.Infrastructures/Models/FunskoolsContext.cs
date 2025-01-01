@@ -779,6 +779,9 @@ public partial class FunskoolsContext : DbContext
             entity.Property(e => e.PanCardNo)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(100)
+                .IsUnicode(false);
             entity.Property(e => e.PermanentAddress1)
                 .HasMaxLength(250)
                 .IsUnicode(false);
@@ -812,89 +815,67 @@ public partial class FunskoolsContext : DbContext
 
             entity.HasOne(d => d.BloodGroup).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.BloodGroupId)
-                .HasConstraintName("FK__Staff__BloodGrou__4F47C5E3");
+                .HasConstraintName("FK__Staff__BloodGrou__3B0BC30C");
 
             entity.HasOne(d => d.Building).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.BuildingId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__BuildingI__6442E2C9");
-
-            entity.HasOne(d => d.CreatedByNavigation).WithMany(p => p.InverseCreatedByNavigation)
-                .HasForeignKey(d => d.CreatedBy)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__CreatedBy__10216507");
+                .HasConstraintName("FK__Staff__BuildingI__3BFFE745");
 
             entity.HasOne(d => d.Department).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.DepartmentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__Departmen__4A8310C6");
+                .HasConstraintName("FK__Staff__Departmen__3DE82FB7");
 
             entity.HasOne(d => d.Designation).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.DesignationId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__Designati__4B7734FF");
+                .HasConstraintName("FK__Staff__Designati__3EDC53F0");
 
             entity.HasOne(d => d.EmployementType).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.EmployementTypeId)
-                .HasConstraintName("FK__Staff__Employeme__51300E55");
-
-            entity.HasOne(d => d.Gender).WithMany(p => p.Staff)
-                .HasForeignKey(d => d.GenderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__GenderId__498EEC8D");
+                .HasConstraintName("FK__Staff__Employeme__3FD07829");
 
             entity.HasOne(d => d.MaritalStatus).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.MaritalStatusId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__MaritalSt__4E53A1AA");
+                .HasConstraintName("FK__Staff__MaritalSt__41B8C09B");
 
             entity.HasOne(d => d.ModifiedByNavigation).WithMany(p => p.InverseModifiedByNavigation)
                 .HasForeignKey(d => d.ModifiedBy)
-                .HasConstraintName("FK__Staff__ModifiedB__11158940");
+                .HasConstraintName("FK__Staff__ModifiedB__42ACE4D4");
 
             entity.HasOne(d => d.NationalityNavigation).WithMany(p => p.StaffNationalityNavigations)
                 .HasForeignKey(d => d.Nationality)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__Nationali__503BEA1C");
-
-            entity.HasOne(d => d.PermanentCity).WithMany(p => p.StaffPermanentCities)
-                .HasForeignKey(d => d.PermanentCityId)
-                .HasConstraintName("FK__Staff__Permanent__540C7B00");
+                .HasConstraintName("FK__Staff__Nationali__43A1090D");
 
             entity.HasOne(d => d.PermanentCountry).WithMany(p => p.StaffPermanentCountries)
                 .HasForeignKey(d => d.PermanentCountryId)
-                .HasConstraintName("FK__Staff__Permanent__5224328E");
+                .HasConstraintName("FK__Staff__Permanent__44952D46");
 
             entity.HasOne(d => d.PermanentState).WithMany(p => p.StaffPermanentStates)
                 .HasForeignKey(d => d.PermanentStateId)
-                .HasConstraintName("FK__Staff__Permanent__531856C7");
+                .HasConstraintName("FK__Staff__Permanent__4589517F");
 
-            entity.HasOne(d => d.PresentCity).WithMany(p => p.StaffPresentCities)
+            entity.HasOne(d => d.PresentCity).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.PresentCityId)
-                .HasConstraintName("FK__Staff__PresentCi__56E8E7AB");
+                .HasConstraintName("FK__Staff__PresentCi__467D75B8");
 
             entity.HasOne(d => d.PresentCountry).WithMany(p => p.StaffPresentCountries)
                 .HasForeignKey(d => d.PresentCountryId)
-                .HasConstraintName("FK__Staff__PresentCo__55009F39");
+                .HasConstraintName("FK__Staff__PresentCo__477199F1");
 
             entity.HasOne(d => d.PresentState).WithMany(p => p.StaffPresentStates)
                 .HasForeignKey(d => d.PresentStateId)
-                .HasConstraintName("FK__Staff__PresentSt__55F4C372");
+                .HasConstraintName("FK__Staff__PresentSt__4865BE2A");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.RoleId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__RoleId__4C6B5938");
+                .HasConstraintName("FK__Staff__RoleId__4959E263");
 
             entity.HasOne(d => d.SocialCategory).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.SocialCategoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__SocialCat__4D5F7D71");
+                .HasConstraintName("FK__Staff__SocialCat__4A4E069C");
 
             entity.HasOne(d => d.Title).WithMany(p => p.Staff)
                 .HasForeignKey(d => d.TitleId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Staff__Title_Id__489AC854");
+                .HasConstraintName("FK__Staff__Title_Id__4B422AD5");
         });
 
         modelBuilder.Entity<StaffExperience>(entity =>

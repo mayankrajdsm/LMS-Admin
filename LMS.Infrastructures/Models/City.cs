@@ -25,9 +25,7 @@ public partial class City
 
     public virtual Staff? ModifiedByNavigation { get; set; }
 
-    public virtual ICollection<Staff> StaffPermanentCities { get; set; } = new List<Staff>();
-
-    public virtual ICollection<Staff> StaffPresentCities { get; set; } = new List<Staff>();
+    public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 
     public virtual State State { get; set; } = null!;
 }

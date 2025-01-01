@@ -24,6 +24,4 @@ public partial class Gender
     public virtual Staff CreatedByNavigation { get; set; } = null!;
 
     public virtual Staff? ModifiedByNavigation { get; set; }
-
-    public virtual ICollection<Staff> Staff { get; set; } = new List<Staff>();
 }
